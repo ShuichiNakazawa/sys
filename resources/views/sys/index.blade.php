@@ -44,7 +44,7 @@
   	<div class="container copyright">
       &copy;2020 - 2021 lara-assist.jp
     </div>
-  </body>
-  </html>
   @endsection
+  </body>
+</html>
 
