@@ -124,7 +124,7 @@
 	</table>
 	</div>
 	@endsection
-
+	
   @section('footer')
   	<div class="container copyright">
       &copy;2020 - 2021 lara-assist.jp
