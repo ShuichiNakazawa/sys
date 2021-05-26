@@ -1,4 +1,4 @@
-<!-- resources/views/sys/index.blade.php -->
+<!-- resources/views/sys/memo.blade.php -->
 @extends('layouts.app')
 
 @section('content')
