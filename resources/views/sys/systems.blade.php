@@ -31,9 +31,6 @@
           <a href="work_manager">作業予定表</a>
           <br><br>
 
-          <a href="limited_call">制限通話</a>
-          <br><br>
-
         </div>
         <br><br><br>
         @endsection
