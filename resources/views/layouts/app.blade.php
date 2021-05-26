@@ -26,7 +26,7 @@
 
 	<nav class="navbar navbar-expand-md navbar-light bg-thin_brown shadow-sm">
 	    <div class="container">
-	      <a href="https://lara-assist.jp">Top</a>
+	      <a href="{{ url('/') }}">Top</a>
 	      <a href="{{ url('about') }}">ご挨拶</a>
 	      <a href="{{ url('systems') }}">システム</a>
 	      <a href="{{ url('reservation') }}">リモート予約（調整中）</a>
