@@ -27,7 +27,7 @@ Route::get('/reservation', function () {
     return view('sys.reservation');
 });
 
-Route::get('/hmemo', function () {
+Route::get('/memo', function () {
     return view('sys.memo');
 });
 
