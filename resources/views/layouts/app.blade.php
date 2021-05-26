@@ -133,7 +133,7 @@
             @yield('content')
         </main>
     </div>
-
+    @yield('footer')
     @yield('script')
   </body>
 </html>

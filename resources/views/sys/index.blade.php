@@ -40,7 +40,7 @@
 	<br><br><br>
   @endsection
 
-  @section('content')
+  @section('footer')
   	<div class="container copyright">
       &copy;2020 - 2021 lara-assist.jp
     </div>
