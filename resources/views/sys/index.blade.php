@@ -1,3 +1,16 @@
+<!-- resources/views/rooms/index.blade.php -->
+@extends('layouts.app')
+
+@section('content')
+
+@if(session('message'))
+<div class="alert alert-success">
+  {{ session('message') }}
+</div>
+@endif
+
+@include('common.errors')
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -61,9 +74,13 @@
 		</div>
 	</div>
 	<br><br><br>
+  @endsection
 
-	<div class="container copyright">
-          &copy;2020 - 2021 lara-assist.jp
-        </div>
-</body>
-</html>
+  @section('content')
+  	<div class="container copyright">
+      &copy;2020 - 2021 lara-assist.jp
+    </div>
+  </body>
+  </html>
+  @endsection
+
