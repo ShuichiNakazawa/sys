@@ -38,13 +38,15 @@
 	  <br><br>
 
     <a href="https://www.ipa.go.jp/">IPA 独立行政法人 情報処理推進機構</a>
-	  <br><br><br>
+	  <br><br>
 
 	  <h4>未分類</h4>
+    <a href="https://nadesi.com/top/">日本語プログラミング言語「なでしこ」</a>
+    <br><br><br>
     <a href="https://ja.softether.org/">SoftEther VPN プロジェクト</a>
     <br><br>
     </div>
-    
+
     @endsection
 
     @section('footer')
