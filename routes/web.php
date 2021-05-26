@@ -12,32 +12,5 @@
 */
 
 Route::get('/', function () {
-    return view('sys.index');
+    return view('welcome');
 });
-
-Route::get('/about', function () {
-    return view('sys.about');
-});
-
-Route::get('/systems', function () {
-    return view('sys.systems');
-});
-
-Route::get('/reservation', function () {
-    return view('sys.reservation');
-});
-
-Route::get('/memo', function () {
-    return view('sys.memo');
-});
-
-Route::get('/inquiry', function () {
-    return view('sys.inquiry');
-});
-
-Route::get('/references', function () {
-    return view('sys.references');
-});
-
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
