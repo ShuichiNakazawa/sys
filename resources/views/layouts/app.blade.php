@@ -18,7 +18,7 @@
     gtag('config', 'G-YGNQ69DFKK');
   </script>
 </head>
-
+  
 <body>
 	<div style="vertical-align: middle; height: 70px; background-color:rgb(220, 220, 210);">
 	  <h1 style="padding-top: 12px; text-align: center; background-color:rgb(220, 220, 210)">ララアシスト</h1>
