@@ -44,7 +44,7 @@
     <a href="https://ja.softether.org/">SoftEther VPN プロジェクト</a>
     <br><br>
     </div>
-
+    
     @endsection
 
     @section('footer')

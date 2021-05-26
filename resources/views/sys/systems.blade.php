@@ -8,11 +8,11 @@
   {{ session('message') }}
 </div>
 @endif
-
+  
 @include('common.errors')
           <br>
 
-          
+
         <div style="margin:0 auto; width: 70%">
           <h2 style="text-align:center;">システム</h2>
           <br><br>

@@ -8,7 +8,7 @@
   {{ session('message') }}
 </div>
 @endif
-
+  
 @include('common.errors')
 
 
