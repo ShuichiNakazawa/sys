@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/about', function () {
-    return view('sys.index');
+    return view('sys.about');
 });
 
 Route::get('/systems', function () {
