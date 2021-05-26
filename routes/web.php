@@ -39,3 +39,5 @@ Route::get('/references', function () {
     return view('sys.references');
 });
 
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
