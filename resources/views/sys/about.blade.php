@@ -3,13 +3,13 @@
 
 @section('content')
 
-@if(session('message'))
-<div class="alert alert-success">
-  {{ session('message') }}
-</div>
-@endif
+	@if(session('message'))
+		<div class="alert alert-success">
+			{{ session('message') }}
+		</div>
+	@endif
 
-@include('common.errors')
+	@include('common.errors')
 
 	<br>
 
@@ -34,6 +34,7 @@
 	<br><br><br>
 
 	<h3 style="text-align:center;">事業概要</h3>
+
 	<div class="business_content_outer">
 	<table class="table table-striped task-table">
 	  <tbody>
@@ -122,7 +123,7 @@
 	  </tbody>
 	</table>
 	</div>
-	<br><br><br>
+	@endsection
 
   @section('footer')
   	<div class="container copyright">
