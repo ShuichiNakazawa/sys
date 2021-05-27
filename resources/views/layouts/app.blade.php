@@ -4,9 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content=" ～web技術を身近に～  千葉県旭市にてシステム開発からアプリ操作のインストラクションまで、皆さまがより身近にインターネットサービスを利用できるよう、全力でサポートいたします。スマートデバイス操作のインストラクション等もお気軽にご相談ください。私はIT技術の普及に貢献します。">
+
+  <!-- CSRF Token -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
+  <title>{{ config('app.name', 'title') }}</title>
+
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-  <link href="https://lara-assist.jp/index.css" rel="stylesheet">
-  <title>ララアシスト ～Web技術を身近に～ 千葉県旭市 システム開発 プログラミングスクール ララアシスト</title>
+
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}" defer></script>
+
+  <!-- Fonts -->
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+  <!-- Styles -->
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QX9TMYGCGN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-QX9TMYGCGN');
+  </script>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-YGNQ69DFKK"></script>
