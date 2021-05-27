@@ -39,5 +39,35 @@ Route::get('/references', function () {
     return view('sys.references');
 });
 
+/**
+ * 予約昨日
+ */
+// 週別予約可能数情報 取得
+Route::get('/reservation', 'ReservationsController@getAcceptable');
+
+// 予約
+Route::post('/reservation/{year}/{month}/{day}/{hour}/{minute}', 'ReservationsController@storeReservationQuarter');
+
+// 保有チケット確認
+Route::get('/reservation/confirm_tickets/{user_id}', 'ReservationsController@getTickets_info');
+
+// 登録情報確認
+Route::get('/reservation/confirm_user_info/{user_id}', 'ReservationsController@getUser_info');
+
+// 登録情報変更
+Route::get('/reservation/modify_user_info/{user_id}', 'ReservationsController@getUser_info_modify');
+
+// 登録情報変更
+Route::post('/reservation/modify_user_info', 'ReservationsController@updateUserInfo');
+
+// 予約一覧確認
+Route::get('/reservation/confirm_reservation/{user_id}', 'ReservationsController@getReservation_info');
+
+// チケット購入
+Route::get('/reservation/purchase_ticket/{user_id}', 'ReservationsController@getTicket_info');
+
+/**
+ * 認証機能
+ */
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
