@@ -43,25 +43,25 @@ Route::get('/references', function () {
  * 予約昨日
  */
 // 週別予約可能数情報 取得
-Route::get('/reservation', 'ReservationsController@getAcceptable');
+Route::get('/reservation', 'ReservationController@getAcceptable');
 
 // 予約
-Route::post('/reservation/{year}/{month}/{day}/{hour}/{minute}', 'ReservationsController@storeReservationQuarter');
+Route::post('/reservation/{year}/{month}/{day}/{hour}/{minute}', 'ReservationController@storeReservationQuarter');
 
 // 保有チケット確認
-Route::get('/reservation/confirm_tickets/{user_id}', 'ReservationsController@getTickets_info');
+Route::get('/reservation/confirm_tickets/{user_id}', 'ReservationController@getTickets_info');
 
 // 登録情報確認
-Route::get('/reservation/confirm_user_info/{user_id}', 'ReservationsController@getUser_info');
+Route::get('/reservation/confirm_user_info/{user_id}', 'ReservationController@getUser_info');
 
 // 登録情報変更
-Route::get('/reservation/modify_user_info/{user_id}', 'ReservationsController@getUser_info_modify');
+Route::get('/reservation/modify_user_info/{user_id}', 'ReservationController@getUser_info_modify');
 
 // 登録情報変更
-Route::post('/reservation/modify_user_info', 'ReservationsController@updateUserInfo');
+Route::post('/reservation/modify_user_info', 'ReservationController@updateUserInfo');
 
 // 予約一覧確認
-Route::get('/reservation/confirm_reservation/{user_id}', 'ReservationsController@getReservation_info');
+Route::get('/reservation/confirm_reservation/{user_id}', 'ReservationController@getReservation_info');
 
 // チケット購入
 Route::get('/reservation/purchase_ticket/{user_id}', 'ReservationsController@getTicket_info');
