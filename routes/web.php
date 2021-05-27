@@ -34,7 +34,7 @@ Route::get('/memo', function () {
 Route::get('/inquiry', function () {
     return view('sys.inquiry');
 });
-
+    
 Route::get('/references', function () {
     return view('sys.references');
 });
