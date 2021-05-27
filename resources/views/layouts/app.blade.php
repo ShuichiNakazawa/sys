@@ -50,30 +50,13 @@
 
 	<nav class="navbar navbar-expand-md navbar-light bg-thin_brown shadow-sm">
 	    <div class="container">
-        <ul>
-          <li>
-            <a href="{{ url('/') }}">Top</a>
-          </li>
-          <li>
-            <a href="{{ url('about') }}">ご挨拶</a>
-          </li>
-          <li>
-            <a href="{{ url('systems') }}">システム</a>
-          </li>
-          <li>
-            <a href="{{ url('reservation') }}">リモート予約（調整中）</a>
-          </li>
-          <li>
-            <a href="{{ url('memo') }}">技術情報</a>
-          </li>
-          <li>
-            <a href="{{ url('inquiry') }}">お問合せ（調整中）</a>
-          </li>
-          <li>
-            <a href="{{ url('references') }}">参考サイト</a>
-          </li>
-        </ul>
-
+        <a href="{{ url('/') }}">Top</a>
+        <a href="{{ url('about') }}">ご挨拶</a>
+        <a href="{{ url('systems') }}">システム</a>
+        <a href="{{ url('reservation') }}">リモート予約（調整中）</a>
+        <a href="{{ url('memo') }}">技術情報</a>
+        <a href="{{ url('inquiry') }}">お問合せ（調整中）</a>
+        <a href="{{ url('references') }}">参考サイト</a>
 	    </div>
 	</nav>
 
