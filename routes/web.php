@@ -64,7 +64,7 @@ Route::post('/reservation/modify_user_info', 'ReservationController@updateUserIn
 Route::get('/reservation/confirm_reservation/{user_id}', 'ReservationController@getReservation_info');
 
 // チケット購入
-Route::get('/reservation/purchase_ticket/{user_id}', 'ReservationsController@getTicket_info');
+Route::get('/reservation/purchase_ticket/{user_id}', 'ReservationController@getTicket_info');
 
 /**
  * 認証機能
