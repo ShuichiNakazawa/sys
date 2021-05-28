@@ -13,7 +13,7 @@ class MailSendController extends Controller
     public function send(Request $request){
 
         // 送信者 取得
-        $sender =   $request->cuotomerName;
+        $sender =   $request->customerName;
         dd($sender);
 
         $to =   [
