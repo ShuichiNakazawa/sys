@@ -43,7 +43,7 @@ class KokushiController extends Controller
 
 
 
-      //dd($fields);
+      dd($fields, $All_subjects);
 
       return view('kokushi.index')
               ->with([
