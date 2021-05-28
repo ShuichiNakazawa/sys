@@ -20,7 +20,7 @@ class Question_titlesTableSeeder extends Seeder
                  
                 'subject_name_id' => '13',
                 'title_id'      =>      '0',
-                'questions_title' => '平成３０年度 春期',
+                'question_title' => '平成３０年度 春期',
                 'sight_key' => 'origin',
             ),
             1 => 
@@ -28,7 +28,7 @@ class Question_titlesTableSeeder extends Seeder
                  
                 'subject_name_id' => '13',
                 'title_id'      =>      '0',
-                'questions_title' => '平成３０年度 秋期',
+                'question_title' => '平成３０年度 秋期',
                 'sight_key' => 'origin',
             ),
             2 => 
@@ -36,7 +36,7 @@ class Question_titlesTableSeeder extends Seeder
                  
                 'subject_name_id' => '13',
                 'title_id'      =>      '0',
-                'questions_title' => '平成２９年度 秋期',
+                'question_title' => '平成２９年度 秋期',
                 'sight_key' => 'origin',
             ),
             3 => 
@@ -44,7 +44,7 @@ class Question_titlesTableSeeder extends Seeder
                  
                 'subject_name_id' => '13',
                 'title_id'      =>      '0',
-                'questions_title' => '平成２９年度 春期',
+                'question_title' => '平成２９年度 春期',
                 'sight_key' => 'origin',
             ),
             4 => 
@@ -52,7 +52,7 @@ class Question_titlesTableSeeder extends Seeder
                  
                 'subject_name_id' => '13',
                 'title_id'      =>      '0',
-                'questions_title' => '平成２８年度 春期',
+                'question_title' => '平成２８年度 春期',
                 'sight_key' => 'origin',
             ),
             5 => 
@@ -60,7 +60,7 @@ class Question_titlesTableSeeder extends Seeder
                  
                 'subject_name_id' => '13',
                 'title_id'      =>      '0',
-                'questions_title' => '平成２８年度 秋期',
+                'question_title' => '平成２８年度 秋期',
                 'sight_key' => 'origin',
             ),
             6 => 
@@ -68,7 +68,7 @@ class Question_titlesTableSeeder extends Seeder
                  
                 'subject_name_id' => '13',
                 'title_id'      =>      '0',
-                'questions_title' => '平成２７年度 秋期',
+                'question_title' => '平成２７年度 秋期',
                 'sight_key' => 'origin',
             ),
             7 => 
@@ -76,7 +76,7 @@ class Question_titlesTableSeeder extends Seeder
                  
                 'subject_name_id' => '13',
                 'title_id'      =>      '0',
-                'questions_title' => '平成２７年度 春期',
+                'question_title' => '平成２７年度 春期',
                 'sight_key' => 'origin',
             ),
             8 => 
@@ -84,7 +84,7 @@ class Question_titlesTableSeeder extends Seeder
                  
                 'subject_name_id' => '1',
                 'title_id'      =>      '0',
-                'questions_title' => '平成３０年',
+                'question_title' => '平成３０年',
                 'sight_key' => 'sample',
             ),
             9 => 
@@ -92,7 +92,7 @@ class Question_titlesTableSeeder extends Seeder
                  
                 'subject_name_id' => '1',
                 'title_id'      =>      '0',
-                'questions_title' => '平成２９年',
+                'question_title' => '平成２９年',
                 'sight_key' => 'sample',
             ),
             10 => 
@@ -100,7 +100,7 @@ class Question_titlesTableSeeder extends Seeder
                  
                 'subject_name_id' => '1',
                 'title_id'      =>      '0',
-                'questions_title' => '平成２８年',
+                'question_title' => '平成２８年',
                 'sight_key' => 'sample',
             ),
             11 => 
@@ -108,7 +108,7 @@ class Question_titlesTableSeeder extends Seeder
                  
                 'subject_name_id' => '1',
                 'title_id'      =>      '0',
-                'questions_title' => '平成２７年',
+                'question_title' => '平成２７年',
                 'sight_key' => 'sample',
             ),
             12 => 
@@ -116,7 +116,7 @@ class Question_titlesTableSeeder extends Seeder
                  
                 'subject_name_id' => '1',
                 'title_id'      =>      '0',
-                'questions_title' => '平成２６年',
+                'question_title' => '平成２６年',
                 'sight_key' => 'sample',
             ),
             13 => 
@@ -124,7 +124,7 @@ class Question_titlesTableSeeder extends Seeder
                  
                 'subject_name_id' => '1',
                 'title_id'      =>      '0',
-                'questions_title' => '平成２５年',
+                'question_title' => '平成２５年',
                 'sight_key' => 'sample',
             ),
             14 => 
@@ -132,7 +132,7 @@ class Question_titlesTableSeeder extends Seeder
                  
                 'subject_name_id' => '1',
                 'title_id'      =>      '0',
-                'questions_title' => '令和元年',
+                'question_title' => '令和元年',
                 'sight_key' => 'sample',
             ),
             15 => 
@@ -140,7 +140,7 @@ class Question_titlesTableSeeder extends Seeder
                  
                 'subject_name_id' => '1',
                 'title_id'      =>      '0',
-                'questions_title' => '令和２年',
+                'question_title' => '令和２年',
                 'sight_key' => 'sample',
             ),
             16 => 
@@ -148,7 +148,7 @@ class Question_titlesTableSeeder extends Seeder
                  
                 'subject_name_id' => '11',
                 'title_id'      =>      '44',
-                'questions_title' => '平成３１年春期 午前',
+                'question_title' => '平成３１年春期 午前',
                 'sight_key' => 'origin',
             ),
             17 => 
@@ -156,7 +156,7 @@ class Question_titlesTableSeeder extends Seeder
                  
                 'subject_name_id' => '11',
                 'title_id'      =>      '40',
-                'questions_title' => '平成３０年春期 午前',
+                'question_title' => '平成３０年春期 午前',
                 'sight_key' => 'origin',
             ),
             18 => 
@@ -164,7 +164,7 @@ class Question_titlesTableSeeder extends Seeder
                  
                 'subject_name_id' => '11',
                 'title_id'      =>      '42',
-                'questions_title' => '平成３０年秋期 午前',
+                'question_title' => '平成３０年秋期 午前',
                 'sight_key' => 'origin',
             ),
             19 => 
@@ -172,7 +172,7 @@ class Question_titlesTableSeeder extends Seeder
                  
                 'subject_name_id' => '11',
                 'title_id'      =>      '38',
-                'questions_title' => '平成２９年秋期 午前',
+                'question_title' => '平成２９年秋期 午前',
                 'sight_key' => 'origin',
             ),
             20 => 
@@ -180,7 +180,7 @@ class Question_titlesTableSeeder extends Seeder
                  
                 'subject_name_id' => '11',
                 'title_id'      =>      '36',
-                'questions_title' => '平成２９年春期 午前',
+                'question_title' => '平成２９年春期 午前',
                 'sight_key' => 'origin',
             ),
             21 => 
@@ -188,7 +188,7 @@ class Question_titlesTableSeeder extends Seeder
                  
                 'subject_name_id' => '11',
                 'title_id'      =>      '32',
-                'questions_title' => '平成２８年春期 午前',
+                'question_title' => '平成２８年春期 午前',
                 'sight_key' => 'origin',
             ),
             22 => 
@@ -196,7 +196,7 @@ class Question_titlesTableSeeder extends Seeder
       
                 'subject_name_id' => '11',
                 'title_id'      =>      '34',
-                'questions_title' => '平成２８年秋期 午前',
+                'question_title' => '平成２８年秋期 午前',
                 'sight_key' => 'origin',
             ),
             23 => 
@@ -204,7 +204,7 @@ class Question_titlesTableSeeder extends Seeder
          
                 'subject_name_id' => '22',
                 'title_id'      =>      '0',
-                'questions_title' => '令和元年 秋期',
+                'question_title' => '令和元年 秋期',
                 'sight_key' => 'origin',
             ),
             24 => 
@@ -212,7 +212,7 @@ class Question_titlesTableSeeder extends Seeder
            
                 'subject_name_id' => '22',
                 'title_id'      =>      '0',
-                'questions_title' => '平成３１年 春期',
+                'question_title' => '平成３１年 春期',
                 'sight_key' => 'origin',
             ),
             25 => 
@@ -220,7 +220,7 @@ class Question_titlesTableSeeder extends Seeder
         
                 'subject_name_id' => '22',
                 'title_id'      =>      '0',
-                'questions_title' => '平成３０年 秋期',
+                'question_title' => '平成３０年 秋期',
                 'sight_key' => 'origin',
             ),
             26 => 
@@ -228,7 +228,7 @@ class Question_titlesTableSeeder extends Seeder
            
                 'subject_name_id' => '22',
                 'title_id'      =>      '0',
-                'questions_title' => '平成３０年 春期',
+                'question_title' => '平成３０年 春期',
                 'sight_key' => 'origin',
             ),
             27 => 
@@ -236,7 +236,7 @@ class Question_titlesTableSeeder extends Seeder
          
                 'subject_name_id' => '22',
                 'title_id'      =>      '0',
-                'questions_title' => '平成２９年 秋期',
+                'question_title' => '平成２９年 秋期',
                 'sight_key' => 'origin',
             ),
             28 => 
@@ -244,7 +244,7 @@ class Question_titlesTableSeeder extends Seeder
        
                 'subject_name_id' => '22',
                 'title_id'      =>      '0',
-                'questions_title' => '平成２９年 春期',
+                'question_title' => '平成２９年 春期',
                 'sight_key' => 'origin',
             ),
             29 => 
@@ -252,7 +252,7 @@ class Question_titlesTableSeeder extends Seeder
        
                 'subject_name_id' => '22',
                 'title_id'      =>      '0',
-                'questions_title' => '平成２８年 秋期',
+                'question_title' => '平成２８年 秋期',
                 'sight_key' => 'origin',
             ),
             30 => 
@@ -260,7 +260,7 @@ class Question_titlesTableSeeder extends Seeder
           
                 'subject_name_id' => '22',
                 'title_id'      =>      '0',
-                'questions_title' => '平成２８年 春期',
+                'question_title' => '平成２８年 春期',
                 'sight_key' => 'origin',
             ),
             31 => 
@@ -268,7 +268,7 @@ class Question_titlesTableSeeder extends Seeder
         
                 'subject_name_id' => '1',
                 'title_id'      =>      '2',
-                'questions_title' => '平成２０年 午前',
+                'question_title' => '平成２０年 午前',
                 'sight_key' => 'origin',
             ),
             32 => 
@@ -276,7 +276,7 @@ class Question_titlesTableSeeder extends Seeder
         
                 'subject_name_id' => '1',
                 'title_id'      =>      '1',
-                'questions_title' => '平成２０年 午後',
+                'question_title' => '平成２０年 午後',
                 'sight_key' => 'origin',
             ),
             33 => 
@@ -284,7 +284,7 @@ class Question_titlesTableSeeder extends Seeder
          
                 'subject_name_id' => '2',
                 'title_id'      =>      '2',
-                'questions_title' => '平成２０年 午前',
+                'question_title' => '平成２０年 午前',
                 'sight_key' => 'origin',
             ),
             34 => 
@@ -292,7 +292,7 @@ class Question_titlesTableSeeder extends Seeder
        
                 'subject_name_id' => '2',
                 'title_id'      =>      '1',
-                'questions_title' => '平成２０年 午後',
+                'question_title' => '平成２０年 午後',
                 'sight_key' => 'origin',
             ),
             35 => 
@@ -300,7 +300,7 @@ class Question_titlesTableSeeder extends Seeder
         
                 'subject_name_id' => '1',
                 'title_id'      =>      '4',
-                'questions_title' => '平成２１年 午前',
+                'question_title' => '平成２１年 午前',
                 'sight_key' => 'origin',
             ),
             36 => 
@@ -308,7 +308,7 @@ class Question_titlesTableSeeder extends Seeder
         
                 'subject_name_id' => '1',
                 'title_id'      =>      '3',
-                'questions_title' => '平成２１年 午後',
+                'question_title' => '平成２１年 午後',
                 'sight_key' => 'origin',
             ),
             37 => 
@@ -316,7 +316,7 @@ class Question_titlesTableSeeder extends Seeder
         
                 'subject_name_id' => '1',
                 'title_id'      =>      '26',
-                'questions_title' => '令和２年 午前',
+                'question_title' => '令和２年 午前',
                 'sight_key' => 'origin',
             ),
             38 => 
@@ -324,7 +324,7 @@ class Question_titlesTableSeeder extends Seeder
          
                 'subject_name_id' => '1',
                 'title_id'      =>      '25',
-                'questions_title' => '令和２年 午後',
+                'question_title' => '令和２年 午後',
                 'sight_key' => 'origin',
             ),
             39 => 
@@ -332,7 +332,7 @@ class Question_titlesTableSeeder extends Seeder
           
                 'subject_name_id' => '1',
                 'title_id'      =>      '24',
-                'questions_title' => '平成３１年 午前',
+                'question_title' => '平成３１年 午前',
                 'sight_key' => 'origin',
             ),
             40 => 
@@ -340,7 +340,7 @@ class Question_titlesTableSeeder extends Seeder
            
                 'subject_name_id' => '1',
                 'title_id'      =>      '23',
-                'questions_title' => '平成３１年 午後',
+                'question_title' => '平成３１年 午後',
                 'sight_key' => 'origin',
             ),
             41 => 
@@ -348,7 +348,7 @@ class Question_titlesTableSeeder extends Seeder
            
                 'subject_name_id' => '1',
                 'title_id'      =>      '22',
-                'questions_title' => '平成３０年 午前',
+                'question_title' => '平成３０年 午前',
                 'sight_key' => 'origin',
             ),
             42 => 
@@ -356,7 +356,7 @@ class Question_titlesTableSeeder extends Seeder
          
                 'subject_name_id' => '1',
                 'title_id'      =>      '21',
-                'questions_title' => '平成３０年 午後',
+                'question_title' => '平成３０年 午後',
                 'sight_key' => 'origin',
             ),
             43 => 
@@ -364,7 +364,7 @@ class Question_titlesTableSeeder extends Seeder
              
                 'subject_name_id' => '1',
                 'title_id'      =>      '20',
-                'questions_title' => '平成２９年 午前',
+                'question_title' => '平成２９年 午前',
                 'sight_key' => 'origin',
             ),
             44 => 
@@ -372,7 +372,7 @@ class Question_titlesTableSeeder extends Seeder
           
                 'subject_name_id' => '1',
                 'title_id'      =>      '19',
-                'questions_title' => '平成２９年 午後',
+                'question_title' => '平成２９年 午後',
                 'sight_key' => 'origin',
             ),
             45 => 
@@ -380,7 +380,7 @@ class Question_titlesTableSeeder extends Seeder
          
                 'subject_name_id' => '1',
                 'title_id'      =>      '18',
-                'questions_title' => '平成２８年 午前',
+                'question_title' => '平成２８年 午前',
                 'sight_key' => 'origin',
             ),
             46 => 
@@ -388,7 +388,7 @@ class Question_titlesTableSeeder extends Seeder
            
                 'subject_name_id' => '1',
                 'title_id'      =>      '17',
-                'questions_title' => '平成２８年 午後',
+                'question_title' => '平成２８年 午後',
                 'sight_key' => 'origin',
             ),
             47 => 
@@ -396,7 +396,7 @@ class Question_titlesTableSeeder extends Seeder
             
                 'subject_name_id' => '1',
                 'title_id'      =>      '16',
-                'questions_title' => '平成２７年 午前',
+                'question_title' => '平成２７年 午前',
                 'sight_key' => 'origin',
             ),
             48 => 
@@ -404,7 +404,7 @@ class Question_titlesTableSeeder extends Seeder
             
                 'subject_name_id' => '1',
                 'title_id'      =>      '15',
-                'questions_title' => '平成２７年 午後',
+                'question_title' => '平成２７年 午後',
                 'sight_key' => 'origin',
             ),
             49 => 
@@ -412,7 +412,7 @@ class Question_titlesTableSeeder extends Seeder
              
                 'subject_name_id' => '1',
                 'title_id'      =>      '14',
-                'questions_title' => '平成２６年 午前',
+                'question_title' => '平成２６年 午前',
                 'sight_key' => 'origin',
             ),
             50 => 
@@ -420,7 +420,7 @@ class Question_titlesTableSeeder extends Seeder
           
                 'subject_name_id' => '1',
                 'title_id'      =>      '13',
-                'questions_title' => '平成２６年 午後',
+                'question_title' => '平成２６年 午後',
                 'sight_key' => 'origin',
             ),
             51 => 
@@ -428,7 +428,7 @@ class Question_titlesTableSeeder extends Seeder
          
                 'subject_name_id' => '1',
                 'title_id'      =>      '12',
-                'questions_title' => '平成２５年 午前',
+                'question_title' => '平成２５年 午前',
                 'sight_key' => 'origin',
             ),
             52 => 
@@ -436,7 +436,7 @@ class Question_titlesTableSeeder extends Seeder
                
                 'subject_name_id' => '1',
                 'title_id'      =>      '11',
-                'questions_title' => '平成２５年 午後',
+                'question_title' => '平成２５年 午後',
                 'sight_key' => 'origin',
             ),
             53 => 
@@ -444,7 +444,7 @@ class Question_titlesTableSeeder extends Seeder
           
                 'subject_name_id' => '1',
                 'title_id'      =>      '10',
-                'questions_title' => '平成２４年 午前',
+                'question_title' => '平成２４年 午前',
                 'sight_key' => 'origin',
             ),
             54 => 
@@ -452,7 +452,7 @@ class Question_titlesTableSeeder extends Seeder
              
                 'subject_name_id' => '1',
                 'title_id'      =>      '9',
-                'questions_title' => '平成２４年 午後',
+                'question_title' => '平成２４年 午後',
                 'sight_key' => 'origin',
             ),
             55 => 
@@ -460,7 +460,7 @@ class Question_titlesTableSeeder extends Seeder
            
                 'subject_name_id' => '1',
                 'title_id'      =>      '8',
-                'questions_title' => '平成２３年 午前',
+                'question_title' => '平成２３年 午前',
                 'sight_key' => 'origin',
             ),
             56 => 
@@ -468,14 +468,14 @@ class Question_titlesTableSeeder extends Seeder
              
                 'subject_name_id' => '1',
                 'title_id'      =>      '7',
-                'questions_title' => '平成２３年 午後',
+                'question_title' => '平成２３年 午後',
                 'sight_key' => 'origin',
             ),
             57 => 
             array (
                 'subject_name_id' => '1',
                 'title_id'      =>      '6',
-                'questions_title' => '平成２２年 午前',
+                'question_title' => '平成２２年 午前',
                 'sight_key' => 'origin',
             ),
             58 => 
@@ -483,49 +483,49 @@ class Question_titlesTableSeeder extends Seeder
 
                 'subject_name_id' => '1',
                 'title_id'      =>      '5',
-                'questions_title' => '平成２２年 午後',
+                'question_title' => '平成２２年 午後',
                 'sight_key' => 'origin',
             ),
             59 => 
             array (
                 'subject_name_id' => '4',
                 'title_id'      =>      '26',
-                'questions_title' => '令和２年 午前',
+                'question_title' => '令和２年 午前',
                 'sight_key' => 'origin',
             ),
             60 => 
             array (
                 'subject_name_id' => '4',
                 'title_id'      =>      '25',
-                'questions_title' => '令和２年 午後',
+                'question_title' => '令和２年 午後',
                 'sight_key' => 'origin',
             ),
             61 => 
             array (
                 'subject_name_id' => '4',
                 'title_id'      =>      '24',
-                'questions_title' => '平成３１年 午前',
+                'question_title' => '平成３１年 午前',
                 'sight_key' => 'origin',
             ),
             62 => 
             array (
                 'subject_name_id' => '4',
                 'title_id'      =>      '23',
-                'questions_title' => '平成３１年 午後',
+                'question_title' => '平成３１年 午後',
                 'sight_key' => 'origin',
             ),
             63 => 
             array (
                 'subject_name_id' => '4',
 		'title_id'	=>	'22',
-                'questions_title' => '平成３０年 午前',
+                'question_title' => '平成３０年 午前',
                 'sight_key' => 'origin',
             ),
             64 => 
             array (
                 'subject_name_id' => '4',
 		'title_id'	=>	'21',
-                'questions_title' => '平成３０年 午後',
+                'question_title' => '平成３０年 午後',
                 'sight_key' => 'origin',
             ),
             65 => 
@@ -533,7 +533,7 @@ class Question_titlesTableSeeder extends Seeder
                  
                 'subject_name_id' => '11',
                 'title_id'      =>      '46',
-                'questions_title' => '令和元年秋期 午前',
+                'question_title' => '令和元年秋期 午前',
                 'sight_key' => 'origin',
             ),
 
@@ -543,7 +543,7 @@ class Question_titlesTableSeeder extends Seeder
                  
                 'subject_name_id' => '2',
                 'title_id'      =>      '26',
-                'questions_title' => '令和２年 午前',
+                'question_title' => '令和２年 午前',
                 'sight_key' => 'origin',
             ),
             67 => 
@@ -551,7 +551,7 @@ class Question_titlesTableSeeder extends Seeder
                  
                 'subject_name_id' => '2',
                 'title_id'      =>      '25',
-                'questions_title' => '令和２年 午後',
+                'question_title' => '令和２年 午後',
                 'sight_key' => 'origin',
             ),
 
