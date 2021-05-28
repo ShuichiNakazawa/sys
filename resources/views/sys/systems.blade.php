@@ -17,7 +17,10 @@
           <h2 style="text-align:center;">システム</h2>
           <br><br>
 
-          <a href="{{ action('KokushiController@before_kokushi') }}">国試 過去問?</a>
+          <form action="{{ action('KokushiController@before_kokushi') }}" method="POST">
+            @csrf
+            <input type="button" value="国試過去問">
+          </form>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
           <input type="submit" onClick="javascript:window.open('kokushi/', 'kokushi', 'fullscreen=yes')" value="国試バー非表示">
