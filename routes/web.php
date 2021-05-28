@@ -80,6 +80,7 @@ Route::get('/kokushi', function () {
     return view('kokushi.index');
 });
 
+Route::post('systems', 'KokushiController@before_kokushi');
 Route::post('/kokushi', 'KokushiController@before_kokushi');
 
 /**
