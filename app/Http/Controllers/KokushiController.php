@@ -59,7 +59,7 @@ class KokushiController extends Controller
                                       ->get();
 
       // ログイン判定
-      if(null !== Auth->user()){
+      if(null !== Auth::user()){
         $logind = 1;
       } else {
         $logind = 0;
