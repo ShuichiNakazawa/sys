@@ -80,6 +80,7 @@ Route::get('/kokushi', function () {
     return view('kokushi.index');
 });
 
+Route::post('/kokushi', 'KokushiController@before_kokushi');
 
 /**
  * 認証機能
