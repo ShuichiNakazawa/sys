@@ -51,6 +51,13 @@ class KokushiController extends Controller
               ]);
     }
 
+    public function showMenu() {
+      return view('kokushi.')
+              ->with([
+                'titles'    =>    '',
+              ]);
+    }
+
     // 看護師 TOP
     public function nurseIndex() {
 
