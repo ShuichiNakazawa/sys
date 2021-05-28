@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-//use Mail;
+use Mail;
 use App\Mail\SendMail_Inquiry;
 
 
