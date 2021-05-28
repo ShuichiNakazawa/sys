@@ -20,6 +20,7 @@ class CreateDivisionsTable extends Migration
                 $table->string('division');                 // 分野名
                 $table->string('sight_key');                // サイトキー
                 $table->timestamps();                       // タイムスタンプ
+            }
         });
     }
 
