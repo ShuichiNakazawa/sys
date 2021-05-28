@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 //use Mail;
-use App\Http\Mail\SendMail_Inquiry;
+use App\Mail\SendMail_Inquiry;
 
 
 class MailSendController extends Controller
