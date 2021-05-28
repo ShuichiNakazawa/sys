@@ -31,7 +31,6 @@ class CreateQuestionSentencesTable extends Migration
             $table->integer('number_of_answers')->nullable();       // 正解の数
             $table->string('sight_key')->nullable();                // サイトキー
             $table->timestamps();
-            });
         });
     }
 
