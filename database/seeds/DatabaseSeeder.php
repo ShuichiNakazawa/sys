@@ -19,11 +19,11 @@ class DatabaseSeeder extends Seeder
         $this->call(Subject_namesTableSeeder::class);
         $this->call(Question_titlesTableSeeder::class);
 
-        //$this->call(Question_sentencesTableSeeder::class);
+        $this->call(QuestionSentencesTableSeeder::class);
         $this->call(ChoiceSentencesTableSeeder::class);
-        $this->call(Answer_sentencesTableSeeder::class);
+        $this->call(AnswerSentencesTableSeeder::class);
         $this->call(DivisionsTableSeeder::class);
-        $this->call(Individual_scoringsTableSeeder::class);
+        $this->call(IndividualScoringsTableSeeder::class);
 
     }
 }

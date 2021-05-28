@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class Individual_scoringsTableSeeder extends Seeder
+class IndividualScoringsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
