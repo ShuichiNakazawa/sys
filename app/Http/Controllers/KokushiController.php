@@ -25,7 +25,8 @@ class KokushiController extends Controller
     public function before_kokushi() {
 
       // 分野マスタ 取得
-      $fields = '';
+      $fields = Fields::select('field_name')
+                      ->get();
 
       // 科目リスト 取得
       $subject = '';
@@ -34,7 +35,7 @@ class KokushiController extends Controller
 
       return view('kokushi.index')
               ->with([
-                  'fields'    =>  [0,1,2,3,4,5],
+                  'fields'    =>  $fields,
                   'subjects'  =>  [0,1,2,3,4,5],
 
               ]);
