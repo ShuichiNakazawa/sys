@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Mail;
 use App\Mail\SendMail_Inquiry;
+use App\Mail\SendMail_Inquiry_autoreply;
 
 
 class MailSendController extends Controller
