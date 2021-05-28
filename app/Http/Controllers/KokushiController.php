@@ -56,6 +56,7 @@ class KokushiController extends Controller
       $subject_name_kanji   =  KokushiController::getKanjiName($subject_id);
 
       $titles = Question_titles::where('subject_name_id', '=', $subject_id)
+                                      ->orderby('title_id', 'desc')
                                       ->get();
 
       // ログイン判定
