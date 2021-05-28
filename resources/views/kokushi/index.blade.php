@@ -31,9 +31,9 @@
 
         {{  }}
 
-        @foreach($subjects[$count] as $subject)
+        @foreach($subjects[$count] as $id => $subject)
           <div class="btn_subject">
-            <a href="{{  url('/' . $subject) }}">
+            <a href="{{  url('/' . $id) }}">
               <button>{{ $subject }}</button>
             </a>
           </div>
