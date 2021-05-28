@@ -24,15 +24,15 @@ class MailSendController extends Controller
         ];
 
         $content    =   
-            '会社名・屋号：'    . $request->companyName . "\n"
-            . '顧客名'         . $request->customerName . "\n"
-            . 'お名前ふりがな'  . $request->furigana_customerName . "\n"
-            . '電話番号'       . $request->tel . "\n"
-            . 'メールアドレス'   . $request->mailAddress . "\n"
-            . 'webサイトURL'    . $request->sightUrl . "\n"
-            . 'きっかけ'        . $request->trigger . "\n"
-            . '問合せ種類'      . $request->inquiryType . "\n"
-            . '問合せ内容'      . $request->inquiryContent . "\n";
+            '会社名・屋号：　'    . $request->companyName . "\n"
+            . '顧客名：　'         . $request->customerName . "\n"
+            . 'お名前ふりがな：　'  . $request->furigana_customerName . "\n"
+            . '電話番号：　'       . $request->tel . "\n"
+            . 'メールアドレス：　'   . $request->mailAddress . "\n"
+            . 'webサイトURL：　'    . $request->sightUrl . "\n"
+            . 'きっかけ：　'        . $request->trigger . "\n"
+            . '問合せ種類：　'      . $request->inquiryType . "\n"
+            . '問合せ内容：　'      . $request->inquiryContent . "\n";
 
         // コントローラ使用
         Mail::to($to)->send(new SendMail_inquiry($content));
