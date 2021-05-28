@@ -71,6 +71,8 @@ Route::get('/reservation/purchase_ticket/{user_id}', 'ReservationController@getT
  */
 Route::get('/sendmail', 'MailSendController@send');
 
+Route::post('/inquiry', 'MailSendController@send');
+
 /**
  * 認証機能
  */
