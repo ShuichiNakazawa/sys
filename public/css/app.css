@@ -863,6 +863,120 @@ pre code {
   border-left: solid 1px rgb(240, 239, 233);
 }
 
+
+.hidden_item {
+  display: none;
+}
+
+.hide_item {
+  display: none;
+}
+
+.question_sentence_outer {
+    display: flex;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 15px;
+}
+
+.store_question_sentence_outer {
+  width: 900px;
+  margin: 0 auto;
+
+  box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 15px;
+}
+
+.choice_chara {
+    display: flex;
+    flex-direction: row;
+/*
+    justify-content: center;
+    align-items: center;
+*/
+    margin-bottom: 15px;
+}
+
+.choice_sentence {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.choiceItem_col1 {
+    vertical-align: middle;
+    width:90px;
+}
+
+.choiceItem_col2 {
+    vertical-align: middle;
+    width:610px;
+}
+
+.choiceItem_col3 {
+    vertical-align: middle;
+    text-align:center;
+}
+
+.choice5_hide {
+  display: none;
+}
+
+.choice_hide {
+  display: none;
+}
+
+.choice7_hide {
+  display: none;
+}
+
+.choice8_hide {
+  display: none;
+}
+
+.choice9_hide {
+  display: none;
+}
+
+.radio_hide{
+    width: 0;
+}
+
+.header_center {
+  text-align: center;
+}
+
+.btn_subject {
+  
+  margin: 5px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  vertical-align: middle;
+
+  border: solid 2px #aaa;
+  border-radius: 5px;
+}
+
+.t_header {
+  height: 60px;
+  text-align: center;
+}
+
+.t_data {
+  height: 60px;
+  text-align: center;
+}
+
 input[type="radio"]:checked + label {
     background-color: blue;
     color: white;
