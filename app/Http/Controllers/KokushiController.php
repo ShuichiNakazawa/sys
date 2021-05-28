@@ -29,7 +29,7 @@ class KokushiController extends Controller
                       ->get();
 
       // 科目リスト 取得
-      $subject = Subject_names::distinct()
+      $subjects = Subject_names::distinct()
                                 ->select('subject_name')
                                 ->get();
 
@@ -38,7 +38,7 @@ class KokushiController extends Controller
       return view('kokushi.index')
               ->with([
                   'fields'    =>  $fields,
-                  'subjects'  =>  [0,1,2,3,4,5],
+                  'subjects'  =>  $subjects,
 
               ]);
     }
