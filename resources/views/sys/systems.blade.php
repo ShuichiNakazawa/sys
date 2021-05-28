@@ -22,7 +22,7 @@
 
           <input type="submit" onClick="javascript:window.open('kokushi/', 'kokushi', 'fullscreen=yes')" value="国試バー非表示">
           <br><br>
-
+          
           問題集管理システム
           <br><br>
 
