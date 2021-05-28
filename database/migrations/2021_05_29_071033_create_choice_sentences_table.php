@@ -25,7 +25,6 @@ class CreateChoiceSentencesTable extends Migration
 	    $table->string('sight_key');                                    // サイトキー
         $table->timestamps();                                           // タイムスタンプ
         });
-        });
     }
 
     /**
