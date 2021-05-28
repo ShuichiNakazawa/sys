@@ -34,7 +34,7 @@
             {{--
             <a href="{{  url('/kokushi/' . $id) }}">
             --}}
-              <form action="{{ url('/kokushi/' . $id) }}" method="POST">
+              <form action="{{ url('/kokushi/' . $id) }}">
                 @csrf
                 <button>{{ $subject }}</button>
                 <input type="hidden" name="subject_id" value="{{ $id }}">
