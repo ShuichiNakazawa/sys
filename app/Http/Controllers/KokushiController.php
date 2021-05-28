@@ -70,8 +70,7 @@ class KokushiController extends Controller
                 'subject_name'    =>    $subject_name_kanji,
                 'titles'          =>    $titles,
                 'logind'          =>    $logind,
-              ])
-      );
+              ]);
     }
 
     // 看護師 TOP
