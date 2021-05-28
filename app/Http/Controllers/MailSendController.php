@@ -93,7 +93,7 @@ class MailSendController extends Controller
         Mail::to($toSelf)->send(new SendMail_inquiry($content));
 
         // メール送信（顧客）
-        Mail::to($toCustomer)->send(new SendMail_inquiry($auto_reply));
+        Mail::to($toCustomer)->send(new SendMail_inquiry_autoreply($auto_reply));
 
         // テーブル登録
 
