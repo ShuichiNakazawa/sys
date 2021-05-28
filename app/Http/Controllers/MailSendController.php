@@ -75,7 +75,7 @@ class MailSendController extends Controller
         $toCustomer =   [
             [
                 'email' =>  $request->mailAddress,
-                'name'  =>  $sender,
+                'name'  =>  'ララアシスト',
             ]
         ];
 
