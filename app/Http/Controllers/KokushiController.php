@@ -29,7 +29,9 @@ class KokushiController extends Controller
                       ->get();
 
       // 科目リスト 取得
-      $subject = '';
+      $subject = Subject_names::distinct()
+                                ->select('subject_name')
+                                ->get();
 
       //dd($fields);
 
