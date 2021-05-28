@@ -17,7 +17,7 @@ class SendMail_Inquiry extends Mailable
      * @return void
      */
     public function __construct($content){
-        $this->user =   $user;
+        $this->content =   $content;
     }
 
     /**
