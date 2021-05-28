@@ -34,9 +34,7 @@ class KokushiController extends Controller
 
         // 科目リスト 取得
         $subjects = Subject_names::pluck('id', 'subject_name')
-                                ->where('field_id', '=', $id)
-                                ->select('subject_name')
-                                ->get();
+                                ->where('field_id', '=', $id);
 
         $All_subjects[] = $subjects;
 
