@@ -13,9 +13,12 @@ class CreateFieldsTable extends Migration
      */
     public function up()
     {
-        Schema::create('fields', function (Blueprint $table) {
+        Schema::create('subject_names', function (Blueprint $table) {
             $table->bigIncrements('id');
+	    $table->string('subject_name', 50);
+	    $table->string('sight_key');
             $table->timestamps();
+        });
         });
     }
 
