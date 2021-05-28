@@ -29,8 +29,6 @@
           ここに、foreachを使って、テーブルに登録されている科目名（分野ごと）のリストを表示させる
         --}}
 
-        {{  }}
-
         @foreach($subjects[$count] as $id => $subject)
           <div class="btn_subject">
             <a href="{{  url('/' . $id) }}">
