@@ -25,21 +25,29 @@ class KokushiController extends Controller
     public function before_kokushi() {
 
       // 分野マスタ 取得
-      $fields = Fields::select('field_name')
-                      ->get();
+      $fields = Fields::pluck('id', 'field_name');
 
-      // 科目リスト 取得
-      $subjects = Subject_names::distinct()
+      $All_subjects = array();
+
+      foreach ($fields as $id => $field_name){
+
+        // 科目リスト 取得
+        $subjects = Subject_names::where('field_id', '=', $id)
                                 ->select('subject_name')
                                 ->get();
+
+        $All_subjects[] = $subjects;
+
+      }
+
+
 
       //dd($fields);
 
       return view('kokushi.index')
               ->with([
                   'fields'    =>  $fields,
-                  'subjects'  =>  $subjects,
-
+                  'subjects'  =>  $All_subjects,
               ]);
     }
 

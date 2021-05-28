@@ -16,6 +16,9 @@
     <h3 class="header_center">国試過去問</h3>
   </div>
 
+  @php
+    $count = 0;
+  @endphp
   @foreach ($fields as $field)
     <div class="card-body">
       <h4 class="header_center">{{ $field->field_name }}</h4>
@@ -25,13 +28,17 @@
         {{--
           ここに、foreachを使って、テーブルに登録されている科目名（分野ごと）のリストを表示させる
         --}}
-        @foreach($subjects as $subject)
+        @foreach($subjects[$count] as $subject)
           <div class="btn_subject">
             <a href="{{  url('/' . $subject->id) }}">
               <button>{{ $subject->subject_name }}</button>
             </a>
           </div>
         @endforeach
+
+        @php
+          $count++;
+        @endphp
         {{--
           ここまで
           --}}
