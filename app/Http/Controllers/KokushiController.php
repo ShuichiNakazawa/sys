@@ -24,12 +24,12 @@ class KokushiController extends Controller
     public function before_kokushi() {
 
       // 分野マスタ 取得
-      $fileds = '';
+      $fields = '';
 
       // 科目リスト 取得
       $subject = '';
 
-      dd($fields);
+      //dd($fields);
 
       return view('kokushi.index')
               ->with([
