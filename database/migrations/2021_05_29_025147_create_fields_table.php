@@ -19,7 +19,6 @@ class CreateFieldsTable extends Migration
             $table->string('sight_key');
             $table->timestamps();
         });
-        });
     }
 
     /**
