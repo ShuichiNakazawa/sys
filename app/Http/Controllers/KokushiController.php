@@ -52,7 +52,7 @@ class KokushiController extends Controller
     }
 
     public function showMenu() {
-      return view('kokushi.')
+      return view('kokushi.menu')
               ->with([
                 'titles'    =>    '',
               ]);
