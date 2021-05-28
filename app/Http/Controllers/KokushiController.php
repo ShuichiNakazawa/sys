@@ -51,11 +51,25 @@ class KokushiController extends Controller
               ]);
     }
 
-    public function showMenu() {
+    public function showMenu($subject_id) {
+
+      $subject_name_kanji   =  KokushiController::getKanjiName($subject_id);
+
+      $titles = Question_title::where('subject_id', '=', $subject_id)
+                                      ->get();
+
+      // ログイン判定
+      if(null !== Auth->user()){
+        $logind = 1;
+      } else {
+        $logind = 0;
+      }
+
       return view('kokushi.menu')
               ->with([
-                'titles'    =>    '',
-                'logind'    =>    '',
+                'subject_name'    =>    $subject_name_kanji,
+                'titles'          =>    $titles,
+                'logind'          =>    $logind,
               ]);
     }
 
