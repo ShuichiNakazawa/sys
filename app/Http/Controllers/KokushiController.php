@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Subject_names;
 use App\Fields;
-use App\Questions_titles;
+use App\Question_titles;
 use App\Question_sentences;
 use App\Question_sentence;
 use App\Choice_sentences;
