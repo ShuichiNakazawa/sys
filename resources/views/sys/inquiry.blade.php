@@ -27,162 +27,165 @@
     </p>
   
     <div class="contuctForm">
-      <table style="margin:0 auto;">
-        <tr>
-          <th>
-            会社名・屋号名
-          </th>
-          <td>
-            <input type = "text" id = "companyName" name = "companyName">
-          </td>
-        </tr>
-        <tr>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <th>
-            お名前
-            <br>【必須】
-          </th>
-          <td>
-            <input type = "text" id="customerName" name="customerName">
-          </td>
-        </tr>
-        <tr>
-          <td>
-            &nbsp;
-          </td>
-        </tr>
-        <tr>
-          <th>
-            お名前ふりがな<br>【必須】
-          </th>
-          <td>
-            <input type = "text" id = "furigana_customerName" name="furigana_customerName">
-          </td>
-        </tr>
+      <form action="{{ action('MailSendController@send') }}" method="POST">
+        @csrf
+        <table style="margin:0 auto;">
+          <tr>
+            <th>
+              会社名・屋号名
+            </th>
+            <td>
+              <input type = "text" id = "companyName" name = "companyName">
+            </td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <th>
+              お名前
+              <br>【必須】
+            </th>
+            <td>
+              <input type = "text" id="customerName" name="customerName">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              &nbsp;
+            </td>
+          </tr>
+          <tr>
+            <th>
+              お名前ふりがな<br>【必須】
+            </th>
+            <td>
+              <input type = "text" id = "furigana_customerName" name="furigana_customerName">
+            </td>
+          </tr>
 
-        <tr>
-          <td>
-            &nbsp;
-          </td>
-        </tr>
+          <tr>
+            <td>
+              &nbsp;
+            </td>
+          </tr>
 
-        <tr>
-          <th>
-            お電話番号
-            <br>【必須】
-          </th>
-          <td>
-            <input type="text" id="tel" name="tel">
-          </td>
-        </tr>
+          <tr>
+            <th>
+              お電話番号
+              <br>【必須】
+            </th>
+            <td>
+              <input type="text" id="tel" name="tel">
+            </td>
+          </tr>
 
-        <tr>
-          <td>
-            &nbsp;
-          </td>
-        </tr>
+          <tr>
+            <td>
+              &nbsp;
+            </td>
+          </tr>
 
-        <tr>
-          <th>
-            メールアドレス<br>【必須】
-          </th>
-          <td>
-            <input type = "text" id="mailAddress" name="mailAddress" placeholder = "example@example.com">
-          </td>
-        </tr>
+          <tr>
+            <th>
+              メールアドレス<br>【必須】
+            </th>
+            <td>
+              <input type = "text" id="mailAddress" name="mailAddress" placeholder = "example@example.com">
+            </td>
+          </tr>
 
-        <tr>
-          <td>
-            &nbsp;
-          </td>
-        </tr>
+          <tr>
+            <td>
+              &nbsp;
+            </td>
+          </tr>
 
-        <tr>
-          <th>
-            WebサイトURL
-          </th>
-          <td>
-            <input type = "text" id = "sightUrl" name="sightUrl" placeholder="https://appli-support.jp">
-          </td>
-        </tr>
+          <tr>
+            <th>
+              WebサイトURL
+            </th>
+            <td>
+              <input type = "text" id = "sightUrl" name="sightUrl" placeholder="https://appli-support.jp">
+            </td>
+          </tr>
 
-        <tr>
-          <td>
-            &nbsp;
-          </td>
-        </tr>
+          <tr>
+            <td>
+              &nbsp;
+            </td>
+          </tr>
 
-        <tr>
-          <th>
-            当サイトを知った
-            <br>きっかけ【必須】
-          </th>
-          <td>
-            <select id = "trigger" name="trigger">
-              <option value = "0">インターネット検索</option>
-              <option value = "1">ご紹介</option>
-              <option value = "2">チラシ・広告</option>
-              <option value = "3">クラウドソーシングサイト</option>
-              <option value = "4">SNS</option>
-              <option value = "5">その他</option>
-            </select>
-          </td>
-        </tr>
+          <tr>
+            <th>
+              当サイトを知った
+              <br>きっかけ【必須】
+            </th>
+            <td>
+              <select id = "trigger" name="trigger">
+                <option value = "0">インターネット検索</option>
+                <option value = "1">ご紹介</option>
+                <option value = "2">チラシ・広告</option>
+                <option value = "3">クラウドソーシングサイト</option>
+                <option value = "4">SNS</option>
+                <option value = "5">その他</option>
+              </select>
+            </td>
+          </tr>
 
-        <tr>
-          <td>
-            &nbsp;
-          </td>
-        </tr>
+          <tr>
+            <td>
+              &nbsp;
+            </td>
+          </tr>
 
-        <tr>
-          <th>
-            お問合せ種類<br>【必須】
-          </th>
-          <td>
-            <select id="inquiryType" name="inquiryType">
-              <option value = "0">制作のご依頼</option>
-              <option value = "1">制作のお見積り</option>
-              <option value = "2">Webスクールへのご質問</option>
-              <option value = "3">その他</option>
-            </select>
-          </td>
-        </tr>
-        
-        <tr>
-          <td>
-            &nbsp;
-          </td>
-        </tr>
+          <tr>
+            <th>
+              お問合せ種類<br>【必須】
+            </th>
+            <td>
+              <select id="inquiryType" name="inquiryType">
+                <option value = "0">制作のご依頼</option>
+                <option value = "1">制作のお見積り</option>
+                <option value = "2">Webスクールへのご質問</option>
+                <option value = "3">その他</option>
+              </select>
+            </td>
+          </tr>
+          
+          <tr>
+            <td>
+              &nbsp;
+            </td>
+          </tr>
 
-        <tr>
-          <th>
-            お問合せ内容<br>【必須】
-          </th>
-          <td>
-            <textarea id="inquiryContent" name="inquiryContent"></textarea>
-            
-          </td>
-        </tr>
+          <tr>
+            <th>
+              お問合せ内容<br>【必須】
+            </th>
+            <td>
+              <textarea id="inquiryContent" name="inquiryContent"></textarea>
+              
+            </td>
+          </tr>
 
-        <tr>
-          <td>
-            &nbsp;
-          </td>
-        </tr>
+          <tr>
+            <td>
+              &nbsp;
+            </td>
+          </tr>
 
-        <tr>
-          <th>
-            <button id = "confirmInquiry" name="confirmInquiry">送信</button>
-          </th>
-          <td>
-            &nbsp;
-          </td>
-        </tr>
+          <tr>
+            <th>
+              <button id = "confirmInquiry" name="confirmInquiry">送信</button>
+            </th>
+            <td>
+              &nbsp;
+            </td>
+          </tr>
 
-      </table>
+        </table>
+      </form>
     </div>
   </div>
 </div>
