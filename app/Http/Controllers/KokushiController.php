@@ -55,6 +55,7 @@ class KokushiController extends Controller
       return view('kokushi.menu')
               ->with([
                 'titles'    =>    '',
+                'logind'    =>    '',
               ]);
     }
 
