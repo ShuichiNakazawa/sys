@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ReservationsTableSeeder::class);
         $this->call(FieldsTableSeeder::class);
         $this->call(Subject_namesTableSeeder::class);
+        $this->call(Question_titlesTableSeeder::class);
 
     }
 }
