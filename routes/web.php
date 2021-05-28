@@ -74,6 +74,14 @@ Route::get('/sendmail', 'MailSendController@send');
 Route::post('/inquiry', 'MailSendController@send');
 
 /**
+ * 国試過去問
+ */
+Route::get('/kokushi', function () {
+    return view('kokushi.index');
+});
+
+
+/**
  * 認証機能
  */
 Auth::routes();
