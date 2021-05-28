@@ -32,11 +32,11 @@ class KokushiController extends Controller
 
       $count = 0;
 
-      foreach ($fields_pluck as $id => $field_name){
+      foreach ($fields as $field){
 
         // 科目リスト 取得
         $subjects = Subject_names::pluck('id', 'subject_name')
-                                ->where('field_id', '=', $id);
+                                ->where('field_id', '=', $field->id);
 
         $All_subjects[$count] = $subjects;
         $count++;
