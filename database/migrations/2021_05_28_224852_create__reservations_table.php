@@ -14,8 +14,16 @@ class CreateReservationsTable extends Migration
     public function up()
     {
         Schema::create('reservations', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+            $table->bigIncrements('id');                // ID
+            $table->string('year');                     // 年
+            $table->string('month');                    // 月
+            $table->string('day');                      // 日
+            $table->string('timezone');                 // 時間帯
+            $table->string('minute');                   // 分
+            $table->integer('number_available');        // 予約可能数
+            $table->integer('number_accepted');         // 予約受付済数
+            $table->string('sight_key');                // サイトキー
+            $table->timestamps();                       // タイムスタンプ
         });
     }
 
