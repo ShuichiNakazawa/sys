@@ -16,9 +16,8 @@ class SendMail_Inquiry extends Mailable
      *
      * @return void
      */
-    public function __construct()
-    {
-        //
+    public function __construct($content){
+        $this->user =   $user;
     }
 
     /**
@@ -29,8 +28,9 @@ class SendMail_Inquiry extends Mailable
     public function build()
     {
         //textをview、viewをtextに変える事で、html・テキストメールの設定を変えられる
-        return $this->text('emails.text_inquiry')
-                        ->from('no-reply@lara-assist.jp', 'Test')
-                        ->subject('お問合せ');
+        return $this->text('emails.text_inquiry')                           // 使用するviewsテンプレート
+                        ->from('no-reply@lara-assist.jp', 'Test')           // 送信者情報
+                        ->subject('お問合せ')                                // 件名
+                        ->with(['content'   =>  $this->content]);           // メール本文
     }
 }
