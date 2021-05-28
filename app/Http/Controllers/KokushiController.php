@@ -36,7 +36,7 @@ class KokushiController extends Controller
 
         // 科目リスト 取得
         $subjects = Subject_names::where('field_id', '=', $field->id)
-                                        ->pluck('id', 'subject_name');
+                                        ->pluck('subject_name', 'id');
 
         $All_subjects[$count] = $subjects;
         $count++;
