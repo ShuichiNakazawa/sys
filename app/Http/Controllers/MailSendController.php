@@ -16,7 +16,7 @@ class MailSendController extends Controller
         $sender =   $request->customerName;
         //dd($sender);
 
-        $to =   [
+        $toSelf =   [
             [
                 'email' =>  'contact@lara-assist.jp',
                 'name'  =>  $sender,
@@ -72,8 +72,36 @@ class MailSendController extends Controller
             . '問合せ種類：　'      . $inquiryType . "\n"
             . '問合せ内容：　'      . $request->inquiryContent . "\n";
 
-        // コントローラ使用
+        $toCustomer =   [
+            [
+                'email' =>  $request->mailAddress,
+                'name'  =>  $sender,
+            ];
+
+        $auto_reply =
+            "※本メールは自動送信にてお送りしています。\n\n下記内容でお問合せを承りました。なお１週間たっても連絡がない場合はお手数ですが、再度お問い合わせいただきますようお願いいたします。" . "\n\n";
+
+        if($request->companyName != ""){
+            $auto_reply .= '会社名・屋号：　'    . $request->companyName . "\n";
+        }
+
+        $auto_reply .= '顧客名：　'         . $request->customerName . "\n"
+                    . '問合せ内容：　'      . $request->inquiryContent . "\n";
+
+        // メール送信（ララアシスト）
         Mail::to($to)->send(new SendMail_inquiry($content));
+
+        // メール送信（顧客）
+        Mail::to($to)-send(new SendMail($auto_reply));
+
+        // テーブル登録
+
+
+        // ビュー表示
+        return view('sys.inquiry')
+                    ->with([
+                        'message'   =>  'お問合わせを受付けました。３営業日以内にご連絡がない場合には、お手数ですが再度ご連絡'
+                    ]);
 
     }
 }
