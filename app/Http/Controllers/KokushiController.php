@@ -31,8 +31,8 @@ class KokushiController extends Controller
 
       return view('kokushi.index')
               ->with([
-                  'fields'    =>  '',
-                  'subjects'  =>  '',
+                  'fields'    =>  [0,1,2,3,4,5],
+                  'subjects'  =>  [0,1,2,3,4,5],
 
               ]);
     }
