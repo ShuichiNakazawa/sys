@@ -15,13 +15,29 @@
   <div class="card-body">
     <h3 class="header_center">国試過去問</h3>
   </div>
-  {{--
-  {{ Breadcrumbs::render('kokushi.index') }}
-  --}}
-  <div class="card-body">
-    <h4 class="header_center">医療系</h4>
 
-    <div class="row justify-content-center">
+  @foreach ($fields as $field)
+    <div class="card-body">
+      <h4 class="header_center">{{ $field->field_name }}</h4>
+
+      <div class="row justify-content-center">
+
+        {{--
+          ここに、foreachを使って、テーブルに登録されている科目名（分野ごと）のリストを表示させる
+        --}}
+        @foreach($subjects as $subject)
+          <div class="btn_subject">
+            <a href="{{  url('/' . $subject->id) }}">
+              <button>{{ $subject->subject_name }}</button>
+            </a>
+          </div>
+        @endforeach
+        {{--
+          ここまで
+          --}}
+      </div>
+    </div>
+  @endforeach
       <div class="btn_subject">
         <a href="{{  url('nurse') }}">
           <button>看護師</button>
