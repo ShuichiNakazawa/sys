@@ -1,20 +1,17 @@
 <?php
 
-namespace Database\Seeders;
-
 use Illuminate\Database\Seeder;
 
 class ReservationsTableSeeder extends Seeder
 {
-
     /**
-     * Auto generated seed file
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        
+        //
 
         \DB::table('reservations')->delete();
         
@@ -13042,7 +13039,6 @@ class ReservationsTableSeeder extends Seeder
                 'updated_at' => NULL,
             ),
         ));
-        
         
     }
 }
