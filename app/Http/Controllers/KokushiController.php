@@ -35,8 +35,8 @@ class KokushiController extends Controller
       foreach ($fields as $field){
 
         // 科目リスト 取得
-        $subjects = Subject_names::value('subject_name')
-                                ->where('field_id', '=', $field->id);
+        $subjects = Subject_names::where('field_id', '=', $field->id)
+                                        ->value('subject_name');
 
         $All_subjects[$count] = $subjects;
         $count++;
