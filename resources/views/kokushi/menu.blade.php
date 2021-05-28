@@ -48,21 +48,21 @@
 
     <h4>過去問に挑戦</h4>
 	{{-- アクションの引数：科目ID　　　タイトルIDもしくはタイトル名を渡す必要がある --}}
-    <form action="{{ action('KokushiController@startPractice', $) }}" method="post">
-	  @csrf
-    <div class="row justify-content-center">
-      <div style="margin: 20px;">
-        <input type="radio" name="testType" id="question_one_answer" value="1" checked="checked">
-        <label for="question_one_answer">一問一答</label>
+    <form action="{{ action('KokushiController@startPractice', $subject_id) }}" method="post">
+	    @csrf
+      <div class="row justify-content-center">
+        <div style="margin: 20px;">
+          <input type="radio" name="testType" id="question_one_answer" value="1" checked="checked">
+          <label for="question_one_answer">一問一答</label>
+        </div>
+
+        <div style="margin: 20px;">
+          <input type="radio" name="testType" id="test_format" value="2">
+          <label for="test_format">試験形式</label>
+        </div>
       </div>
 
-      <div style="margin: 20px;">
-        <input type="radio" name="testType" id="test_format" value="2">
-        <label for="test_format">試験形式</label>
-      </div>
-    </div>
-
-    <div class="card-body">
+      <div class="card-body">
       <table class="table table-striped task-table">
         <tr>
           <th class="t_header">
@@ -81,35 +81,33 @@
             
           </th>
         </tr>
-      @foreach ($titles as $title)
-        <tr>
-          <td class="t_data">
-            <input type="submit" name="questions_title" value="{{ $title->questions_title }}">
-          </td>
-          <td class="t_data">
-            {{-- 試験挑戦数（試験情報テーブルから取得） --}}
-          </td>
-          <td class="t_data">
-            {{-- 正答率 --}}
-          </td>
-          <td class="t_data">
-            {{-- 個別・累積解答数 --}}
+        @foreach ($titles as $title)
+          <tr>
+            <td class="t_data">
+              <input type="submit" name="questions_title" value="{{ $title->questions_title }}">
+            </td>
+            <td class="t_data">
+              {{-- 試験挑戦数（試験情報テーブルから取得） --}}
+            </td>
+            <td class="t_data">
+              {{-- 正答率 --}}
+            </td>
+            <td class="t_data">
+              {{-- 個別・累積解答数 --}}
 
-          </td>
-          <td class="t_data">
-            {{-- 正答率 --}}
-          </td>
-        </tr>
+            </td>
+            <td class="t_data">
+              {{-- 正答率 --}}
+            </td>
+          </tr>
+        @endforeach
+      </table>
 
-        </a>
-      @endforeach
-    </table>
-
-    <input type="hidden" name="subject_id" value="1">
-    <input type="hidden" name="selected_answer" value="99">
-	</form>
-      </div>
-    </div>
+      <input type="hidden" name="subject_id" value="1">
+      <input type="hidden" name="selected_answer" value="99">
+    </form>
+  </div>
+</div>
 
 
 </div>
