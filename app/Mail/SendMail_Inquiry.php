@@ -28,6 +28,9 @@ class SendMail_Inquiry extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        //textをview、viewをtextに変える事で、html・テキストメールの設定を変えられる
+        return $this->text('emails.text_inquiry')
+                        ->from('no-reply@lara-assist.jp', 'Test')
+                        ->subject('お問合せ');
     }
 }
