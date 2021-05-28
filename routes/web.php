@@ -85,6 +85,8 @@ Route::post('systems', 'KokushiController@before_kokushi');
 Route::post('/kokushi', 'KokushiController@before_kokushi');
 
 Route::get('/kokushi/{subject_id}', 'KokushiController@showMenu');
+
+// 国試 過去問スタート
 Route::post('/kokushi/{subject_id}', 'KokushiController@startPractice');
 
 /**
