@@ -65,7 +65,8 @@ class KokushiController extends Controller
         $logind = 0;
       }
 
-      return view('kokushi.menu', (['kokushi', $subject_id]))
+      return view('kokushi.menu')
+      //return view('kokushi.menu', (['kokushi', $subject_id]))
               ->with([
                 'subject_name'    =>    $subject_name_kanji,
                 'titles'          =>    $titles,
