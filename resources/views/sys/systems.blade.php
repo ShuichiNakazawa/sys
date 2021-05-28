@@ -17,10 +17,9 @@
           <h2 style="text-align:center;">システム</h2>
           <br><br>
 
-          <form action="{{ url('before_kokushi') }}">
+          <form action="{{ url('kokushi') }}" method="POST">
             @csrf
             <button>国試過去問</button>
-            <input type="button" value="国試過去問">
           </form>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
