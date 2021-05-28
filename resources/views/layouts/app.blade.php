@@ -66,7 +66,7 @@
           <a href="{{ url('memo') }}">技術情報</a>
         </div>
         <div>
-          <a href="{{ url('inquiry') }}">お問合せ（調整中）</a>
+          <a href="{{ url('inquiry') }}">お問合せ</a>
         </div>
         <div>
           <a href="{{ url('references') }}">参考サイト</a>
