@@ -17,8 +17,8 @@ class CreateQuestionSentencesTable extends Migration
             $table->bigIncrements('id');
             $table->integer('subject_id')->nullable();              // 科目ID
             $table->string('subject_name')->nullable();             // 科目名
-            $table->integer('questions_title_id')->nullable();      // 問題タイトルID
-            $table->string('questions_title')->nullable();          // 問題タイトル
+            $table->integer('question_title_id')->nullable();       // 問題タイトルID
+            $table->string('question_title')->nullable();           // 問題タイトル
             $table->integer('question_number');                     // 問題番号
             $table->string('division1')->nullable();                // 分野1
             $table->string('division2')->nullable();                // 分野2
