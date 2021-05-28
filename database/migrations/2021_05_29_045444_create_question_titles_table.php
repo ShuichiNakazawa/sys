@@ -15,6 +15,10 @@ class CreateQuestionTitlesTable extends Migration
     {
         Schema::create('question_titles', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('subject_name_id');
+            $table->integer('title_id')->nullable()->default('0');
+            $table->string('question_title');
+            $table->string('sight_key', 20);
             $table->timestamps();
         });
     }
