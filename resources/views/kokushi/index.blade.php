@@ -30,8 +30,8 @@
         --}}
         @foreach($subjects[$count] as $subject)
           <div class="btn_subject">
-            <a href="{{  url('/' . $subject[0]) }}">
-              <button>{{ $subject[1] }}</button>
+            <a href="{{  url('/' . $subject) }}">
+              <button>{{ $subject }}</button>
             </a>
           </div>
         @endforeach
