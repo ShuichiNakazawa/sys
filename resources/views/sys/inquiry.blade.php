@@ -33,7 +33,7 @@
             会社名・屋号名
           </th>
           <td>
-            <input type = "text" id = "companyName">
+            <input type = "text" id = "companyName" name = "companyName">
           </td>
         </tr>
         <tr>
@@ -45,7 +45,7 @@
             <br>【必須】
           </th>
           <td>
-            <input type = "text" id = "customerName">
+            <input type = "text" id="customerName" name="customerName">
           </td>
         </tr>
         <tr>
@@ -58,7 +58,7 @@
             お名前ふりがな<br>【必須】
           </th>
           <td>
-            <input type = "text" id = "furigana_customerName">
+            <input type = "text" id = "furigana_customerName" name="furigana_customerName">
           </td>
         </tr>
 
@@ -74,7 +74,7 @@
             <br>【必須】
           </th>
           <td>
-            <input type = "text" id = "tel">
+            <input type="text" id="tel" name="tel">
           </td>
         </tr>
 
@@ -89,7 +89,7 @@
             メールアドレス<br>【必須】
           </th>
           <td>
-            <input type = "text" id = "mailAddress" placeholder = "example@example.com">
+            <input type = "text" id="mailAddress" name="mailAddress" placeholder = "example@example.com">
           </td>
         </tr>
 
@@ -104,7 +104,7 @@
             WebサイトURL
           </th>
           <td>
-            <input type = "text" id = "sightUrl" placeholder = "https://appli-support.jp">
+            <input type = "text" id = "sightUrl" name="sightUrl" placeholder="https://appli-support.jp">
           </td>
         </tr>
 
@@ -120,7 +120,7 @@
             <br>きっかけ【必須】
           </th>
           <td>
-            <select id = "trigger">
+            <select id = "trigger" name="trigger">
               <option value = "0">インターネット検索</option>
               <option value = "1">ご紹介</option>
               <option value = "2">チラシ・広告</option>
@@ -142,7 +142,7 @@
             お問合せ種類<br>【必須】
           </th>
           <td>
-            <select id = "inquiryType">
+            <select id="inquiryType" name="inquiryType">
               <option value = "0">制作のご依頼</option>
               <option value = "1">制作のお見積り</option>
               <option value = "2">Webスクールへのご質問</option>
@@ -162,7 +162,7 @@
             お問合せ内容<br>【必須】
           </th>
           <td>
-            <textarea id = "inquiryContent"></textarea>
+            <textarea id="inquiryContent" name="inquiryContent"></textarea>
             
           </td>
         </tr>
@@ -175,7 +175,7 @@
 
         <tr>
           <th>
-            <button id = "confirmInquiry">送信</button>
+            <button id = "confirmInquiry" name="confirmInquiry">送信</button>
           </th>
           <td>
             &nbsp;

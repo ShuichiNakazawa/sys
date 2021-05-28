@@ -10,12 +10,15 @@ use App\Mail\SendMail_Inquiry;
 class MailSendController extends Controller
 {
     //
-    public function send(){
+    public function send(Request $request){
+
+        // 送信者 取得
+        $sender =   $request->cuotomerName;
 
         $to =   [
             [
                 'email' =>  'contact@lara-assist.jp',
-                'name'  =>  'Test',
+                'name'  =>  $sender,
             ]
         ];
 
