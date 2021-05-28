@@ -90,10 +90,10 @@ class MailSendController extends Controller
                     . '問合せ内容：　'      . $request->inquiryContent . "\n";
 
         // メール送信（ララアシスト）
-        Mail::to($to)->send(new SendMail_inquiry($content));
+        Mail::to($toSelf)->send(new SendMail_inquiry($content));
 
         // メール送信（顧客）
-        Mail::to($to)-send(new SendMail($auto_reply));
+        Mail::to($toCustomer)-send(new SendMail($auto_reply));
 
         // テーブル登録
 
