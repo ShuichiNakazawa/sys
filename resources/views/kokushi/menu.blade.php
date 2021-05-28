@@ -48,7 +48,7 @@
 
     <h4>過去問に挑戦</h4>
 	{{-- アクションの引数：科目ID　　　タイトルIDもしくはタイトル名を渡す必要がある --}}
-    <form action="{{ action('KokushiController@startPractice') }}" method="post">
+    <form action="{{ action('KokushiController@startPractice', $) }}" method="post">
 	  @csrf
     <div class="row justify-content-center">
       <div style="margin: 20px;">
