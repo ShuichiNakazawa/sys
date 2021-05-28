@@ -67,6 +67,11 @@ Route::get('/reservation/confirm_reservation/{user_id}', 'ReservationController@
 Route::get('/reservation/purchase_ticket/{user_id}', 'ReservationController@getTicket_info');
 
 /**
+ * メール送信
+ */
+Route::get('/sendmail', 'MailSendController@send');
+
+/**
  * 認証機能
  */
 Auth::routes();
