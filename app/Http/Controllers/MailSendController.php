@@ -14,7 +14,7 @@ class MailSendController extends Controller
 
         Mail::send('emails.test', $data, function($message){
             $message->to('contact@lara-assist.jp', 'Test')
-                        ->subject('This is a test mail');
+                        ->subject('件名：テストメール');
         });
     }
 }
