@@ -17,7 +17,9 @@ class MailSendController extends Controller
             ]
         ];
 
-        Mail::to($to)->send(new SendTestMail());
+        // コントローラ使用
+        Mail::to($to)->send(new SendMail_inquiry());
+        
 
         /*
         $data = [];
