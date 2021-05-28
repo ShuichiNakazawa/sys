@@ -19,6 +19,22 @@ use Carbon\Carbon;
 
 class KokushiController extends Controller
 {
+
+    // インデックス画面表示前処理
+    public function before_kokushi() {
+
+      // 分野マスタ 取得
+      $fileds = '';
+
+      // 科目リスト 取得
+      $subject = '';
+
+      return view('kokushi.index')
+              ->with([
+
+              ]);
+    }
+
     // 看護師 TOP
     public function nurseIndex() {
 

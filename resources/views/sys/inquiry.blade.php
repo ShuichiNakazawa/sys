@@ -27,7 +27,7 @@
     </p>
   
     <div class="contuctForm">
-      <form action="{{ action('MailSendController@send') }}" method="POST">
+      <form action="{{ action('MailSendController@send') }}" method="POST" style="margin:0 atuo;">
         @csrf
         <table style="margin:0 auto;">
           <tr>
