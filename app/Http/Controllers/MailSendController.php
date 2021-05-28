@@ -76,7 +76,8 @@ class MailSendController extends Controller
             [
                 'email' =>  $request->mailAddress,
                 'name'  =>  $sender,
-            ];
+            ]
+        ];
 
         $auto_reply =
             "※本メールは自動送信にてお送りしています。\n\n下記内容でお問合せを承りました。なお１週間たっても連絡がない場合はお手数ですが、再度お問い合わせいただきますようお願いいたします。" . "\n\n";
