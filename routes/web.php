@@ -85,6 +85,7 @@ Route::post('systems', 'KokushiController@before_kokushi');
 Route::post('/kokushi', 'KokushiController@before_kokushi');
 
 Route::get('/kokushi/{subject_id}', 'KokushiController@showMenu');
+Route::post('/kokushi/{subject_id}', 'KokushiController@startPractice');
 
 /**
  * 認証機能
