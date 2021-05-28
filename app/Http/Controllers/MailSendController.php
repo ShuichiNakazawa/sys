@@ -14,6 +14,7 @@ class MailSendController extends Controller
 
         // 送信者 取得
         $sender =   $request->cuotomerName;
+        dd($sender);
 
         $to =   [
             [
