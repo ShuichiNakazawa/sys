@@ -33,7 +33,8 @@ class KokushiController extends Controller
       foreach ($fields_pluck as $id => $field_name){
 
         // 科目リスト 取得
-        $subjects = Subject_names::where('field_id', '=', $id)
+        $subjects = Subject_names::pluck('id', 'subject_name')
+                                ->where('field_id', '=', $id)
                                 ->select('subject_name')
                                 ->get();
 
