@@ -17,12 +17,12 @@
           <h2 style="text-align:center;">システム</h2>
           <br><br>
 
-          <a href="{{ action('KokushiController@before_kokushi') }}">国試 過去問</a>
+          <a href="{{ action('KokushiController@before_kokushi') }}">国試 過去問?</a>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
           <input type="submit" onClick="javascript:window.open('kokushi/', 'kokushi', 'fullscreen=yes')" value="国試バー非表示">
           <br><br>
-          
+
           問題集管理システム
           <br><br>
 
