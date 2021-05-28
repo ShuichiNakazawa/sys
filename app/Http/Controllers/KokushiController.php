@@ -62,7 +62,7 @@ class KokushiController extends Controller
     // 看護師 TOP
     public function nurseIndex() {
 
-      $titles = Questions_titles::where('subject_name_id', '=', 1)
+      $titles = Question_titles::where('subject_name_id', '=', 1)
 			->where('sight_key', '=', 'origin')
 			->orderby('title_id', 'desc')
 			->get();
@@ -83,7 +83,7 @@ class KokushiController extends Controller
     // 保険師 TOP
     public function phnIndex() {
 
-      $titles = Questions_titles::where('subject_name_id', '=', 2)
+      $titles = Question_titles::where('subject_name_id', '=', 2)
 			->where('sight_key', '=', 'origin')
 			->orderby('title_id', 'desc')
 			->get();
@@ -104,7 +104,7 @@ class KokushiController extends Controller
     // 助産師 TOP
     public function midwifeIndex() {
 
-      $titles = Questions_titles::where('subject_name_id', '=', 3)
+      $titles = Question_titles::where('subject_name_id', '=', 3)
 			->where('sight_key', '=', 'origin')
 			->orderby('title_id', 'desc')
 			->get();
@@ -126,7 +126,7 @@ class KokushiController extends Controller
     // 臨床検査技師 TOP
     public function cltIndex() {
 
-      $titles = Questions_titles::where('subject_name_id', '=', 4)
+      $titles = Question_titles::where('subject_name_id', '=', 4)
                         ->where('sight_key', '=', 'origin')
                         ->orderby('title_id', 'desc')
                         ->get();
@@ -249,11 +249,11 @@ class KokushiController extends Controller
     public function storeTitle(Request $request){
 
       // 問題タイトル インスタンス化
-      $title  = new Questions_titles();
+      $title  = new Question_titles();
 
       $title->subject_name_id = $request->subject_id;     // 科目ID
       $title->title_id        = $request->title_id;       // タイトルID
-      $title->questions_title = $request->title_name;     // 問題タイトル名
+      $title->Question_title = $request->title_name;     // 問題タイトル名
       $title->sight_key       = 'origin';                 // サイトキー
       $title->created_at      = new Carbon('now');        // 作成日時
       $title->updated_at      = new Carbon('now');        // 最終更新日時
@@ -272,7 +272,7 @@ class KokushiController extends Controller
       $subject_lists =  Subject_names::get();
 
       // タイトルリスト 取得
-      $title_lists	=	Questions_titles::where('subject_name_id', '=', $subject_id)
+      $title_lists	=	Question_titles::where('subject_name_id', '=', $subject_id)
                                           ->where('sight_key', '=', 'origin')
                                           ->orderby('title_id', 'desc')
                                           ->get();
@@ -288,10 +288,10 @@ class KokushiController extends Controller
 
     public function editTitle($subject_name_id, $id) {
       //タイトル情報 取得
-      $questions_title	=	Questions_titles::where('id', '=', $id)
+      $Question_title	=	Question_titles::where('id', '=', $id)
                                 ->first();
 
-      $title_id         = Questions_titles::select('title_id')
+      $title_id         = Question_titles::select('title_id')
                                 ->where('subject_name_id', '=', $subject_name_id)
                                 ->orderby('title_id', 'desc')
                                 ->limit(1)
@@ -309,7 +309,7 @@ class KokushiController extends Controller
       return view('kokushi.editTitle')
                   ->with([
                       'subject'       =>    $subject,
-                      'title'         =>    $questions_title,
+                      'title'         =>    $Question_title,
                       'title_id'      =>    $title_id,
       ]);
     }
@@ -319,12 +319,12 @@ class KokushiController extends Controller
 
       $update_column = [
                 'title_id'        =>  $request->title_id,
-                'questions_title'	=>  $request->questions_title,
+                'Question_title'	=>  $request->Question_title,
                 'updated_at'      =>  new Carbon('now'),
       ];
 
       // 問題タイトルテーブル 更新
-      Questions_titles::where('id', '=', $request->id)
+      Question_titles::where('id', '=', $request->id)
 				->update($update_column);
 
       // 科目リスト 取得
@@ -333,7 +333,7 @@ class KokushiController extends Controller
       $subject_id       =       $request->subject_id;
 
       // タイトルリスト 取得
-      $title_lists      =       Questions_titles::where('subject_name_id', '=', $subject_id)
+      $title_lists      =       Question_titles::where('subject_name_id', '=', $subject_id)
                                         ->where('sight_key', '=', 'origin')
                                         ->get();
 
@@ -347,13 +347,13 @@ class KokushiController extends Controller
     }
 
     public function destroyQuestionsTitle($id) {
-      $title  = Questions_titles::where('id', '=', $id)
+      $title  = Question_titles::where('id', '=', $id)
                                   ->first();
       if(!$title) {
         return redirect('/management/title_list/');
       }
 
-      $subject_id = Questions_titles::select('subject_name_id')
+      $subject_id = Question_titles::select('subject_name_id')
                                         ->where('id', '=', $id)
                                         ->value('subject_name_id');
       $title->delete();
@@ -373,7 +373,7 @@ class KokushiController extends Controller
       $subject_name     =       $request->subject_name;
 
       // タイトル名
-      $questions_title  =       $request->questions_title;
+      $Question_title  =       $request->Question_title;
 
       // 科目ID 取得
       $subject_id       =       Subject_names::select('id')
@@ -382,7 +382,7 @@ class KokushiController extends Controller
                                           ->value('id');
 
       // タイトルリスト 取得
-      $title_lists	=	Questions_titles::where('subject_name_id', '=', $subject_id)
+      $title_lists	=	Question_titles::where('subject_name_id', '=', $subject_id)
                                           ->where('sight_key', '=', 'origin')
                                           ->orderby('title_id', 'desc')
                                           ->get();
@@ -394,7 +394,7 @@ class KokushiController extends Controller
                       'titles'	          =>	$title_lists,
                       'subject_id'	      =>	$subject_id,
                       'subject_name'      =>  $subject_name,
-                      'questions_title'   =>  $questions_title,
+                      'Question_title'   =>  $Question_title,
                       'question_number'   =>  '',
                 ]);
     }
@@ -410,12 +410,12 @@ class KokushiController extends Controller
                                         ->value("id");
 
       // タイトルリスト 取得
-      $title_lists      =       Questions_titles::where('subject_name_id', '=', $subject_id)
+      $title_lists      =       Question_titles::where('subject_name_id', '=', $subject_id)
                                         ->where('sight_key', '=', 'origin')
                                         ->get();
 
       $qsentences	=	Question_sentences::where('subject_name', '=', $request->subject_name)
-                        ->where('questions_title', '=', $request->questions_title)
+                        ->where('Question_title', '=', $request->Question_title)
                         ->where('sight_key', '=', 'origin')
                         ->orderby('question_number', 'asc')
                         ->get();
@@ -426,7 +426,7 @@ class KokushiController extends Controller
                         'titles'          =>  $title_lists,
                         'subject_id'      =>  $subject_id,
                         'subject_name'    =>  $request->subject_name,
-                        'questions_title'	=>  $request->questions_title,
+                        'Question_title'	=>  $request->Question_title,
                         'qsentences'      =>  $qsentences,
                 ]);
     }
@@ -513,8 +513,8 @@ class KokushiController extends Controller
       $question_sentence->subject_id            = $request->subject_name_id;        // 科目ID
       $question_sentence->subject_name          = '';                               // 科目名
 
-      $question_sentence->questions_title_id    = $request->questions_title_id;     // タイトルID
-      $question_sentence->questions_title       = '';                               // 問題タイトル名
+      $question_sentence->Question_title_id    = $request->Question_title_id;     // タイトルID
+      $question_sentence->Question_title       = '';                               // 問題タイトル名
       $question_sentence->question_number       = $request->question_number;        // 問題番号
 
       $question_sentence->division1             = '';                               // 分野名１
@@ -572,8 +572,8 @@ class KokushiController extends Controller
               [
                 'subject_name_id'     =>  $request->subject_name_id,        // 科目ID
                 'subject_name'        =>  '',                               // 科目名
-                'questions_title_id'  =>  $request->questions_title_id,     // タイトルID
-                'questions_title'     =>  '',                               // タイトル名
+                'Question_title_id'  =>  $request->Question_title_id,     // タイトルID
+                'Question_title'     =>  '',                               // タイトル名
                 'question_number'     =>  $request->question_number,        // 問題番号
                 'choice_id'           =>  $index,                           // 選択肢ID
                 'choice_sentence'     =>  $c_sentence,                      // 選択肢文
@@ -628,8 +628,8 @@ class KokushiController extends Controller
               [
                 'subject_name_id'     =>  $request->subject_name_id,        // 科目ID
                 'subject_name'        =>  '',                               // 科目名
-                'questions_title_id'  =>  $request->questions_title_id,     // タイトルID
-                'questions_title'     =>  '',                               // タイトル名
+                'Question_title_id'  =>  $request->Question_title_id,     // タイトルID
+                'Question_title'     =>  '',                               // タイトル名
                 'question_number'     =>  $request->question_number,        // 問題番号
                 'answer_id'           =>  $index_answer,                    // 正答ID
                 'answer_sentence'     =>  $a_sentence,                      // 正答文
@@ -658,9 +658,9 @@ class KokushiController extends Controller
                                                 ->value('subject_name');
 
       // タイトル名
-      $questions_title  =       Questions_titles::select('questions_title')
-                                                  ->where('title_id', '=', $request->questions_title_id)
-                                                  ->value('questions_title');
+      $Question_title  =       Question_titles::select('Question_title')
+                                                  ->where('title_id', '=', $request->Question_title_id)
+                                                  ->value('Question_title');
 
       // 科目ID 取得
       $subject_id       =       $request->subject_name_id;
@@ -672,7 +672,7 @@ class KokushiController extends Controller
 */
 
       // タイトルリスト 取得
-      $title_lists	=	Questions_titles::where('subject_name_id', '=', $subject_id)
+      $title_lists	=	Question_titles::where('subject_name_id', '=', $subject_id)
                                           ->where('sight_key', '=', 'origin')
                                           ->orderby('title_id', 'desc')
                                           ->get();
@@ -689,7 +689,7 @@ class KokushiController extends Controller
                                 'titles'	          =>  $title_lists,
                                 'subject_id'	      =>  $subject_id,
                                 'subject_name'      =>  $subject_name,
-                                'questions_title'   =>  $questions_title,
+                                'Question_title'   =>  $Question_title,
                                 'question_number'   =>  $question_number,
                       ]);
     }
@@ -707,18 +707,18 @@ class KokushiController extends Controller
 
     public function startPractice(Request $request){
       $subject_id		      =	$request->subject_id;               // 科目ID
-      $questions_title    = $request->questions_title;          // タイトル名
-      $questions_title_id	= Questions_titles::select('title_id')
+      $Question_title    = $request->Question_title;          // タイトル名
+      $Question_title_id	= Question_titles::select('title_id')
                                       ->where('subject_name_id', '=', $subject_id)
-                                      ->where('questions_title', '=', $questions_title)
+                                      ->where('Question_title', '=', $Question_title)
                                       ->where('sight_key', '=', 'origin')
                                       ->value('title_id');
 
-      //dd($subject_id, $questions_title);
+      //dd($subject_id, $Question_title);
 
       // 問題文 取得
       $question_sentence        =       Question_sentences::where('subject_id', '=', $subject_id)
-                                                ->where('questions_title_id', '=', $questions_title_id)
+                                                ->where('Question_title_id', '=', $Question_title_id)
                                                 ->where('question_number', '=', 1)
                                                 ->first();
 
@@ -727,7 +727,7 @@ class KokushiController extends Controller
       // 最終問題番号 取得 （下のコメントを流用）
       $question_last_number     =       Question_sentences::select('question_number')
                                                         ->where('subject_id', '=', $subject_id)
-                                                        ->where('questions_title_id', '=', $questions_title_id)
+                                                        ->where('Question_title_id', '=', $Question_title_id)
                                                         ->orderby('question_number', 'desc')
                                                         ->limit(1)
                                                         ->value('question_number');
@@ -739,7 +739,7 @@ class KokushiController extends Controller
 
       // 選択肢 取得
       $choice_sentences         =       Choice_sentences::where('subject_name_id', '=', $subject_id)
-                                                ->where('questions_title_id', '=', $questions_title_id)
+                                                ->where('Question_title_id', '=', $Question_title_id)
                                                 ->where('question_number', '=', 1)
                                                 ->get();
 
@@ -765,7 +765,7 @@ class KokushiController extends Controller
 
       // テスト形式 判別
       if ($request->testType == 1){
-        return redirect($subject_short_name . '/practice_by_question/' . $subject_id . '/' . $questions_title_id . '/1')
+        return redirect($subject_short_name . '/practice_by_question/' . $subject_id . '/' . $Question_title_id . '/1')
                   ->with([
                         'question_sentence'     =>      $question_sentence,
                         'choice_sentences'      =>      $choice_sentences,
@@ -777,7 +777,7 @@ class KokushiController extends Controller
 
 
       } else if ($request->testType == 2){
-        return redirect($subject_short_name . '/practice/' . $subject_id . '/' . $questions_title_id . '/1')
+        return redirect($subject_short_name . '/practice/' . $subject_id . '/' . $Question_title_id . '/1')
                   ->with([
                         'question_sentence'     =>      $question_sentence,
                         'choice_sentences'      =>      $choice_sentences,
@@ -804,26 +804,26 @@ class KokushiController extends Controller
       }
 
       // 問題タイトル 取得
-      $question_title	=	Questions_titles::select('questions_title')
+      $question_title	=	Question_titles::select('Question_title')
 					->where('subject_name_id', '=', $subject_id)
 					->where('title_id', '=', $title_id)
-					->value('questions_title');
+					->value('Question_title');
 
       // 問題文 取得
       $question_sentence	=	Question_sentences::where('subject_id', '=', $subject_id)
-						->where('questions_title', '=', $question_title)
+						->where('Question_title', '=', $question_title)
 						->where('question_number', '=', $question_number)
 						->first();
 
       // 選択肢 取得
       $choice_sentences		=	Choice_sentences::where('subject_name_id', '=', $subject_id)
-                                                ->where('questions_title', '=', $question_title)
+                                                ->where('Question_title', '=', $question_title)
                                                 ->where('question_number', '=', $question_number)
                                                 ->get();
 
       // 正答数 取得
       $number_of_answers	=	Answer_sentences::where('subject_name_id', '=', $subject_id)
-						->where('questions_title', '=', $question_title)
+						->where('Question_title', '=', $question_title)
 						->where('question_number', '=', $question_number)
 						->count();
 
@@ -838,7 +838,7 @@ class KokushiController extends Controller
       // 最終問題番号 取得 （下のコメントを流用）
       $question_last_number	=	Question_sentences::select('question_number')
 							->where('subject_id', '=', $subject_id)
-                                                	->where('questions_title', '=', $question_title)
+                                                	->where('Question_title', '=', $question_title)
 							->orderby('question_number', 'desc')
                                                 	->limit(1)
 							->value('question_number');
@@ -898,27 +898,27 @@ class KokushiController extends Controller
       // 必須回答数 取得
       $numOfNeedSelect	=	Question_sentences::select('required_numOfAnswers')
                 ->where('subject_id', '=', $subject_id)
-                ->where('questions_title_id', '=', $title_id)
+                ->where('Question_title_id', '=', $title_id)
                 ->where('question_number', '=', $question_number)
                 ->limit(1)
                 ->value('required_numOfAnswers');
 
       // 問題文 取得
       $question_sentence        =       Question_sentences::where('subject_id', '=', $subject_id)
-                                                ->where('questions_title_id', '=', $title_id)
+                                                ->where('Question_title_id', '=', $title_id)
                                                 ->where('question_number', '=', $question_number)
                                                 ->first();
 
       // 選択肢 取得
       $choice_sentences         =       Choice_sentences::where('subject_name_id', '=', $subject_id)
-                                                ->where('questions_title_id', '=', $title_id)
+                                                ->where('Question_title_id', '=', $title_id)
                                                 ->where('question_number', '=', $question_number)
                                                 ->get();
 
       // 最終問題番号 取得 （下のコメントを流用）
       $question_last_number     =       Question_sentences::select('question_number')
                                                           ->where('subject_id', '=', $subject_id)
-                                                          ->where('questions_title_id', $title_id)
+                                                          ->where('Question_title_id', $title_id)
                                                           ->orderby('question_number', 'desc')
                                                           ->limit(1)
                                                           ->value('question_number');
@@ -931,7 +931,7 @@ class KokushiController extends Controller
 
       // 正答数 取得
       $number_of_answers        =       Answer_sentences::where('subject_name_id', '=', $subject_id)
-                                                ->where('questions_title_id', '=', $title_id)
+                                                ->where('Question_title_id', '=', $title_id)
                                                 ->where('question_number', '=', $question_number)
                                                 ->count();
 
@@ -949,7 +949,7 @@ class KokushiController extends Controller
 
         // 正答の数 取得
         $numOfAnswers	=	Answer_sentences::where('subject_name_id', '=', $subject_id)
-                        ->where('questions_title_id', '=', $title_id)
+                        ->where('Question_title_id', '=', $title_id)
                         ->where('question_number', '=', $question_number)
                         ->count();
 
@@ -960,7 +960,7 @@ class KokushiController extends Controller
           if ($numOfAnswers == 1){
             $answer	=	Answer_sentences::select('answer_sentence')
                                                         ->where('subject_name_id', '=', $subject_id)
-                                                        ->where('questions_title_id', '=', $title_id)
+                                                        ->where('Question_title_id', '=', $title_id)
                                                         ->where('question_number', '=', $question_number)
                                                         ->value('answer_sentence');
 
@@ -1008,7 +1008,7 @@ class KokushiController extends Controller
 
             // 正答配列 取得
             $answers	=	Answer_sentences::where('subject_name_id', '=', $subject_id)
-                                        ->where('questions_title_id', '=', $title_id)
+                                        ->where('Question_title_id', '=', $title_id)
                                         ->where('question_number', '=', $question_number)
                                         ->pluck('answer_sentence')
                                         ->toArray();
@@ -1119,7 +1119,7 @@ class KokushiController extends Controller
 
           // 正答配列 取得
           $answers	=	Answer_sentences::where('subject_name_id', '=', $subject_id)
-                              ->where('questions_title_id', '=', $title_id)
+                              ->where('Question_title_id', '=', $title_id)
                               ->where('question_number', '=', $question_number)
                               ->pluck('answer_sentence')
                               ->toArray();
@@ -1312,7 +1312,7 @@ class KokushiController extends Controller
       $times  = Individual_scorings::select('how_many_time')
                                   ->where('user_id', '=', $user_id)
                                   ->where('subject_name_id', '=', $subject_id)
-                                  ->where('questions_title_id', '=', $title_id)
+                                  ->where('Question_title_id', '=', $title_id)
                                   ->where('question_number', '=', $question_number)
                                   ->orderby('how_many_time', 'desc')
                                   ->value('how_many_time');
@@ -1328,7 +1328,7 @@ class KokushiController extends Controller
       $individula_scoring = new Individual_scorings();
       $individula_scoring->user_id            = $user_id;
       $individula_scoring->subject_name_id    = $subject_id;
-      $individula_scoring->questions_title_id = $title_id;
+      $individula_scoring->Question_title_id = $title_id;
       $individula_scoring->question_number    = $question_number;
       $individula_scoring->how_many_time      = $times;
       $individula_scoring->is_correct         = $is_correct;
@@ -1341,7 +1341,7 @@ class KokushiController extends Controller
 
         //      dd($subject_Kanji_name, $request->subject_id);
 
-      $titles = Questions_titles::where('subject_name_id', '=', $request->subject_id)
+      $titles = Question_titles::where('subject_name_id', '=', $request->subject_id)
 			->where('sight_key', '=', 'origin')
 			->orderby('title_id', 'desc')
 			->get();
@@ -1374,7 +1374,7 @@ class KokushiController extends Controller
      */
     public function feIndex() {
 
-      $titles = Questions_titles::where('subject_name_id', '=', 11)
+      $titles = Question_titles::where('subject_name_id', '=', 11)
 			->where('sight_key', '=', 'origin')
 			->orderby('title_id', 'desc')
 			->get();
@@ -1397,7 +1397,7 @@ class KokushiController extends Controller
      */
     public function apIndex() {
 
-      $titles = Questions_titles::where('subject_name_id', '=', 12)
+      $titles = Question_titles::where('subject_name_id', '=', 12)
 			->where('sight_key', '=', 'origin')
 			->orderby('title_id', 'desc')
 			->get();
@@ -1420,7 +1420,7 @@ class KokushiController extends Controller
      */
     public function nwIndex() {
 
-      $titles = Questions_titles::where('subject_name_id', '=', 13)
+      $titles = Question_titles::where('subject_name_id', '=', 13)
 			->where('sight_key', '=', 'origin')
 			->orderby('title_id', 'desc')
 			->get();
@@ -1443,7 +1443,7 @@ class KokushiController extends Controller
      */
     public function stIndex() {
 
-      $titles = Questions_titles::where('subject_name_id', '=', 14)
+      $titles = Question_titles::where('subject_name_id', '=', 14)
 			->where('sight_key', '=', 'origin')
 			->orderby('title_id', 'desc')
 			->get();
@@ -1466,7 +1466,7 @@ class KokushiController extends Controller
      */
     public function saIndex() {
 
-      $titles = Questions_titles::where('subject_name_id', '=', 15)
+      $titles = Question_titles::where('subject_name_id', '=', 15)
 			->where('sight_key', '=', 'origin')
 			->orderby('title_id', 'desc')
 			->get();
@@ -1489,7 +1489,7 @@ class KokushiController extends Controller
      */
     public function smIndex() {
 
-      $titles = Questions_titles::where('subject_name_id', '=', 16)
+      $titles = Question_titles::where('subject_name_id', '=', 16)
 			->where('sight_key', '=', 'origin')
 			->orderby('title_id', 'desc')
 			->get();
@@ -1512,7 +1512,7 @@ class KokushiController extends Controller
      */
     public function scIndex() {
 
-      $titles = Questions_titles::where('subject_name_id', '=', 17)
+      $titles = Question_titles::where('subject_name_id', '=', 17)
 			->where('sight_key', '=', 'origin')
 			->orderby('title_id', 'desc')
 			->get();
@@ -1535,7 +1535,7 @@ class KokushiController extends Controller
      */
     public function pmIndex() {
 
-      $titles = Questions_titles::where('subject_name_id', '=', 18)
+      $titles = Question_titles::where('subject_name_id', '=', 18)
 			->where('sight_key', '=', 'origin')
 			->orderby('title_id', 'desc')
 			->get();
@@ -1558,7 +1558,7 @@ class KokushiController extends Controller
      */
     public function dbIndex() {
 
-      $titles = Questions_titles::where('subject_name_id', '=', 19)
+      $titles = Question_titles::where('subject_name_id', '=', 19)
 			->where('sight_key', '=', 'origin')
 			->orderby('title_id', 'desc')
 			->get();
@@ -1580,7 +1580,7 @@ class KokushiController extends Controller
      */
     public function esIndex() {
 
-      $titles = Questions_titles::where('subject_name_id', '=', 20)
+      $titles = Question_titles::where('subject_name_id', '=', 20)
 			->where('sight_key', '=', 'origin')
 			->orderby('title_id', 'desc')
 			->get();
@@ -1604,7 +1604,7 @@ class KokushiController extends Controller
      */
     public function auIndex() {
 
-      $titles = Questions_titles::where('subject_name_id', '=', 21)
+      $titles = Question_titles::where('subject_name_id', '=', 21)
 			->where('sight_key', '=', 'origin')
 			->orderby('title_id', 'desc')
 			->get();
@@ -1627,7 +1627,7 @@ class KokushiController extends Controller
      */
     public function sgIndex() {
 
-      $titles = Questions_titles::where('subject_name_id', '=', 22)
+      $titles = Question_titles::where('subject_name_id', '=', 22)
 			->where('sight_key', '=', 'origin')
 			->orderby('title_id', 'desc')
 			->get();
@@ -1650,7 +1650,7 @@ class KokushiController extends Controller
      */
     public function upIndex() {
 
-      $titles = Questions_titles::where('subject_name_id', '=', 23)
+      $titles = Question_titles::where('subject_name_id', '=', 23)
 			->where('sight_key', '=', 'origin')
 			->orderby('title_id', 'desc')
 			->get();
@@ -1679,168 +1679,168 @@ class KokushiController extends Controller
           // 科目ID・科目名 設定
           if($t_choice->ExamType == 'fe'){
             $subject_id       = 11;
-            $questions_title  = '基本情報技術者';
+            $Question_title  = '基本情報技術者';
 
           } else if($t_choice->ExamType == 'ap'){
             $subject_id       = 12;
-            $questions_title  = '応用情報技術者';
+            $Question_title  = '応用情報技術者';
 
           } else if($t_choice->ExamType == 'nw'){
             $subject_id       = 13;
-            $questions_title  = 'ネットワークスペシャリスト';
+            $Question_title  = 'ネットワークスペシャリスト';
 
           } else if($t_choice->ExamType == 'st'){
             $subject_id       = 14;
-            $questions_title  = 'ITストラテジスト';
+            $Question_title  = 'ITストラテジスト';
 
           } else if($t_choice->ExamType == 'sa'){
             $subject_id       = 15;
-            $questions_title  = 'システムアーキテクト';
+            $Question_title  = 'システムアーキテクト';
 
           } else if($t_choice->ExamType == 'sm'){
             $subject_id       = 16;
-            $questions_title  = 'ITサービスマネージャ';
+            $Question_title  = 'ITサービスマネージャ';
 
           } else if($t_choice->ExamType == 'sc'){
             $subject_id       = 17;
-            $questions_title  = '情報処理安全確保支援士';
+            $Question_title  = '情報処理安全確保支援士';
 
           } else if($t_choice->ExamType == 'pm'){
             $subject_id       = 18;
-            $questions_title  = 'プロジェクトマネージャ';
+            $Question_title  = 'プロジェクトマネージャ';
 
           } else if($t_choice->ExamType == 'db'){
             $subject_id       = 19;
-            $questions_title  = 'データベーススペシャリスト';
+            $Question_title  = 'データベーススペシャリスト';
 
           } else if($t_choice->ExamType == 'es'){
             $subject_id       = 20;
-            $questions_title  = 'エンベデッドシステムスペシャリスト';
+            $Question_title  = 'エンベデッドシステムスペシャリスト';
 
           } else if($t_choice->ExamType == 'au'){
             $subject_id       = 21;
-            $questions_title  = 'システム監査技術者';
+            $Question_title  = 'システム監査技術者';
 
           } else if($t_choice->ExamType == 'sg'){
             $subject_id       = 22;
-            $questions_title  = '情報セキュリティマネジメント';
+            $Question_title  = '情報セキュリティマネジメント';
 
           } else if($t_choice->ExamType == 'up'){
             $subject_id       = 23;
-            $questions_title  = '高度区分共通';
+            $Question_title  = '高度区分共通';
           }
 
-          $questions_title = '';
+          $Question_title = '';
 
           // 開催年 判定
           if($t_choice->Year == 'r2'){
-            $questions_title = '令和２年';
+            $Question_title = '令和２年';
 
           } else if($t_choice->Year == 'r1'){
-            $questions_title = '令和元年';
+            $Question_title = '令和元年';
 
           } else if($t_choice->Year == 'h31'){
-            $questions_title = '平成３１年';
+            $Question_title = '平成３１年';
 
           } else if($t_choice->Year == 'h30'){
-            $questions_title = '平成３０年';
+            $Question_title = '平成３０年';
 
           } else if($t_choice->Year == 'h29'){
-            $questions_title = '平成２９年';
+            $Question_title = '平成２９年';
 
           } else if($t_choice->Year == 'h28'){
-            $questions_title = '平成２８年';
+            $Question_title = '平成２８年';
 
           } else if($t_choice->Year == 'h27'){
-            $questions_title = '平成２７年';
+            $Question_title = '平成２７年';
           }
 
           // 季節判定
           if ($t_choice->Season == 1){
-            $questions_title .= '春期 ';
+            $Question_title .= '春期 ';
           } else if ($t_choice->Season == 2){
-            $questions_title .= '秋期 ';
+            $Question_title .= '秋期 ';
           }
 
           // 時間帯設定
           if ($t_choice->TimeZone == 'am'){
-            $questions_title .= '午前';
+            $Question_title .= '午前';
           } else if ($t_choice->TimeZone == 'am1'){
-            $questions_title .= '午前１';
+            $Question_title .= '午前１';
           } else if ($t_choice->TimeZone == 'am2'){
-            $questions_title .= '午前２';
+            $Question_title .= '午前２';
           }
 
-          $questions_title_id   =   99;
+          $Question_title_id   =   99;
 
-          if ($questions_title == '令和２年秋期 午前'){
-            $questions_title_id = 50;
-          } else if ($questions_title == '令和２年春期 午前'){
-            $questions_title_id = 48;
-          } else if ($questions_title == '令和２年春期 午前１'){
-            $questions_title_id = 481;
-          } else if ($questions_title == '令和２年春期 午前２'){
-            $questions_title_id = 482;
-          } else if ($questions_title == '令和元年秋期 午前'){
-            $questions_title_id = 46;
-          } else if ($questions_title == '令和元年秋期 午前１'){
-            $questions_title_id = 461;
-          } else if ($questions_title == '令和元年秋期 午前２'){
-            $questions_title_id = 462;
-          } else if ($questions_title == '平成３１年春期 午前'){
-            $questions_title_id = 44;
-          } else if ($questions_title == '平成３１年春期 午前１'){
-            $questions_title_id = 441;
-          } else if ($questions_title == '平成３１年春期 午前２'){
-            $questions_title_id = 442;
-          } else if ($questions_title == '平成３０年秋期 午前'){
-            $questions_title_id = 42;
-          } else if ($questions_title == '平成３０年秋期 午前１'){
-            $questions_title_id = 421;
-          } else if ($questions_title == '平成３０年秋期 午前２'){
-            $questions_title_id = 422;
-          } else if ($questions_title == '平成３０年春期 午前'){
-            $questions_title_id = 40;
-          } else if ($questions_title == '平成３０年春期 午前１'){
-            $questions_title_id = 401;
-          } else if ($questions_title == '平成３０年春期 午前２'){
-            $questions_title_id = 402;
-          } else if ($questions_title == '平成２９年秋期 午前'){
-            $questions_title_id = 38;
-          } else if ($questions_title == '平成２９年秋期 午前１'){
-            $questions_title_id = 381;
-          } else if ($questions_title == '平成２９年秋期 午前２'){
-            $questions_title_id = 382;
-          } else if ($questions_title == '平成２９年春期 午前'){
-            $questions_title_id = 36;
-          } else if ($questions_title == '平成２９年春期 午前１'){
-            $questions_title_id = 361;
-          } else if ($questions_title == '平成２９年春期 午前２'){
-            $questions_title_id = 362;
-          } else if ($questions_title == '平成２８年秋期 午前'){
-            $questions_title_id = 34;
-          } else if ($questions_title == '平成２８年秋期 午前１'){
-            $questions_title_id = 341;
-          } else if ($questions_title == '平成２８年秋期 午前２'){
-            $questions_title_id = 342;
-          } else if ($questions_title == '平成２８年春期 午前'){
-            $questions_title_id = 32;
-          } else if ($questions_title == '平成２８年春期 午前１'){
-            $questions_title_id = 321;
-          } else if ($questions_title == '平成２８年春期 午前２'){
-            $questions_title_id = 322;
-          } else if ($questions_title == '平成２７年秋期 午前'){
-            $questions_title_id = 30;
-          } else if ($questions_title == '平成２７年秋期 午前１'){
-            $questions_title_id = 301;
-          } else if ($questions_title == '平成２７年秋期 午前２'){
-            $questions_title_id = 302;
-          } else if ($questions_title == '平成２７年春期 午前'){
-            $questions_title_id = 28;
-          } else if ($questions_title == '平成２７年春期 午前１'){
-            $questions_title_id = 281;
-          } else if ($questions_title == '平成２７年春期 午前１'){
-            $questions_title_id = 282;
+          if ($Question_title == '令和２年秋期 午前'){
+            $Question_title_id = 50;
+          } else if ($Question_title == '令和２年春期 午前'){
+            $Question_title_id = 48;
+          } else if ($Question_title == '令和２年春期 午前１'){
+            $Question_title_id = 481;
+          } else if ($Question_title == '令和２年春期 午前２'){
+            $Question_title_id = 482;
+          } else if ($Question_title == '令和元年秋期 午前'){
+            $Question_title_id = 46;
+          } else if ($Question_title == '令和元年秋期 午前１'){
+            $Question_title_id = 461;
+          } else if ($Question_title == '令和元年秋期 午前２'){
+            $Question_title_id = 462;
+          } else if ($Question_title == '平成３１年春期 午前'){
+            $Question_title_id = 44;
+          } else if ($Question_title == '平成３１年春期 午前１'){
+            $Question_title_id = 441;
+          } else if ($Question_title == '平成３１年春期 午前２'){
+            $Question_title_id = 442;
+          } else if ($Question_title == '平成３０年秋期 午前'){
+            $Question_title_id = 42;
+          } else if ($Question_title == '平成３０年秋期 午前１'){
+            $Question_title_id = 421;
+          } else if ($Question_title == '平成３０年秋期 午前２'){
+            $Question_title_id = 422;
+          } else if ($Question_title == '平成３０年春期 午前'){
+            $Question_title_id = 40;
+          } else if ($Question_title == '平成３０年春期 午前１'){
+            $Question_title_id = 401;
+          } else if ($Question_title == '平成３０年春期 午前２'){
+            $Question_title_id = 402;
+          } else if ($Question_title == '平成２９年秋期 午前'){
+            $Question_title_id = 38;
+          } else if ($Question_title == '平成２９年秋期 午前１'){
+            $Question_title_id = 381;
+          } else if ($Question_title == '平成２９年秋期 午前２'){
+            $Question_title_id = 382;
+          } else if ($Question_title == '平成２９年春期 午前'){
+            $Question_title_id = 36;
+          } else if ($Question_title == '平成２９年春期 午前１'){
+            $Question_title_id = 361;
+          } else if ($Question_title == '平成２９年春期 午前２'){
+            $Question_title_id = 362;
+          } else if ($Question_title == '平成２８年秋期 午前'){
+            $Question_title_id = 34;
+          } else if ($Question_title == '平成２８年秋期 午前１'){
+            $Question_title_id = 341;
+          } else if ($Question_title == '平成２８年秋期 午前２'){
+            $Question_title_id = 342;
+          } else if ($Question_title == '平成２８年春期 午前'){
+            $Question_title_id = 32;
+          } else if ($Question_title == '平成２８年春期 午前１'){
+            $Question_title_id = 321;
+          } else if ($Question_title == '平成２８年春期 午前２'){
+            $Question_title_id = 322;
+          } else if ($Question_title == '平成２７年秋期 午前'){
+            $Question_title_id = 30;
+          } else if ($Question_title == '平成２７年秋期 午前１'){
+            $Question_title_id = 301;
+          } else if ($Question_title == '平成２７年秋期 午前２'){
+            $Question_title_id = 302;
+          } else if ($Question_title == '平成２７年春期 午前'){
+            $Question_title_id = 28;
+          } else if ($Question_title == '平成２７年春期 午前１'){
+            $Question_title_id = 281;
+          } else if ($Question_title == '平成２７年春期 午前１'){
+            $Question_title_id = 282;
           }
 
           // 問題番号
@@ -1859,8 +1859,8 @@ class KokushiController extends Controller
             $choice_sentence = new Choice_sentences();
             $choice_sentence->subject_name_id          = $subject_id;                               // 科目ID
             $choice_sentence->subject_name        = KokushiController::getKanjiName($subject_id);   // 科目名
-            $choice_sentence->questions_title_id  = $questions_title_id;                            // 問題タイトルID
-            $choice_sentence->questions_title     = $questions_title;                               // 問題タイトル名
+            $choice_sentence->Question_title_id  = $Question_title_id;                            // 問題タイトルID
+            $choice_sentence->Question_title     = $Question_title;                               // 問題タイトル名
             $choice_sentence->question_number     = $question_number;                               // 問題番号
             $choice_sentence->sight_key           = 'origin';                                       // サイトキー
             $choice_sentence->created_at          = new Carbon('now');                              // 作成日時
@@ -1883,168 +1883,168 @@ class KokushiController extends Controller
           // 科目ID・科目名 設定
           if($t_answer->ExamType == 'fe'){
             $subject_id       = 11;
-            $questions_title  = '基本情報技術者';
+            $Question_title  = '基本情報技術者';
 
           } else if($t_answer->ExamType == 'ap'){
             $subject_id       = 12;
-            $questions_title  = '応用情報技術者';
+            $Question_title  = '応用情報技術者';
 
           } else if($t_answer->ExamType == 'nw'){
             $subject_id       = 13;
-            $questions_title  = 'ネットワークスペシャリスト';
+            $Question_title  = 'ネットワークスペシャリスト';
 
           } else if($t_answer->ExamType == 'st'){
             $subject_id       = 14;
-            $questions_title  = 'ITストラテジスト';
+            $Question_title  = 'ITストラテジスト';
 
           } else if($t_answer->ExamType == 'sa'){
             $subject_id       = 15;
-            $questions_title  = 'システムアーキテクト';
+            $Question_title  = 'システムアーキテクト';
 
           } else if($t_answer->ExamType == 'sm'){
             $subject_id       = 16;
-            $questions_title  = 'ITサービスマネージャ';
+            $Question_title  = 'ITサービスマネージャ';
 
           } else if($t_answer->ExamType == 'sc'){
             $subject_id       = 17;
-            $questions_title  = '情報処理安全確保支援士';
+            $Question_title  = '情報処理安全確保支援士';
 
           } else if($t_answer->ExamType == 'pm'){
             $subject_id       = 18;
-            $questions_title  = 'プロジェクトマネージャ';
+            $Question_title  = 'プロジェクトマネージャ';
 
           } else if($t_answer->ExamType == 'db'){
             $subject_id       = 19;
-            $questions_title  = 'データベーススペシャリスト';
+            $Question_title  = 'データベーススペシャリスト';
 
           } else if($t_answer->ExamType == 'es'){
             $subject_id       = 20;
-            $questions_title  = 'エンベデッドシステムスペシャリスト';
+            $Question_title  = 'エンベデッドシステムスペシャリスト';
 
           } else if($t_answer->ExamType == 'au'){
             $subject_id       = 21;
-            $questions_title  = 'システム監査技術者';
+            $Question_title  = 'システム監査技術者';
 
           } else if($t_answer->ExamType == 'sg'){
             $subject_id       = 22;
-            $questions_title  = '情報セキュリティマネジメント';
+            $Question_title  = '情報セキュリティマネジメント';
 
           } else if($t_answer->ExamType == 'up'){
             $subject_id       = 23;
-            $questions_title  = '高度区分共通';
+            $Question_title  = '高度区分共通';
           }
 
-          $questions_title = '';
+          $Question_title = '';
 
           // 開催年 判定
           if($t_answer->Year == 'r2'){
-            $questions_title = '令和２年';
+            $Question_title = '令和２年';
 
           } else if($t_answer->Year == 'r1'){
-            $questions_title = '令和元年';
+            $Question_title = '令和元年';
 
           } else if($t_answer->Year == 'h31'){
-            $questions_title = '平成３１年';
+            $Question_title = '平成３１年';
 
           } else if($t_answer->Year == 'h30'){
-            $questions_title = '平成３０年';
+            $Question_title = '平成３０年';
 
           } else if($t_answer->Year == 'h29'){
-            $questions_title = '平成２９年';
+            $Question_title = '平成２９年';
 
           } else if($t_answer->Year == 'h28'){
-            $questions_title = '平成２８年';
+            $Question_title = '平成２８年';
 
           } else if($t_answer->Year == 'h27'){
-            $questions_title = '平成２７年';
+            $Question_title = '平成２７年';
           }
 
           // 季節判定
           if ($t_answer->Season == 1){
-            $questions_title .= '春期 ';
+            $Question_title .= '春期 ';
           } else if ($t_answer->Season == 2){
-            $questions_title .= '秋期 ';
+            $Question_title .= '秋期 ';
           }
 
           // 時間帯設定
           if ($t_answer->TimeZone == 'am'){
-            $questions_title .= '午前';
+            $Question_title .= '午前';
           } else if ($t_answer->TimeZone == 'am1'){
-            $questions_title .= '午前１';
+            $Question_title .= '午前１';
           } else if ($t_answer->TimeZone == 'am2'){
-            $questions_title .= '午前２';
+            $Question_title .= '午前２';
           }
 
-          $questions_title_id   =   99;
+          $Question_title_id   =   99;
 
-          if ($questions_title == '令和２年秋期 午前'){
-            $questions_title_id = 50;
-          } else if ($questions_title == '令和２年春期 午前'){
-            $questions_title_id = 48;
-          } else if ($questions_title == '令和２年春期 午前１'){
-            $questions_title_id = 481;
-          } else if ($questions_title == '令和２年春期 午前２'){
-            $questions_title_id = 482;
-          } else if ($questions_title == '令和元年秋期 午前'){
-            $questions_title_id = 46;
-          } else if ($questions_title == '令和元年秋期 午前１'){
-            $questions_title_id = 461;
-          } else if ($questions_title == '令和元年秋期 午前２'){
-            $questions_title_id = 462;
-          } else if ($questions_title == '平成３１年春期 午前'){
-            $questions_title_id = 44;
-          } else if ($questions_title == '平成３１年春期 午前１'){
-            $questions_title_id = 441;
-          } else if ($questions_title == '平成３１年春期 午前２'){
-            $questions_title_id = 442;
-          } else if ($questions_title == '平成３０年秋期 午前'){
-            $questions_title_id = 42;
-          } else if ($questions_title == '平成３０年秋期 午前１'){
-            $questions_title_id = 421;
-          } else if ($questions_title == '平成３０年秋期 午前２'){
-            $questions_title_id = 422;
-          } else if ($questions_title == '平成３０年春期 午前'){
-            $questions_title_id = 40;
-          } else if ($questions_title == '平成３０年春期 午前１'){
-            $questions_title_id = 401;
-          } else if ($questions_title == '平成３０年春期 午前２'){
-            $questions_title_id = 402;
-          } else if ($questions_title == '平成２９年秋期 午前'){
-            $questions_title_id = 38;
-          } else if ($questions_title == '平成２９年秋期 午前１'){
-            $questions_title_id = 381;
-          } else if ($questions_title == '平成２９年秋期 午前２'){
-            $questions_title_id = 382;
-          } else if ($questions_title == '平成２９年春期 午前'){
-            $questions_title_id = 36;
-          } else if ($questions_title == '平成２９年春期 午前１'){
-            $questions_title_id = 361;
-          } else if ($questions_title == '平成２９年春期 午前２'){
-            $questions_title_id = 362;
-          } else if ($questions_title == '平成２８年秋期 午前'){
-            $questions_title_id = 34;
-          } else if ($questions_title == '平成２８年秋期 午前１'){
-            $questions_title_id = 341;
-          } else if ($questions_title == '平成２８年秋期 午前２'){
-            $questions_title_id = 342;
-          } else if ($questions_title == '平成２８年春期 午前'){
-            $questions_title_id = 32;
-          } else if ($questions_title == '平成２８年春期 午前１'){
-            $questions_title_id = 321;
-          } else if ($questions_title == '平成２８年春期 午前２'){
-            $questions_title_id = 322;
-          } else if ($questions_title == '平成２７年秋期 午前'){
-            $questions_title_id = 30;
-          } else if ($questions_title == '平成２７年秋期 午前１'){
-            $questions_title_id = 301;
-          } else if ($questions_title == '平成２７年秋期 午前２'){
-            $questions_title_id = 302;
-          } else if ($questions_title == '平成２７年春期 午前'){
-            $questions_title_id = 28;
-          } else if ($questions_title == '平成２７年春期 午前１'){
-            $questions_title_id = 281;
-          } else if ($questions_title == '平成２７年春期 午前１'){
-            $questions_title_id = 282;
+          if ($Question_title == '令和２年秋期 午前'){
+            $Question_title_id = 50;
+          } else if ($Question_title == '令和２年春期 午前'){
+            $Question_title_id = 48;
+          } else if ($Question_title == '令和２年春期 午前１'){
+            $Question_title_id = 481;
+          } else if ($Question_title == '令和２年春期 午前２'){
+            $Question_title_id = 482;
+          } else if ($Question_title == '令和元年秋期 午前'){
+            $Question_title_id = 46;
+          } else if ($Question_title == '令和元年秋期 午前１'){
+            $Question_title_id = 461;
+          } else if ($Question_title == '令和元年秋期 午前２'){
+            $Question_title_id = 462;
+          } else if ($Question_title == '平成３１年春期 午前'){
+            $Question_title_id = 44;
+          } else if ($Question_title == '平成３１年春期 午前１'){
+            $Question_title_id = 441;
+          } else if ($Question_title == '平成３１年春期 午前２'){
+            $Question_title_id = 442;
+          } else if ($Question_title == '平成３０年秋期 午前'){
+            $Question_title_id = 42;
+          } else if ($Question_title == '平成３０年秋期 午前１'){
+            $Question_title_id = 421;
+          } else if ($Question_title == '平成３０年秋期 午前２'){
+            $Question_title_id = 422;
+          } else if ($Question_title == '平成３０年春期 午前'){
+            $Question_title_id = 40;
+          } else if ($Question_title == '平成３０年春期 午前１'){
+            $Question_title_id = 401;
+          } else if ($Question_title == '平成３０年春期 午前２'){
+            $Question_title_id = 402;
+          } else if ($Question_title == '平成２９年秋期 午前'){
+            $Question_title_id = 38;
+          } else if ($Question_title == '平成２９年秋期 午前１'){
+            $Question_title_id = 381;
+          } else if ($Question_title == '平成２９年秋期 午前２'){
+            $Question_title_id = 382;
+          } else if ($Question_title == '平成２９年春期 午前'){
+            $Question_title_id = 36;
+          } else if ($Question_title == '平成２９年春期 午前１'){
+            $Question_title_id = 361;
+          } else if ($Question_title == '平成２９年春期 午前２'){
+            $Question_title_id = 362;
+          } else if ($Question_title == '平成２８年秋期 午前'){
+            $Question_title_id = 34;
+          } else if ($Question_title == '平成２８年秋期 午前１'){
+            $Question_title_id = 341;
+          } else if ($Question_title == '平成２８年秋期 午前２'){
+            $Question_title_id = 342;
+          } else if ($Question_title == '平成２８年春期 午前'){
+            $Question_title_id = 32;
+          } else if ($Question_title == '平成２８年春期 午前１'){
+            $Question_title_id = 321;
+          } else if ($Question_title == '平成２８年春期 午前２'){
+            $Question_title_id = 322;
+          } else if ($Question_title == '平成２７年秋期 午前'){
+            $Question_title_id = 30;
+          } else if ($Question_title == '平成２７年秋期 午前１'){
+            $Question_title_id = 301;
+          } else if ($Question_title == '平成２７年秋期 午前２'){
+            $Question_title_id = 302;
+          } else if ($Question_title == '平成２７年春期 午前'){
+            $Question_title_id = 28;
+          } else if ($Question_title == '平成２７年春期 午前１'){
+            $Question_title_id = 281;
+          } else if ($Question_title == '平成２７年春期 午前１'){
+            $Question_title_id = 282;
           }
 
           // 問題番号
@@ -2057,8 +2057,8 @@ class KokushiController extends Controller
           $answer_sentence = new Answer_sentences();
           $answer_sentence->subject_name_id     = $subject_id;                                    // 科目ID
           $answer_sentence->subject_name        = KokushiController::getKanjiName($subject_id);   // 科目名
-          $answer_sentence->questions_title_id  = $questions_title_id;                            // 問題タイトルID
-          $answer_sentence->questions_title     = $questions_title;                               // 問題タイトル名
+          $answer_sentence->Question_title_id  = $Question_title_id;                            // 問題タイトルID
+          $answer_sentence->Question_title     = $Question_title;                               // 問題タイトル名
           $answer_sentence->question_number     = $question_number;                               // 問題番号
           $answer_sentence->sight_key           = 'origin';                                       // サイトキー
           $answer_sentence->created_at          = new Carbon('now');                              // 作成日時
