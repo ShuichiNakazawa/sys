@@ -14,8 +14,16 @@ class CreateUserReservationsTable extends Migration
     public function up()
     {
         Schema::create('user_reservations', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+            $table->bigIncrements('id');            // ID
+            $table->integer('user_id');             // ユーザID
+            $table->string('year');                 // 年
+            $table->string('month');                // 月
+            $table->string('day');                  // 日
+            $table->string('timezone');             // 時間
+            $table->string('minute');               // 分
+            $table->integer('status');              // 状態コード
+            $table->string('sight_key');            // サイトキー
+            $table->timestamps();                   // タイムスタンプ
         });
     }
 
