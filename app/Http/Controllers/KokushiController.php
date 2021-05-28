@@ -29,6 +29,8 @@ class KokushiController extends Controller
       // 科目リスト 取得
       $subject = '';
 
+      dd($fields);
+
       return view('kokushi.index')
               ->with([
                   'fields'    =>  [0,1,2,3,4,5],
