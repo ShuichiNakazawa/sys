@@ -14,8 +14,12 @@ class CreateDivisionsTable extends Migration
     public function up()
     {
         Schema::create('divisions', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+            Schema::create('divisions', function (Blueprint $table) {
+                $table->bigIncrements('id');                // ID
+                $table->integer('subject_name_id');         // 科目ID
+                $table->string('division');                 // 分野名
+                $table->string('sight_key');                // サイトキー
+                $table->timestamps();                       // タイムスタンプ
         });
     }
 
