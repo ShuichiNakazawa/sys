@@ -27,7 +27,7 @@
 
 <div class="card-body">
   <div class="card-body">
-    <h3>一問一答</h3>
+    <h3 class="txt_center">一問一答</h3>
   </div>
 	<div class="card-body question_sentence_outer">
 		<form action="{{ url('/' . $subject_short_name . '/practice_by_question/' . $question_sentence->subject_id . '/' . $question_sentence->questions_title_id . '/' . $question_sentence->question_number) }}">
