@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class QuestionsTitlesTableSeeder extends Seeder
+class QuestionTitlesTableSeeder extends Seeder
 {
 
     /**
