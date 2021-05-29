@@ -38,7 +38,7 @@
           @csrf
           @if ($logind == 1)
                 <input type="submit" class="btn-dark" value="挑戦履歴を見る">
-                <input type="hidden" name="subject_id" value="1">
+                <input type="hidden" name="subject_id" value="{{ $subject_id }}">
           @else
             <input type="submit" class="btn-dark" value="挑戦履歴を見る（ログインユーザ専用）" disabled="disabled">
           @endif
@@ -104,7 +104,7 @@
         @endforeach
       </table>
 
-      <input type="hidden" name="subject_id" value="1">
+      <input type="hidden" name="subject_id" value="{{ $subject_id }}">
       <input type="hidden" name="selected_answer" value="99">
     </form>
   </div>
