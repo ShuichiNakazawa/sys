@@ -79,70 +79,7 @@ class Question_titlesTableSeeder extends Seeder
                 'question_title' => '平成２７年度 春期',
                 'sight_key' => 'origin',
             ),
-            8 => 
-            array (
-                 
-                'subject_name_id' => '1',
-                'title_id'      =>      '0',
-                'question_title' => '平成３０年',
-                'sight_key' => 'sample',
-            ),
-            9 => 
-            array (
-                 
-                'subject_name_id' => '1',
-                'title_id'      =>      '0',
-                'question_title' => '平成２９年',
-                'sight_key' => 'sample',
-            ),
-            10 => 
-            array (
-                 
-                'subject_name_id' => '1',
-                'title_id'      =>      '0',
-                'question_title' => '平成２８年',
-                'sight_key' => 'sample',
-            ),
-            11 => 
-            array (
-                 
-                'subject_name_id' => '1',
-                'title_id'      =>      '0',
-                'question_title' => '平成２７年',
-                'sight_key' => 'sample',
-            ),
-            12 => 
-            array (
-                 
-                'subject_name_id' => '1',
-                'title_id'      =>      '0',
-                'question_title' => '平成２６年',
-                'sight_key' => 'sample',
-            ),
-            13 => 
-            array (
-                 
-                'subject_name_id' => '1',
-                'title_id'      =>      '0',
-                'question_title' => '平成２５年',
-                'sight_key' => 'sample',
-            ),
-            14 => 
-            array (
-                 
-                'subject_name_id' => '1',
-                'title_id'      =>      '0',
-                'question_title' => '令和元年',
-                'sight_key' => 'sample',
-            ),
-            15 => 
-            array (
-                 
-                'subject_name_id' => '1',
-                'title_id'      =>      '0',
-                'question_title' => '令和２年',
-                'sight_key' => 'sample',
-            ),
+
             16 => 
             array (
                  
