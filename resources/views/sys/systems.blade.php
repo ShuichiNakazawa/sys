@@ -32,9 +32,6 @@
           <a href="sample">Stripe クレジットカード決済サンプルページ</a>
           <br><br>
 
-          <a href="work_manager">作業予定表</a>
-          <br><br>
-
         </div>
         <br><br><br>
         @endsection
