@@ -21,7 +21,7 @@
   @endphp
   @foreach ($fields as $field)
     <div class="card-body subject_outer">
-      <div class="row">
+      <div>
         <h4 class="header_center ">{{ $field->field_name }}</h4>
       </div>
 
