@@ -4,7 +4,7 @@
   </head>
   <body>
     <button id="checkout-button">Checkout</button>
-
+    
     <script type="text/javascript">
       // Create an instance of the Stripe object with your publishable API key
       //var stripe = Stripe('pk_test_51IrwPCIGn1OXhDRnA1FggQtYdT4KUffGN31HTmM6TYvJY1GoBEOZbaB7aUM3Jb7NtzPwg97MmEjUOviW41GtCfF700627z9QoZ');
