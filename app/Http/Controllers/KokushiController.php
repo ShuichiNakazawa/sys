@@ -731,7 +731,7 @@ class KokushiController extends Controller
                                       ->where('sight_key', '=', 'origin')
                                       ->value('title_id');
 
-      dd($subject_id, $question_title);
+      dd($subject_id, $question_title, $question_title_id);
 
       // 問題文 取得
       $question_sentence        =       Question_sentences::where('subject_id', '=', $subject_id)
