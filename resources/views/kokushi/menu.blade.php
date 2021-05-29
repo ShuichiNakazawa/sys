@@ -84,7 +84,7 @@
         @foreach ($titles as $title)
           <tr>
             <td class="t_data">
-              <input type="submit" name="questions_title" value="{{ $title->question_title }}">
+              <input type="submit" name="question_title" value="{{ $title->question_title }}">
             </td>
             <td class="t_data">
               {{-- 試験挑戦数（試験情報テーブルから取得） --}}
