@@ -45,6 +45,7 @@
         </form>
       </div>
     </div>
+    <br><br>
 
     <h4 class="header_center">過去問に挑戦</h4>
 	{{-- アクションの引数：科目ID　　　タイトルIDもしくはタイトル名を渡す必要がある --}}
