@@ -11,7 +11,7 @@
 
 @include('common.errors')
 
-<div class="card-body">
+<div class="card">
   <div class="card-body">
     <h3 class="header_center">国試過去問</h3>
   </div>
@@ -20,12 +20,12 @@
     $count = 0;
   @endphp
   @foreach ($fields as $field)
-    <div class="card-body subject_outer">
+    <div class="card subject_outer">
       <div>
         <h4 class="header_center ">{{ $field->field_name }}</h4>
       </div>
 
-      <div class="row justify-content-center">
+      <div class="card-body row justify-content-center">
 
         {{--
           ここに、foreachを使って、テーブルに登録されている科目名（分野ごと）のリストを表示させる
