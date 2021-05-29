@@ -828,6 +828,15 @@ pre code {
   background-color: #f8f9fa;
 }
 
+.news_outer {
+  display: flex;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 15px;
+  background-color: #f8fafc;
+}
+
 .contuctForm {
   display: flex;
   margin: 0 auto;
