@@ -731,7 +731,7 @@ class KokushiController extends Controller
                                       ->where('sight_key', '=', 'origin')
                                       ->value('title_id');
 
-      //dd($subject_id, $question_title);
+      dd($subject_id, $question_title);
 
       // 問題文 取得
       $question_sentence        =       Question_sentences::where('subject_id', '=', $subject_id)
@@ -739,7 +739,7 @@ class KokushiController extends Controller
                                                 ->where('question_number', '=', 1)
                                                 ->first();
 
-      dd($question_sentence);
+      //dd($question_sentence);
 
       // 最終問題番号 取得 （下のコメントを流用）
       $question_last_number     =       Question_sentences::select('question_number')
