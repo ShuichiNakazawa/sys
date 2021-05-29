@@ -11,7 +11,7 @@
 
 @include('common.errors')
 
-<div class="card">
+<div class="card-body">
   <div class="card-body">
     <h3 class="header_center">国試過去問</h3>
   </div>
