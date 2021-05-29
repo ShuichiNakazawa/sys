@@ -18,7 +18,7 @@
 
 <div class="card-body">
   <div class="card-body">
-    <h3>{{ $subject_name }}</h3>
+    <h3 class="header_center">{{ $subject_name }}</h3>
   </div>
   {{--
   {{ Breadcrumbs::render('kokushi.nurse') }}
@@ -46,7 +46,7 @@
       </div>
     </div>
 
-    <h4>過去問に挑戦</h4>
+    <h4 class="header_center">過去問に挑戦</h4>
 	{{-- アクションの引数：科目ID　　　タイトルIDもしくはタイトル名を渡す必要がある --}}
     <form action="{{ action('KokushiController@startPractice', $subject_id) }}" method="post">
 	    @csrf
