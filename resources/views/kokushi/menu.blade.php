@@ -18,7 +18,7 @@
 
 <div class="card-body">
   <div class="card-body">
-    <h3>{{ $subject_name }}国試</h3>
+    <h3>{{ $subject_name }}</h3>
   </div>
   {{--
   {{ Breadcrumbs::render('kokushi.nurse') }}
