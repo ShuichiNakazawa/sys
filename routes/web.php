@@ -89,6 +89,8 @@ Route::get('/kokushi/{subject_id}', 'KokushiController@showMenu');
 // 国試 過去問スタート
 Route::post('/kokushi/{subject_id}', 'KokushiController@startPractice');
 
+Route::get('/kokushi/{subject_id}/practice_by_question/{title_id}/{question_number}', 'KokushiController@practiceByQuestion');
+
 /**
  * 認証機能
  */
