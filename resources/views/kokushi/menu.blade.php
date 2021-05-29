@@ -18,7 +18,7 @@
 
 <div class="card-body">
   <div class="card-body">
-    <h3 class="header_center">{{ $subject_name }}</h3>
+    <h3 class="header_center">{{ $subject_name }}過去問</h3>
   </div>
   {{--
   {{ Breadcrumbs::render('kokushi.nurse') }}
