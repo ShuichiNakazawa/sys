@@ -1008,6 +1008,7 @@ class KokushiController extends Controller
             // 正解としてビューを返す
             return view('kokushi.practice_by_question')
                         ->with([
+                              'subject_id'            =>      $subject_id,                // 科目ID
                               'question_sentence'     =>      $question_sentence,         // 問題文
                               'choice_sentences'      =>      $choice_sentences,          // 選択肢文
                               'subject_short_name'    =>      $subject_short_name,        // 科目名略称
@@ -1053,6 +1054,7 @@ class KokushiController extends Controller
 
             return view('kokushi.practice_by_question')
             ->with([
+                    'subject_id'            =>      $subject_id,
                     'question_sentence'     =>      $question_sentence,
                     'choice_sentences'      =>      $choice_sentences,
                     'subject_short_name'    =>      $subject_short_name,
@@ -1179,6 +1181,7 @@ class KokushiController extends Controller
 
           return view('kokushi.practice_by_question')
           ->with([
+                  'subject_id'            =>      $subject_id,                // 科目ID
                   'question_sentence'     =>      $question_sentence,         // 問題文
                   'choice_sentences'      =>      $choice_sentences,          // 選択肢文
                   'subject_short_name'    =>      $subject_short_name,        // 科目名略称
@@ -1201,6 +1204,7 @@ class KokushiController extends Controller
 
         return view('kokushi.practice_by_question')
                   ->with([
+                          'subject_id'            =>      $subject_id,                // 科目ID
                           'question_sentence'     =>      $question_sentence,
                           'choice_sentences'      =>      $choice_sentences,
                           'subject_short_name'    =>      $subject_short_name,
