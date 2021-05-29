@@ -20,7 +20,7 @@
     $count = 0;
   @endphp
   @foreach ($fields as $field)
-    <div class="subject_outer">
+    <div class="card subject_outer">
       <div class="card-header">
         <h4 class="header_center ">{{ $field->field_name }}</h4>
       </div>
