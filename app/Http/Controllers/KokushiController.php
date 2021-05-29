@@ -739,7 +739,7 @@ class KokushiController extends Controller
                                                 ->where('question_number', '=', 1)
                                                 ->first();
 
-      //dd($question_sentence);
+      dd($question_sentence);
 
       // 最終問題番号 取得 （下のコメントを流用）
       $question_last_number     =       Question_sentences::select('question_number')
@@ -778,13 +778,12 @@ class KokushiController extends Controller
 
       // ユーザーテーブルへ登録
 
-      
-
       // テスト形式 判別
       if ($request->testType == 1){
         return redirect('kokushi/' . $subject_id . '/practice_by_question/' . $question_title_id . '/1')
                   ->with([
                         'subject_id'            =>      $subject_id,
+                        'question_title_id'     =>      $question_title_id,
                         'question_sentence'     =>      $question_sentence,
                         'choice_sentences'      =>      $choice_sentences,
                         'subject_short_name'    =>      $subject_short_name,
@@ -792,7 +791,6 @@ class KokushiController extends Controller
                         'selected_answer'    	  =>    	'99',
                         'choice_characters'     =>      $choice_characters,
                  ]);
-
 
       } else if ($request->testType == 2){
         return redirect($subject_short_name . '/practice/' . $subject_id . '/' . $question_title_id . '/1')
@@ -863,14 +861,14 @@ class KokushiController extends Controller
 							->value('question_number');
 
       return view('kokushi.practice')
-		->with([
-			'question_sentence'	=>	$question_sentence,
-			'choice_sentences'	=>	$choice_sentences,
-			'subject_short_name'	=>	$subject_short_name,
-			'question_last_number'	=>	$question_last_number,
-			'choice_characters'	=>	$choice_characters,
-			'number_of_answers'	=>	$number_of_answers,
-		]);
+            		->with([
+                    'question_sentence'	=>	$question_sentence,
+                    'choice_sentences'	=>	$choice_sentences,
+                    'subject_short_name'	=>	$subject_short_name,
+                    'question_last_number'	=>	$question_last_number,
+                    'choice_characters'	=>	$choice_characters,
+                    'number_of_answers'	=>	$number_of_answers,
+      ]);
 
     }
 
