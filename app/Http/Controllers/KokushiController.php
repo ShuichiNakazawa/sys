@@ -782,7 +782,7 @@ class KokushiController extends Controller
 
       // テスト形式 判別
       if ($request->testType == 1){
-        return redirect($subject_short_name . '/practice_by_question/' . $subject_id . '/' . $question_title_id . '/1')
+        return redirect('kokushi/' . $subject_id . '/practice_by_question/' . $question_title_id . '/1')
                   ->with([
                         'question_sentence'     =>      $question_sentence,
                         'choice_sentences'      =>      $choice_sentences,
