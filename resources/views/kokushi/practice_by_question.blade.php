@@ -3,8 +3,11 @@
   datasources
   $question_sentence  問題文
 --}}
-@extends('layouts.app_no_cache')
 
+@extends('layouts.app')
+{{--
+@extends('layouts.app_no_cache')
+--}}
 @section('content')
 
 @if(session('message'))
