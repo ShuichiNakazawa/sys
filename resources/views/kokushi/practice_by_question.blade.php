@@ -30,7 +30,7 @@
     <h3 class="txt_center">一問一答</h3>
   </div>
 	<div class="card-body question_sentence_outer">
-		<form action="{{ url('kokushi/' . $question_sentence->subject_id . '/practice_by_question/'  . $question_sentence->question_title_id . '/' . $question_sentence->question_number) }}">
+		<form action="{{ url('kokushi/' . $subject_id . '/practice_by_question/'  . $question_sentence->question_title_id . '/' . $question_sentence->question_number) }}">
 			<p>{{ $question_sentence->subject_name }}&nbsp;&nbsp;{{ $question_sentence->question_title }}</p>
 
 			<p>問{{ $question_sentence->question_number }}</p>

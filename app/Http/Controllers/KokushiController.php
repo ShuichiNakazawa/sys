@@ -724,7 +724,7 @@ class KokushiController extends Controller
 
     public function startPractice(Request $request){
       $subject_id		      =	$request->subject_id;               // 科目ID
-      $question_title    = $request->question_title;          // タイトル名
+      $question_title     = $request->question_title;          // タイトル名
       $question_title_id	= Question_titles::select('title_id')
                                       ->where('subject_name_id', '=', $subject_id)
                                       ->where('question_title', '=', $question_title)
@@ -784,6 +784,7 @@ class KokushiController extends Controller
       if ($request->testType == 1){
         return redirect('kokushi/' . $subject_id . '/practice_by_question/' . $question_title_id . '/1')
                   ->with([
+                        'subject_id'            =>      $subject_id,
                         'question_sentence'     =>      $question_sentence,
                         'choice_sentences'      =>      $choice_sentences,
                         'subject_short_name'    =>      $subject_short_name,
@@ -796,6 +797,7 @@ class KokushiController extends Controller
       } else if ($request->testType == 2){
         return redirect($subject_short_name . '/practice/' . $subject_id . '/' . $question_title_id . '/1')
                   ->with([
+                        'subject_id'            =>      $subject_id,
                         'question_sentence'     =>      $question_sentence,
                         'choice_sentences'      =>      $choice_sentences,
                         'subject_short_name'    =>      $subject_short_name,
