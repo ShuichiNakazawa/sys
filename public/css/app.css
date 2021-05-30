@@ -1004,6 +1004,14 @@ pre code {
   text-align: center;
 }
 
+.card_product {
+  width: 180px;
+  margin: 5px;
+  border: solid 2px #aaa;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+}
+
 input[type="radio"]:checked + label {
     background-color: blue;
     color: white;
