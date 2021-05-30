@@ -142,7 +142,7 @@ class ReservationController extends Controller
                                             $query->where('year',       '=',    $year_firstDayOfWeek)
                                                     ->where('month',    '=',    $month_firstDayOfWeek)
                                                     ->where('day',      '>=',   $day_firstDayOfWeek);
-                                    })->where(function($query)
+                                    })->orwhere(function($query)
                                     use($year_lastDayOfWeek,
                                         $month_lastDayOfWeek,
                                         $day_lastDayOfWeek) {
