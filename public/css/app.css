@@ -1012,6 +1012,10 @@ pre code {
   border-radius: 5px;
 }
 
+.text_center {
+  text-align: center;
+}
+
 .bg_light {
   background-color: #f8f9fa;
 }

@@ -15,7 +15,7 @@
     <div style="margin:0 auto; width: 50%">
       <h2 style="text-align:center;">参考サイト</h2>
 
-	    <div class="card-header">
+	    <div class="card-header text_center">
         学習支援
       </div>
       <div class="card-body bg_light">
@@ -27,7 +27,7 @@
       </div>
       <br>
 
-      <div class="card-header">
+      <div class="card-header text_center">
         行政
       </div>
       <div class="card-body bg_light">
@@ -47,7 +47,7 @@
         <br><br>
       </div>
 
-      <div class="card-header">
+      <div class="card-header text_center">
         未分類
       </div>
       <div class="card-body bg_light">
