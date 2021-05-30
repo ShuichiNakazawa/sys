@@ -158,7 +158,13 @@ class ReservationController extends Controller
                                     //->get();
                                     ->count();
 
-                                    dd($reservations);
+                                    dd( $$year_firstDayOfWeek,
+                                        $month_firstDayOfWeek,
+                                        $day_firstDayOfWeek,
+                                        $year_lastDayOfWeek,
+                                        $month_lastDayOfWeek,
+                                        $day_lastDayOfWeek
+                                    );
                                 /*
             $reservations   =   Reservations::where('year', '=', $year)
                                 //->where('month', '=', $month)
