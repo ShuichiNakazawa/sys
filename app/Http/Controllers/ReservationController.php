@@ -39,7 +39,7 @@ class ReservationController extends Controller
              * 指定年月が存在しない場合
              */
             $target_date    =  Carbon::today();
-            dd($target_date);
+            //dd($target_date);
         }
 
         // 当日日付取得
@@ -48,7 +48,7 @@ class ReservationController extends Controller
 
         // 週初日
         $firstDayOfWeek            =   $target_date->startOfWeek();                     // 週初日 取得
-        //dd($firstDayOfWeek);
+        dd($firstDayOfWeek);
 
         $day_firstDayOfWeek        =   $target_date->startOfWeek()->format('d');        // 日（週初日） 取得
         $year_firstDayOfWeek       =   $target_date->startOfWeek()->format('Y');        // 年（週初日）  取得
