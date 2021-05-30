@@ -436,6 +436,16 @@ class ReservationController extends Controller
                 // フラッシュメッセージ 設定
                 session()->flash('message', '予約できました。');
 
+                dd($array_this_week_days,
+                    $array_hours,
+                    $array_minutes,
+                    $year,
+                    $month,
+                    $day_today,
+                    $numOfDaysElapsed,
+                    $user_reservations
+            );
+
                 return redirect('/')
                             ->with([
                                 'days'              =>  $array_this_week_days,      // 該当週の日付配列
