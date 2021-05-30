@@ -226,7 +226,8 @@ class ReservationController extends Controller
         // チケット情報 取得
         $ticket             =       auth()->user();
 
-        //dd($array_this_week_days,
+        /*
+        dd($array_this_week_days,
         $array_hours,
         $array_minutes,
         $reservations,
@@ -244,6 +245,8 @@ class ReservationController extends Controller
         $user_reservations,
         $ticket
 );
+
+        */
 
         return view('reservation.weekly')
                         ->with([
