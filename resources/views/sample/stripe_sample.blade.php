@@ -708,7 +708,7 @@
 			</div>
 			<hr>
 			<div class="row justify-content-center">
-				<input type="submit" value="購入画面へ">
+				<input type="submit" id="to_purchase" value="購入画面へ">
 			</div>
 		</form>
 		<br><br><br>
@@ -782,8 +782,17 @@
 
 					var total_price_with_comma	=			total_price;
 
+					// 「購入画面へ」ボタン 無効化
+					$('#to_purchase').prop("disabled", false);
+
+					// 商品未選択判定
+					if ( total_price == 0){
+
+						// 「購入画面へ」ボタン 無効化
+						$('#to_purchase').prop("disabled", true);
+
 					// 桁区切り 付加
-					if(999 < total_price){
+					} else if(999 < total_price){
 
 						var str_total_price	=			String(total_price);
 
