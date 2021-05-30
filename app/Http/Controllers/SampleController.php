@@ -244,7 +244,7 @@ class SampleController extends Controller
     // Stripe 決済後処理
     public function afterStripe() {
         return view('sample.stripe_sample')
-                    with([
+                    ->with([
                         'message'   =>  '決済が完了しました。';
                     ]);
 
