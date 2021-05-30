@@ -135,22 +135,27 @@ class ReservationController extends Controller
             //--------------------
 
             //dd($day_firstDayOfWeek, );
-            $reservations   =   Reservations::where(function($query) {
-                                $query->where('year',       '=',    $year_firstDayOfWeek)
-                                        ->where('month',    '=',    $month_firstDayOfWeek)
-                                        ->where('day',      '>=',   $day_firstDayOfWeek);
-                                })->where(function($query) {
-
-                                    $query->orwhere('year',     '=',    $year_lastDayOfWeek)
-                                            ->where('month',    '=',    $month_lastDayOfWeek)
-                                            ->where('day',      '<=',   $day_lastDayOfWeek);
-                                })
-                                ->orderby('timezone', 'asc')
-                                ->orderby('minute', 'asc')
-                                ->orderby('year', 'asc')
-                                ->orderby('month', 'asc')
-                                ->orderby('day', 'asc')
-                                ->get();
+            $reservations   =   Reservations::where(function($query)
+                                    use($year_firstDayOfWeek,
+                                        $month_firstDayOfWeek,
+                                        $day_firstDayOfWeek) {
+                                            $query->where('year',       '=',    $year_firstDayOfWeek)
+                                                    ->where('month',    '=',    $month_firstDayOfWeek)
+                                                    ->where('day',      '>=',   $day_firstDayOfWeek);
+                                    })->where(function($query)
+                                    use($year_lastDayOfWeek,
+                                        $month_lastDayOfWeek,
+                                        $day_lastDayOfWeek) {
+                                            $query->orwhere('year',     '=',    $year_lastDayOfWeek)
+                                                    ->where('month',    '=',    $month_lastDayOfWeek)
+                                                    ->where('day',      '<=',   $day_lastDayOfWeek);
+                                    })
+                                    ->orderby('timezone', 'asc')
+                                    ->orderby('minute', 'asc')
+                                    ->orderby('year', 'asc')
+                                    ->orderby('month', 'asc')
+                                    ->orderby('day', 'asc')
+                                    ->get();
 
                                 /*
             $reservations   =   Reservations::where('year', '=', $year)
