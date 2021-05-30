@@ -14,6 +14,7 @@
 
     <div style="margin:0 auto; width: 50%">
       <h2 style="text-align:center;">参考サイト</h2>
+      <br><br>
 
 	    <div class="card-header text_center">
         学習支援
@@ -25,7 +26,7 @@
         <a href="https://ping-t.com/">Ping-t</a>
         <br><br>
       </div>
-      <br>
+      <br><br>
 
       <div class="card-header text_center">
         行政
