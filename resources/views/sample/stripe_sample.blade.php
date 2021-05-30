@@ -118,7 +118,7 @@
 		<hr>
 
 		<div id="totalPrice" class="row justify-content-center">
-			合計金額：
+			合計金額：0円
 		</div>
 		<hr>
 
