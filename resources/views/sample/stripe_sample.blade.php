@@ -117,6 +117,10 @@
 		</div>
 		<hr>
 		<br>
+		<div id="totalPrice" class="row justify-content-center">
+			合計金額：
+		</div>
+		<hr>
 
 			{{--
 			<form action="{{ action('SampleController@beforeStripe') }}" method="POST">
@@ -702,10 +706,6 @@
 
 
 			<br>
-			<hr>
-			<div id="totalPrice" class="row justify-content-center">
-				合計金額：
-			</div>
 			<hr>
 			<div class="row justify-content-center">
 				<input type="submit" id="to_purchase" value="購入画面へ" disabled="disabled">
