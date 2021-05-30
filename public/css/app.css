@@ -1012,6 +1012,10 @@ pre code {
   border-radius: 5px;
 }
 
+.bg_light {
+  background-color: #f8f9fa;
+}
+
 input[type="radio"]:checked + label {
     background-color: blue;
     color: white;

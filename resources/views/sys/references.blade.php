@@ -18,7 +18,7 @@
 	    <div class="card-header">
         学習支援
       </div>
-      <div class="card-body">
+      <div class="card-body bg_light">
         <a href="https://www.crammedia.com/">CramMedia</a>
         <br><br>
 
