@@ -122,6 +122,12 @@
 		</div>
 		<hr>
 
+		@if(session('message'))
+		<div class="alert alert-success">
+			{{ session('message') }}
+		</div>
+		<hr>
+		@endif
 			{{--
 			<form action="{{ action('SampleController@beforeStripe') }}" method="POST">
 			--}}

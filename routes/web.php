@@ -38,7 +38,7 @@ Route::get('/stripe_sample', function() {
 Route::post('/stripe_sample', 'SampleController@beforeStripe');
 
 // Stripe 決済後処理
-Route::get('/reflect_pruchase_info', 'SampleController@agterStripe');
+Route::get('/reflect_pruchase_info', 'SampleController@afterStripe');
 
 /**
  * 予約

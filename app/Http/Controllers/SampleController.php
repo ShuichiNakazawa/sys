@@ -240,4 +240,13 @@ class SampleController extends Controller
 
         // 購入した商品
     }
+
+    // Stripe 決済後処理
+    public function afterStripe() {
+        return view('sample.stripe_sample')
+                    with([
+                        'message'   =>  '決済が完了しました。';
+                    ]);
+
+    }
 }
