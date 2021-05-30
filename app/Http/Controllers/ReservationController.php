@@ -83,7 +83,7 @@ class ReservationController extends Controller
 
         //dd($target_date);
         //$month          =   (integer)$target_date->format('m');
-        $month          =   (integer)$month_firstDayOfWeek->format'm');
+        $month          =   (integer)$month_firstDayOfWeek->format('m');
         $day_today      =   (integer)Carbon::today()->format('d');
 
         // 経過日数 算出
