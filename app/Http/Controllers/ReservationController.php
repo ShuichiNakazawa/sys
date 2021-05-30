@@ -115,8 +115,10 @@ class ReservationController extends Controller
                                 ->orderby('timezone', 'asc')
                                 ->orderby('minute', 'asc')
                                 ->orderby('day', 'asc')
-                                ->get();
-            dd($year, $work_month, $day_firstDayOfWeek, $day_lastDayOfWeek, $reservations);
+                                //->get();
+                                ->count();
+            dd($reservations);
+            //dd($year, $work_month, $day_firstDayOfWeek, $day_lastDayOfWeek, $reservations);
         } else {
             //--------------------
             // 月をまたいでいない場合
