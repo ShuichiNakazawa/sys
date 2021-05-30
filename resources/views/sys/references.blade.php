@@ -23,9 +23,9 @@
         <br><br>
 
         <a href="https://ping-t.com/">Ping-t</a>
-        <br><br><br>
+        <br><br>
       </div>
-      <br><br>
+      <br>
 
       <div class="card-header text_center">
         行政
@@ -44,7 +44,7 @@
         <br><br>
 
         <a href="https://www.ipa.go.jp/">IPA 独立行政法人 情報処理推進機構</a>
-        <br><br>
+        <br>
       </div>
       <br><br>
 
@@ -56,7 +56,7 @@
         <br><br>
 
         <a href="https://ja.softether.org/">SoftEther VPN プロジェクト</a>
-        <br><br><br>
+        <br>
       </div>
     </div>
 
