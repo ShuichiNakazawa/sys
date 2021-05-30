@@ -158,7 +158,8 @@ class ReservationController extends Controller
                                     //->get();
                                     ->count();
 
-                                    dd( $year_firstDayOfWeek,
+                                    dd($reservations);
+                                    //dd( $year_firstDayOfWeek,
                                         $month_firstDayOfWeek,
                                         $day_firstDayOfWeek,
                                         $year_lastDayOfWeek,
