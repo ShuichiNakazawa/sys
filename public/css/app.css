@@ -709,10 +709,12 @@ pre code {
 
 .cell_saturday {
   color: blue;
+  text-align: center;
 }
 
 .cell_sunday {
   color: red;
+  text-align: center;
 }
 
 .cell_day {
