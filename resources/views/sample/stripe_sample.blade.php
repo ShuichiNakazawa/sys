@@ -122,9 +122,9 @@
 		</div>
 		<hr>
 
-		@if(session('message'))
+		@if(session('flash_message'))
 		<div class="alert alert-success">
-			{{ session('message') }}
+			{{ session('flash_message') }}
 		</div>
 		<hr>
 		@endif
