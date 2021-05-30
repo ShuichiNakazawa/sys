@@ -31,7 +31,7 @@
   <br>
 
   <div>
-    <form action="{{ action('ReservationsController@showAcceptable') }}">  {{-- 年月をパラメータに含ませる --}}
+    <form action="{{ action('ReservationController@showAcceptable') }}">  {{-- 年月をパラメータに含ませる --}}
       @csrf
 
       表示年月&nbsp;&nbsp;&nbsp;
@@ -75,7 +75,7 @@
       </form>
     </div>
 
-    <form action="{{ action('ReservationsController@storeAcceptable') }}" method="POST">
+    <form action="{{ action('ReservationController@storeAcceptable') }}" method="POST">
       @csrf
 
   <div class="edit_acceptable_outer">
