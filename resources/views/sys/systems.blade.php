@@ -29,7 +29,7 @@
           問題集管理システム
           <br><br>
 
-          <a href="sample">Stripe クレジットカード決済サンプルページ</a>
+          <a href="stripe_sample">Stripe クレジットカード決済サンプルページ</a>
           <br><br>
 
         </div>

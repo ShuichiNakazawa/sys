@@ -11,30 +11,41 @@
 |
 */
 
+// TOP
 Route::get('/', function () {
     return view('sys.index');
 });
 
+// ご挨拶
 Route::get('/about', function () {
     return view('sys.about');
 });
 
+// システム
 Route::get('/systems', function () {
     return view('sys.systems');
 });
 
+Route::get('/stripe_sample', function() {
+    return view('sample.stripe_sample');
+});
+
+// 予約
 Route::get('/reservation', function () {
     return view('sys.reservation');
 });
 
+// 技術メモ
 Route::get('/memo', function () {
     return view('sys.memo');
 });
 
+// 問合せ
 Route::get('/inquiry', function () {
     return view('sys.inquiry');
 });
-    
+
+// 参考サイト
 Route::get('/references', function () {
     return view('sys.references');
 });
