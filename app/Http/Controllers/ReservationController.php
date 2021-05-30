@@ -42,7 +42,7 @@ class ReservationController extends Controller
             //dd($target_date);
         }
 
-        // 当日日付取得
+        // 該当日 日付取得
         $work_year                 =   $target_date->format('Y');
         $work_month                =   (integer)$target_date->format('m');
 
@@ -82,8 +82,8 @@ class ReservationController extends Controller
         $year           =   $target_date->format('Y');
 
         //dd($target_date);
-        //$month          =   (integer)$target_date->format('m');
-        $month          =   (integer)$month_firstDayOfWeek->format('m');
+        $month          =   (integer)$target_date->format('m');
+        //$month          =   (integer)$month_firstDayOfWeek->format('m');
         $day_today      =   (integer)Carbon::today()->format('d');
 
         // 経過日数 算出
@@ -105,10 +105,11 @@ class ReservationController extends Controller
             // 月をまたいでいる場合
             //--------------------
 
-            dd($day_firstDayOfWeek, );
+            //dd($day_firstDayOfWeek, );
 
             $reservations   =   Reservations::where('year', '=', $year)
-                                ->where('month', '=', $month)
+                                //->where('month', '=', $month)
+                                ->where('month', '=', $work_month)
                                 ->where('day', '>=', $day_firstDayOfWeek)
                                 ->where('day', '<=', $day_lastDayOfWeek)
                                 ->orderby('timezone', 'asc')
