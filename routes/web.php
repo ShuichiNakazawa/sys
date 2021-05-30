@@ -48,6 +48,29 @@ Route::get('/reservation', function () {
     return view('sys.reservation');
 });
 
+// 管理ページ
+
+// 管理トップ
+Route::get('/reservation/management/index', 'ReservationsController@showAcceptable');
+
+Route::get('/reservation/management', function () {
+    return view('reservation.management.index');
+});
+
+Route::get('/reservation/management/regist_holiday', function () {
+    return view('reservation.management.holiday');
+});
+
+Route::get('/reservation/management/edit_acceptable', function () {
+    return view('reservation.management.edit_acceptable');
+});
+
+Route::post('/reservation/management/edit_acceptable', 'ReservationsController@storeAcceptable');
+
+
+
+
+
 // 技術メモ
 Route::get('/memo', function () {
     return view('sys.memo');
