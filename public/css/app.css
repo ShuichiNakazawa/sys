@@ -636,6 +636,15 @@ pre code {
   background-color: #f8fafc;
 }
 
+.edit_acceptable_outer {
+  display: flex;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 15px;
+  background-color: #f8fafc;
+}
+
 .choice_chara {
     display: flex;
     flex-direction: row;
@@ -1018,6 +1027,14 @@ pre code {
 
 .bg_light {
   background-color: #f8f9fa;
+}
+
+.cell_saturday {
+  color: blue;
+}
+
+.cell_sunday {
+  color: red;
 }
 
 input[type="radio"]:checked + label {
