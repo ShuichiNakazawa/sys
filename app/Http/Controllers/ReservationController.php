@@ -27,7 +27,7 @@ class ReservationController extends Controller
         Carbon::setWeekStartsAt(Carbon::SUNDAY);                    // 週の最初を日曜日に設定
         Carbon::setWeekEndsAt(Carbon::SATURDAY);                    // 週の最後を土曜日に設定
 
-        dd($request->selected_month);
+        //dd($request->selected_month);
 
         // 指定年月 存在判定
         if(null !== $request->selected_month){
@@ -39,6 +39,7 @@ class ReservationController extends Controller
              * 指定年月が存在しない場合
              */
             $target_date    =  Carbon::today();
+            dd($target_date);
         }
 
         // 当日日付取得
