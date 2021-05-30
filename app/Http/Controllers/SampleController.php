@@ -244,7 +244,7 @@ class SampleController extends Controller
     // Stripe 決済後処理
     public function afterStripe() {
 
-        \Session::flash('flash_message', '投稿が完了しました');
+        \Session::flash('flash_message', '決済が完了しました');
 
         return view('sample.stripe_sample');
 
