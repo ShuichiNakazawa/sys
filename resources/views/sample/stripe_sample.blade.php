@@ -727,7 +727,7 @@
 /*
 				$('#quantity_15').change(function(){
 */
-					console.log('セレクトボックス変更判定');
+					//console.log('セレクトボックス変更判定');
 
 					var quantity_item1								=			Number($('#quantity_item1 option:selected').val());
 					var quantity_item2								=			Number($('#quantity_item2 option:selected').val());
@@ -745,6 +745,7 @@
 					var quantity_item14								=			Number($('#quantity_item14 option:selected').val());
 					var quantity_item15								=			Number($('#quantity_item15 option:selected').val());
 
+					/*
 					console.log('item1 数量：' + String(quantity_item1));
 					console.log('item2 数量：' + String(quantity_item2));
 					console.log('item3 数量：' + String(quantity_item3));
@@ -760,7 +761,7 @@
 					console.log('item13 数量：' + String(quantity_item13));
 					console.log('item14 数量：' + String(quantity_item14));
 					console.log('item15 数量：' + String(quantity_item15));
-
+					*/
 
 					var total_price	=
 										1800   			* 			Number(quantity_item1)
