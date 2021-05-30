@@ -98,25 +98,67 @@ class ReservationController extends Controller
 
         // 受付数テーブル読込
 
+        // 年またぎ判定
+        if ($year_firstDayOfWeek < $year_lastDayOfWeek){
+
+            //--------------------
+            // 年をまたいでいる場合
+            //--------------------
+            $reservations   =   Reservations::where(function($query) {
+                $query->where('year',       '=',    $year_firstDayOfWeek)
+                        ->where('month',    '=',    $month_firstDayOfWeek)
+                        ->where('day',      '>=',   $day_firstDayOfWeek)
+                })->where(function($query) {
+
+                    $query->orwhere('year',     '=',    $year_lastDayOfWeek)
+                            ->where('month',    '=',    $month_lastDayOfWeek)
+                            ->where('day',      '<=',   $day_lastDayOfWeek)
+                })
+                    ->orderby('timezone', 'asc')
+                    ->orderby('minute', 'asc')
+                    ->orderby('year', 'asc')
+                    ->orderby('month', 'asc')
+                    ->orderby('day', 'asc')
+                    ->get();
+                ;
+
         // 月またぎ判定
-        if($day_firstDayOfWeek > $day_lastDayOfWeek){
+        } else if($day_firstDayOfWeek > $day_lastDayOfWeek){
 
             //--------------------
             // 月をまたいでいる場合
             //--------------------
 
             //dd($day_firstDayOfWeek, );
+            $reservations   =   Reservations::where(function($query) {
+                                $query->where('year',       '=',    $year_firstDayOfWeek)
+                                        ->where('month',    '=',    $month_firstDayOfWeek)
+                                        ->where('day',      '>=',   $day_firstDayOfWeek)
+                                })->where(function($query) {
 
+                                    $query->orwhere('year',     '=',    $year_lastDayOfWeek)
+                                            ->where('month',    '=',    $month_lastDayOfWeek)
+                                            ->where('day',      '<=',   $day_lastDayOfWeek)
+                                })
+                                ->orderby('timezone', 'asc')
+                                ->orderby('minute', 'asc')
+                                ->orderby('year', 'asc')
+                                ->orderby('month', 'asc')
+                                ->orderby('day', 'asc')
+                                ->get();
+
+                                /*
             $reservations   =   Reservations::where('year', '=', $year)
                                 //->where('month', '=', $month)
                                 ->where('month', '=', $work_month)
                                 ->where('day', '>=', $day_firstDayOfWeek)
+
                                 ->where('day', '<=', $day_lastDayOfWeek)
                                 ->orderby('timezone', 'asc')
                                 ->orderby('minute', 'asc')
                                 ->orderby('day', 'asc')
-                                //->get();
-                                ->count();
+                                ->get();
+                                */
             //dd($reservations);
             dd($year, $work_month, $day_firstDayOfWeek, $day_lastDayOfWeek, $reservations);
         } else {
