@@ -105,7 +105,6 @@ class ReservationController extends Controller
                                 ->orderby('minute', 'asc')
                                 ->orderby('day', 'asc')
                                 ->get();
-        }
 
         } else {
             //--------------------
