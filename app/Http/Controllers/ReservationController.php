@@ -157,7 +157,7 @@ class ReservationController extends Controller
                                     ->orderby('day', 'asc')
                                     //->get();
                                     //->count();
-                                    ->toSQL();
+                                    ->toSql();
 
                                     var_dump($reservations);
                                     /*
