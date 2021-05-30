@@ -159,7 +159,7 @@ class ReservationController extends Controller
                                     //->count();
                                     //->toSql();
 
-                                    dd($reservations);
+                                    //dd($reservations);
                                     //var_dump($reservations);
                                     /*
                                     dd( $year_firstDayOfWeek,
