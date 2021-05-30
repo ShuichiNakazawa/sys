@@ -51,7 +51,7 @@ Route::get('/reservation', function () {
 // 管理ページ
 
 // 管理トップ
-Route::get('/reservation/management/index', 'ReservationsController@showAcceptable');
+Route::get('/reservation/management/index', 'ReservationController@showAcceptable');
 
 Route::get('/reservation/management', function () {
     return view('reservation.management.index');
@@ -65,7 +65,7 @@ Route::get('/reservation/management/edit_acceptable', function () {
     return view('reservation.management.edit_acceptable');
 });
 
-Route::post('/reservation/management/edit_acceptable', 'ReservationsController@storeAcceptable');
+Route::post('/reservation/management/edit_acceptable', 'ReservationController@storeAcceptable');
 
 
 
