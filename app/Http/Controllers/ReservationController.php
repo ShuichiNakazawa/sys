@@ -156,7 +156,8 @@ class ReservationController extends Controller
                                     ->orderby('month', 'asc')
                                     ->orderby('day', 'asc')
                                     //->get();
-                                    ->count();
+                                    //->count();
+                                    ->toSQL();
 
                                     dd($reservations);
                                     /*
