@@ -26,13 +26,24 @@ Route::get('/systems', function () {
     return view('sys.systems');
 });
 
+/**
+ * Stripe
+ **/
+// サンプルページ
 Route::get('/stripe_sample', function() {
     return view('sample.stripe_sample');
 });
 
+// Stripe 決済前処理
 Route::post('/stripe_sample', 'SampleController@beforeStripe');
 
-// 予約
+// Stripe 決済後処理
+Route::get('/reflect_pruchase_info', 'SampleController@agterStripe');
+
+/**
+ * 予約
+ */
+// TOP
 Route::get('/reservation', function () {
     return view('sys.reservation');
 });
@@ -53,7 +64,7 @@ Route::get('/references', function () {
 });
 
 /**
- * 予約昨日
+ * 予約機能
  */
 // 週別予約可能数情報 取得
 Route::get('/reservation', 'ReservationController@getAcceptable');
