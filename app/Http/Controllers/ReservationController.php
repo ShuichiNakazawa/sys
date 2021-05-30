@@ -226,6 +226,23 @@ class ReservationController extends Controller
         // チケット情報 取得
         $ticket             =       auth()->user();
 
+        dd($array_this_week_days,
+        $array_hours,
+        $array_minutes,
+        $work_year,
+        $work_month,
+        $work_day,
+
+        $now_year,
+        $now_month,
+        $now_day,
+        $now_hour,
+        $now_minute,
+        $numOfDaysElapsed,
+        $user_reservations,
+        $ticket
+);
+
         return view('reservation.weekly')
                         ->with([
                             'days'              =>  $array_this_week_days,      // 該当週の日付配列
@@ -436,15 +453,7 @@ class ReservationController extends Controller
                 // フラッシュメッセージ 設定
                 session()->flash('message', '予約できました。');
 
-                dd($array_this_week_days,
-                    $array_hours,
-                    $array_minutes,
-                    $year,
-                    $month,
-                    $day_today,
-                    $numOfDaysElapsed,
-                    $user_reservations
-            );
+
 
                 return redirect('/')
                             ->with([
