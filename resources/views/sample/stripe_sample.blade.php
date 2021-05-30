@@ -708,7 +708,7 @@
 			</div>
 			<hr>
 			<div class="row justify-content-center">
-				<input type="submit" id="to_purchase" value="購入画面へ">
+				<input type="submit" id="to_purchase" value="購入画面へ" disabled="disabled">
 			</div>
 		</form>
 		<br><br><br>
