@@ -204,8 +204,8 @@ class SampleController extends Controller
         // Secret API keyをセット
         \Stripe\Stripe::setApiKey("sk_test_51IrwPCIGn1OXhDRnsn4686SYweNTg3dMw91Ul9qcwoBhEsdMILD0rOP3LG5HO3UJcSzLR0g8qnpz2Jp1HPsRzeVg00yN4axhV2");
         $s  =   \Stripe\Checkout\Session::create([
-                        'success_url' => 'https://lara-assist.jp/sample/reflect_purchase_info',
-                        'cancel_url' => 'https://lara-assist.jp/sample/',
+                        'success_url' => 'https://lara-assist.appli-support.jp/sample/reflect_purchase_info',
+                        'cancel_url' => 'https://lara-assist.appli-support.jp/sample/',
                         'payment_method_types'  =>  ['card'],
                         'line_items'            =>  $array_product,
 
