@@ -116,7 +116,7 @@
 			<h3 style="text-align: center; vertical-align: middle;">Stripe サンプルページ</h3>
 		</div>
 		<hr>
-		<br>
+
 		<div id="totalPrice" class="row justify-content-center">
 			合計金額：
 		</div>
