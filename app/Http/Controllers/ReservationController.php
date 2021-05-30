@@ -229,6 +229,8 @@ class ReservationController extends Controller
         dd($array_this_week_days,
         $array_hours,
         $array_minutes,
+        $reservations,
+
         $work_year,
         $work_month,
         $work_day,
