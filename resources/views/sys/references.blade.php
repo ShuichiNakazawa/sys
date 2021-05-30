@@ -30,7 +30,7 @@
       <div class="card-header">
         行政
       </div>
-      <div class="card-body">
+      <div class="card-body bg_light">
         <a href="https://www.mext.go.jp/a_menu/shotou/zyouhou/detail/1403162.htm">小学校プログラミング教育の手引</a>
         <br><br>
 
@@ -50,7 +50,7 @@
       <div class="card-header">
         未分類
       </div>
-      <div class="card-body">
+      <div class="card-body bg_light">
         <a href="https://nadesi.com/top/">日本語プログラミング言語「なでしこ」</a>
         <br><br>
 
