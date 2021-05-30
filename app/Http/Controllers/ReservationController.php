@@ -822,7 +822,7 @@ class ReservationController extends Controller
             $array_insert =   array();
 
             // ループ（日付）
-            for($index_day = 1; $index_day < 32; $index_day++){
+            for($index_day = 1; $index_day < $last_day_month + 1; $index_day++){
                 // ループ（時間帯）
                 for($index_hour = 0; $index_hour < 10; $index_hour++){
 
