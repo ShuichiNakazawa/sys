@@ -245,7 +245,7 @@ class SampleController extends Controller
     public function afterStripe() {
         return view('sample.stripe_sample')
                     ->with([
-                        'message'   =>  '決済が完了しました。';
+                        'message'   =>  '決済が完了しました。',
                     ]);
 
     }
