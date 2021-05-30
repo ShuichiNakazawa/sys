@@ -54,7 +54,7 @@ class ReservationController extends Controller
         $year_firstDayOfWeek       =   $target_date->startOfWeek()->format('Y');        // 年（週初日）  取得
         $month_firstDayOfWeek      =   $target_date->startOfWeek()->format('m');        // 月（週初日）  取得
 
-        dd($month_firstDayOfWeek);
+        //dd($month_firstDayOfWeek);
 
         // 週末日
         $lastDayOfWeek             =   $target_date->endOfWeek();                       // 週末日 取得
@@ -81,8 +81,9 @@ class ReservationController extends Controller
         // 日時情報 取得
         $year           =   $target_date->format('Y');
 
-        dd($target_date);
-        $month          =   (integer)$target_date->format('m');
+        //dd($target_date);
+        //$month          =   (integer)$target_date->format('m');
+        $month          =   (integer)$month_firstDayOfWeek;
         $day_today      =   (integer)Carbon::today()->format('d');
 
         // 経過日数 算出
