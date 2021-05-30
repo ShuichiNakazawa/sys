@@ -107,12 +107,12 @@ class ReservationController extends Controller
             $reservations   =   Reservations::where(function($query) {
                 $query->where('year',       '=',    $year_firstDayOfWeek)
                         ->where('month',    '=',    $month_firstDayOfWeek)
-                        ->where('day',      '>=',   $day_firstDayOfWeek)
+                        ->where('day',      '>=',   $day_firstDayOfWeek);
                 })->where(function($query) {
 
                     $query->orwhere('year',     '=',    $year_lastDayOfWeek)
                             ->where('month',    '=',    $month_lastDayOfWeek)
-                            ->where('day',      '<=',   $day_lastDayOfWeek)
+                            ->where('day',      '<=',   $day_lastDayOfWeek);
                 })
                     ->orderby('timezone', 'asc')
                     ->orderby('minute', 'asc')
@@ -133,12 +133,12 @@ class ReservationController extends Controller
             $reservations   =   Reservations::where(function($query) {
                                 $query->where('year',       '=',    $year_firstDayOfWeek)
                                         ->where('month',    '=',    $month_firstDayOfWeek)
-                                        ->where('day',      '>=',   $day_firstDayOfWeek)
+                                        ->where('day',      '>=',   $day_firstDayOfWeek);
                                 })->where(function($query) {
 
                                     $query->orwhere('year',     '=',    $year_lastDayOfWeek)
                                             ->where('month',    '=',    $month_lastDayOfWeek)
-                                            ->where('day',      '<=',   $day_lastDayOfWeek)
+                                            ->where('day',      '<=',   $day_lastDayOfWeek);
                                 })
                                 ->orderby('timezone', 'asc')
                                 ->orderby('minute', 'asc')
