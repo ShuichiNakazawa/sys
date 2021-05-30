@@ -105,7 +105,7 @@ class ReservationController extends Controller
                                 ->orderby('minute', 'asc')
                                 ->orderby('day', 'asc')
                                 ->get();
-
+            dd($reservations);
         } else {
             //--------------------
             // 月をまたいでいない場合
