@@ -227,7 +227,7 @@
                       <td class="past_date">　</td>
                     @endif
                     @php
-                      $j++
+                      $j++;
                     @endphp
                   @endfor
 

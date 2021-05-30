@@ -38,7 +38,7 @@ class ReservationController extends Controller
             /**
              * 指定年月が存在しない場合
              */
-            $target_date    =  Carbon::today();
+            $target_date    =  Carbon::today()->subDays(10);
             //dd($target_date);
         }
 
