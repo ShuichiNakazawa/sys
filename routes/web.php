@@ -30,6 +30,8 @@ Route::get('/stripe_sample', function() {
     return view('sample.stripe_sample');
 });
 
+Route::post('/stripe_sample', 'SampleController@beforeStripe');
+
 // 予約
 Route::get('/reservation', function () {
     return view('sys.reservation');
