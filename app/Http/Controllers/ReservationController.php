@@ -104,23 +104,28 @@ class ReservationController extends Controller
             //--------------------
             // 年をまたいでいる場合
             //--------------------
-            $reservations   =   Reservations::where(function($query) {
-                $query->where('year',       '=',    $year_firstDayOfWeek)
-                        ->where('month',    '=',    $month_firstDayOfWeek)
-                        ->where('day',      '>=',   $day_firstDayOfWeek);
-                })->where(function($query) {
+            $reservations   =   Reservations::where(function($query)
+                use($year_firstDayOfWeek,
+                    $month_firstDayOfWeek,
+                    $day_firstDayOfWeek) {
+                        $query->where('year',       '=',    $year_firstDayOfWeek)
+                                ->where('month',    '=',    $month_firstDayOfWeek)
+                                ->where('day',      '>=',   $day_firstDayOfWeek);
+                        })->where(function($query)
+                        use($year_lastDayOfWeek,
+                            $month_lastDayOfWeek,
+                            $day_lastDayOfWeek) {
+                            $query->orwhere('year',     '=',    $year_lastDayOfWeek)
+                                    ->where('month',    '=',    $month_lastDayOfWeek)
+                                    ->where('day',      '<=',   $day_lastDayOfWeek);
+                        })
+                        ->orderby('timezone', 'asc')
+                        ->orderby('minute', 'asc')
+                        ->orderby('year', 'asc')
+                        ->orderby('month', 'asc')
+                        ->orderby('day', 'asc')
+                        ->get();
 
-                    $query->orwhere('year',     '=',    $year_lastDayOfWeek)
-                            ->where('month',    '=',    $month_lastDayOfWeek)
-                            ->where('day',      '<=',   $day_lastDayOfWeek);
-                })
-                    ->orderby('timezone', 'asc')
-                    ->orderby('minute', 'asc')
-                    ->orderby('year', 'asc')
-                    ->orderby('month', 'asc')
-                    ->orderby('day', 'asc')
-                    ->get();
-                ;
 
         // 月またぎ判定
         } else if($day_firstDayOfWeek > $day_lastDayOfWeek){
