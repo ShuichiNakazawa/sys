@@ -126,7 +126,6 @@
 			<div class="alert alert-success">
 				{{ session('flash_message') }}
 			</div>
-		<hr>
 		@endif
 			{{--
 			<form action="{{ action('SampleController@beforeStripe') }}" method="POST">
