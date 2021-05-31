@@ -30,7 +30,7 @@ class ReservationController extends Controller
         //dd($request->selected_month);
 
         // 指定年月 存在判定
-        if(null !== $request->selected_month){
+        if(null !== $request->selected_ymd){
 
             //リクエストから年月を取得
             $target_date    =   Carbon::today();
@@ -274,6 +274,9 @@ class ReservationController extends Controller
         $now_hour           =       Carbon::now()->format('H');
         $now_minute         =       Carbon::now()->format('i');
 
+        // 翌週初日年月日 取得
+        $next_week_ymd      =       $lastDayOfWeek->copy()->addDays(1);
+
         /*
         dd(
             $now_year,
@@ -332,6 +335,8 @@ class ReservationController extends Controller
                             'now_hour'          =>  $now_hour,                  // 現在時間
                             'now_minute'        =>  $now_minute,                // 現在分
 
+                            'next_week_ymd'    =>   $next_week_ymd,             // 翌週初日の年月日
+
                             'numOfDaysElapsed'  =>  $numOfDaysElapsed,          // 経過日数
                             'numOfThisWeekDays' =>  $numOfThisWeekDays,         // 該当週の当月日数
                             'numOfNextWeekDays' =>  $numOfNextWeekDays,         // 該当週の翌月日数
@@ -367,10 +372,10 @@ class ReservationController extends Controller
         $month_firstDayOfWeek      =   $target_date->startOfWeek()->format('m');        // 月（週初日）  取得
 
         // 週末日
-        $lastDayOfWeek             =   $target_date->endOfWeek();                       // 週末日 取得
-        $day_lastDayOfWeek         =   $target_date->endOfWeek()->format('d');          // 日（週末日） 取得
-        $year_lastDayOfWeek        =   $target_date->endOfWeek()->format('Y');          // 年（週末日） 取得
-        $month_lastDayOfWeek       =   $target_date->endOfWeek()->format('m');          // 月（週末日） 取得
+        $lastDayOfWeek             =   $target_date->copy()->endOfWeek();                       // 週末日 取得
+        $day_lastDayOfWeek         =   $target_date->copy()->endOfWeek()->format('d');          // 日（週末日） 取得
+        $year_lastDayOfWeek        =   $target_date->copy()->endOfWeek()->format('Y');          // 年（週末日） 取得
+        $month_lastDayOfWeek       =   $target_date->copy()->endOfWeek()->format('m');          // 月（週末日） 取得
 
         // 該当週の初日～週末日を配列へ格納
         $array_this_week_days   =   array();

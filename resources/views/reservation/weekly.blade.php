@@ -75,7 +75,11 @@
         <div style="display: inline;">
           --}}
           <td colspan="2">
-            <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;翌週へ</a>
+            <form action="{{ url('/reservation') }}">
+              <button>翌週へ</button>
+              <input type="hidden" name="selected_ymd" value="{{ $next_week_ymd }}">
+            </form>
+
           </td>
           {{--
           </div>
