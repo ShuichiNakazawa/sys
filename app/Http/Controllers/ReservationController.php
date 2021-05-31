@@ -208,11 +208,10 @@ class ReservationController extends Controller
             $day_lastDayOfMonth =   Carbon::create($year_firstDayOfWeek, $month_firstDayOfWeek, 1)->lastOfMonth();
 
             // 翌月日数 設定
-            // 月末日から週初日を引く、その数を７から引く
-            $numOfNextWeekDays  = 6 - ($day_lastDayOfMonth - $day_firstDayOfWeek);
+            $numOfNextWeekDays  = 0;
 
             // 当月日数 設定
-            $numOfThisWeekDays  =   7 - $numOfNextWeekDays;
+            $numOfThisWeekDays  =   7;
         }
 
         // ユーザ予約情報テーブル 取得
