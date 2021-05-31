@@ -47,6 +47,8 @@ class ReservationController extends Controller
 
         }
 
+        dd($target_date);
+
         // 文字列として保存
         $str_target_date    =   (string)$target_date->format('Y-m-d');
 
