@@ -51,13 +51,13 @@ Route::get('/reservation', function () {
 // 管理ページ
 
 // 管理トップ
-Route::get('/reservation/management', 'ReservationController@showAcceptable');
+//Route::get('/reservation/management', 'ReservationController@showAcceptable');
 
-/*
+
 Route::get('/reservation/management', function () {
     return view('reservation.management.index');
 });
-*/
+
 
 Route::get('/reservation/management/regist_holiday', function () {
     return view('reservation.management.holiday');
