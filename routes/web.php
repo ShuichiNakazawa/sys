@@ -92,7 +92,10 @@ Route::get('/references', function () {
  * 予約機能
  */
 // 週別予約可能数情報 取得
-Route::get('/reservation', 'ReservationController@getAcceptable');
+Route::get('/reservation', function () {
+    return view('reservation.management.index');
+
+//Route::get('/reservation', 'ReservationController@getAcceptable');
 
 // 予約
 Route::post('/reservation/{year}/{month}/{day}/{hour}/{minute}', 'ReservationController@storeReservationQuarter');
