@@ -117,7 +117,8 @@
                   {{-- 日付と時間帯に応じた予約可能数をテーブルから取得して設定したい --}}
 
                   @for ($i = 0; $i < 7; $i++)
-                    @if ($i >= $numOfDaysElapsed && $i < $numOfThisWeekDays)
+                    @if ($i >= $numOfDaysElapsed
+                     &&  $i < $numOfThisWeekDays)
 
                       {{-- ユーザが予約済かどうかを判定する必要がある。どう判定する？
                         年月日・時間帯が一致、分が一致。２０分単位を１データとして保存する事で、一致させられるように実装する？ --}}
