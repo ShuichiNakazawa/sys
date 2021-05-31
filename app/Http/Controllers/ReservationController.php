@@ -62,8 +62,8 @@ class ReservationController extends Controller
         //dd($firstDayOfWeek);
 
         $day_firstDayOfWeek        =   (integer)$target_date->copy()->startOfWeek()->format('d');   // 日（週初日）  取得
-        $year_firstDayOfWeek       =   $target_date->startOfWeek()->format('Y');                    // 年（週初日）  取得
-        $month_firstDayOfWeek      =   (integer)$target_date->startOfWeek()->format('m');           // 月（週初日）  取得
+        $year_firstDayOfWeek       =   $target_date->copy()->startOfWeek()->format('Y');                    // 年（週初日）  取得
+        $month_firstDayOfWeek      =   (integer)$target_date->copy()->startOfWeek()->format('m');           // 月（週初日）  取得
 
         //dd($month_firstDayOfWeek);
 
