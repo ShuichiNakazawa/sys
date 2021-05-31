@@ -879,7 +879,7 @@ class ReservationController extends Controller
                         if($index_day < 10){
                             $work_day = '0' . (string)$index_day;
                         } else {
-                            $work_day = (string)$index_day;
+                            $work_day = (integer)$index_day;
                         }
                         
 
