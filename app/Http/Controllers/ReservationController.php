@@ -34,6 +34,8 @@ class ReservationController extends Controller
 
             //リクエストから年月を取得
             $target_date    =   $request->selected_ymd;
+
+            dd($target_date);
         } else {
             /**
              * 指定年月が存在しない場合
