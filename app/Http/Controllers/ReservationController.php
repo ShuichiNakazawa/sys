@@ -33,7 +33,7 @@ class ReservationController extends Controller
         if(null !== $request->selected_ymd){
 
             //リクエストから年月を取得
-            $target_date    =   Carbon::today();
+            $target_date    =   $request->selected_ymd;
         } else {
             /**
              * 指定年月が存在しない場合
