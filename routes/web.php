@@ -45,7 +45,7 @@ Route::get('sample/reflect_purchase_info', 'SampleController@afterStripe');
  */
 // TOP
 Route::get('/reservation', function () {
-    return view('sys.reservation');
+    return view('reservation.weekly');
 });
 
 // 管理ページ
