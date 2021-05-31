@@ -291,7 +291,7 @@ class ReservationController extends Controller
         // 経過日数算出時に、翌月の日付を基準にしてしまっている可能性があり、-29が設定されている。
         //dd($numOfDaysElapsed, $numOfThisWeekDays);
 
-        dd($user_reservations);
+        //dd($user_reservations);
 
         return view('reservation.weekly')
                         ->with([
