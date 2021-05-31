@@ -99,7 +99,7 @@ class ReservationController extends Controller
         $numOfDaysElapsed   =   $day_today->diffInDays($firstDayOfWeek);
         //$numOfDaysElapsed   =   $day_today  -   $array_this_week_days[0];
 
-        dd($numOfDaysElapsed, $day_today, $firstDayOfWeek);
+        //dd($numOfDaysElapsed, $day_today, $firstDayOfWeek);
 
         // 営業時間後 判定
         if(21 < (integer)Carbon::now()->format('H')){
