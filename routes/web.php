@@ -43,12 +43,7 @@ Route::get('sample/reflect_purchase_info', 'SampleController@afterStripe');
 /**
  * 予約
  */
-// TOP
-/*
-Route::get('/reservation', function () {
-    return view('reservation.weekly');
-});
-*/
+
 
 // 管理ページ
 
@@ -58,21 +53,24 @@ Route::get('/reservation/management', function () {
     return view('reservation.management.index');
 });
 
-Route::get('/reservation/management/regist_holiday', function () {
-    return view('reservation.management.holiday');
-});
 
-Route::post('/reservation/management/edit_acceptable', 'ReservationController@showAcceptable');
 
+Route::post('/reservation/management', 'ReservationController@showAcceptable');
+
+/*
 Route::get('/reservation/management/edit_acceptable', function () {
     return view('reservation.management.edit_acceptable');
 });
-
-
+*/
 
 Route::post('/reservation/management/edit_acceptable', 'ReservationController@storeAcceptable');
 
 
+
+
+Route::get('/reservation/management/regist_holiday', function () {
+    return view('reservation.management.holiday');
+});
 
 
 
