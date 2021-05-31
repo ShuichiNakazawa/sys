@@ -92,11 +92,19 @@ class ReservationController extends Controller
 
         //dd($target_date);
         $month          =   (integer)$target_date->format('m');
+
         //$month          =   (integer)$month_firstDayOfWeek->format('m');
+
         $day_today      =   (integer)Carbon::today()->format('d');
 
         // 経過日数 算出
         $numOfDaysElapsed   =   $day_today  -   $array_this_week_days[0];
+
+        // 営業時間後 判定
+        if(21 < (integer)Carbon::now()->format('H')){
+            // 経過日数 加算
+            $numOfDaysElapsed++;
+        }
 
         // 月の第何週かを算出
         $numOfWeek = ReservationController::getWeekNum($str_target_date);
@@ -208,6 +216,7 @@ class ReservationController extends Controller
         $now_hour           =       Carbon::now()->format('H');
         $now_minute         =       Carbon::now()->format('i');
 
+        /*
         dd(
             $now_year,
             $now_month,
@@ -215,6 +224,7 @@ class ReservationController extends Controller
             $now_hour,
             $now_minute
         );
+        */
 
         // チケット情報 取得
         $ticket             =       auth()->user();

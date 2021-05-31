@@ -143,14 +143,16 @@
                         @if (
                               ($year              ==      $now_year
                           &&  $month              ==      $now_month
-                          &&  $days[$i]           ==      $now_day)
+                          &&  $days[$i]           ==      $now_day
+                          )
 
                           &&  (
-                              (integer)$hour      <       (integer)$now_hour
-
-                          ||  ((integer)$hour     ==      (integer)$now_hour
-                          &&  (integer)$minute    <       (integer)$now_minute)
-                              )
+                                (integer)$hour      <       (integer)$now_hour
+                            ||  (
+                                  (integer)$hour     ==      (integer)$now_hour
+                              &&  (integer)$minute    <      (integer)$now_minute
+                            )
+                          )
                         )
 
                           {{-- 現在時刻を過ぎた予約は非表示にする --}}
