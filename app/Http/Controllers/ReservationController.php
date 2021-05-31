@@ -876,12 +876,7 @@ class ReservationController extends Controller
                     // ループ（分）
                     for($index_minute = 0; $index_minute < 3; $index_minute++){
 
-                        if($index_day < 10){
-                            $work_day = '0' . (string)$index_day;
-                        } else {
-                            $work_day = (integer)$index_day;
-                        }
-                        
+                        $work_day = (integer)$index_day;
 
                         $array_insert[] =   array(
                                 "year"              =>  $year,                          // 年
