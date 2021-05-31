@@ -44,9 +44,11 @@ Route::get('sample/reflect_purchase_info', 'SampleController@afterStripe');
  * 予約
  */
 // TOP
+/*
 Route::get('/reservation', function () {
     return view('reservation.weekly');
 });
+*/
 
 // 管理ページ
 
@@ -97,7 +99,7 @@ Route::get('/reservation', function () {
 });
 */
 
-//Route::get('/reservation', 'ReservationController@getAcceptable');
+Route::get('/reservation', 'ReservationController@getAcceptable');
 
 // 予約
 Route::post('/reservation/{year}/{month}/{day}/{hour}/{minute}', 'ReservationController@storeReservationQuarter');
