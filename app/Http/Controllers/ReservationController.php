@@ -46,7 +46,7 @@ class ReservationController extends Controller
             }
         }
 
-        dd($target_date, (integer)Carbon::now()->format('H'));
+        //dd($target_date, (integer)Carbon::now()->format('H'));
 
         // 文字列として保存
         $str_target_date    =   (string)$target_date->format('Y-m-d');
