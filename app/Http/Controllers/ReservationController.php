@@ -106,7 +106,7 @@ class ReservationController extends Controller
             $numOfDaysElapsed++;
         }
 
-        $str_target_date    =   (string)$target_date->format('Y-m')
+        $str_target_date    =   (string)$target_date->format('Y-m');
 
         // 月の第何週かを算出
         $numOfWeek = ReservationController::getWeekNum($str_target_date);
