@@ -144,6 +144,11 @@ class ReservationController extends Controller
                         ->orderby('day', 'asc')
                         ->get();
 
+            // 翌月日数 設定
+            $numOfNextWeekDays  =   0;
+
+            // 当月日数 設定
+            $numOfThisWeekDays  =   7;
 
         // 月またぎ判定
         } else if($day_firstDayOfWeek > $day_lastDayOfWeek){
@@ -151,8 +156,6 @@ class ReservationController extends Controller
             //--------------------
             // 月をまたいでいる場合
             //--------------------
-
-            //dd($day_firstDayOfWeek, );
             $reservations   =   Reservations::where(function($query)
                                     use($year_firstDayOfWeek,
                                         $month_firstDayOfWeek,
@@ -175,6 +178,16 @@ class ReservationController extends Controller
                                     ->orderby('day', 'asc')
                                     ->get();
 
+            // 月末日 取得
+            $day_lastDayOfMonth =   Carbon::create($year_firstDayOfWeek, $month_firstDayOfWeek, 1)->lastOfMonth();
+
+            // 翌月日数 設定
+            // 月末日から週初日を引く、その数を７から引く
+            $numOfNextWeekDays  = 6 - ($day_lastDayOfMonth - $day_firstDayOfWeek);
+
+            // 当月日数 設定
+            $numOfThisWeekDays  =   7 - $numOfNextWeekDays;
+
         } else {
             //--------------------
             // 月をまたいでいない場合
@@ -187,6 +200,16 @@ class ReservationController extends Controller
                                 ->orderby('minute', 'asc')
                                 ->orderby('day', 'asc')
                                 ->get();
+
+            // 月末日 取得
+            $day_lastDayOfMonth =   Carbon::create($year_firstDayOfWeek, $month_firstDayOfWeek, 1)->lastOfMonth();
+
+            // 翌月日数 設定
+            // 月末日から週初日を引く、その数を７から引く
+            $numOfNextWeekDays  = 6 - ($day_lastDayOfMonth - $day_firstDayOfWeek);
+
+            // 当月日数 設定
+            $numOfThisWeekDays  =   7 - $numOfNextWeekDays;
         }
 
         // ユーザ予約情報テーブル 取得
@@ -268,6 +291,8 @@ class ReservationController extends Controller
                             'now_minute'        =>  $now_minute,                // 現在分
 
                             'numOfDaysElapsed'  =>  $numOfDaysElapsed,          // 経過日数
+                            'numOfThisWeekDays' =>  $numOfThisWeekDays,         // 該当週の当月日数
+                            'numOfNextWeekDays' =>  $numOfNextWeekDays,         // 該当週の翌月日数
                             'user_reservations' =>  $user_reservations,         // ユーザー予約情報
 
                             'ticket'            =>  $ticket,                    // チケット情報
