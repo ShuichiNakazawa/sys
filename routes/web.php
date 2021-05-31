@@ -55,13 +55,15 @@ Route::get('/reservation/management', function () {
 
 
 
-Route::post('/reservation/management', 'ReservationController@showAcceptable');
+//Route::post('/reservation/management', 'ReservationController@showAcceptable');
 
 /*
 Route::get('/reservation/management/edit_acceptable', function () {
     return view('reservation.management.edit_acceptable');
 });
 */
+
+Route::get('/reservation/management/edit_acceptable', 'ReservationController@showAcceptable');
 
 Route::post('/reservation/management/edit_acceptable', 'ReservationController@storeAcceptable');
 
