@@ -842,7 +842,7 @@ class ReservationController extends Controller
 
         // 入力項目 取得
         $year           =   $request->r_year;
-        $month          =   $request->r_month;
+        $month          =   (integer)$request->r_month;
         $last_day_month =   Carbon::create($year, $month, 1)->lastOfMonth()->format('d');
 
         // データ存在判定
