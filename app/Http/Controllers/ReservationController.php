@@ -59,25 +59,25 @@ class ReservationController extends Controller
         $work_month                =   (integer)$target_date->format('m');
 
         // 週初日
-        $firstDayOfWeek            =   $target_date->copy()->startOfWeek();                     // 週初日 取得
-        dd($firstDayOfWeek);
+        $firstDayOfWeek            =   $target_date->copy()->startOfWeek();                         // 週初日 取得
+        //dd($firstDayOfWeek);
 
-        $day_firstDayOfWeek        =   (integer)$target_date->startOfWeek()->format('d');        // 日（週初日） 取得
-        $year_firstDayOfWeek       =   $target_date->startOfWeek()->format('Y');        // 年（週初日）  取得
-        $month_firstDayOfWeek      =   (integer)$target_date->startOfWeek()->format('m');        // 月（週初日）  取得
+        $day_firstDayOfWeek        =   (integer)$target_date->copy()->startOfWeek()->format('d');   // 日（週初日）  取得
+        $year_firstDayOfWeek       =   $target_date->startOfWeek()->format('Y');                    // 年（週初日）  取得
+        $month_firstDayOfWeek      =   (integer)$target_date->startOfWeek()->format('m');           // 月（週初日）  取得
 
         //dd($month_firstDayOfWeek);
 
         // 週末日
-        $lastDayOfWeek             =   $target_date->endOfWeek();                       // 週末日 取得
-        $day_lastDayOfWeek         =   (integer)$target_date->endOfWeek()->format('d');          // 日（週末日） 取得
-        $year_lastDayOfWeek        =   $target_date->endOfWeek()->format('Y');          // 年（週末日） 取得
-        $month_lastDayOfWeek       =   (integer)$target_date->endOfWeek()->format('m');          // 月（週末日） 取得
+        $lastDayOfWeek             =   $target_date->copy()->endOfWeek();                       // 週末日 取得
+        $day_lastDayOfWeek         =   (integer)$target_date->copy()->endOfWeek()->format('d');          // 日（週末日） 取得
+        $year_lastDayOfWeek        =   $target_date->copy()->endOfWeek()->format('Y');          // 年（週末日） 取得
+        $month_lastDayOfWeek       =   (integer)$target_date->copy()->endOfWeek()->format('m');          // 月（週末日） 取得
 
         // 該当週の初日～週末日を配列へ格納
         $array_this_week_days   =   array();
 
-        $work_day   =   $target_date->startOfWeek();
+        $work_day   =   $target_date->copy()->startOfWeek();
         //dd($work_day, $firstDayOfWeek);
 
         for($index_week = 0; $index_week < 7; $index_week++){
