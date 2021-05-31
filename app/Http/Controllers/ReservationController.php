@@ -228,7 +228,10 @@ class ReservationController extends Controller
             $numOfThisWeekDays  =   7;
         }
 
-        // ユーザ予約情報テーブル 取得
+        //
+        dd($work_year, $work_month, $day_firstDayOfWeek, $day_lastDayOfWeek);
+
+        // ユーザ予約情報テーブル 取得（翌月・翌年対応が必要）
         $user_reservations  =   User_reservations::where('user_id', '=', Auth::user()->id)
                             ->where('year', '=', $work_year)                    // 年
                             ->where('month', '=', $work_month)                  // 月
