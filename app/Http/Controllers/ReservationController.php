@@ -94,8 +94,13 @@ class ReservationController extends Controller
         // 当日 カーボン取得
         $day_today      =   Carbon::today();
 
-        // 経過日数 算出
+        // 経過日数 算出()
         $numOfDaysElapsed   =   $day_today->diffInDays($firstDayOfWeek);
+
+        if($day_today < $firstDayOfWeek){
+            $numOfDaysElapsed *= -1;
+        }
+
         //$numOfDaysElapsed   =   $day_today  -   $array_this_week_days[0];
 
         //dd($numOfDaysElapsed, $day_today, $firstDayOfWeek);
