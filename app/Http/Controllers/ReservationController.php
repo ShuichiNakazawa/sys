@@ -158,6 +158,7 @@ class ReservationController extends Controller
 
             //--------------------
             // 月をまたいでいる場合
+            // またいでる・いないの判定だけでなく、対象年月日が前月側か翌月側かの判定も必要。第何週かの判定は正しく第１週と表示されている。
             //--------------------
             $reservations   =   Reservations::where(function($query)
                                     use($year_firstDayOfWeek,
@@ -181,15 +182,28 @@ class ReservationController extends Controller
                                     ->orderby('day', 'asc')
                                     ->get();
 
-            // 月末日 取得
-            $day_lastDayOfMonth =   (integer)Carbon::create($year_firstDayOfWeek, $month_firstDayOfWeek, 1)->lastOfMonth()->format('d');
+            // 対象年月日 前月・翌月判定
+            // 対象月が週初日の月と一致するか否か
+            if($work_month == $month_firstDayOfWeek){
+                // 月末日 取得
+                $day_lastDayOfMonth =   (integer)Carbon::create($year_firstDayOfWeek, $month_firstDayOfWeek, 1)->lastOfMonth()->format('d');
 
-            // 翌月日数 設定
-            // 月末日から週初日を引く、その数を７から引く
-            $numOfNextWeekDays  = 6 - ($day_lastDayOfMonth - $day_firstDayOfWeek);
+                // 翌月日数 設定
+                // 月末日から週初日を引く、その数を７から引く
+                $numOfNextWeekDays  = 6 - ($day_lastDayOfMonth - $day_firstDayOfWeek);
 
-            // 当月日数 設定
-            $numOfThisWeekDays  =   7 - $numOfNextWeekDays;
+                // 当月日数 設定
+                $numOfThisWeekDays  =   7 - $numOfNextWeekDays;
+            } else {
+
+                // 翌月日数 設定
+                $numOfNextWeekDays  =   0;
+
+                // 当月日数 設定
+                $numOfThisWeekDays  =   7;
+            }
+            
+
 
         } else {
             //--------------------
