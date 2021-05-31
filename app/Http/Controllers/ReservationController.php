@@ -195,8 +195,8 @@ class ReservationController extends Controller
             //--------------------
             // 月をまたいでいない場合
             //--------------------
-            $reservations   =   Reservations::where('year', '=', $year)
-                                ->where('month', '=', $month)
+            $reservations   =   Reservations::where('year', '=', $year_firstDayOfWeek)
+                                ->where('month', '=', $month_firstDayOfWeek)
                                 ->where('day', '>=', $day_firstDayOfWeek)
                                 ->where('day', '<=', $day_lastDayOfWeek)
                                 ->orderby('timezone', 'asc')
