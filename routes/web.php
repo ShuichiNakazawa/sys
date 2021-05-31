@@ -93,7 +93,7 @@ Route::get('/references', function () {
  */
 // 週別予約可能数情報 取得
 Route::get('/reservation', function () {
-    return view('reservation.management.index')
+    return view('reservation.management.index');
 });
 
 //Route::get('/reservation', 'ReservationController@getAcceptable');
