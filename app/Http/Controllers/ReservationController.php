@@ -231,17 +231,35 @@ class ReservationController extends Controller
         //
         dd($work_year, $work_month, $day_firstDayOfWeek, $day_lastDayOfWeek);
 
-        // ユーザ予約情報テーブル 取得（翌月・翌年対応が必要）
-        $user_reservations  =   User_reservations::where('user_id', '=', Auth::user()->id)
-                            ->where('year', '=', $work_year)                    // 年
-                            ->where('month', '=', $work_month)                  // 月
-                            ->where('day', '>=', $day_firstDayOfWeek)           // 日付
-                            ->where('day', '<=', $day_lastDayOfWeek)            //
-                            ->where('status', '=', 0)                           // 状態コード（予約済）
-                            ->orderby('timezone', 'asc')
-                            ->orderby('minute', 'asc')
-                            ->orderby('day', 'asc')
-                            ->get();
+        //day_firstDayOfWeekではなく、該当月の初日
+
+        // 年・月をまたいでいる・いないで検索条件が異なる
+        if($work_month == $month_firstDayOfWeek){
+            // ユーザ予約情報テーブル 取得（翌月・翌年対応が必要）
+            $user_reservations  =   User_reservations::where('user_id', '=', Auth::user()->id)
+                                            ->where('year', '=', $work_year)                    // 年
+                                            ->where('month', '=', $work_month)                  // 月
+                                            ->where('day', '>=', $day_firstDayOfWeek)           // 日付
+                                            ->where('day', '<=', $day_lastDayOfWeek)            //
+                                            ->where('status', '=', 0)                           // 状態コード（予約済）
+                                            ->orderby('timezone', 'asc')
+                                            ->orderby('minute', 'asc')
+                                            ->orderby('day', 'asc')
+                                            ->get();
+        } else {
+            $user_reservations  =   User_reservations::where('user_id', '=', Auth::user()->id)
+                                            ->where('year', '=', $work_year)                    // 年
+                                            ->where('month', '=', $work_month)                  // 月
+                                            ->where('day', '>=', 1)                             // 日付
+                                            ->where('day', '<=', $day_lastDayOfWeek)            //
+                                            ->where('status', '=', 0)                           // 状態コード（予約済）
+                                            ->orderby('timezone', 'asc')
+                                            ->orderby('minute', 'asc')
+                                            ->orderby('day', 'asc')
+                                            ->get();
+        }
+
+
 
         //dd($reservations);
 
