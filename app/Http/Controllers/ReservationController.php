@@ -38,10 +38,12 @@ class ReservationController extends Controller
             /**
              * 指定年月が存在しない場合
              */
-            //$target_date    =  Carbon::today()->subDays(10);
             $target_date    =  Carbon::today();
-            //dd($target_date);
+
         }
+
+        // 文字列として保存
+        $str_target_date    =   (string)$target_date->format('Y-m-d');
 
         // 該当日 日付取得
         $work_year                 =   $target_date->format('Y');
@@ -89,6 +91,9 @@ class ReservationController extends Controller
 
         // 経過日数 算出
         $numOfDaysElapsed   =   $day_today  -   $array_this_week_days[0];
+
+        // 月の第何週かを算出
+        $numOfWeek = getWeekNum($str_target_date);
 
         //dd($year, $month);
 
@@ -157,34 +162,7 @@ class ReservationController extends Controller
                                     ->orderby('month', 'asc')
                                     ->orderby('day', 'asc')
                                     ->get();
-                                    //->count();
-                                    //->toSql();
 
-                                    //dd($reservations);
-                                    //var_dump($reservations);
-                                    /*
-                                    dd( $year_firstDayOfWeek,
-                                        $month_firstDayOfWeek,
-                                        $day_firstDayOfWeek,
-                                        $year_lastDayOfWeek,
-                                        $month_lastDayOfWeek,
-                                        $day_lastDayOfWeek
-                                    );
-                                    */
-                                /*
-            $reservations   =   Reservations::where('year', '=', $year)
-                                //->where('month', '=', $month)
-                                ->where('month', '=', $work_month)
-                                ->where('day', '>=', $day_firstDayOfWeek)
-
-                                ->where('day', '<=', $day_lastDayOfWeek)
-                                ->orderby('timezone', 'asc')
-                                ->orderby('minute', 'asc')
-                                ->orderby('day', 'asc')
-                                ->get();
-                                */
-            //dd($reservations);
-            //dd($year, $work_month, $day_firstDayOfWeek, $day_lastDayOfWeek, $reservations);
         } else {
             //--------------------
             // 月をまたいでいない場合
@@ -259,6 +237,7 @@ class ReservationController extends Controller
                             'year'              =>  $work_year,                 // 該当日 年
                             'month'             =>  $work_month,                // 該当日 月
                             'today'             =>  $work_day,                  // 該当日 日(カーボン使用で日付が変動している)
+                            'numOfWeek'         =>  $numOfWeek,                 // 該当日 月内の第何週か
 
                             'now_year'          =>  $now_year,                  // 現在年
                             'now_month'         =>  $now_month,                 // 現在月
@@ -925,5 +904,13 @@ class ReservationController extends Controller
 
     public function showInquiry(){
         return view('reservation.inquiry');
+    }
+
+    /**
+     * 日付からその月の第何週かを算出する
+     */
+    public function getWeekNum($date) {
+        $time = strtotime($date);
+        return 1 + date('W', $time + 86400) - date('W', strtotime(date('Y-m', $time)) + 86400);
     }
 }

@@ -68,7 +68,7 @@
         <div style="display: inline; text-align: center; font-size: 20px">
           --}}
           <td colspan="5" style="font-size: 20px;">
-          {{ $year }}年{{ $month }}月
+          {{ $year }}年{{ $month }}月 第{{ $numOfWeek }}週
           </td>
           {{--
         </div>
