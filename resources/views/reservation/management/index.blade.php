@@ -19,7 +19,7 @@
   </a>
   <br>
 
-  <form action="{{ action('ReservationsController@showAcceptable') }}">
+  <form action="{{ action('ReservationsController@showAcceptable') method="POST"}}">
     @csrf
 
     <input type="submit" value="予約可能数 設定">
