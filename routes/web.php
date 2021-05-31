@@ -97,6 +97,8 @@ Route::get('/reservation', 'ReservationController@getAcceptable');
 // 予約
 Route::post('/reservation/{year}/{month}/{day}/{hour}/{minute}', 'ReservationController@storeReservationQuarter');
 
+
+
 // 保有チケット確認
 Route::get('/reservation/confirm_tickets/{user_id}', 'ReservationController@getTickets_info');
 

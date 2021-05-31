@@ -506,7 +506,7 @@ class ReservationController extends Controller
 
 
 
-                return redirect('/')
+                return redirect('/reservation')
                             ->with([
                                 'days'              =>  $array_this_week_days,      // 該当週の日付配列
                                 'hours'             =>  $array_hours,               // 配列 時間帯
@@ -525,7 +525,7 @@ class ReservationController extends Controller
                 session()->flash('error_message', '15分チケットが無い為、予約できませんでした。');
 
                 // 予約処理中断
-                return redirect('/')
+                return redirect('/reservation')
                         ->with([
                             'days'              =>  $array_this_week_days,      // 該当週の日付配列
                             'hours'             =>  $array_hours,               // 配列 時間帯
