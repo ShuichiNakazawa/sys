@@ -47,7 +47,7 @@ class ReservationController extends Controller
         }
 
         // テスト用の暫定日付
-        $target_date    =   Carbon::today()->subDays(2);
+        $target_date    =   Carbon::today()->subDays(3);
 
         //dd($target_date, (integer)Carbon::now()->format('H'));
 
