@@ -179,7 +179,7 @@ class ReservationController extends Controller
                                     ->get();
 
             // 月末日 取得
-            $day_lastDayOfMonth =   Carbon::create($year_firstDayOfWeek, $month_firstDayOfWeek, 1)->lastOfMonth();
+            $day_lastDayOfMonth =   (integer)Carbon::create($year_firstDayOfWeek, $month_firstDayOfWeek, 1)->lastOfMonth()->format('d');
 
             // 翌月日数 設定
             // 月末日から週初日を引く、その数を７から引く
