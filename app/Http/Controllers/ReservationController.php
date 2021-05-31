@@ -106,7 +106,7 @@ class ReservationController extends Controller
             $numOfDaysElapsed++;
         }
 
-        $str_target_date    =   (string)$target_date->format('Y-m');
+        $str_target_date    =   (string)$target_date->format('Y-m-d');
 
         dd($str_target_date);
 
