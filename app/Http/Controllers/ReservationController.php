@@ -271,6 +271,8 @@ class ReservationController extends Controller
 );
 
         */
+        dd($numOfDaysElapsed, $numOfThisWeekDays);
+
 
         return view('reservation.weekly')
                         ->with([
