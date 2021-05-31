@@ -46,6 +46,9 @@ class ReservationController extends Controller
             }
         }
 
+        // テスト用の暫定日付
+        $target_date    =   Carbon::today()->subDays(1);
+
         //dd($target_date, (integer)Carbon::now()->format('H'));
 
         // 文字列として保存
@@ -87,14 +90,9 @@ class ReservationController extends Controller
 
         $array_minutes  =   ['00', '20', '40'];
 
-        // 日時情報 取得
-        $year           =   $target_date->format('Y');
-
-        //dd($target_date);
-        $month          =   (integer)$target_date->format('m');
-
         //$month          =   (integer)$month_firstDayOfWeek->format('m');
 
+        // 当日日付 取得
         $day_today      =   (integer)Carbon::today()->format('d');
 
         // 経過日数 算出
@@ -554,8 +552,6 @@ class ReservationController extends Controller
                         'user'  =>  $user,
                     ]);
     }
-    
-
 
     // 予約一覧確認 画面遷移前処理
     public function getReservation_info() {
