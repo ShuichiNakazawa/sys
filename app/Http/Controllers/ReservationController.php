@@ -208,6 +208,14 @@ class ReservationController extends Controller
         $now_hour           =       Carbon::now()->format('H');
         $now_minute         =       Carbon::now()->format('i');
 
+        dd(
+            $now_year,
+            $now_month,
+            $now_day,
+            $now_hour,
+            $now_minute
+        );
+
         // チケット情報 取得
         $ticket             =       auth()->user();
 

@@ -139,28 +139,7 @@
                         @endforeach
 
                         {{-- 時間・分・日付の順に並んでいる。年月も含めて一致判定 --}}
-                        {{-- 判定対象とするデータはどれか。 --}}
-                        {{--
-                              $year       // 対象年
-                              $month      // 対象月
 
-                              $now_year   // 当日年
-                              $now_month  // 当日月
-                              $now_day    // 当日日付
-
-                          --}}
-{{--
-                        <td>現在年：{{ $now_year}}, データの年：{{ $year }}<br>
-                          <td>現在月：{{ $now_month }}, データ月：{{ $month }}<br>
-                            <td>現在日：{{ $now_day }}, データ日：{{ $days[$i] }}</td>
-
-                          </td>
-
-                        </td>
-
-                        <td>現在時：{{ $now_hour }}, データの時：{{ $hour }}<br>
-                        現在分：{{ $now_minute }}, データの分：{{ $minute }}</td>
---}}
                         @if (
                               ($year              ==      $now_year
                           &&  $month              ==      $now_month
@@ -168,6 +147,7 @@
 
                           &&  (
                               (integer)$hour      <       (integer)$now_hour
+
                           ||  ((integer)$hour     ==      (integer)$now_hour
                           &&  (integer)$minute    <       (integer)$now_minute)
                               )
