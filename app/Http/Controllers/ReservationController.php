@@ -40,6 +40,11 @@ class ReservationController extends Controller
              */
             $target_date    =  Carbon::today();
 
+            // 営業時間 終了後判定
+            if(21 < (integer)today()->format('H')){
+                $target_date    =  Carbon::today()->addDays(1);
+            }
+
         }
 
         // 文字列として保存
