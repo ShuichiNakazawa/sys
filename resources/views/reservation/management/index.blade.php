@@ -14,12 +14,12 @@
 <div class="card-body">
   <h4>予約システム 管理メニュー</h4>
 
-  <a href="{{ url('/management/regist_holiday') }}">
+  <a href="{{ url('/reservation/management/regist_holiday') }}">
     祝日登録
   </a>
   <br>
 
-  <form action="{{ url('/management/edit_acceptable') }}">
+  <form action="{{ url('/reservation/management/edit_acceptable') }}">
     @csrf
 
     <input type="submit" value="予約可能数 設定">
