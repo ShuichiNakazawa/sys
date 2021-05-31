@@ -113,7 +113,7 @@ class ReservationController extends Controller
         // 月の第何週かを算出
         $numOfWeek = ReservationController::getWeekNum($str_target_date);
 
-        dd($numOfWeek, $str_target_date);
+        //dd($numOfWeek, $str_target_date);
 
         //dd($year, $month);
 
