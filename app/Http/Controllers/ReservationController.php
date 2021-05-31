@@ -92,11 +92,14 @@ class ReservationController extends Controller
 
         //$month          =   (integer)$month_firstDayOfWeek->format('m');
 
-        // 当日日付 取得
-        $day_today      =   (integer)Carbon::today()->format('d');
+        // 当日 カーボン取得
+        $day_today      =   (integer)Carbon::today();
 
         // 経過日数 算出
-        $numOfDaysElapsed   =   $day_today  -   $array_this_week_days[0];
+        $numOfDaysElapsed   =   $day_today->diffInDays($firstDayOfWeek);
+        //$numOfDaysElapsed   =   $day_today  -   $array_this_week_days[0];
+
+        dd($numOfDaysElapsed);
 
         // 営業時間後 判定
         if(21 < (integer)Carbon::now()->format('H')){
@@ -271,6 +274,8 @@ class ReservationController extends Controller
 );
 
         */
+
+        // 経過日数算出時に、翌月の日付を基準にしてしまっている可能性があり、-29が設定されている。
         dd($numOfDaysElapsed, $numOfThisWeekDays);
 
 
