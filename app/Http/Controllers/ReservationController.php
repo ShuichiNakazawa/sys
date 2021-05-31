@@ -191,8 +191,8 @@ class ReservationController extends Controller
 
         // ユーザ予約情報テーブル 取得
         $user_reservations  =   User_reservations::where('user_id', '=', Auth::user()->id)
-                            ->where('year', '=', $year)                         // 年
-                            ->where('month', '=', $month)                       // 月
+                            ->where('year', '=', $work_year)                    // 年
+                            ->where('month', '=', $work_month)                  // 月
                             ->where('day', '>=', $day_firstDayOfWeek)           // 日付
                             ->where('day', '<=', $day_lastDayOfWeek)            //
                             ->where('status', '=', 0)                           // 状態コード（予約済）
