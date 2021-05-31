@@ -188,7 +188,7 @@
                                 {{--
                                 <div  class="reservation_possible">
                                   --}}
-                                  <form action="{{ url('/' . $year . '/' . $month . '/' . $days[$i] . '/' . $hour . '/' . $minute) }}" method="POST">
+                                  <form action="{{ url('/reservation/' . $year . '/' . $month . '/' . $days[$i] . '/' . $hour . '/' . $minute) }}" method="POST">
                                     @csrf
 
                                     <div class="reservation_possible">
