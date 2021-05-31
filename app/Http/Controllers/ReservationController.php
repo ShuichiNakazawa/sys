@@ -402,15 +402,12 @@ class ReservationController extends Controller
 
         // 受付数テーブル読込
 
+        /*
         // 月またぎ判定
         if($day_firstDayOfWeek > $day_lastDayOfWeek){
 
             //--------------------
             // 月をまたいでいる場合
-            //--------------------
-        } else {
-            //--------------------
-            // 月をまたいでいない場合
             //--------------------
             $reservations   =   Reservations::where('year', '=', $year)
                                 ->where('month', '=', $month)
@@ -420,7 +417,21 @@ class ReservationController extends Controller
                                 ->orderby('minute', 'asc')
                                 ->orderby('day', 'asc')
                                 ->get();
-        }
+        } else {
+            //--------------------
+            // 月をまたいでいない場合
+            //--------------------
+
+            */
+            $reservations   =   Reservations::where('year', '=', $year)
+                                ->where('month', '=', $month)
+                                ->where('day', '>=', $day_firstDayOfWeek)
+                                ->where('day', '<=', $day_lastDayOfWeek)
+                                ->orderby('timezone', 'asc')
+                                ->orderby('minute', 'asc')
+                                ->orderby('day', 'asc')
+                                ->get();
+        //}
 
         // ユーザ予約情報テーブル 取得
         $user_reservations  =   User_reservations::where('user_id', '=', Auth::user()->id)
