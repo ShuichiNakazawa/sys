@@ -49,7 +49,7 @@ class ReservationController extends Controller
         }
 
         // テスト用の暫定日付
-        $target_date    =   Carbon::create('2022-1-1 23:59:59');
+        //$target_date    =   Carbon::create('2022-1-1 23:59:59');
 
         //dd($target_date, (integer)Carbon::now()->format('H'));
 
