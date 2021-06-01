@@ -293,7 +293,12 @@ class ReservationController extends Controller
         } else {
 
             //月をまたいでいる場合
-            $next_week_ymd      =       $lastDayOfWeek->copy()->startOfMonth();
+            if( $work_month < (integer)$month_lastDayOfWeek){  // 「ターゲット日の月」と「週末日の月」を比較。
+                $next_week_ymd      =       $lastDayOfWeek->copy()->startOfMonth();
+            } else if($work_month == (integer)$month_lastDayOfWeek) {
+                $next_week_ymd      =       $lastDayOfWeek->copy()->addDays(1);
+            }
+
         }
 
         /*
