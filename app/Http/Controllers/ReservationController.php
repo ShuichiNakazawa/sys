@@ -285,7 +285,16 @@ class ReservationController extends Controller
         $now_minute         =       Carbon::now()->format('i');
 
         // 翌週初日年月日 取得
-        $next_week_ymd      =       $lastDayOfWeek->copy()->addDays(1);
+
+        //月をまたいでいる場合は、週初日ではなく、翌月１日を設定するようにする。
+        if( $day_firstDayOfWeek < $day_lastDayOfWeek ){
+            // 月をまたいでいない場合
+            $next_week_ymd      =       $lastDayOfWeek->copy()->addDays(1);
+        } else {
+
+            //月をまたいでいる場合
+            $next_week_ymd      =       $lastDayOfWeek->copy()->startOfMonth();
+        }
 
         /*
         dd(
