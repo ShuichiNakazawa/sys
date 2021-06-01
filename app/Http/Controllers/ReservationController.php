@@ -206,6 +206,9 @@ class ReservationController extends Controller
 
                 // 当月日数 設定
                 $numOfThisWeekDays  =   7 - $numOfNextWeekDays;
+
+                // 前月日数 設定
+                $numOfLastMonthDays =   0;
             } else {
 
                 // 翌月日数 設定
