@@ -317,14 +317,13 @@ class ReservationController extends Controller
 
                 $last_week_ymd      =       $firstDayOfWeek->copy()->subDays(1);
 
-            } else if($work_month == (integer)$month_lastDayOfWeek) {
+            } else if($work_month >= (integer)$month_lastDayOfWeek) {
 
                 // ターゲット日 月初めの場合
                 $next_week_ymd      =       $lastDayOfWeek->copy()->addDays(1);
 
                 $last_week_ymd      =       $firstDayOfWeek;
             }
-
         }
 
         /*
