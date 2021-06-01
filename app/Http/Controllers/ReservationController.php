@@ -129,6 +129,9 @@ class ReservationController extends Controller
 
         // 受付数テーブル読込
 
+        // 翌月日付 初期化
+        $numOfLastMonthDays =   0;
+
         // 年またぎ判定
         if ($year_firstDayOfWeek < $year_lastDayOfWeek){
 
