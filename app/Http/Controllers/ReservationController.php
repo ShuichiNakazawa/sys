@@ -1052,6 +1052,12 @@ class ReservationController extends Controller
      */
     public function getWeekNum($date) {
         $time = strtotime($date);
-        return 1 + date('W', $time + 86400) - date('W', strtotime(date('Y-m', $time)) + 86400);
+        $val    =   1 + date('W', $time + 86400) - date('W', strtotime(date('Y-m', $time)) + 86400);
+        if(0 > $val){
+            $val    +=   52;
+        }
+        return $val;
+
+        //return 1 + date('W', $time + 86400) - date('W', strtotime(date('Y-m', $time)) + 86400);
     }
 }
