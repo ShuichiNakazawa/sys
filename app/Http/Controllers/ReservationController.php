@@ -192,11 +192,13 @@ class ReservationController extends Controller
                                     ->orderby('day', 'asc')
                                     ->get();
 
+            // 月末日 取得
+            $day_lastDayOfMonth =   (integer)Carbon::create($year_firstDayOfWeek, $month_firstDayOfWeek, 1)->lastOfMonth()->format('d');
+
             // 対象年月日 前月・翌月判定
             // 対象月が週初日の月と一致するか否か
             if($work_month == $month_firstDayOfWeek){
-                // 月末日 取得
-                $day_lastDayOfMonth =   (integer)Carbon::create($year_firstDayOfWeek, $month_firstDayOfWeek, 1)->lastOfMonth()->format('d');
+
 
                 // 翌月日数 設定
                 // 月末日から週初日を引く、その数を７から引く
@@ -211,6 +213,9 @@ class ReservationController extends Controller
 
                 // 当月日数 設定
                 $numOfThisWeekDays  =   7;
+
+                // 前月日数 設定
+                $numOfLastMonthDays =   $day_lastDayOfMonth - $day_firstDayOfWeek + 1;
             }
             
 
@@ -343,30 +348,31 @@ class ReservationController extends Controller
 
         return view('reservation.weekly')
                         ->with([
-                            'days'              =>  $array_this_week_days,      // 該当週の日付配列
-                            'hours'             =>  $array_hours,               // 配列 時間帯
-                            'minutes'           =>  $array_minutes,             // 配列 分
-                            'reservations'      =>  $reservations,              // 予約
+                            'days'                  =>  $array_this_week_days,      // 該当週の日付配列
+                            'hours'                 =>  $array_hours,               // 配列 時間帯
+                            'minutes'               =>  $array_minutes,             // 配列 分
+                            'reservations'          =>  $reservations,              // 予約
 
-                            'year'              =>  $work_year,                 // 該当日 年
-                            'month'             =>  $work_month,                // 該当日 月
-                            'today'             =>  $work_day,                  // 該当日 日(カーボン使用で日付が変動している)
-                            'numOfWeek'         =>  $numOfWeek,                 // 該当日 月内の第何週か
+                            'year'                  =>  $work_year,                 // 該当日 年
+                            'month'                 =>  $work_month,                // 該当日 月
+                            'today'                 =>  $work_day,                  // 該当日 日(カーボン使用で日付が変動している)
+                            'numOfWeek'             =>  $numOfWeek,                 // 該当日 月内の第何週か    
 
-                            'now_year'          =>  $now_year,                  // 現在年
-                            'now_month'         =>  $now_month,                 // 現在月
-                            'now_day'           =>  $now_day,                   // 現在日付
-                            'now_hour'          =>  $now_hour,                  // 現在時間
-                            'now_minute'        =>  $now_minute,                // 現在分
+                            'now_year'              =>  $now_year,                   // 現在年
+                            'now_month'             =>  $now_month,                  // 現在月
+                            'now_day'               =>  $now_day,                    // 現在日付
+                            'now_hour'              =>  $now_hour,                  // 現在時間
+                            'now_minute'            =>  $now_minute,                //   現在分
 
-                            'next_week_ymd'    =>   $next_week_ymd,             // 翌週初日の年月日
+                            'next_week_ymd'         =>   $next_week_ymd,             // 翌週初日の年月日
 
-                            'numOfDaysElapsed'  =>  $numOfDaysElapsed,          // 経過日数
-                            'numOfThisWeekDays' =>  $numOfThisWeekDays,         // 該当週の当月日数
-                            'numOfNextWeekDays' =>  $numOfNextWeekDays,         // 該当週の翌月日数
-                            'user_reservations' =>  $user_reservations,         // ユーザー予約情報
+                            'numOfDaysElapsed'      =>  $numOfDaysElapsed,          // 経過日数
+                            'numOfThisWeekDays'     =>  $numOfThisWeekDays,         // 該当週の当月日数
+                            'numOfNextWeekDays'     =>  $numOfNextWeekDays,         // 該当週の翌月日数
+                            'numOfLastMonthDays'    =>  $numOfLastMonthDays,    // 該当週の前月日数
+                            'user_reservations'     =>  $user_reservations,         // ユーザー予約情報
 
-                            'ticket'            =>  $ticket,                    // チケット情報
+                            'ticket'                =>  $ticket,                    // チケット情報
                         ]);
 
     }
