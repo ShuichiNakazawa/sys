@@ -160,7 +160,7 @@ class ReservationController extends Controller
                         ->orderby('day', 'asc')
                         ->get();
 
-            dd($reservations);
+            //dd($reservations);
 
 
             // 翌月日数 設定
