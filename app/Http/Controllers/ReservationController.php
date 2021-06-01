@@ -300,14 +300,29 @@ class ReservationController extends Controller
         //月をまたいでいる場合は、週初日ではなく、翌月１日を設定するようにする。
         if( $day_firstDayOfWeek < $day_lastDayOfWeek ){
             // 月をまたいでいない場合
+
+            // 翌週初日
             $next_week_ymd      =       $lastDayOfWeek->copy()->addDays(1);
+
+            // 先週末日
+            $last_week_ymd      =       $firstDayOfWeek->copy()->subDays(1);
+
         } else {
 
             //月をまたいでいる場合
+
+            // ターゲット日 末日側判定
             if( $work_month < (integer)$month_lastDayOfWeek){  // 「ターゲット日の月」と「週末日の月」を比較。
                 $next_week_ymd      =       $lastDayOfWeek->copy()->startOfMonth();
+
+                $last_week_ymd      =       $firstDayOfWeek->copy()->subDays(1);
+
             } else if($work_month == (integer)$month_lastDayOfWeek) {
+
+                // ターゲット日 月初めの場合
                 $next_week_ymd      =       $lastDayOfWeek->copy()->addDays(1);
+
+                $last_week_ymd      =       $firstDayOfWeek;
             }
 
         }
@@ -325,32 +340,19 @@ class ReservationController extends Controller
         // チケット情報 取得
         $ticket             =       auth()->user();
 
-        /*
-        dd($array_this_week_days,
-        $array_hours,
-        $array_minutes,
-        $reservations,
+        // 「翌週へ」ボタン表示フラグ 設定
+        $flag_nextWeek      =   1;      // 「翌週へ」ボタン 表示
 
-        $work_year,
-        $work_month,
-        $work_day,
+        // 「前週へ」ボタン表示フラグ 設定
+        $work_firstDayOfWeek_today          =   Carbon::now()->startOfWeek();               // 当日 週初日
+        $work_firstDayOfWeek_targetDay      =   $target_date->copy()->startOfWeek();        // ターゲット日 週初日
 
-        $now_year,
-        $now_month,
-        $now_day,
-        $now_hour,
-        $now_minute,
-        $numOfDaysElapsed,
-        $user_reservations,
-        $ticket
-);
-
-        */
-
-        // 経過日数算出時に、翌月の日付を基準にしてしまっている可能性があり、-29が設定されている。
-        //dd($numOfDaysElapsed, $numOfThisWeekDays);
-
-        //dd($user_reservations);
+        // ターゲット日の週初日と当日の週初日を比較
+        if ($work_firstDayOfWeek_today >= $work_firstDayOfWeek_targetDay){
+            $flag_lastWeek  =   0;      // 「先週へ」ボタン 非表示
+        } else {
+            $flag_lastWeek  =   1;      // 「先週へ」ボタン 表示
+        }
 
         return view('reservation.weekly')
                         ->with([
@@ -364,21 +366,24 @@ class ReservationController extends Controller
                             'today'                 =>  $work_day,                  // 該当日 日(カーボン使用で日付が変動している)
                             'numOfWeek'             =>  $numOfWeek,                 // 該当日 月内の第何週か    
 
-                            'now_year'              =>  $now_year,                   // 現在年
-                            'now_month'             =>  $now_month,                  // 現在月
-                            'now_day'               =>  $now_day,                    // 現在日付
+                            'now_year'              =>  $now_year,                  // 現在年
+                            'now_month'             =>  $now_month,                 // 現在月
+                            'now_day'               =>  $now_day,                   // 現在日付
                             'now_hour'              =>  $now_hour,                  // 現在時間
-                            'now_minute'            =>  $now_minute,                //   現在分
+                            'now_minute'            =>  $now_minute,                // 現在分
 
-                            'next_week_ymd'         =>   $next_week_ymd,             // 翌週初日の年月日
+                            'last_week_ymd'         =>  $last_week_ymd,             // 先週末日の年月日
+                            'next_week_ymd'         =>  $next_week_ymd,             // 翌週初日の年月日
 
                             'numOfDaysElapsed'      =>  $numOfDaysElapsed,          // 経過日数
                             'numOfThisWeekDays'     =>  $numOfThisWeekDays,         // 該当週の当月日数
                             'numOfNextWeekDays'     =>  $numOfNextWeekDays,         // 該当週の翌月日数
-                            'numOfLastMonthDays'    =>  $numOfLastMonthDays,    // 該当週の前月日数
+                            'numOfLastMonthDays'    =>  $numOfLastMonthDays,        // 該当週の前月日数
                             'user_reservations'     =>  $user_reservations,         // ユーザー予約情報
 
                             'ticket'                =>  $ticket,                    // チケット情報
+                            'flag_lastWeek'         =>  $flag_lastWeek,             // 「前週へ」ボタン表示フラグ
+                            'flag_nextWeek'         =>  $flag_nextWeek,             // 「翌週へ」ボタン表示フラグ
                         ]);
 
     }

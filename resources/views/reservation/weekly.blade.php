@@ -58,10 +58,13 @@
         <div style="display: inline;">
         --}}
         <td colspan="2">
-          @if ( 1 == 0 ) {{-- 指定年月日と週初日を比較 --}}
-            <a href="#">前週へ</a>
+          @if ( $flag_lastWeek == 1 ) {{-- 指定年月日と週初日を比較 --}}
+            <form action="{{ url('/reservation') }}">
+              <button>前週へ</button>
+              <input type="hidden" name="selected_ymd" value="{{ $last_week_ymd }}">
+            </form>
           @else
-            前週へ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           @endif
         </td>
           {{--
@@ -76,11 +79,14 @@
         <div style="display: inline;">
           --}}
           <td colspan="2">
-            <form action="{{ url('/reservation') }}">
-              <button>翌週へ</button>
-              <input type="hidden" name="selected_ymd" value="{{ $next_week_ymd }}">
-            </form>
-
+            @if($flag_nextWeek == 1)
+              <form action="{{ url('/reservation') }}">
+                <button>翌週へ</button>
+                <input type="hidden" name="selected_ymd" value="{{ $next_week_ymd }}">
+              </form>
+            @else
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            @endif
           </td>
           {{--
           </div>
