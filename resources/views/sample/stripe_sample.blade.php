@@ -38,8 +38,8 @@
 				</div>
 				<br>
 					<div class="row justify-content-center">
-						<a href="https://lara-assist.jp/sample/image/sardine_and_horse_mackerel_set_meal.JPG">
-							<img src="https://lara-assist.jp/sample/image/sardine_and_horse_mackerel_set_meal2.JPG" style="width:160px; height:160px;" alt="鰯鯵定食">
+						<a href="https://lara-assist.jp/image/sardine_and_horse_mackerel_set_meal.JPG">
+							<img src="https://lara-assist.jp/image/sardine_and_horse_mackerel_set_meal2.JPG" style="width:160px; height:160px;" alt="鰯鯵定食">
 						</a>
 					</div>
 				<div class="row justify-content-center">
@@ -74,8 +74,8 @@
 				</div>
 				<br>
 					<div class="row justify-content-center">
-						<a href="https://lara-assist.jp/sample/image/seafood_set_meal.JPG">
-							<img src="https://lara-assist.jp/sample/image/seafood_set_meal2.JPG" style="width: 160px; height: 160px;" alt="海の幸定食">
+						<a href="https://lara-assist.jp/image/seafood_set_meal.JPG">
+							<img src="https://lara-assist.jp/image/seafood_set_meal2.JPG" style="width: 160px; height: 160px;" alt="海の幸定食">
 						</a>
 					</div>
 				<div class="row justify-content-center">
@@ -108,8 +108,8 @@
 				</div>
 				<br>
 				<div class="row justify-content-center">
-					<a href="https://lara-assist.jp/sample/image/sea_bream_rice_balls_and_sea_bream_sea_bream_soup.JPG">
-						<img src="https://lara-assist.jp/sample/image/sea_bream_rice_balls_and_sea_bream_sea_bream_soup2.JPG" style="width:160px; height:160px;" alt="鯛めしおにぎりと鯛の潮汁">
+					<a href="https://lara-assist.jp/image/sea_bream_rice_balls_and_sea_bream_sea_bream_soup.JPG">
+						<img src="https://lara-assist.jp/image/sea_bream_rice_balls_and_sea_bream_sea_bream_soup2.JPG" style="width:160px; height:160px;" alt="鯛めしおにぎりと鯛の潮汁">
 					</a>
 				</div>
 				<div class="row justify-content-center">
@@ -143,8 +143,8 @@
 				</div>
 				<br>
 					<div class="row justify-content-center">
-						<a href="https://lara-assist.jp/sample/image/deep-fried_monkey_shrimp.JPG">
-							<img src="https://lara-assist.jp/sample/image/deep-fried_monkey_shrimp2.JPG" style="width:160px; height:160px;" alt="さる海老の素揚げ">
+						<a href="https://lara-assist.jp/image/deep-fried_monkey_shrimp.JPG">
+							<img src="https://lara-assist.jp/image/deep-fried_monkey_shrimp2.JPG" style="width:160px; height:160px;" alt="さる海老の素揚げ">
 						</a>
 					</div>
 				<div class="row justify-content-center">
@@ -180,8 +180,8 @@
 				<br>
 
 				<div class="row justify-content-center">
-					<a href="https://lara-assist.jp/sample/image/boiled_mackerel_in_miso.JPG">
-						<img src="https://lara-assist.jp/sample/image/boiled_mackerel_in_miso2.JPG" style="width:160px; height:160px;" alt="サバ味噌煮">
+					<a href="https://lara-assist.jp/image/boiled_mackerel_in_miso.JPG">
+						<img src="https://lara-assist.jp/image/boiled_mackerel_in_miso2.JPG" style="width:160px; height:160px;" alt="サバ味噌煮">
 					</a>
 				</div>
 				<div class="row justify-content-center">
@@ -217,8 +217,8 @@
 				<br>
 
 				<div class="row justify-content-center">
-					<a href="https://lara-assist.jp/sample/image/spiny_lobster_miso_soup.JPG">
-						<img src="https://lara-assist.jp/sample/image/spiny_lobster_miso_soup2.JPG" style="width:160px; height:160px;" alt="伊勢海老の味噌汁">
+					<a href="https://lara-assist.jp/image/spiny_lobster_miso_soup.JPG">
+						<img src="https://lara-assist.jp/image/spiny_lobster_miso_soup2.JPG" style="width:160px; height:160px;" alt="伊勢海老の味噌汁">
 					</a>
 				</div>
 				<div class="row justify-content-center">
@@ -260,8 +260,8 @@
 				<br>
 
 				<div class="row justify-content-center">
-					<a href="https://lara-assist.jp/sample/image/carbonara.JPG">
-						<img src="https://lara-assist.jp/sample/image/carbonara.JPG" style="width:160px; height:160px;" alt="カルボナーラ">
+					<a href="https://lara-assist.jp/image/carbonara.JPG">
+						<img src="https://lara-assist.jp/image/carbonara.JPG" style="width:160px; height:160px;" alt="カルボナーラ">
 					</a>
 				</div>
 				<div class="row justify-content-center">
@@ -297,8 +297,8 @@
 				<br>
 
 				<div class="row justify-content-center">
-					<a href="https://lara-assist.jp/sample/image/pickled_colorful_vegetables.JPG">
-						<img src="https://lara-assist.jp/sample/image/pickled_colorful_vegetables2.JPG" style="width: 160px; height: 160px;" alt="彩り野菜の酢漬け">
+					<a href="https://lara-assist.jp/image/pickled_colorful_vegetables.JPG">
+						<img src="https://lara-assist.jp/image/pickled_colorful_vegetables2.JPG" style="width: 160px; height: 160px;" alt="彩り野菜の酢漬け">
 					</a>
 				</div>
 				<div class="row justify-content-center">
@@ -332,8 +332,8 @@
 				<br>
 
 				<div class="row justify-content-center">
-					<a href="https://lara-assist.jp/sample/image/pumpkin_soup.JPG">
-						<img src="https://lara-assist.jp/sample/image/pumpkin_soup2.JPG" style="width:160px; height:160px;" alt="カボチャの冷製スープ">
+					<a href="https://lara-assist.jp/image/pumpkin_soup.JPG">
+						<img src="https://lara-assist.jp/image/pumpkin_soup2.JPG" style="width:160px; height:160px;" alt="カボチャの冷製スープ">
 					</a>
 				</div>
 				<div class="row justify-content-center">
@@ -369,8 +369,8 @@
 				<br>
 
 				<div class="row justify-content-center">
-					<a href="https://lara-assist.jp/sample/image/lamb_raisin_scones.JPG">
-						<img src="https://lara-assist.jp/sample/image/lamb_raisin_scones.JPG" style="width:160px; height:160px;" alt="ラムレーズンのスコーン">
+					<a href="https://lara-assist.jp/image/lamb_raisin_scones.JPG">
+						<img src="https://lara-assist.jp/image/lamb_raisin_scones.JPG" style="width:160px; height:160px;" alt="ラムレーズンのスコーン">
 					</a>
 				</div>
 				<div class="row justify-content-center">
@@ -407,8 +407,8 @@
 				<br>
 
 				<div class="row justify-content-center">
-					<a href="https://lara-assist.jp/sample/image/homemade_anchovies.JPG">
-						<img src="https://lara-assist.jp/sample/image/homemade_anchovies2.JPG" style="width:160px; height:160px;" alt="自家製アンチョビ">
+					<a href="https://lara-assist.jp/image/homemade_anchovies.JPG">
+						<img src="https://lara-assist.jp/image/homemade_anchovies2.JPG" style="width:160px; height:160px;" alt="自家製アンチョビ">
 					</a>
 				</div>
 				<div class="row justify-content-center">
@@ -449,8 +449,8 @@
 				<br>
 
 				<div class="row justify-content-center">
-					<a href="https://lara-assist.jp/sample/image/kimchi_chigae.JPG">
-						<img src="https://lara-assist.jp/sample/image/kimchi_chigae2.JPG" style="width:160px; height:160px;" alt="キムチチゲ">
+					<a href="https://lara-assist.jp/image/kimchi_chigae.JPG">
+						<img src="https://lara-assist.jp/image/kimchi_chigae2.JPG" style="width:160px; height:160px;" alt="キムチチゲ">
 					</a>
 				</div>
 				<div class="row justify-content-center">
@@ -487,8 +487,8 @@
 				<br>
 
 				<div class="row justify-content-center">
-					<a href="https://lara-assist.jp/sample/image/fried_chicken.JPG">
-						<img src="https://lara-assist.jp/sample/image/fried_chicken2.JPG" style="width: 160px; height: 160px;" alt="鶏のから揚げ">
+					<a href="https://lara-assist.jp/image/fried_chicken.JPG">
+						<img src="https://lara-assist.jp/image/fried_chicken2.JPG" style="width: 160px; height: 160px;" alt="鶏のから揚げ">
 					</a>
 				</div>
 				<div class="row justify-content-center">
@@ -523,8 +523,8 @@
 				<br>
 
 				<div class="row justify-content-center">
-					<a href="https://lara-assist.jp/sample/image/chicken_breast_char_siu_style.JPG">
-						<img src="https://lara-assist.jp/sample/image/chicken_breast_char_siu_style2.JPG" style="width:160px; height:160px;" alt="鶏むね肉のチャーシュー風">
+					<a href="https://lara-assist.jp/image/chicken_breast_char_siu_style.JPG">
+						<img src="https://lara-assist.jp/image/chicken_breast_char_siu_style2.JPG" style="width:160px; height:160px;" alt="鶏むね肉のチャーシュー風">
 					</a>
 				</div>
 				<div class="row justify-content-center">
@@ -560,8 +560,8 @@
 				<br>
 
 				<div class="row justify-content-center">
-					<a href="https://lara-assist.jp/sample/image/miso_char_siu_noodles.JPG">
-						<img src="https://lara-assist.jp/sample/image/miso_char_siu_noodles2.JPG" style="width:160px; height:160px;" alt="味噌チャーシュー麺">
+					<a href="https://lara-assist.jp/image/miso_char_siu_noodles.JPG">
+						<img src="https://lara-assist.jp/image/miso_char_siu_noodles2.JPG" style="width:160px; height:160px;" alt="味噌チャーシュー麺">
 					</a>
 				</div>
 				<div class="row justify-content-center">
