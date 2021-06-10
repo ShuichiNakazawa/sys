@@ -102,7 +102,7 @@ Route::get('/reservation', function () {
 */
 
 // 予約画面（15分単位）
-Route::get('/reservation', ['ReservationController@getAcceptable', 1]);
+Route::get('/reservation', 'ReservationController@getAcceptable');
 
 // 予約処理（15分単位）
 Route::post('/reservation/{year}/{month}/{day}/{hour}/{minute}', 'ReservationController@storeReservationQuarter');
@@ -110,7 +110,7 @@ Route::post('/reservation/{year}/{month}/{day}/{hour}/{minute}', 'ReservationCon
 // 15分も1時間も、ＤＢから取得する内容は同じなので、遷移元を参照してから表示ブレードを変更したい。パラメータを付加すれば容易か？
 
 // 予約画面（1時間単位）
-Route::get('/reservation_hour', ['ReservationController@getAcceptable', 2]);
+Route::get('/reservation_hour', 'ReservationController@getAcceptable');
 
 // 予約処理（1時間単位）
 Route::post('/reservation_hour/{year}/{month}/{day}/{hour}/{minute}', 'ReservationController@storeReservationQuarter');
