@@ -22,7 +22,7 @@ class ReservationController extends Controller
     /*
     * 週別予約数情報 取得
     */
-    public function getAcceptable(Request $request, $ref_source){
+    public function getAcceptable(Request $request){
 
         Carbon::setWeekStartsAt(Carbon::SUNDAY);                    // 週の最初を日曜日に設定
         Carbon::setWeekEndsAt(Carbon::SATURDAY);                    // 週の最後を土曜日に設定
