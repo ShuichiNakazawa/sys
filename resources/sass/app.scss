@@ -376,3 +376,40 @@ input[type="checkbox"] {
 .news_content {
   
 }
+
+
+.reservation_impossible {
+  margin: 0;
+  padding: 0;
+  max-width: 80px;
+  color: red;
+  font-weight: bold;
+
+/*
+  background-color: #fff1f1;
+*/
+  cursor: pointer;
+  text-align: center;
+}
+
+.reservation_impossible:hover {
+/*
+  background-color: #dd8888;
+*/
+  text-decoration: none;
+}
+
+.reserved {
+  margin: 0;
+  max-width: 80px;
+  text-align: center;
+/*
+  background-color: #ddffdd;
+*/
+  font-weight: bold;
+  color: green;
+}
+
+.btn-reserve {
+  border-radius: 5px;
+}
