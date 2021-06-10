@@ -35,94 +35,104 @@
 
 	<h3 style="text-align:center;">事業概要</h3>
 
-	<div class="business_content_outer">
-	<table class="table table-striped task-table">
-	  <tbody>
-	    <tr>
-	      <th>
-					屋号
-	      </th>
-	      <td>
-					ララアシスト
-	      </td>
-	    </tr>
-	    <tr>
-	      <th>
-					代表
-	      </th>
-	      <td>
-					中澤　修一
-	      </td>
-	    </tr>
-	    <tr>
-	      <th>
-					<span>事業</span><span>形態</span>
-	      </th>
-	      <td>
-					個人事業主・個人フリーランス
-	      </td>
-	    </tr>
-	    <tr>
-	      <th>
-					住所
-	      </th>
-	      <td>
-					千葉県旭市　※自宅兼事務所の為、省略
-	      </td>
-	    </tr>
-	    <tr>
-	      <th>
-					<span>営業</span><span>時間</span>
-	      </th>
-	      <td>
-					平日：      10：00～21：00<br>
-					土曜・祝日：10：00～19：00
-	      </td>
-	    </tr>
-	    <tr>
-	      <th>
-					休日
-	      </th>
-	      <td>
-					日曜　※スケジュールにより変更する場合有り
-	      </td>
-	    </tr>
-	    <tr>
-	      <th>
-					<span>事業</span><span>内容</span>
-	      </th>
-	      <td>
+	<address>
+		<div class="business_content_outer">
+		<table class="table table-striped task-table">
+		<tbody>
+			<tr>
+			<th>
+						屋号
+			</th>
+			<td>
+						ララアシスト
+			</td>
+			</tr>
+			<tr>
+			<th>
+						代表
+			</th>
+			<td>
+						中澤　修一
+			</td>
+			</tr>
+			<tr>
+			<th>
+						<span>事業</span><span>形態</span>
+			</th>
+			<td>
+						個人事業主・個人フリーランス
+			</td>
+			</tr>
+			<tr>
+			<th>
+						住所
+			</th>
+			<td>
+						千葉県旭市　※自宅兼事務所の為、省略
+			</td>
+			</tr>
+			<tr>
+			<th>
+						<span>営業</span><span>時間</span>
+			</th>
+			<td>
+						平日：      10：00～21：00<br>
+						土曜・祝日：10：00～19：00
+			</td>
+			</tr>
+			<tr>
+			<th>
+						休日
+			</th>
+			<td>
+						日曜　※スケジュールにより変更する場合有り
+			</td>
+			</tr>
+			<tr>
+			<th>
+						<span>事業</span><span>内容</span>
+			</th>
+			<td>
 
-					Web技術のインストラクション
-					<br>
+						Web技術のインストラクション
+						<br>
 
-					既存アプリケーションの導入・支援
-					<br>
+						既存アプリケーションの導入・支援
+						<br>
 
-					コンピュータ・スマートデバイスの操作補助
-					<br>
+						コンピュータ・スマートデバイスの操作補助
+						<br>
 
-					Webシステムのレンタル
-					<br>
+						Webシステムのレンタル
+						<br>
 
-					システム開発
-					<br>
+						システム開発
+						<br>
 
-					教材販売
-					<br>
+						教材販売
+						<br>
 
-	      </td>
-	    <tr>
-	      <th>
-					<span>メール</span><span>アドレス</span>
-	      </th>
-	      <td>
-					contact@lara-assist.jp
-	      </td>
-	    </tr>
-	  </tbody>
-	</table>
-	</div>
+			</td>
+			<tr>
+			<th>
+						<span>メール</span><span>アドレス</span>
+			</th>
+			<td>
+						contact@lara-assist.jp
+			</td>
+			</tr>
+		</tbody>
+		</table>
+		</div>
+		<br><br>
+	
+		<div>
+			<h4>地図</h4>
+		</div>
+		<div>
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d680.9733139258117!2d140.65829103715964!3d35.71949802513037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6022e105dfee34a7%3A0x46db52cf6972cca5!2z44Op44Op44Ki44K344K544OI!5e0!3m2!1sja!2sjp!4v1623056627725!5m2!1sja!2sjp" width="480" height="360" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+		</div>
+	</address>
 	@endsection
 	
   @section('footer')
