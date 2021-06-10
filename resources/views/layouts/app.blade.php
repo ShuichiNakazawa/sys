@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content=" ～web技術を身近に～  千葉県旭市にてシステム開発からアプリ操作のインストラクションまで、皆さまがより身近にインターネットサービスを利用できるよう、全力でサポートいたします。スマートデバイス操作のインストラクション等もお気軽にご相談ください。私はIT技術の普及に貢献します。">
+	<meta name="description" content=" ～web技術を身近に～  千葉県旭市 パソコンスクール プログラミング アプリ操作のインストラクションなど、皆さまがより身近にインターネットサービスを利用できるよう全力でサポートいたします。スマートデバイス操作のインストラクション等もお気軽にご相談ください。IT技術の普及に貢献します。">
 
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
