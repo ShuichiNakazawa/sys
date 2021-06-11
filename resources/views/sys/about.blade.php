@@ -125,14 +125,14 @@
 		</table>
 		</div>
 		<br><br>
-	
+		</address>	
 		<div>
 			<h4>地図</h4>
 		</div>
 		<div class="map_area">
 			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d680.9733139258117!2d140.65829103715964!3d35.71949802513037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6022e105dfee34a7%3A0x46db52cf6972cca5!2z44Op44Op44Ki44K344K544OI!5e0!3m2!1sja!2sjp!4v1623056627725!5m2!1sja!2sjp" width="480" height="360" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 		</div>
-	</address>
+
 	@endsection
 	
   @section('footer')
