@@ -260,3 +260,15 @@
     ©2020 lara-assist.jp
 </div>
 @endsection
+
+@section('script')
+  <script type="module">
+    window.addEventListener('DOMContentLoaded', function(){
+
+      $('input[name="min"]').change(function(){
+        var min = $('input[name="min"]:checked').val();
+        window.location.href  = "?min=" + min;
+      })
+    });
+  </script>
+@endsection
