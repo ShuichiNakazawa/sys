@@ -260,12 +260,6 @@
 
 @endsection
 
-@section('footer')
-<div class="copyright">
-    ©2020 lara-assist.jp
-</div>
-@endsection
-
 @section('script')
   <script type="module">
     window.addEventListener('DOMContentLoaded', function(){

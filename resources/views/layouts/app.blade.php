@@ -82,7 +82,12 @@
       @yield('content')
     </main>
   </div>
-  @yield('footer')
+  
+  <div class="copyright">
+    <br>
+    ©2020 lara-assist.jp
+  </div>
+
   @yield('script')
 </body>
 </html>
