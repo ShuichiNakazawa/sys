@@ -13,7 +13,7 @@
 
 	<br>
 
-	<div style="margin:0 auto; width: 50%">
+	<div class="size_adjust" style="margin:0 auto; width: 50%">
 	<h2 style="text-align:center;">ご挨拶</h2>
 	<br><br>
 

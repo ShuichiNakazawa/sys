@@ -442,3 +442,18 @@ input[type="checkbox"] {
   background-color:rgb(220, 220, 210);
 
 }
+
+.size_adjust {
+  margin:0 auto;
+  width: 50%
+}
+
+@media (max-width: 5px) {
+  
+  .size_adjust {
+    margin:0 auto;
+    width: 80%
+  }
+
+  }
+}
