@@ -385,9 +385,10 @@ class ReservationController extends Controller
                                 'minutes'               =>  $array_minutes,             // 配列 分
                                 'reservations'          =>  $reservations,              // 予約
 
-                                'year'                  =>  $work_year,                 // 該当日 年
-                                'month'                 =>  $work_month,                // 該当日 月
-                                'today'                 =>  $work_day,                  // 該当日 日(カーボン使用で日付が変動している)
+                                'selected_year'         =>  $work_year,                 // 該当日 年
+                                'selected_month'        =>  $work_month,                // 該当日 月
+                                'selected_day'          =>  $work_day,                  // 該当日 日(カーボン使用で日付が変動している)
+                                'selected_ymd'          =>  $target_date,               // 指定日
                                 'numOfWeek'             =>  $numOfWeek,                 // 該当日 月内の第何週か    
 
                                 'now_year'              =>  $now_year,                  // 現在年
@@ -418,9 +419,10 @@ class ReservationController extends Controller
                                 'minutes'               =>  $array_minutes,             // 配列 分
                                 'reservations'          =>  $reservations,              // 予約
 
-                                'year'                  =>  $work_year,                 // 該当日 年
-                                'month'                 =>  $work_month,                // 該当日 月
-                                'today'                 =>  $work_day,                  // 該当日 日(カーボン使用で日付が変動している)
+                                'selected_year'         =>  $work_year,                 // 該当日 年
+                                'selected_month'        =>  $work_month,                // 該当日 月
+                                'selected_day'          =>  $work_day,                  // 該当日 日(カーボン使用で日付が変動している)
+                                'selected_ymd'          =>  $target_date,               // 指定日
                                 'numOfWeek'             =>  $numOfWeek,                 // 該当日 月内の第何週か    
 
                                 'now_year'              =>  $now_year,                  // 現在年
@@ -674,7 +676,7 @@ class ReservationController extends Controller
                             'today'             =>  $day_today,                 // 該当日 日
                             'numOfDaysElapsed'  =>  $numOfDaysElapsed,          // 経過日数
                             'user_reservations' =>  $user_reservations,         // ユーザー予約情報
-
+                            'min'               =>  1,                          // 時間単位（１５分）
                         ]);
 
 
@@ -684,6 +686,248 @@ class ReservationController extends Controller
         }
 
     }
+
+
+
+////////
+
+public function storeReservationHour($r_year, $r_month, $r_day, $r_hour){
+
+    // 予約画面へ渡すパラメータ 取得
+
+    Carbon::setWeekStartsAt(Carbon::SUNDAY);                    // 週の最初を日曜日に設定
+    Carbon::setWeekEndsAt(Carbon::SATURDAY);                    // 週の最後を土曜日に設定
+
+    $target_date    =  Carbon::today();
+
+    // 当日日付取得
+    $work_year                 =   $target_date->format('Y');
+    $work_month                =   (integer)$target_date->format('m');
+
+    // 週初日
+    $firstDayOfWeek            =   $target_date->startOfWeek();                     // 週初日 取得
+    //dd($firstDayOfWeek);
+
+    $day_firstDayOfWeek        =   $target_date->startOfWeek()->format('d');        // 日（週初日） 取得
+    $year_firstDayOfWeek       =   $target_date->startOfWeek()->format('Y');        // 年（週初日）  取得
+    $month_firstDayOfWeek      =   $target_date->startOfWeek()->format('m');        // 月（週初日）  取得
+
+    // 週末日
+    $lastDayOfWeek             =   $target_date->copy()->endOfWeek();                       // 週末日 取得
+    $day_lastDayOfWeek         =   $target_date->copy()->endOfWeek()->format('d');          // 日（週末日） 取得
+    $year_lastDayOfWeek        =   $target_date->copy()->endOfWeek()->format('Y');          // 年（週末日） 取得
+    $month_lastDayOfWeek       =   $target_date->copy()->endOfWeek()->format('m');          // 月（週末日） 取得
+
+    // 該当週の初日～週末日を配列へ格納
+    $array_this_week_days   =   array();
+
+    $work_day   =   $target_date->startOfWeek();
+    //dd($work_day, $firstDayOfWeek);
+
+    for($index_week = 0; $index_week < 7; $index_week++){
+
+        $array_this_week_days[] =   (integer)$work_day->format('d');
+        $work_day   =   $work_day->addDay();
+    }
+
+    $array_hours    =   [10, 11, 0, 13, 14, 15, 16, 17, 18, 0, 20, 21];
+
+    $array_minutes  =   ['00', '20', '40'];
+
+    // 日時情報 取得
+    $year           =   $target_date->format('Y');
+    $month          =   (integer)$target_date->format('m');
+    $day_today      =   (integer)Carbon::today()->format('d');
+
+    // 経過日数 算出
+    $numOfDaysElapsed   =   $day_today  -   $array_this_week_days[0];
+
+    // 取得するデータは該当する日付だけで良い（該当月のデータを全件取得している）
+    // 追加で、該当週に属する、前月もしくは翌月のデータを取得したい
+    // SQL で期間指定をきっちりやれば、目的のデータだけを取得できるのでは？
+
+    // 受付数テーブル読込
+
+    /*
+    // 月またぎ判定
+    if($day_firstDayOfWeek > $day_lastDayOfWeek){
+
+        //--------------------
+        // 月をまたいでいる場合
+        //--------------------
+        $reservations   =   Reservations::where('year', '=', $year)
+                            ->where('month', '=', $month)
+                            ->where('day', '>=', $day_firstDayOfWeek)
+                            ->where('day', '<=', $day_lastDayOfWeek)
+                            ->orderby('timezone', 'asc')
+                            ->orderby('minute', 'asc')
+                            ->orderby('day', 'asc')
+                            ->get();
+    } else {
+        //--------------------
+        // 月をまたいでいない場合
+        //--------------------
+
+        */
+        $reservations   =   Reservations::where('year', '=', $year)
+                            ->where('month', '=', $month)
+                            ->where('day', '>=', $day_firstDayOfWeek)
+                            ->where('day', '<=', $day_lastDayOfWeek)
+                            ->orderby('timezone', 'asc')
+                            ->orderby('minute', 'asc')
+                            ->orderby('day', 'asc')
+                            ->get();
+    //}
+
+    // ユーザ予約情報テーブル 取得
+    $user_reservations  =   User_reservations::where('user_id', '=', Auth::user()->id)
+                                        ->where('year', '=', $year)                         // 年
+                                        ->where('month', '=', $month)                       // 月
+                                        ->where('day', '>=', $day_firstDayOfWeek)           // 日付
+                                        ->where('day', '<=', $day_lastDayOfWeek)            //
+                                        ->where('status', '=', 0)                           // 状態コード（予約済）
+                                        ->orderby('timezone', 'asc')
+                                        ->orderby('minute', 'asc')
+                                        ->orderby('day', 'asc')
+                                        ->get();
+
+    // 重複データ検索
+    $check_duplicate    =   User_reservations::where('year', '=', $r_year)
+                                            ->where('month', '=', $r_month)
+                                            ->where('day', '=', $r_day)
+                                            ->where('timezone', '=', $r_hour)
+                                            ->where('minute', '=', $r_minute)
+                                            ->where('status', '=', 0)
+                                            ->count();
+
+    // 重複件数 判定
+    if($check_duplicate > 0){
+
+        // 同一人物による予約 判定
+
+
+/*
+        // 重複データ（予約済）有。カレンダー（１５分）へリダイレクト
+        return view('reservation.weekly')
+                        ->with([
+                            'days'              =>  $array_this_week_days,      // 該当週の日付配列
+                            'hours'             =>  $array_hours,               // 配列 時間帯
+                            'minutes'           =>  $array_minutes,             // 配列 分
+                            'reservations'      =>  $reservations,              // 予約
+                            'year'              =>  $year_today,                // 該当日 年
+                            'month'             =>  $month_today,               // 該当日 月
+                            'today'             =>  $day_today,                 // 該当日 日
+                            'numOfDaysElapsed'  =>  $numOfDaysElapsed,          // 経過日数
+                            'user_reservations' =>  $user_reservations,         // ユーザー予約情報
+        ]);
+*/
+    } else {
+
+        // 保有チケット残数 取得
+        $number_ticket15            =   auth()->user()->value('ticket15min');
+        $number_ticket15_trial      =   auth()->user()->value('ticket15min_trial');
+        $total_number_ticket15      =   $number_ticket15    +   $number_ticket15_trial;
+
+
+        // 保有チケット残数 判定
+        if($total_number_ticket15   >   0){
+
+            // 予約処理
+
+            // チケット減算
+            if($number_ticket15_trial > 0){
+
+                // お試しチケットを１減算
+                auth()->user()->ticket15min_trial -=   1;
+                auth()->user()->save();
+
+            } else {
+
+                // 15分チケットを１減算
+                auth()->user()->ticket15min -=   1;
+                auth()->user()->save();
+
+            }
+
+            // ユーザ予約情報テーブル 登録
+            $user_reservation = new User_reservations();
+            $user_reservation->user_id      =   Auth::user()->id;       // ユーザID
+            $user_reservation->year         =   $r_year;                // 年
+            $user_reservation->month        =   $r_month;               // 月
+            $user_reservation->day          =   $r_day;                 // 日
+            $user_reservation->timezone     =   $r_hour;                // 時間
+            $user_reservation->minute       =   $r_minute;              // 分
+            $user_reservation->status       =   0;                      // 予約状態
+            $user_reservation->sight_key    =   'origin';               // サイトキー
+            $user_reservation->created_at   =   new Carbon('now');      // 新規登録日
+            $user_reservation->updated_at   =   null;                   // 
+            $user_reservation->save();
+
+            // 予約情報テーブル 更新
+            $reservation        =       Reservations::where('year', '=', $r_year)
+                                            ->where('month', '=', $r_month)
+                                            ->where('day', '=', $r_day)
+                                            ->where('timezone', '=', $r_hour)
+                                            ->where('minute', '=', $r_minute)
+                                            ->first();
+
+            $reservation->number_accepted  += 1;
+            $reservation->save();
+
+            $work_request                   =   new Request();
+            $work_request->selected_year    =   $r_year;
+            $work_request->selected_month   =   $r_month;
+            $work_request->selected_day     =   $r_day;
+
+            //ReservationsController::getAcceptable($work_request);
+
+            // フラッシュメッセージ 設定
+            session()->flash('message', '予約できました。');
+
+
+
+            return redirect('/reservation')
+                        ->with([
+                            'days'              =>  $array_this_week_days,      // 該当週の日付配列
+                            'hours'             =>  $array_hours,               // 配列 時間帯
+                            'minutes'           =>  $array_minutes,             // 配列 分
+                            'reservations'      =>  $reservations,              // 予約
+                            'year'              =>  $year,                      // 該当日 年
+                            'month'             =>  $month,                     // 該当日 月
+                            'today'             =>  $day_today,                 // 該当日 日
+                            'numOfDaysElapsed'  =>  $numOfDaysElapsed,          // 経過日数
+                            'user_reservations' =>  $user_reservations,         // ユーザー予約情報
+            ]);
+
+        } else {
+
+            // フラッシュメッセージ 設定
+            session()->flash('error_message', '15分チケットが無い為、予約できませんでした。');
+
+            // 予約処理中断
+            return redirect('/reservation')
+                    ->with([
+                        'days'              =>  $array_this_week_days,      // 該当週の日付配列
+                        'hours'             =>  $array_hours,               // 配列 時間帯
+                        'minutes'           =>  $array_minutes,             // 配列 分
+                        'reservations'      =>  $reservations,              // 予約
+                        'year'              =>  $year,                      // 該当日 年
+                        'month'             =>  $month,                     // 該当日 月
+                        'today'             =>  $day_today,                 // 該当日 日
+                        'numOfDaysElapsed'  =>  $numOfDaysElapsed,          // 経過日数
+                        'user_reservations' =>  $user_reservations,         // ユーザー予約情報
+
+                    ]);
+
+
+
+        }
+
+    }
+
+}
+
+////////
 
     // 登録情報確認 画面遷移前処理
     public function getUser_info() {

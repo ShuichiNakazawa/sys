@@ -113,7 +113,7 @@ Route::post('/reservation/{year}/{month}/{day}/{hour}/{minute}', 'ReservationCon
 Route::get('/reservation_hour', 'ReservationController@getAcceptable');
 
 // 予約処理（1時間単位）
-Route::post('/reservation_hour/{year}/{month}/{day}/{hour}/{minute}', 'ReservationController@storeReservationQuarter');
+Route::post('/reservation_hour/{year}/{month}/{day}/{hour}', 'ReservationController@storeReservationHour');
 
 
 // 保有チケット確認

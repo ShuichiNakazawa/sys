@@ -1000,7 +1000,7 @@ class KokushiController extends Controller
 
             // ログイン済みなら個別得点テーブル 登録
             if ( $user_id != 0){
-              KokushiController::storeScore($user_id, $subject_id, $title_id, $question_number, $flag_correct);
+              //KokushiController::storeScore($user_id, $subject_id, $title_id, $question_number, $flag_correct);
             }
 
             // 正解としてビューを返す
@@ -1047,7 +1047,7 @@ class KokushiController extends Controller
 
             // ログイン済みなら個別得点テーブル 登録
             if ( $user_id != 0 ){
-              KokushiController::storeScore($user_id, $subject_id, $title_id, $question_number, $flag_correct);
+              //KokushiController::storeScore($user_id, $subject_id, $title_id, $question_number, $flag_correct);
             }
 
             return view('kokushi.practice_by_question')
@@ -1172,7 +1172,7 @@ class KokushiController extends Controller
 
           // ログイン済みなら個別得点テーブル 登録
           if ( $user_id != 0){
-            KokushiController::storeScore($user_id, $subject_id, $title_id, $question_number, $flag_correct);
+            //KokushiController::storeScore($user_id, $subject_id, $title_id, $question_number, $flag_correct);
 
             //$user_id, $subject_id, $title_id, $question_number, $is_correct
           }

@@ -34,7 +34,9 @@
     <td class="ticket_td" style="border: solid 2px #999; text-align:center;">
       {{ $ticket->ticket15min + $ticket->ticket15min_trial }}枚
     </td>
+    {{--
     <td>経過日数：{{ $numOfDaysElapsed }}</td><td>：当月の日数：{{ $numOfThisWeekDays }}</td>
+    --}}
   </tr>
   <tr>
     <th>時間単位</th>
@@ -62,6 +64,7 @@
             <form action="{{ url('/reservation') }}">
               <button>前週へ</button>
               <input type="hidden" name="selected_ymd" value="{{ $last_week_ymd }}">
+              <input type="hidden" name="min" value="{{ $disp }}">
             </form>
           @else
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -72,7 +75,7 @@
         <div style="display: inline; text-align: center; font-size: 20px">
           --}}
           <td colspan="5" style="font-size: 20px;">
-          {{ $year }}年{{ $month }}月 第{{ $numOfWeek }}週
+          {{ $selected_year }}年{{ $selected_month }}月 第{{ $numOfWeek }}週
           </td>
           {{--
         </div>
@@ -83,6 +86,7 @@
               <form action="{{ url('/reservation') }}">
                 <button>翌週へ</button>
                 <input type="hidden" name="selected_ymd" value="{{ $next_week_ymd }}">
+                <input type="hidden" name="min" value="{{ $disp }}">
               </form>
             @else
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -95,7 +99,6 @@
       </thead>
       <tbody>
         <tr>
-          <td></td>
           <td>曜日</td>
           <td class="cell_sunday cell_week">日</td>
           <td class="cell_week">月</td>
@@ -107,7 +110,6 @@
         </tr>
 
         <tr>
-          <td></td>
           <td>日付</td>
 
           @php
@@ -121,7 +123,7 @@
         @foreach($hours as $hour)
           <tr>
             @if($hour != 0)
-              <td rowspan="3" class="cell_hour">{{ $hour }}時</td>
+              <td class="cell_hour">{{ $hour }}時</td>
 
                   {{-- 日付と時間帯に応じた予約可能数をテーブルから取得して設定したい --}}
 
@@ -134,17 +136,21 @@
                         年月日・時間帯が一致、分が一致。２０分単位を１データとして保存する事で、一致させられるように実装する？ --}}
                         @php
                           $falg_reserved = 0;
+                          $numOfHit      = 0;
                         @endphp
 
                         @foreach($user_reservations as $user_reservation)
-                          @if(    $year     ==  $user_reservation->year
-                              &&  $month    ==  $user_reservation->month
-                              &&  $days[$i] ==  $user_reservation->day
-                              &&  $hour     ==  $user_reservation->timezone
+                          @if(    $selected_year     ==  $user_reservation->year
+                              &&  $selected_month    ==  $user_reservation->month
+                              &&  $days[$i]          ==  $user_reservation->day
+                              &&  $hour              ==  $user_reservation->timezone)
+                              {{--
                               &&  $minute   ==  $user_reservation->minute)
+                              --}}
                             {{-- ユーザが予約済の場合 --}}
                             @php
                               $falg_reserved = 1;
+                              $numOfHit++;
                             @endphp
                           @endif
                         @endforeach
@@ -152,8 +158,8 @@
                         {{-- 時間・分・日付の順に並んでいる。年月も含めて一致判定 --}}
 
                         @if (
-                              ($year              ==      $now_year
-                          &&  $month              ==      $now_month
+                              ($selected_year              ==      $now_year
+                          &&  $selected_month              ==      $now_month
                           &&  $days[$i]           ==      $now_day
                           )
 
@@ -161,7 +167,6 @@
                                 (integer)$hour      <       (integer)$now_hour
                             ||  (
                                   (integer)$hour     ==      (integer)$now_hour
-                              &&  (integer)$minute    <      (integer)$now_minute
                             )
                           )
                         )
@@ -174,14 +179,39 @@
                           --}}
 
                         @elseif ($falg_reserved == 1)
+
                           {{-- 予約有 --}}
-                          <td class="reserved_date">
-                            <a href="#{{ 'cancel_' . $year . '_' . $month . '_' . $days[$i] . '_' . $hour . '_' . $minute }}" style="text-decoration:none;">
-                              <div  class="reserved">
-                                〇
-                              </div>
-                            </a>
-                          </td>
+
+                          {{-- ヒット件数によって表示を変える。（例）３件ヒットなら１時間の予約なので◎、１，２件ヒットなら部分予約で〇。 --}}
+                          @switch ($numOfHit)
+                            @case(1)
+                              <td class="reserved_date">
+                                <a href="#{{ 'cancel_' . $selected_year . '_' . $selected_month . '_' . $days[$i] . '_' . $hour }}" style="text-decoration:none;">
+                                  <div  class="reserved">
+                                    〇
+                                  </div>
+                                </a>
+                              </td>
+                              @break
+                            @case(2)
+                              <td class="reserved_date">
+                                <a href="#{{ 'cancel_' . $selected_year . '_' . $selected_month . '_' . $days[$i] . '_' . $hour }}" style="text-decoration:none;">
+                                  <div  class="reserved">
+                                    〇
+                                  </div>
+                                </a>
+                              </td>
+                              @break
+                            @case(3)
+                              <td class="reserved_date">
+                                <a href="#{{ 'cancel_' . $selected_year . '_' . $selected_month . '_' . $days[$i] . '_' . $hour }}" style="text-decoration:none;">
+                                  <div  class="reserved">
+                                    ◎
+                                  </div>
+                                </a>
+                              </td>
+                              @break
+                          @endswitch
                         @else
                           {{-- 予約無 --}}
 
@@ -198,7 +228,7 @@
                                 {{--
                                 <div  class="reservation_possible">
                                   --}}
-                                  <form action="{{ url('/reservation/' . $year . '/' . $month . '/' . $days[$i] . '/' . $hour . '/' . $minute) }}" method="POST">
+                                  <form action="{{ url('/reservation_hour/' . $selected_year . '/' . $selected_month . '/' . $days[$i] . '/' . $hour) }}" method="POST">
                                     @csrf
 
                                     <div class="reservation_possible">
@@ -262,8 +292,13 @@
     window.addEventListener('DOMContentLoaded', function(){
 
       $('input[name="min"]').change(function(){
+
+        // 時間単位 取得
         var min = $('input[name="min"]:checked').val();
-        window.location.href  = "?min=" + min;
+
+        // 画面遷移
+        //window.location.href  = "?min=" + min;
+        window.location.href  = "?min=" + min + "&selected_ymd={{ $selected_ymd }}";
       })
     });
   </script>
