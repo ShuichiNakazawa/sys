@@ -263,3 +263,14 @@
     ©2020 lara-assist.jp
 </div>
 @endsection
+
+@section('script')
+  <script type="module">
+    window.addEventListener('DOMContentLoaded', function(){
+
+      $('input[name="min"]').change(function(){
+        window.location.href  = "";
+      })
+    });
+  </script>
+@endsection
