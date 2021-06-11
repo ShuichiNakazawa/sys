@@ -122,8 +122,6 @@
           <tr>
             @if($hour != 0)
               <td rowspan="3" class="cell_hour">{{ $hour }}時</td>
-                @foreach($minutes as $minute)
-                  <td class="cell_minute">{{ $minute }}分</td>
 
                   {{-- 日付と時間帯に応じた予約可能数をテーブルから取得して設定したい --}}
 
@@ -241,8 +239,6 @@
                   <td></td>
                   --}}
                   </tr>
-
-                @endforeach
             @else
               <td colspan="9" style="text-align:center;">休憩時間</td>
             @endif
