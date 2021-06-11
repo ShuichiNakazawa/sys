@@ -455,6 +455,10 @@ input[type="checkbox"] {
     width: 60%
   }
 
+  .map_area{
+    width: 50%;
+  }
+
 }
 
 @media (min-width: 1000px) {
@@ -464,6 +468,9 @@ input[type="checkbox"] {
     width: 70%
   }
 
+  .map_area{
+    width: 60%;
+  }
 }
 
 @media (min-width: 500px) {
@@ -471,6 +478,10 @@ input[type="checkbox"] {
   .size_adjust {
     margin:0 auto;
     width: 80%
+  }
+
+  .map_area{
+    width: 70%;
   }
 
 }
