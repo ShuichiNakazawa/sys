@@ -269,7 +269,8 @@
     window.addEventListener('DOMContentLoaded', function(){
 
       $('input[name="min"]').change(function(){
-        window.location.href  = "?min=2";
+        var min = $('input[name="min"]:checked').val();
+        window.location.href  = "?min=" + min;
       })
     });
   </script>
