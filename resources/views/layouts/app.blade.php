@@ -44,11 +44,11 @@
 </head>
   
 <body>
-	<div style="vertical-align: middle; height: 70px; background-color:rgb(220, 220, 210);">
+	<div class="page_header">
 	  <h1 style="padding-top: 12px; text-align: center; background-color:rgb(220, 220, 210)">ララアシスト</h1>
 	</div>
 
-	<nav class="navbar navbar-expand-md navbar-light bg-thin_brown shadow-sm">
+	<nav class="navbar navbar-expand-md navbar-light bg-thin_brown shadow-sm fixed">
 	    <div class="container">
         <div>
           <a href="{{ url('/') }}">Top</a>
