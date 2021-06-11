@@ -11292,3 +11292,78 @@ input[type=checkbox] {
   border-radius: 15px;
 }
 
+.news_outer {
+  display: flex;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 15px;
+  background-color: #f8fafc;
+}
+
+.news_head {
+  text-align: center;
+}
+
+.news_date {
+  width: 120px;
+}
+
+.reservation_impossible {
+  margin: 0;
+  padding: 0;
+  max-width: 80px;
+  color: red;
+  font-weight: bold;
+  /*
+    background-color: #fff1f1;
+  */
+  cursor: pointer;
+  text-align: center;
+}
+
+.reservation_impossible:hover {
+  /*
+    background-color: #dd8888;
+  */
+  text-decoration: none;
+}
+
+.reserved {
+  margin: 0;
+  max-width: 80px;
+  text-align: center;
+  /*
+    background-color: #ddffdd;
+  */
+  font-weight: bold;
+  color: green;
+}
+
+.btn-reserve {
+  border-radius: 5px;
+}
+
+.page_header {
+  vertical-align: middle;
+  width: 100%;
+  height: 70px;
+  background-color: #dcdcd2;
+  /*
+  position: fixed;
+  */
+}
+
+.fixed {
+  width: 100%;
+}
+
+.copyright {
+  width: 100%;
+  font-size: 18px;
+  text-align: center;
+  vertical-align: middle;
+  height: 70px;
+  background-color: #dcdcd2;
+}
+

@@ -282,7 +282,7 @@
 @endsection
 
 @section('footer')
-<div class="container copyright">
+<div class="copyright">
     ©2020 lara-assist.jp
 </div>
 @endsection
