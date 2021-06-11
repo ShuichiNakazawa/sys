@@ -77,7 +77,7 @@
   </div>
 
   <div>
-    <main class="py-4">
+    <main class="py-4 main_contents">
       <br><br><br><br><br>
       @yield('content')
     </main>
