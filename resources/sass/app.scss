@@ -448,7 +448,7 @@ input[type="checkbox"] {
   width: 50%
 }
 
-@media (max-width: 5px) {
+@media (min-width: 500px) {
   
   .size_adjust {
     margin:0 auto;
