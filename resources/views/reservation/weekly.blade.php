@@ -269,7 +269,7 @@
     window.addEventListener('DOMContentLoaded', function(){
 
       $('input[name="min"]').change(function(){
-        window.location.href  = "";
+        window.location.href  = "?min=2";
       })
     });
   </script>
