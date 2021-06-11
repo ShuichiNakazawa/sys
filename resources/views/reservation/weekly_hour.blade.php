@@ -38,8 +38,8 @@
   </tr>
   <tr>
     <th>時間単位</th>
-    <td style="text-align:center;"><input type="radio" name="min" id="min15" style="display:none;" checked="checked"><label for="min15" style="border-radius: 6px;">15分</label></td>
-    <td style="text-align:center;"><input type="radio" name="min" id="min55" style="display:none;"><label for="min55" style="border-radius: 6px;">55分</label></td>
+    <td style="text-align:center;"><input type="radio" name="min" id="min15" style="display:none;"><label for="min15" style="border-radius: 6px;">15分</label></td>
+    <td style="text-align:center;"><input type="radio" name="min" id="min55" style="display:none;" checked="checked"><label for="min55" style="border-radius: 6px;">55分</label></td>
   </tr>
 </table>
 
