@@ -448,6 +448,15 @@ input[type="checkbox"] {
   width: 50%
 }
 
+@media (min-width: 1000px) {
+  
+  .size_adjust {
+    margin:0 auto;
+    width: 70%
+  }
+
+}
+
 @media (min-width: 500px) {
   
   .size_adjust {
@@ -455,5 +464,4 @@ input[type="checkbox"] {
     width: 80%
   }
 
-  }
 }
