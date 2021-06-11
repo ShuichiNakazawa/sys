@@ -379,6 +379,7 @@ class ReservationController extends Controller
 
             return view('reservation.weekly')
                             ->with([
+                                'disp'  =>  $disp,
                                 'days'                  =>  $array_this_week_days,      // 該当週の日付配列
                                 'hours'                 =>  $array_hours,               // 配列 時間帯
                                 'minutes'               =>  $array_minutes,             // 配列 分
@@ -411,6 +412,7 @@ class ReservationController extends Controller
         } else if ($disp == 2) {
             return view('reservation.weekly_hour')
                             ->with([
+                                'disp'  =>  $disp,
                                 'days'                  =>  $array_this_week_days,      // 該当週の日付配列
                                 'hours'                 =>  $array_hours,               // 配列 時間帯
                                 'minutes'               =>  $array_minutes,             // 配列 分

@@ -34,6 +34,7 @@
     <td class="ticket_td" style="border: solid 2px #999; text-align:center;">
       {{ $ticket->ticket15min + $ticket->ticket15min_trial }}枚
     </td>
+    <td>disp:{{ $disp }}</td>
     {{--
     <td>経過日数：{{ $numOfDaysElapsed }}</td><td>：当月の日数：{{ $numOfThisWeekDays }}</td>
     --}}
