@@ -159,6 +159,10 @@ Route::post('/kokushi/{subject_id}', 'KokushiController@startPractice');
 
 Route::get('/kokushi/{subject_id}/practice_by_question/{title_id}/{question_number}', 'KokushiController@practiceByQuestion');
 
+
+// ECサンプル
+Route::get('/ec_sample', 'ProductController@index')->name('produuct.index');
+
 /**
  * 認証機能
  */
