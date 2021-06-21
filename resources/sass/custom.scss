@@ -144,7 +144,7 @@ a:active {
 
 @media (max-width: 760px) {
   .card {
-    &-img (
+    &-img {
       height: auto;
       max-height: 700px;
     }
