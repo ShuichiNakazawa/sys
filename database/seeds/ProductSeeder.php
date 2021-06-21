@@ -12,6 +12,9 @@ class ProductSeeder extends Seeder
     public function run()
     {
         //
+				DB::table('products')->delete();
+
+				//
         DB::table('products')->insert([
 	    [
 		    'name' => 'Black T-Shirt',
@@ -58,7 +61,7 @@ class ProductSeeder extends Seeder
 	[
 		'name' => 'Border Long Sleeve T-shirt',
 		'description' => 'コットン素材を使用したクルーネックのカットソー。',
-		'image' => '/images/8,jpg',
+		'image' => '/images/8.jpg',
 		'price' => '7800',
 	],
 	[
