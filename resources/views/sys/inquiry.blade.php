@@ -17,7 +17,7 @@
 
 @include('common.errors')
 <div class="card-body">
-  <div style="margin: 0 auto; width:85%">
+  <div class="main_field">
     <h3 style="text-align: center;">お問合せ</h3>
     <br>
 
