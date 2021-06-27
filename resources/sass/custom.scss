@@ -177,6 +177,9 @@ a:active {
   background-color:rgb(220, 220, 210);
 }
 
+.page_body {
+  z-index:50;
+}
 
 .hidden_item {
   display: none;
