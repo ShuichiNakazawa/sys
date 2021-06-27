@@ -51,6 +51,7 @@
 
     <nav class="navbar navbar-expand-md navbar-light bg-thin_brown shadow-sm position-fixed fixed">
         <div class="container position-fixed">
+          
           <div>
             <a href="{{ url('/') }}">Top</a>
           </div>
