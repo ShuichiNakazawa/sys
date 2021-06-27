@@ -221,6 +221,20 @@ a:active {
   width: 50%
 }
 
+
+@media(max-width: 600px) {
+  .main_field_about{
+    margin: 0 auto;
+    width:90%
+  }
+
+  .business_content_outer {
+    margin: 0 auto;
+    width: 90%
+  }
+}
+
+
 .txt_center {
   text-align: center;
 }
