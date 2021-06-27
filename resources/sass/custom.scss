@@ -494,6 +494,11 @@ a:active {
   border-radius: 5px;
 }
 
+.width_adjustment_900 {
+  width: 900px;
+  margin: 0 auto;
+}
+
 input[type="radio"]:checked + label {
     background-color: blue;
     color: white;

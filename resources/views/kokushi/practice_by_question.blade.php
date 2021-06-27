@@ -26,7 +26,7 @@
 --}}
 
 <div class="card-body">
-  <div class="card-body">
+  <div class="card-body width_adjustment_900">
     <h3 class="txt_center">一問一答</h3>
   </div>
 	<div class="card-body question_sentence_outer">
