@@ -77,8 +77,6 @@
           </div>
       </nav>
     </div>
-    <div sytle="page_header">aaaaa</div>
-    <hr>
   </div>
 
   <div class="page_body">
