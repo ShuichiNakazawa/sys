@@ -53,13 +53,13 @@
       <nav class="navbar navbar-expand-md navbar-light bg-thin_brown shadow-sm position-fixed fixed">
           <div class="container position-fixed bg-thin_brown">
 
-            <div class="z100">
+            <div>
               <a href="{{ url('/') }}">Top</a>
             </div>
-            <div class="z100">
+            <div>
               <a href="{{ url('about') }}">ご挨拶</a>
             </div>
-            <div class="z100">
+            <div>
               <a href="{{ url('systems') }}">システム</a>
             </div>
             <div class="z100">
