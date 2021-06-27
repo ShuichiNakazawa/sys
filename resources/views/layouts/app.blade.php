@@ -63,7 +63,7 @@
               <a href="{{ url('systems') }}">システム</a>
             </div>
             <div class="z100">
-              <a href="{{ url('reservation') }}">リモート予約（調整中）</a>
+              <a href="{{ url('reservation') }}">リモート予約</a>
             </div>
             <div class="z100">
               <a href="{{ url('memo') }}">技術情報</a>
