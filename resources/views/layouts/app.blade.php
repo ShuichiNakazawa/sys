@@ -53,25 +53,25 @@
       <nav class="navbar navbar-expand-md navbar-light bg-thin_brown shadow-sm position-fixed fixed">
           <div class="container position-fixed">
 
-            <div>
+            <div class="z100">
               <a href="{{ url('/') }}">Top</a>
             </div>
-            <div>
+            <div class="z100">
               <a href="{{ url('about') }}">ご挨拶</a>
             </div>
-            <div>
+            <div class="z100">
               <a href="{{ url('systems') }}">システム</a>
             </div>
-            <div>
+            <div class="z100">
               <a href="{{ url('reservation') }}">リモート予約（調整中）</a>
             </div>
-            <div>
+            <div class="z100">
               <a href="{{ url('memo') }}">技術情報</a>
             </div>
-            <div>
+            <div class="z100">
               <a href="{{ url('inquiry') }}">お問合せ</a>
             </div>
-            <div>
+            <div class="z100">
               <a href="{{ url('references') }}">参考サイト</a>
             </div>
           </div>
