@@ -178,7 +178,11 @@ a:active {
 }
 
 .page_body {
-  z-index:50;
+  z-index: 50;
+}
+
+.z100 {
+  z-index: 100;
 }
 
 .hidden_item {
