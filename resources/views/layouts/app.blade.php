@@ -51,7 +51,7 @@
 
     <div class="z100">
       <nav class="navbar navbar-expand-md navbar-light bg-thin_brown shadow-sm position-fixed fixed">
-          <div class="container position-fixed">
+          <div class="container position-fixed bg-thin_brown">
 
             <div class="z100">
               <a href="{{ url('/') }}">Top</a>
