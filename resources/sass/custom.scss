@@ -168,6 +168,7 @@ a:active {
 .position-fixed {
   position: fixed;
   width: 100%;
+  z-index:100;
 }
 
 .page_header_h1 {
