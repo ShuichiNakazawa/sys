@@ -75,7 +75,7 @@
           </div>
         </div>
     </nav>
-    <div sytle="display:block">aaaaa</div>
+    <div sytle="page_header">aaaaa</div>
     <hr>
   </div>
 
