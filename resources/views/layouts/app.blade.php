@@ -46,7 +46,7 @@
 <body>
   <div class="page_header position-fixed">
     <div>
-      <h1 style="padding-top: 12px; text-align: center; background-color:rgb(220, 220, 210)">ララアシスト</h1>
+      <h1 class="page_header_h1">ララアシスト</h1>
     </div>
 
     <nav class="navbar navbar-expand-md navbar-light bg-thin_brown shadow-sm position-fixed fixed">
