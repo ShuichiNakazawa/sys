@@ -13,8 +13,8 @@
           <br>
 
 
-        <div style="margin:0 auto; width: 70%">
-          <h2 style="text-align:center;">システム</h2>
+        <div style="margin:0 auto; width: 50%">
+          <h2 class="txt_center">システム</h2>
           <br><br>
 
           <form action="{{ url('systems') }}" method="POST">
