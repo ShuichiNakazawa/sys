@@ -161,7 +161,15 @@ Route::get('/kokushi/{subject_id}/practice_by_question/{title_id}/{question_numb
 
 
 // ECサンプル
-Route::get('/ec_sample', 'ProductController@index')->name('product.index');
+//Route::get('/ec_sample', 'ProductController@index')->name('product.index');
+//Route::get('/ec_sample/product/{id}', 'ProductController@show')->name('product.show');
+
+Route::name('product.')
+        ->group(function() {
+            Route::get('/ec_sample/', 'ProductController@index')->name('index');
+            Route::get('/ec_sample/product/{id}', 'ProductController@show')->name('show');
+        });
+
 
 /**
  * 認証機能

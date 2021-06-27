@@ -11014,10 +11014,9 @@ a.text-dark:focus {
 }
 
 .product__price {
-  font-size: 32px;
+  font-size: 12px;
   color: #4a4a4a;
-  letter-spacing: 2pc;
-  margin-bottom: 4px;
+  letter-spacing: 2px;
 }
 
 .product__quantity {
