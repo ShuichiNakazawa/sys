@@ -13,7 +13,7 @@
 
 	<br>
 
-	<div class="size_adjust">
+	<div class="main_field">
 	<h2 style="text-align:center;">ご挨拶</h2>
 	<br><br>
 
