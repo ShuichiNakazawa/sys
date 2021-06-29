@@ -170,6 +170,28 @@ Route::name('product.')
             Route::get('/ec_sample/product/{id}', 'ProductController@show')->name('show');
         });
 
+Route::name('line_item.')
+        ->group(function () {
+            Route::post('/ec_sample/line_item/create', 'LineItemController@create')
+                                ->name('create');
+            Route::post('/ec_sample/line_item/delete', 'LineItemController@delete')
+                                ->name('delete');
+        });
+
+Route::name('cart.')
+        ->group(function () {
+            Route::get('/ec_sample/cart', 'CartController@index')->name('index');
+            Route::get('/ec_sample/cart/checkout', 'CartController@checkout')
+                        ->name('checkout');
+            Route::get('/cart/success', 'CartController@success')
+                        ->name('success');
+        });
+
+/**
+ * １週間で基礎から学ぶLaravel入門
+ */
+
+Route::resource("book_oneweeks", "Book_oneweekController");
 
 /**
  * 認証機能

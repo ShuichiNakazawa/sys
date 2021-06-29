@@ -74,6 +74,12 @@
             <div class="z100">
               <a href="{{ url('references') }}">参考サイト</a>
             </div>
+            <div class="z100">
+              <a href="{{ url('blog') }}">雑記</a>
+            </div>
+            <div class="z100">
+              <a href="{{ url('sample') }}">サンプル</a>
+            </div>
           </div>
       </nav>
     </div>
