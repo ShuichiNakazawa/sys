@@ -42,6 +42,7 @@
                 <input type="hidden" name="subject_id" value="{{ $id }}">
                 <input type="hidden" name="subject_id" value="{{ $id }}">
               </form>
+              <br><br>
             {{--
             </a>
             --}}
