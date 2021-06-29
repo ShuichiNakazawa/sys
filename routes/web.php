@@ -168,11 +168,13 @@ Route::name('sample.')
         ->group(function() {
             Route::get('/',  function () {
                 return view('sys.sample')->name('index');
+            });
+
             Route::get('/bc_laravel',  function () {
                 return view('sys.bc_laravel')->name('bc_laravel');
             
             });
-
+        });
 // ECサンプル
 //Route::get('/ec_sample', 'ProductController@index')->name('product.index');
 //Route::get('/ec_sample/product/{id}', 'ProductController@show')->name('product.show');
