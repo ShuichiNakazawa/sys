@@ -164,10 +164,6 @@ Route::get('/kokushi/{subject_id}/practice_by_question/{title_id}/{question_numb
  * サンプル
  */
 
-Route::get('/sample', function () {
-    return view('sys.sample');
-});
-
 Route::name('sample.')
         ->group(function() {
             Route::get('/',  function () {
