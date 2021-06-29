@@ -13,13 +13,19 @@
         <br>
 
         <div style="margin:0 auto; width: 50%">
-          <h2 class="txt_center">サンプル</h2>
+          <h2 class="txt_center">【書籍引用】Laravel入門</h2>
           <br><br>
 
-          <a href="stripe_sample">Stripe クレジットカード決済サンプルページ</a>
+          <a href="oneweek">１週間で基礎から学ぶLaravel入門（minatomi）</a>
           <br><br><br>
 
-          <a href="book_citation">【書籍引用】Laravel入門</a>
+          <a href="quick_learning">速習 Laravel6 速習シリーズ（山田祥寛）</a>
+          <br><br><br>
+
+          <a href="move_and_learn">動かして学ぶ！Laravel開発入門（山崎大助）</a>
+          <br><br><br>
+
+          <a href="ec_sample">LaravelでStripeを使った決済処理付き簡易ファッションECサイトを作ろう！(Techpitブックス)</a>
           <br><br><br>
 
         </div>
