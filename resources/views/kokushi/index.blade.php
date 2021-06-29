@@ -25,8 +25,10 @@
         <h4 class="header_center ">{{ $field->field_name }}</h4>
       </div>
 
+      {{--
       <div class="card-body row justify-content-center">
-
+      --}}
+      <div class="card-body justify-content-center">
         {{--
           ここに、foreachを使って、テーブルに登録されている科目名（分野ごと）のリストを表示させる
         --}}
