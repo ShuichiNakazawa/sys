@@ -19,7 +19,7 @@
           <a href="stripe_sample">Stripe クレジットカード決済サンプルページ</a>
           <br><br><br>
 
-          <a href="book_citation">【書籍引用】Laravel入門</a>
+          <a href="bc_laravel">【書籍引用】Laravel入門</a>
           <br><br><br>
 
         </div>

@@ -173,7 +173,7 @@ Route::name('sample.')
             Route::get('/',  function () {
                 return view('sys.sample')->name('index');
             Route::get('/bc_laravel',  function () {
-                return view('sys.bc_laravel')->name('bc_larabel');
+                return view('sys.bc_laravel')->name('bc_laravel');
             
             });
 
