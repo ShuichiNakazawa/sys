@@ -7,7 +7,7 @@
     stripe.redirectToCheckout({
       sessionId: '{{ $session->id }}'
     }).then(function (result) {
-      window.location.href='http://localhost/cart';
+      window.location.href='https://lara-assist.jp/ec_sampale/cart';
     });
   }
 </script>
