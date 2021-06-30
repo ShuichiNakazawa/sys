@@ -167,13 +167,13 @@ Route::get('/kokushi/{subject_id}/practice_by_question/{title_id}/{question_numb
 Route::name('sample.')
         ->group(function() {
             Route::get('/',  function () {
-                return view('sys.sample')->name('index');
-            });
+                return view('sys.sample');
+            })->name('index');
 
             Route::get('/bc_laravel',  function () {
-                return view('sys.bc_laravel')->name('bc_laravel');
+                return view('sys.bc_laravel');
             
-            });
+            })->name('bc_laravel');
         });
 // ECサンプル
 //Route::get('/ec_sample', 'ProductController@index')->name('product.index');
