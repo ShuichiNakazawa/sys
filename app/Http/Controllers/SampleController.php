@@ -43,6 +43,8 @@ class SampleController extends Controller
 
         // 仮注文レコード 登録
 
+        // 下記処理は、データをテーブルに格納したうえで、取得しながら表示させるよう変更が可能。
+
         // Stripe 商品情報 編集
         if(0 < $quantity_item1){
             $array_product[]  =   [
@@ -204,8 +206,12 @@ class SampleController extends Controller
         // Secret API keyをセット
         \Stripe\Stripe::setApiKey("sk_test_51IrwPCIGn1OXhDRnsn4686SYweNTg3dMw91Ul9qcwoBhEsdMILD0rOP3LG5HO3UJcSzLR0g8qnpz2Jp1HPsRzeVg00yN4axhV2");
         $s  =   \Stripe\Checkout\Session::create([
-                        'success_url' => 'https://lara-assist.appli-support.jp/sample/reflect_purchase_info',
-                        'cancel_url' => 'https://lara-assist.appli-support.jp/sample/',
+                        // 環境変数から取得し設定
+                        'success_url' => env('EC_Sample_success_url'),
+                        'cancel_url' => env('EC_Sample_cancel_url'),
+
+                        //'success_url' => 'https://lara-assist.appli-support.jp/sample/reflect_purchase_info',
+                        //'cancel_url' => 'https://lara-assist.appli-support.jp/sample/',
                         'payment_method_types'  =>  ['card'],
                         'line_items'            =>  $array_product,
 
@@ -247,6 +253,12 @@ class SampleController extends Controller
         \Session::flash('flash_message', '決済が完了しました');
 
         return view('sample.stripe_sample');
+
+        // 本来であれば、購入された商品に応じて、処理を行う。
+        // （例）チケットなら、ユーザテーブルの所有チケット数を変更する等。
+        // また、商品一覧ページへリダイレクトするのではなく、購入商品の確認・ありがとうページを表示させたい。
+
+        // 現状では他を優先させるため、このままとする。
 
     }
 }

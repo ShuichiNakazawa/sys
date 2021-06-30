@@ -26,19 +26,6 @@ Route::get('/systems', function () {
     return view('sys.systems');
 });
 
-/**
- * Stripe
- **/
-// サンプルページ
-Route::get('/stripe_sample', function() {
-    return view('sample.stripe_sample');
-});
-
-// Stripe 決済前処理
-Route::post('/stripe_sample', 'SampleController@beforeStripe');
-
-// Stripe 決済後処理
-Route::get('/sample/reflect_purchase_info', 'SampleController@afterStripe');
 
 /**
  * 予約
@@ -166,7 +153,7 @@ Route::get('/kokushi/{subject_id}/practice_by_question/{title_id}/{question_numb
 
 Route::name('blog.')
         ->group(function() {
-            Route::get('/', function () {
+            Route::get('/blog/', function () {
                 return view('sys.blog');
             })->name('index');
         });
@@ -177,23 +164,36 @@ Route::name('blog.')
 
 Route::name('sample.')
         ->group(function() {
-            Route::get('/',  function () {
+            Route::get('/sample/',  function () {
                 return view('sys.sample');
             })->name('index');
 
-            Route::get('/bc_laravel',  function () {
+            Route::get('/sample/bc_laravel',  function () {
                 return view('sys.bc_laravel');
             
             })->name('bc_laravel');
+
+            // サンプルページ
+            Route::get('/sample/stripe_sample', function() {
+                return view('sample.stripe_sample');
+            });
+
+            // Stripe 決済前処理
+            Route::post('/sample/stripe_sample', 'SampleController@beforeStripe');
+
+            // Stripe 決済後処理
+            Route::get('/sample/stripe_sample/reflect_purchase_info', 'SampleController@afterStripe');
+
         });
+
 // ECサンプル
 //Route::get('/ec_sample', 'ProductController@index')->name('product.index');
 //Route::get('/ec_sample/product/{id}', 'ProductController@show')->name('product.show');
 
 Route::name('product.')
         ->group(function() {
-            Route::get('/ec_sample/', 'ProductController@index')->name('index');
-            Route::get('/ec_sample/product/{id}', 'ProductController@show')->name('show');
+            Route::get('/sample/ec_sample/', 'ProductController@index')->name('index');
+            Route::get('/sample/ec_sample/product/{id}', 'ProductController@show')->name('show');
         });
 
 Route::name('line_item.')

@@ -16,10 +16,10 @@
           <h2 class="txt_center">サンプル</h2>
           <br><br>
 
-          <a href="stripe_sample">Stripe クレジットカード決済サンプルページ</a>
+          <a href="sample/stripe_sample">Stripe クレジットカード決済サンプルページ</a>
           <br><br><br>
 
-          <a href="bc_laravel">【書籍引用】Laravel入門</a>
+          <a href="sample/bc_laravel">【書籍引用】Laravel入門</a>
           <br><br><br>
 
         </div>
