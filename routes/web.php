@@ -161,6 +161,17 @@ Route::get('/kokushi/{subject_id}/practice_by_question/{title_id}/{question_numb
 
 
 /**
+ * 雑記
+ */
+
+Route::name('blog.')
+        ->group(function() {
+            Route::get('/', function () {
+                return view('sys.blog');
+            })->name('index');
+        });
+
+/**
  * サンプル
  */
 
