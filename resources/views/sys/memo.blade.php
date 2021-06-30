@@ -15,6 +15,9 @@
 	<div style="margin:0 auto; width: 50%">
 	  <h2 style="text-align:center;">技術情報</h2>
 		<div class="news_outer">
+			<a href="#">
+				Laravelコマンドリスト
+			</a>
 		</div>
 	</div>
 	<br><br><br>
