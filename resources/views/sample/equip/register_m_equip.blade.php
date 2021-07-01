@@ -54,37 +54,37 @@
           <table class="table table-striped equipment_table">
 
             <tr>
-              <th>
+              <th class="text-center">
                 ID
               </th>
-              <th>
+              <th class="text-center">
                 所属部門
               </th>
-              <th>
+              <th class="text-center">
                 備品名称
               </th>
-              <th>
+              <th class="text-center">
                 在庫数
               </th>
-              <th>
+              <th class="text-center">
                 画像ファイル
               </th>
-              <th>
+              <th class="text-center">
                 アラート閾値
               </th>
-              <th>
+              <th class="text-center">
                 前回アラート通知日時
               </th>
-              <th>
+              <th class="text-center">
                 タグ1
               </th>
-              <th>
+              <th class="text-center">
                 タグ2
               </th>
-              <th>
+              <th class="text-center">
                 タグ3
               </th>
-              <th colspan="2">
+              <th colspan="2" class="text-center">
                 変更
               </th>
             </tr>
@@ -93,41 +93,41 @@
             @foreach( $equipments as $equip )
 
               <tr>
-                <td>
+                <td class="text-center">
                   {{ $equip->id }}
                 </td>
-                <td>
+                <td class="text-center">
                   {{ $equip->dept_id }}
                 </td>
-                <td>
+                <td class="text-center">
                   {{ $equip->name_of_equip }}
                 </td>
-                <td>
+                <td class="text-center">
                   備品在庫管理テーブルから取得
                 </td>
-                <td>
+                <td class="text-center">
                   {{ $equip->image_name }}
                 </td>
-                <td>
+                <td class="text-center">
                   10
                 </td>
-                <td>
+                <td class="text-center">
                   {{ $equip->datetime_alirt }}
                 </td>
 
-                <td>
+                <td class="text-center">
                   備品タグテーブルから取得
                 </td>
-                <td>
+                <td class="text-center">
                   備品タグテーブルから取得
                 </td>
-                <td>
+                <td class="text-center">
                   備品タグテーブルから取得
                 </td>
-                <td>
+                <td class="text-center">
                   <button>修正</button>
                 </td>
-                <td>
+                <td class="text-center">
                   <button>削除</button>
                 </td>
               </tr>
