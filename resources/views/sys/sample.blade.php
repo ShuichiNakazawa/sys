@@ -16,6 +16,9 @@
           <h2 class="txt_center">サンプル</h2>
           <br><br>
 
+          <a href="sample/equip">備品管理システム</a>
+          <br><br><br>
+
           <a href="sample/stripe_sample">Stripe クレジットカード決済サンプルページ</a>
           <br><br><br>
 

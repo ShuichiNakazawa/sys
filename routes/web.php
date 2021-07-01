@@ -184,6 +184,57 @@ Route::name('sample.')
             // Stripe 決済後処理
             Route::get('/sample/stripe_sample/reflect_purchase_info', 'SampleController@afterStripe');
 
+
+            /**
+             * テスト用
+             */
+
+            // 備品管理システム
+
+            Route::name('equip.')
+                        ->group(function() {
+                            Route::get('/sample/equip', function () {
+                                return view('sample.equip.index');
+                            });
+                            
+                            // 部門マスタ登録画面 表示
+                            Route::get('/sample/equip/register_m_dept', 'EquipController@showDepts')
+                                    ->name('register_m_dept');
+                            
+                            // 部門マスタ登録画面 登録処理
+                            Route::post('/sample/equip/register_m_dept', 'EquipController@registerDept');
+
+                            // 備品マスタ登録画面 表示
+                            Route::get('/sample/equip/register_m_equip', 'EquipController@showEquip')
+                                    ->name('register_m_equip');
+                            
+                            // 備品マスタ登録画面 登録処理
+                            Route::post('/sample/equip/register_m_equip', 'EquipController@registerM_equip');
+
+
+
+                            // 備品マスタ参照？
+                            Route::get('/sample/equip/refer_equip', function (){
+                                return view('sample.equip.refer_equip');
+                            })->name('refer_equip');
+                            
+                            // 入出庫管理画面 表示
+                            Route::get('/sample/equip/inout_management', function (){
+                                return view('sample.equip.inout_management');
+                            })->name('inout_management');
+                            
+                            // 権限登録画面 表示
+                            Route::get('/sample/equip/register_privileges', function (){
+                                return view('sample.equip.register_privileges');
+                            })->name('register_privileges');
+                            
+                            // 権限編集画面 表示
+                            Route::get('/sample/equip/edit_privileges', function (){
+                                return view('sample.equip.edit_privileges');
+                            })->name('edit_privileges');
+                        });
+
+
         });
 
 // ECサンプル
@@ -224,3 +275,9 @@ Route::resource("book_oneweeks", "Book_oneweekController");
  */
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+/**
+ * テスト環境
+ */
+

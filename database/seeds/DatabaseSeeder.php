@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
 	    // Stripe ECサイトサンプル
 	    //$this->call(ProductSeeder::class);			// 商品
 
-        $this->call(Book_oneweeksTableSeeder::class);
+        //$this->call(Book_oneweeksTableSeeder::class);
 
     }
 }
