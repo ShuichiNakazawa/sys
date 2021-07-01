@@ -27,19 +27,19 @@
           <table class="table table-striped equipment_table">
 
             <tr>
-              <th>
+              <th class="text-center">
                 ID
               </th>
-              <th>
+              <th class="text-center">
                 部門名称
               </th>
-              <th>
+              <th class="text-center">
                 登録者
               </th>
-              <th>
+              <th class="text-center">
                 最終更新日
               </th>
-              <th colspan="2">
+              <th colspan="2" class="text-center">
                 変更
               </th>
 

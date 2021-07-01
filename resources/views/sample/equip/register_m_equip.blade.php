@@ -93,41 +93,41 @@
             @foreach( $equipments as $equip )
 
               <tr>
-                <td class="text-center">
+                <td>
                   {{ $equip->id }}
                 </td>
-                <td class="text-center">
+                <td>
                   {{ $equip->dept_id }}
                 </td>
-                <td class="text-center">
+                <td>
                   {{ $equip->name_of_equip }}
                 </td>
-                <td class="text-center">
+                <td>
                   備品在庫管理テーブルから取得
                 </td>
-                <td class="text-center">
+                <td>
                   {{ $equip->image_name }}
                 </td>
-                <td class="text-center">
+                <td>
                   10
                 </td>
-                <td class="text-center">
+                <td>
                   {{ $equip->datetime_alirt }}
                 </td>
 
-                <td class="text-center">
+                <td>
                   備品タグテーブルから取得
                 </td>
-                <td class="text-center">
+                <td>
                   備品タグテーブルから取得
                 </td>
-                <td class="text-center">
+                <td>
                   備品タグテーブルから取得
                 </td>
-                <td class="text-center">
+                <td>
                   <button>修正</button>
                 </td>
-                <td class="text-center">
+                <td>
                   <button>削除</button>
                 </td>
               </tr>
