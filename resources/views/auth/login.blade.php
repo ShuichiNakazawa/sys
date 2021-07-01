@@ -71,9 +71,11 @@
     </div>
     <br><br>
     <div class="row justify-content-center">
+        {{--
         <p>リモートによる画面共有・学習支援サービスを行うには<a href="{{ route('register') }}">{{ __('新規ユーザー登録') }}</a>が必要になります。<br>
             登録を行ってから、ログインをお願いいたします。<br>
             なお、初回登録の方には、１５分無料チケットを２枚進呈しています。</p>
+            --}}
     </div>
 </div>
 @endsection
