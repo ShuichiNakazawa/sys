@@ -40,6 +40,13 @@
             <input type="number" name="notification_min_value">
             <br><br>
 
+            タグ：
+            <input type="text" name="tag1">
+            <br><br>
+
+            <a href="javascript:addTag();" class="btn btn-secondary btn-light">タグを追加</a>
+            <br><br>
+
             <button>登録</button>
           </form>
           <br><br>
