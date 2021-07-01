@@ -149,6 +149,7 @@
                               &&  $days[$i]          ==  $user_reservation->day
                               &&  $hour              ==  $user_reservation->timezone
                               &&  $minute            ==  $user_reservation->minute)
+
                             {{-- ユーザが予約済の場合 --}}
                             @php
                               $falg_reserved = 1;

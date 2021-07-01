@@ -16,6 +16,12 @@ use Carbon\Carbon;
 class ReservationController extends Controller
 {
     public function __construct(){
+
+        // セッション設定
+        // セッションへ一つのデータを保存する
+        session(['sight_key' => 'reservation']);
+
+        // 認証機能
         $this->middleware('auth');
     }
 
@@ -217,6 +223,9 @@ class ReservationController extends Controller
                                     ->orderby('month', 'asc')
                                     ->orderby('day', 'asc')
                                     ->get();
+
+            // テスト
+            //dd($reservations);
 
             // 月末日 取得
             $day_lastDayOfMonth =   (integer)Carbon::create($year_firstDayOfWeek, $month_firstDayOfWeek, 1)->lastOfMonth()->format('d');

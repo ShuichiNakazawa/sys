@@ -5,10 +5,28 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\M_dept;
 use App\M_equipment;
+use App\Users;
+
+use Auth;
 
 class EquipController extends Controller
 {
-    //
+    public function __construct(){
+
+        // セッション設定
+        // セッションへ一つのデータを保存する
+        session(['sight_key' => 'equipment']);
+
+        // 認証機能
+        $this->middleware('auth');
+    }
+
+    // メニュー表示
+    public function showMenu() {
+        return view('sample.equip.index');
+    }
+
+    // 部門マスタ登録画面 表示準備
     public function showDepts() {
 
         // 部門テーブルを読み込み、部門登録画面を表示
@@ -18,6 +36,7 @@ class EquipController extends Controller
                     ]);
     }
 
+    // 部門マスタ 登録処理
     public function registerDept(Request $request)
     {
 

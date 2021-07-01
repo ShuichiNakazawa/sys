@@ -193,9 +193,8 @@ Route::name('sample.')
 
             Route::name('equip.')
                         ->group(function() {
-                            Route::get('/sample/equip', function () {
-                                return view('sample.equip.index');
-                            });
+                            Route::get('/sample/equip', 'EquipController@showMenu')
+                                    ->name('index');
                             
                             // 部門マスタ登録画面 表示
                             Route::get('/sample/equip/register_m_dept', 'EquipController@showDepts')
@@ -275,7 +274,31 @@ Route::resource("book_oneweeks", "Book_oneweekController");
  */
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home_sample', 'HomeController@index')->name('home_sample');
 
+/*
+認証機能を２系統作成したかったが、不明のため断念
+Auth_sample::routes();
+Route::get('home_sample', 'HomeSampleController@index')->name('home_sample');
+
+Route::get('/sample/login', 'LoginSampleController@showLoginForm');
+Route::post('/sample/login', 'LoginSampleController@login');
+Route::get('/sample/logout', 'LoginSampleController@logout');
+
+Route::get('/sample/password/confirm', 'ConfirmSamplePasswordController@showLoginForm');
+
+Route::post('/sample/password/confirm', 'ConfirmSamplePasswordController@showConfirmForm');
+
+Route::post('/sample/password/email', 'ForgotSamplePasswordController@confirm');
+
+Route::get('/sample/password/reset', 'ForgotSamplePasswordController@showLinkRequestForm');
+
+Route::post('/sample/password/reset', 'ResetSamplePasswordController@reset');
+
+Route::get('/sample/register', 'ResisterSampleController@showRegistrationForm');
+
+Route::post('/sample/register', 'ResisterSampleController@register');
+*/
 
 /**
  * テスト環境

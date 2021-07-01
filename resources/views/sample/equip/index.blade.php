@@ -1,5 +1,5 @@
 <!-- resources/views/equip/index.blade.php -->
-@extends('layouts.app')
+@extends('layouts.app_equip')
 
 @section('content')
 
