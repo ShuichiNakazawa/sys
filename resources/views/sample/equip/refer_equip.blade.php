@@ -1,5 +1,5 @@
-<!-- resources/views/equip/index.blade.php -->
-@extends('layouts.app')
+<!-- resources/views/equip/refer_equip.blade.php -->
+@extends('layouts.app_equip')
 
 @section('content')
 
