@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\M_dept;
 use App\M_equipment;
-use App\Users;
+use App\User;
 
 use Auth;
 
@@ -84,5 +84,49 @@ class EquipController extends Controller
                         'depts'  =>   M_dept::get(),
                         'equipments'  =>   M_equipment::get(),
                     ]);
+    }
+
+    // 新規ユーザ登録画面 表示前処理
+    public function showUser(){
+
+        // ログインユーザの権限・部門によって、取得するユーザ一覧を変える
+        if(Auth::user()->privilege_access == 1){
+
+            // 総合管理者
+            $users  =   User::get();
+
+        } else if(Auth::user()->privilege_access == 1){
+
+            // 部門管理者
+            $users  =   User::where('dept_id', '=', Auth::user()->dept_id)
+                            ->get();
+        } else {
+
+            // 一般ユーザ、もしくは権限無し
+            $users  =   '';
+        }
+
+        // ログインユーザを取得
+        $login_user =   User::find(Auth::user()->id);
+
+        return view('sample.equip.register_user')
+            ->with([
+                // 
+                'login_user'    =>  $login_user,
+                'users'         =>   $users,
+                'depts'         =>   M_dept::get(),
+            ]);
+    }
+
+    public function registerUser(Request $request){
+
+        $user       =   new User();
+        // 画面（リクエスト）から値を取得
+        $user->account_id           =   $request->account_ID;
+        $user->name                 =   $request->user_name;
+        $user->dept_id              =   $request->dept_id;
+        $user->privilege_access     =   $request->privilege;
+        $user->save();
+
     }
 }

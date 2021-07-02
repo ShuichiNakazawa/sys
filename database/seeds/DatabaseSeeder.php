@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
 	    //$this->call(ProductSeeder::class);			// 商品
 
         //$this->call(Book_oneweeksTableSeeder::class);
-
+        $this->call(UsersTableSeeder::class);
+        $this->call(M_deptsTableSeeder::class);
     }
 }

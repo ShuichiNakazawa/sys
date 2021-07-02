@@ -221,7 +221,21 @@ Route::name('sample.')
                             Route::get('/sample/equip/inout_management', function (){
                                 return view('sample.equip.inout_management');
                             })->name('inout_management');
+
+                            // 新規アカウント登録画面 表示
+                            Route::get('/sample/equip/register_account', 'EquipController@showUser')
+                                    ->name('register_account');
                             
+                            Route::post('sample/equip/register_account', 'EquipController@registerUser');
+
+                            // 権限編集画面 表示
+                            Route::get('/sample/equip/edit_account', function (){
+                                return view('sample.equip.edit_account');
+                            })->name('edit_account');
+
+
+
+
                             // 権限登録画面 表示
                             Route::get('/sample/equip/register_privileges', function (){
                                 return view('sample.equip.register_privileges');

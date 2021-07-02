@@ -38,6 +38,11 @@
           </a>
           <br><br>
 
+          {{-- 権限を持ったユーザのみに表示 --}}
+          <a href="{{ route('sample.equip.register_account') }}">
+            <button>新規アカウント登録</button>
+          </a> ※管理者権限のみ表示
+          <br><br>
 
           {{-- 権限を持ったユーザのみに表示 --}}
           <a href="{{ route('sample.equip.register_privileges') }}">

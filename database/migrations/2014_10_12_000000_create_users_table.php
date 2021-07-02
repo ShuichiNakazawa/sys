@@ -21,8 +21,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();                          // Eメールアドレス
             $table->timestamp('email_verified_at')->nullable();         // Eメール認証日時
 
-            $table->string('sight_key');                                // サイトキー
-            $table->integer('privilege_access');                        // 利用可能システムコード(アクセス権限)
+            $table->string('sight_key')->nullable();                    // サイトキー
+            $table->string('account_id')->nullable();                   // アカウントID
+            $table->integer('privilege_access')->nullable();            // 利用可能システムコード(アクセス権限)
+            $table->integer('dept_id')->nullable();                     // 部門ID
 
             $table->integer('age')->nullable();                         // 年齢
             $table->string('street_address')->nullable();               // 住所
