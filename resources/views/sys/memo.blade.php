@@ -27,6 +27,13 @@
 						git コマンドリスト
 					</a>
 				</li>
+
+				<li>
+					<a href="/memo/html_tag_main_list">
+						HTML主要タグリスト
+					</a>
+				</li>
+
 			</ul>
 			<br><br>
 

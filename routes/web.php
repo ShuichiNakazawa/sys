@@ -75,6 +75,9 @@ Route::get('/memo/git_command_list', function() {
     return view('memo.git_command_list');
 });
 
+Route::get('/memo/html_tag_main_list', function() {
+    return view('memo.html_tag_main_list');
+});
 
 
 // テキスト
