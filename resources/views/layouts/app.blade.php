@@ -69,16 +69,21 @@
               <a href="{{ url('memo') }}">技術情報</a>
             </div>
             <div class="z100">
-              <a href="{{ url('inquiry') }}">お問合せ</a>
+              <a href="{{ url('text') }}">テキスト</a>
             </div>
-            <div class="z100">
-              <a href="{{ url('references') }}">参考サイト</a>
-            </div>
+
             <div class="z100">
               <a href="{{ url('blog') }}">雑記</a>
             </div>
             <div class="z100">
               <a href="{{ url('sample') }}">サンプル</a>
+            </div>
+
+            <div class="z100">
+              <a href="{{ url('inquiry') }}">お問合せ</a>
+            </div>
+            <div class="z100">
+              <a href="{{ url('references') }}">参考サイト</a>
             </div>
           </div>
       </nav>

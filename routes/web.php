@@ -62,11 +62,24 @@ Route::get('/reservation/management/regist_holiday', function () {
 });
 
 
-
 // 技術メモ
 Route::get('/memo', function () {
     return view('sys.memo');
 });
+
+Route::get('/memo/laravel_command_list', function() {
+    return view('memo.laravel_command_list');
+});
+
+// テキスト
+Route::get('/text', function () {
+    return view('sys.text');
+});
+
+Route::get('/text/html_basic', function () {
+    return view('text.html_basic');
+});
+
 
 // 問合せ
 Route::get('/inquiry', function () {

@@ -10946,6 +10946,8 @@ a.text-dark:focus {
 * Stripe Sample
 **/
 
+/* TOP */
+
 .top-img {
   background-image: url(/images/top.jpg?61c0526999431e76e81ff45dff5c5fa5);
   background-size: cover;
@@ -11100,6 +11102,8 @@ a:active {
   z-index: 100;
 }
 
+/* 共通設定 */
+
 .position-fixed {
   position: fixed;
   width: 100%;
@@ -11138,6 +11142,8 @@ a:active {
   width: 50%;
 }
 
+/* TOPページ ニュース */
+
 .news_outer {
   display: flex;
   margin: 0 auto;
@@ -11148,6 +11154,8 @@ a:active {
   border-radius: 15px;
   background-color: #f8fafc;
 }
+
+/* ご挨拶 */
 
 .business_content_outer {
   margin: 0 auto;
@@ -11183,6 +11191,33 @@ a:active {
   display: none;
 }
 
+/* テキスト */
+
+.text_ul {
+  list-style: none;
+}
+
+.text_list {
+  margin-bottom: 15px;
+}
+
+.text_outer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  padding: 25px;
+  margin: 15px;
+  border-radius: 15px;
+  background-color: #f8fafc;
+}
+
+.text_outer p {
+  margin-bottom: 5px;
+}
+
+/* 問題文管理システム */
+
 .question_sentence_outer {
   display: flex;
   width: 900px;
@@ -11209,24 +11244,12 @@ a:active {
   border-radius: 15px;
 }
 
-.weekly_outer {
-  margin: 0 auto;
-  max-width: 800px;
-  display: flex;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  padding: 10px;
-  margin-bottom: 5px;
-  border-radius: 15px;
-  text-align: center;
-  background-color: #f8fafc;
-}
-
 .choice_chara {
   display: flex;
   flex-direction: row;
   /*
-      justify-content: center;
-      align-items: center;
+    justify-content: center;
+    align-items: center;
   */
   margin-bottom: 15px;
 }
@@ -11332,6 +11355,20 @@ a:active {
 
 .radio_hide {
   width: 0;
+}
+
+/* 予約システム */
+
+.weekly_outer {
+  margin: 0 auto;
+  max-width: 800px;
+  display: flex;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 15px;
+  text-align: center;
+  background-color: #f8fafc;
 }
 
 .cell_week {

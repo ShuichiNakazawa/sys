@@ -17,7 +17,7 @@
 		<div class="news_outer">
 			<ul>
 				<li>
-					<a href="#">
+					<a href="/memo/laravel_command_list">
 						Laravelコマンドリスト
 					</a>
 				</li>

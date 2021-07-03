@@ -2,6 +2,7 @@
 * Stripe Sample
 **/
 
+/* TOP */
 .top {
   &-img {
     background-image: url("../../public/images/top.jpg");
@@ -167,6 +168,7 @@ a:active {
   z-index: 100;
 }
 
+/* 共通設定 */
 .position-fixed {
   position: fixed;
   width: 100%;
@@ -207,6 +209,7 @@ a:active {
   width:50%
 }
 
+/* TOPページ ニュース */
 .news_outer {
   display: flex;
   margin: 0 auto;
@@ -218,6 +221,7 @@ a:active {
   background-color: #f8fafc;
 }
 
+/* ご挨拶 */
 .business_content_outer {
   margin: 0 auto;
   width: 50%
@@ -254,6 +258,44 @@ a:active {
   display: none;
 }
 
+/* テキスト */
+.text_ul {
+  list-style: none;
+}
+
+.text_list {
+  margin-bottom: 15px;
+}
+
+.text_outer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+  padding: 25px;
+  margin: 15px;
+  border-radius: 15px;
+  background-color: #f8fafc;
+}
+
+.text_outer p {
+  margin-bottom: 5px;
+
+}
+
+.code_outer {
+  box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+  padding: 25px;
+  margin: 15px;
+  border-radius: 15px;
+  background-color: #f8fafc;
+}
+
+.text_outer h4 {
+
+}
+/* 問題文管理システム */
 .question_sentence_outer {
     display: flex;
     width: 900px;
@@ -281,27 +323,17 @@ a:active {
   border-radius: 15px;
 }
 
-.weekly_outer {
-  margin: 0 auto;
-  max-width: 800px;
+.choice_chara {
   display: flex;
-  box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
-  padding: 10px;
-  margin-bottom: 5px;
-  border-radius: 15px;
-  text-align: center;
-  background-color: #f8fafc;
+  flex-direction: row;
+/*
+  justify-content: center;
+  align-items: center;
+*/
+  margin-bottom: 15px;
 }
 
-.choice_chara {
-    display: flex;
-    flex-direction: row;
-/*
-    justify-content: center;
-    align-items: center;
-*/
-    margin-bottom: 15px;
-}
+
 
 
 .btn {
@@ -405,6 +437,20 @@ a:active {
 
 .radio_hide{
     width: 0;
+}
+
+
+/* 予約システム */
+.weekly_outer {
+  margin: 0 auto;
+  max-width: 800px;
+  display: flex;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 15px;
+  text-align: center;
+  background-color: #f8fafc;
 }
 
 .cell_week {
@@ -578,6 +624,7 @@ a:active {
   border-left: solid 1px rgb(240, 239, 233);
 }
 
+
 .card_product {
   width: 180px;
   margin: 5px;
@@ -592,6 +639,9 @@ a:active {
   width: 900px;
   margin: 0 auto;
 }
+
+
+
 
 input[type="radio"]:checked + label {
     background-color: blue;
