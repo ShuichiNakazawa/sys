@@ -13,7 +13,7 @@
 	  <br>
 
 	<div style="margin:0 auto; width: 60%;">
-	  <h2 style="text-align:center;">テキスト一覧</h2>
+	  <h2 style="text-align:center;">Laravel コマンド一覧</h2>
 		<div class="text_outer">
 			<div id = "main">
 	

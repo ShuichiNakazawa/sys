@@ -11208,6 +11208,10 @@ a:active {
   list-style: none;
 }
 
+.memo_outer ul li {
+  margin-bottom: 15px;
+}
+
 /* テキスト */
 
 .text_ul {
@@ -11273,6 +11277,7 @@ a:active {
 
 .subject_outer {
   display: flex;
+  flex-direction: column;
   width: 900px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   padding: 25px;

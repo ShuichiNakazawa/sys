@@ -71,6 +71,12 @@ Route::get('/memo/laravel_command_list', function() {
     return view('memo.laravel_command_list');
 });
 
+Route::get('/memo/git_command_list', function() {
+    return view('memo.git_command_list');
+});
+
+
+
 // テキスト
 Route::get('/text', function () {
     return view('sys.text');

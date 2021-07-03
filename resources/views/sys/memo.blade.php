@@ -18,7 +18,13 @@
 			<ul>
 				<li>
 					<a href="/memo/laravel_command_list">
-						Laravelコマンドリスト
+						Laravel コマンドリスト
+					</a>
+				</li>
+
+				<li>
+					<a href="/memo/git_command_list">
+						git コマンドリスト
 					</a>
 				</li>
 			</ul>
