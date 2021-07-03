@@ -1,2 +1,3 @@
 User-agent: *
 Disallow:
+Sitemap: https://lara-assist.jp/sitemap_20210704.txt
