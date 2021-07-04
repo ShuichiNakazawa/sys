@@ -81,8 +81,8 @@ class EquipController extends Controller
 
         return view('sample.equip.register_m_equip')
                     ->with([
-                        'depts'  =>   M_dept::get(),
-                        'equipments'  =>   M_equipment::get(),
+                        'depts'         =>   M_dept::get(),
+                        'equipments'    =>   M_equipment::with('M_depts')->get(),
                     ]);
     }
 

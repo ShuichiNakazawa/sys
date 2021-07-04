@@ -17,18 +17,20 @@ class M_deptsTableSeeder extends Seeder
         \DB::table('m_depts')->insert(array (
             0 => 
             array (
-                'name_of_dept' => 'テスト部門',
-                'editor' => 'テストユーザ',
-                'created_at' => '2021-07-03 07:38:56',
-                'updated_at' => NULL,
+                'id'            =>  1,
+                'name_of_dept'  => 'テスト部門',
+                'editor'        => 'テストユーザ',
+                'created_at'    => '2021-07-03 07:38:56',
+                'updated_at'    => NULL,
             ),
 
             1 => 
             array (
-                'name_of_dept' => '営業部',
-                'editor' => '営業部ユーザ１',
-                'created_at' => '2021-07-03 07:38:56',
-                'updated_at' => NULL,
+                'id'            =>  2,
+                'name_of_dept'  => '営業部',
+                'editor'        => '営業部ユーザ１',
+                'created_at'    => '2021-07-03 07:38:56',
+                'updated_at'    => NULL,
             ),
         ));
     

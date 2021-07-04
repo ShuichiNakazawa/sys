@@ -32,5 +32,8 @@ class DatabaseSeeder extends Seeder
         //$this->call(Book_oneweeksTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(M_deptsTableSeeder::class);
+        $this->call(M_equipmentsTableSeeder::class);
+        $this->call(T_equipment_tagsTableSeeder::class);
+       
     }
 }

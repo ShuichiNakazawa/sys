@@ -58,13 +58,10 @@
                 ID
               </th>
               <th class="text-center">
-                所属部門
+                部門
               </th>
               <th class="text-center">
                 備品名称
-              </th>
-              <th class="text-center">
-                在庫数
               </th>
               <th class="text-center">
                 画像ファイル
@@ -73,7 +70,7 @@
                 アラート閾値
               </th>
               <th class="text-center">
-                前回アラート通知日時
+                前回アラート<br>通知日時
               </th>
               <th class="text-center">
                 タグ1
@@ -96,34 +93,68 @@
                 <td>
                   {{ $equip->id }}
                 </td>
+                
                 <td>
-                  {{ $equip->dept_id }}
+                  {{ $equip->m_dept->name_of_dept }}
+                  {{-- M_equipment --}}
                 </td>
                 <td>
                   {{ $equip->name_of_equipment }}
                 </td>
                 <td>
-                  備品在庫管理テーブルから取得
-                </td>
-                <td>
                   {{ $equip->image_name }}
                 </td>
                 <td>
-                  10
+                  {{ $equip->notification_min_value }}
                 </td>
                 <td>
-                  {{ $equip->datetime_alirt }}
+                  {{ $equip->datetime_alert }}
                 </td>
 
+                @php
+                  $index = 0;
+                @endphp
+
+                @foreach($equip->t_equipment_tags as $tag)
+                  <td>
+                    {{ $tag->name_of_tag }}
+                  </td>
+                  @php
+                    $index++;
+                  @endphp
+                @endforeach
+
+                @switch($index)
+                  @case(0)
+                    <td></td><td></td><td></td>
+                    @break
+                  @case(1)
+                    <td></td><td></td>
+                    @break
+                  @case(2)
+                    <td></td>
+                    @break
+                @endswitch
+
+{{--
+                  @php
+                   dd($equip->t_equipment_tags);
+                  @endphp
+--}]
+                {{--
+                @else
+                  <td></td><td></td><td></td>
+                @endif
+                --}}
+                {{--
                 <td>
                   備品タグテーブルから取得
                 </td>
                 <td>
                   備品タグテーブルから取得
                 </td>
-                <td>
-                  備品タグテーブルから取得
-                </td>
+                --}}
+
                 <td>
                   <button>修正</button>
                 </td>

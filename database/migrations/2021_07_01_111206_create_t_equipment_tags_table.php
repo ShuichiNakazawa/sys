@@ -15,7 +15,7 @@ class CreateTEquipmentTagsTable extends Migration
     {
         Schema::create('t_equipment_tags', function (Blueprint $table) {
             $table->bigIncrements('id');        // ID
-            $table->integer('dept_id');         // 部門ID
+            $table->integer('m_equipment_id');    // 部門ID
             $table->string('name_of_tag');      // タグ名称
             $table->timestamps();               // タイムスタンプ
         });

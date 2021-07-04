@@ -15,10 +15,10 @@ class CreateMEquipmentsTable extends Migration
     {
         Schema::create('m_equipments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('dept_id');                      // 部門ID
+            $table->string('m_dept_id');                    // 部門ID
             $table->string('name_of_equipment');            // 備品名称
-            //$table->integer('stock_quantity');              // 在庫数
-            $table->string('image_name');                   // 画像ファイル名
+            //$table->integer('stock_quantity');            // 在庫数
+            $table->string('image_name')->nullable();       // 画像ファイル名
             $table->integer('notification_min_value');      // アラート通知閾値
             $table->datetime('datetime_alert')              // 前回アラート日時
                         ->nullable();
