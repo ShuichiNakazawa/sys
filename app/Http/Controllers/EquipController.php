@@ -29,6 +29,32 @@ class EquipController extends Controller
         return view('sample.equip.index');
     }
 
+    public function referEquipment(){
+
+        // ログインユーザの権限によって、取得する備品を変更する。
+        if(Auth::user()->privilege_access == 1){
+
+            // 全件取得
+            $equipments =   M_equipment::get();
+
+            // 
+
+        } else if(Auth::user()->privilege_access == 2){
+
+            // 部門限定取得
+            $equipments =   M_equipment::where('m_dept_id', '=', Auth::user()->m_dept_id)
+                                        ->get();
+
+        }
+
+        //dd(Auth::user()->privilege_access);
+
+        return view('sample.equip.refer_equip')
+                    ->with([
+                        'equipments'    =>  $equipments,
+                    ]);
+    }
+
     // 部門マスタ登録画面 表示準備
     public function showDepts() {
 

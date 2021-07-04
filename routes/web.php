@@ -235,9 +235,7 @@ Route::name('sample.')
 
 
                             // 備品マスタ参照？
-                            Route::get('/sample/equip/refer_equip', function (){
-                                return view('sample.equip.refer_equip');
-                            })->name('refer_equip');
+                            Route::get('/sample/equip/refer_equip', 'EquipController@referEquipment')->name('refer_equip');
                             
                             // 入出庫管理画面 表示
                             Route::get('/sample/equip/inout_management', function (){

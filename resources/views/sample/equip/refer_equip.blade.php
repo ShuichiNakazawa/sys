@@ -61,7 +61,49 @@
             </tr>
 
             {{-- 以降、DBから取得 --}}
-            {{-- @foreach( $equipments as $equipment ) --}}
+            @foreach( $equipments as $equipment )
+              <tr>
+                <td>
+                  {{ $equipment->id }}
+                </td>
+                <td>
+                  {{ $equipment->M_dept->name_of_dept }}
+                </td>
+                <td>
+                  {{ $equipment->name_of_equipment }}
+                </td>
+                <td>
+                  ※備品在庫テーブルから取得
+                </td>
+                <td>
+                  {{ $equipment->image_name }}
+                </td>
+                <td>
+                  {{ $equipment->notification_min_value }}
+                </td>
+                <td>
+                  {{ $equipment->id }}datetime_alert
+                </td>
+
+                <td>
+                  ※備品タグテーブルから取得
+                </td>
+                <td>
+                  ※備品タグテーブルから取得
+                </td>
+                <td>
+                  ※備品タグテーブルから取得
+                </td>
+                <td>
+                  <button>修正</button>
+                </td>
+                <td>
+                  <button>削除</button>
+                </td>
+              </tr>
+            @endforeach
+                
+{{--
             <tr>
               <td>
                 1
@@ -299,7 +341,7 @@
                 <button>削除</button>
               </td>
             </tr>
-
+--}}
 
           </table>
 
