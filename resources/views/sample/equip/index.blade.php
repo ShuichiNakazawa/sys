@@ -42,7 +42,7 @@
           @if(Auth::user()->privilege_access < 3)
             <a href="{{ route('sample.equip.register_account') }}">
               <button>新規アカウント登録</button>
-            </a> ※管理者権限のみ表示
+            </a>
             <br><br>
           @endif
 
@@ -51,7 +51,7 @@
           @if(Auth::user()->privilege_access < 3)
             <a href="{{ route('sample.equip.edit_privileges') }}">
               <button disabled="disabled">ユーザー情報参照</button>
-            </a> ※管理者権限のみ表示
+            </a>
             <br><br>
           @endif
 
