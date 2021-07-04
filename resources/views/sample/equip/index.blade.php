@@ -22,7 +22,7 @@
           <br><br>
 
           <a href="{{ route('sample.equip.inout_management') }}">
-            <button>入出庫管理</button>
+            <button disabled="disabled">入出庫管理</button>
           </a>
           <br><br><br>
 
@@ -50,7 +50,7 @@
           {{-- 権限を持ったユーザのみに表示 --}}
           @if(Auth::user()->privilege_access < 3)
             <a href="{{ route('sample.equip.edit_privileges') }}">
-              <button>ユーザー情報参照</button>
+              <button disabled="disabled">ユーザー情報参照</button>
             </a> ※管理者権限のみ表示
             <br><br>
           @endif
