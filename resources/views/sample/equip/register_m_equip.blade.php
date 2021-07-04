@@ -20,38 +20,63 @@
           <h2 class="txt_center">備品マスタ登録</h2>
           <br><br>
 
-          <form action="{{ action('EquipController@registerM_equip') }}" method="post">
+          <form action="{{ action('EquipController@registerM_equip') }}" method="post" enctype="multipart/form-data">
             @csrf
-            備品名：<input type="text" name="name_of_equip">
-            <br><br>
 
-            所属部門：
-            <select name="dept_id">
-              {{-- 部門テーブルより取得 --}}
-              @foreach( $depts as $dept )
-                <option value="{{ $dept->id }}">
-                  {{ $dept->name_of_dept }}
-                </option>
-              @endforeach
-            </select>
-            <br><br>
+            <div class="equip_outer">
+              <div class="display_flex">
+                <div class="txt_center equip_item">
+                  <img id="preview" style="width: 200px; height:200px;" alt="備品画像">
+                  <br><br>
 
-            画像：
-            <input type="file" name="image">
-            <br><br>
+                  <input type="file" name="upfile">
+                </div>
 
-            アラート閾値：
-            <input type="number" name="notification_min_value">
-            <br><br>
+                <div class="equip_item">
 
-            タグ：
-            <input type="text" name="tag1">
-            <br><br>
+                </div>
+              </div>
 
-            <a href="javascript:addTag();" class="btn btn-secondary btn-light">タグを追加</a>
-            <br><br>
+              <div class="row">
+                <div class="equip_item">
+                  備品名：　　　<input type="text" name="name_of_equip">
+                  <br><br>
 
-            <button>登録</button>
+                  所属部門：　　
+                  <select name="dept_id">
+                    {{-- 部門テーブルより取得 --}}
+                    @foreach( $depts as $dept )
+                      <option value="{{ $dept->id }}">
+                        {{ $dept->name_of_dept }}
+                      </option>
+                    @endforeach
+                  </select>
+                  <br><br>
+
+                  アラート閾値：
+                  <input type="number" name="notification_min_value">
+                  <br><br>
+
+                  <div>
+                    タグ：　　　　
+                    <input type="text" name="tag1">
+                    <a href="javascript:addTag();" class="btn btn-secondary btn-light">追加</a>
+                  </div>
+  
+                  
+                  <br><br>
+  
+                  <button>登録</button>
+                </div>
+              </div>
+              <div class="equip_item">
+                【設定タグ】
+
+              </div>
+
+            </div>
+
+
           </form>
           <br><br>
 
@@ -140,24 +165,6 @@
                     @break
                 @endswitch
 
-{{--
-                  @php
-                   dd($equip->t_equipment_tags);
-                  @endphp
---}]
-                {{--
-                @else
-                  <td></td><td></td><td></td>
-                @endif
-                --}}
-                {{--
-                <td>
-                  備品タグテーブルから取得
-                </td>
-                <td>
-                  備品タグテーブルから取得
-                </td>
-                --}}
 
                 <td>
                   <button>修正</button>
@@ -168,245 +175,6 @@
               </tr>
             @endforeach
 
-            {{--
-            <tr>
-              <td>
-                1
-              </td>
-              <td>
-                資材調達部
-              </td>
-              <td>
-                ドライバー
-              </td>
-              <td>
-                51
-              </td>
-              <td>
-                driver.jpg
-              </td>
-              <td>
-                10
-              </td>
-              <td>
-                2021年6月26日
-              </td>
-
-              <td>
-                工具
-              </td>
-              <td>
-                常用
-              </td>
-              <td>
-                損耗低
-              </td>
-              <td>
-                <button>修正</button>
-              </td>
-              <td>
-                <button>削除</button>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                1
-              </td>
-              <td>
-                資材調達部
-              </td>
-              <td>
-                ハンマー
-              </td>
-              <td>
-                61
-              </td>
-              <td>
-                hammer.jpg
-              </td>
-              <td>
-                15
-              </td>
-              <td>
-                2021年6月26日
-              </td>
-              <td>
-                工具
-              </td>
-              <td>
-                常用
-              </td>
-              <td>
-                損耗低
-              </td>
-              <td>
-                <button>修正</button>
-              </td>
-              <td>
-                <button>削除</button>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                3
-              </td>
-              <td>
-                資材調達部
-              </td>
-              <td>
-                パイプレンチ
-              </td>
-              <td>
-                30
-              </td>
-              <td>
-                pipe_wrench.jpg
-              </td>
-              <td>
-                10
-              </td>
-              <td>
-                2021年6月26日
-              </td>
-              <td>
-                工具
-              </td>
-              <td>
-                利用率低
-              </td>
-              <td>
-                損耗低
-              </td>
-              <td>
-                <button>修正</button>
-              </td>
-              <td>
-                <button>削除</button>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                4
-              </td>
-              <td>
-                資材調達部
-              </td>
-              <td>
-                シールテープ
-              </td>
-              <td>
-                121
-              </td>
-              <td>
-                sealing_tape.jpg
-              </td>
-              <td>
-                30
-              </td>
-              <td>
-                2021年6月26日
-              </td>
-              <td>
-                補修材
-              </td>
-              <td>
-                常用
-              </td>
-              <td>
-                損耗低
-              </td>
-              <td>
-                <button>修正</button>
-              </td>
-              <td>
-                <button>削除</button>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                5
-              </td>
-              <td>
-                資材調達部
-              </td>
-              <td>
-                グラインダー
-              </td>
-              <td>
-                31
-              </td>
-              <td>
-                grinder.jpg
-              </td>
-              <td>
-                10
-              </td>
-              <td>
-                2021年6月26日
-              </td>
-              <td>
-                工具
-              </td>
-              <td>
-                常用
-              </td>
-              <td>
-                損耗低
-              </td>
-
-              <td>
-                <button>修正</button>
-              </td>
-              <td>
-                <button>削除</button>
-              </td>
-            </tr>
-
-
-            <tr>
-              <td>
-                5
-              </td>
-              <td>
-                資材調達部
-              </td>
-              <td>
-                グラインダー 替え刃
-              </td>
-              <td>
-                87
-              </td>
-              <td>
-                grinder_blade.jpg
-              </td>
-              <td>
-                10
-              </td>
-              <td>
-                2021年6月26日
-              </td>
-              <td>
-                工具
-              </td>
-              <td>
-                常用
-              </td>
-              <td>
-                損耗高
-              </td>
-
-              <td>
-                <button>修正</button>
-              </td>
-              <td>
-                <button>削除</button>
-              </td>
-            </tr>
-            --}}
 
           </table>
 
@@ -420,5 +188,36 @@
         @section('footer')
 
         @endsection
+
+        @section('script')
+        {{--
+          <script type="module">
+            $('#filename').on("change", function() {
+
+              console.log('発火確認');
+              var file = this.files[0];
+              if(file != null) {
+                document.getElementById("dummy_file").value = file.name;
+              }
+
+              //const file = event.target.files[0],
+              reader = new FileReader(),
+              $preview = $('#image_equip'); // 表示する所
+
+              // 画像ファイル以外は処理停止
+              if(file.type.indexOf("image") < 0){
+                return false;
+              }
+
+              // ファイル読み込みが完了した際に発火するイベントを登録
+              reader.onload = function() {
+                  // .prevewの領域の中にロードした画像を表示
+                  $preview.attr('src',event.target.result);
+              };
+
+              reader.readAsDataURL(file);
+            });
+          </script>
+          --}}
     </body>
 </html>
