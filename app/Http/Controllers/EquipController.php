@@ -39,7 +39,8 @@ class EquipController extends Controller
 
             // 
 
-        } else if(Auth::user()->privilege_access == 2){
+        } else if(Auth::user()->privilege_access == 2
+             ||   Auth::user()->privilege_access == 3  ){
 
             // 部門限定取得
             $equipments =   M_equipment::where('m_dept_id', '=', Auth::user()->m_dept_id)
