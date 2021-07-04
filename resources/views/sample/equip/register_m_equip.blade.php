@@ -100,7 +100,7 @@
                   {{ $equip->dept_id }}
                 </td>
                 <td>
-                  {{ $equip->name_of_equip }}
+                  {{ $equip->name_of_equipment }}
                 </td>
                 <td>
                   備品在庫管理テーブルから取得
