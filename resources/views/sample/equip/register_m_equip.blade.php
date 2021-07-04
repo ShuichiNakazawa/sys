@@ -10,9 +10,13 @@
 @endif
   
 @include('common.errors')
-        <br>
-
         <div style="margin:0 auto; width: 90%">
+          <div>
+            <a href="{{ route('sample.equip.index') }}">
+              <button>メニューへ戻る</button>
+            </a>
+          </div>
+
           <h2 class="txt_center">備品マスタ登録</h2>
           <br><br>
 

@@ -12,8 +12,8 @@ class M_dept extends Model
         return $this->hasMany('App\M_equipment');
     }
 
-    public function User()
+    public function Users()
     {
-        return $this->belongsTo('App\User');
+        return $this->hasMany('App\User', 'id', 'dept_id');
     }
 }

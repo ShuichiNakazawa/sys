@@ -18,13 +18,13 @@ class CreateUsersTable extends Migration
             $table->string('name');                                     // 氏名
             $table->string('password');                                 // パスワード
             $table->rememberToken();                                    // トークン
-            $table->string('email')->unique();                          // Eメールアドレス
+            $table->string('email')->nullable();                        // Eメールアドレス
             $table->timestamp('email_verified_at')->nullable();         // Eメール認証日時
 
             $table->string('sight_key')->nullable();                    // サイトキー
-            $table->string('account_id')->nullable();                   // アカウントID
+            $table->string('login_id')->nullable();                     // ログインID
             $table->integer('privilege_access')->nullable();            // 利用可能システムコード(アクセス権限)
-            $table->integer('dept_id')->nullable();                     // 部門ID
+            $table->integer('m_dept_id')->nullable();                     // 部門ID
 
             $table->integer('age')->nullable();                         // 年齢
             $table->string('street_address')->nullable();               // 住所

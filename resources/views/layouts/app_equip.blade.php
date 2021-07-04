@@ -56,8 +56,7 @@
     @endguest
       </div>
   <div class="page_body">
-    <main class="py-4 main_contents">
-      <br>
+    <main class="main_contents">
       @yield('content')
     </main>
   </div>

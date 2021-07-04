@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
 use App\M_dept;
 use App\M_equipment;
 use App\User;
+
 
 use Auth;
 
@@ -56,11 +59,29 @@ class EquipController extends Controller
     // 備品マスタ画面 表示
     public function showEquip(Request $request)
     {
+        // 権限によって、取得する備品情報を変える。
+        if(Auth::user()->privilege_access == 1){
+
+            // 総合管理者
+            $depts      =   M_dept::get();
+            $equipments =   M_equipment::get();
+
+        } else if (Auth::user()->privilege_access == 2){
+
+            // 部門管理者
+            $depts      =   M_dept::where('id', '=', Auth::user()->m_dept_id)
+                                    ->get();
+            $equipments =   M_equipment::where('m_dept_id', '=', Auth::user()->m_dept_id)
+                                    ->get();
+
+        }
+
+
         // 備品マスタを読み込み、備品登録画面を表示
         return view('sample.equip.register_m_equip')
                     ->with([
-                        'depts'  =>   M_dept::get(),
-                        'equipments'  =>   M_equipment::get(),
+                        'depts'         =>   $depts,
+                        'equipments'    =>   $equipments,
                     ]);
 
     }
@@ -95,7 +116,7 @@ class EquipController extends Controller
             // 総合管理者
             $users  =   User::get();
 
-        } else if(Auth::user()->privilege_access == 1){
+        } else if(Auth::user()->privilege_access == 2){
 
             // 部門管理者
             $users  =   User::where('dept_id', '=', Auth::user()->dept_id)
@@ -120,13 +141,48 @@ class EquipController extends Controller
 
     public function registerUser(Request $request){
 
+        // バリデーション
+
         $user       =   new User();
         // 画面（リクエスト）から値を取得
-        $user->account_id           =   $request->account_ID;
+        $user->login_id             =   $request->login_id;
         $user->name                 =   $request->user_name;
+        $user->password             =   Hash::make($request->password);
         $user->dept_id              =   $request->dept_id;
         $user->privilege_access     =   $request->privilege;
         $user->save();
 
+        // ログインユーザの権限・部門によって、取得するユーザ一覧を変える
+        if(Auth::user()->privilege_access == 1){
+
+            // 総合管理者
+            $users  =   User::get();
+
+        } else if(Auth::user()->privilege_access == 2){
+
+            // 部門管理者
+            // 自分以外の部門管理者を除外したい。ロジック追加が必要
+            $users  =   User::where('dept_id', '=', Auth::user()->dept_id)
+                            ->get();
+                            
+        } else {
+
+            // 一般ユーザ、もしくは権限無し
+            $users  =   '';
+        }
+
+        // ログインユーザを取得
+        $login_user =   User::find(Auth::user()->id);
+
+        // フラッシュメッセージ 設定
+        session()->flash('message', '正常に登録できました。');
+
+        return view('sample.equip.register_user')
+            ->with([
+                // 
+                'login_user'    =>  $login_user,
+                'users'         =>   $users,
+                'depts'         =>   M_dept::get(),
+            ]);
     }
 }

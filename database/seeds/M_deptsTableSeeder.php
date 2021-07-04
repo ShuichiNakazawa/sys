@@ -32,6 +32,26 @@ class M_deptsTableSeeder extends Seeder
                 'created_at'    => '2021-07-03 07:38:56',
                 'updated_at'    => NULL,
             ),
+
+            2 => 
+            array (
+                'id'            =>  3,
+                'name_of_dept'  => '資材調達部',
+                'editor'        => '資材調達部ユーザ１',
+                'created_at'    => '2021-07-03 07:38:56',
+                'updated_at'    => NULL,
+            ),
+
+            3 => 
+            array (
+                'id'            =>  4,
+                'name_of_dept'  => '現場管理部',
+                'editor'        => '現場管理部ユーザ１',
+                'created_at'    => '2021-07-03 07:38:56',
+                'updated_at'    => NULL,
+            ),
+
+
         ));
     
     }

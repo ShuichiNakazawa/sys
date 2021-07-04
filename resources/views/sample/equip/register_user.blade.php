@@ -8,11 +8,15 @@
   {{ session('message') }}
 </div>
 @endif
-  
-@include('common.errors')
-        <br>
 
+@include('common.errors')
         <div style="margin:0 auto; width: 80%">
+          <div>
+            <a href="{{ route('sample.equip.index') }}">
+              <button>メニューへ戻る</button>
+            </a>
+          </div>
+
           <h2 class="txt_center">新規アカウント登録</h2>
           <br><br>
 
@@ -20,7 +24,11 @@
             @csrf
 
             アカウントID：
-            <input type="text" name="account_ID">
+            <input type="text" name="login_id">
+            <br><br>
+
+            パスワード：
+            <input type="text" name="password">
             <br><br>
 
             氏名：
@@ -47,13 +55,13 @@
               </select>
 
             @elseif(Auth::user()->privilege_access == 2)
-              <input type="text" name="dept_id" value="{{ Auth::user()->dept_id }}" disabled="disabled">※部門マスタから値を元に取得
+              <input type="text" name="dept_id" value="{{ Auth::user()->M_dept->name_of_dept }}" disabled="disabled">
               <br><br>
 
               権限：
               <select name="privilege">
-                <option value="0">一般</option>
-                <option value="1">部門管理者</option>
+                <option value="2">部門管理者</option>
+                <option value="3" selected="selected">一般</option>
               </select>
             @endif
            
@@ -103,14 +111,26 @@
                     {{ $user->name }}
                   </td>
                   <td>
-                    {{ $user->account_id }}
+                    {{ $user->login_id }}
                   </td>
                   <td>
-                    {{ $user->dept_id }}
+                    {{ $user->M_dept->name_of_dept }}
                   </td>
 
                   <td>
-                    {{ $user->privilege }}
+                    @switch($user->privilege_access)
+                      @case(1)
+                        総合管理者
+                        @break
+
+                      @case(2)
+                        部門管理者
+                        @break
+                      @case(3)
+                        一般
+                        @break
+                    @endswitch
+
                   </td>
 
                   <td>
