@@ -43,6 +43,6 @@ class User extends Authenticatable
     // Add for outer join 2021/07/04
     public function M_dept()
     {
-        return $this->belongsTo('App\M_dept', 'dept_id', 'id');
+        return $this->belongsTo('App\M_dept', 'm_dept_id', 'id');
     }
 }

@@ -93,7 +93,7 @@ class EquipController extends Controller
 
         $m_equip =   new M_equipment();
         $m_equip->name_of_equipment         =  $request->name_of_equip;
-        $m_equip->dept_id                   =  $request->dept_id;
+        $m_equip->m_dept_id                 =  $request->dept_id;
         $m_equip->image_name                =  "";
         $m_equip->notification_min_value    =  $request->notification_min_value;
         //$m_equip->datetime_alert            =  "";
@@ -119,7 +119,7 @@ class EquipController extends Controller
         } else if(Auth::user()->privilege_access == 2){
 
             // 部門管理者
-            $users  =   User::where('dept_id', '=', Auth::user()->dept_id)
+            $users  =   User::where('m_dept_id', '=', Auth::user()->m_dept_id)
                             ->get();
         } else {
 
@@ -148,7 +148,7 @@ class EquipController extends Controller
         $user->login_id             =   $request->login_id;
         $user->name                 =   $request->user_name;
         $user->password             =   Hash::make($request->password);
-        $user->dept_id              =   $request->dept_id;
+        $user->m_dept_id            =   $request->dept_id;
         $user->privilege_access     =   $request->privilege;
         $user->save();
 
@@ -162,7 +162,7 @@ class EquipController extends Controller
 
             // 部門管理者
             // 自分以外の部門管理者を除外したい。ロジック追加が必要
-            $users  =   User::where('dept_id', '=', Auth::user()->dept_id)
+            $users  =   User::where('m_dept_id', '=', Auth::user()->m_dept_id)
                             ->get();
                             
         } else {
