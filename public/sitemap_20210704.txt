@@ -37,5 +37,7 @@ https://lara-assist.jp/sample/ec_sample
 https://lara-assist.jp/sample/p5
 https://lara-assist.jp/sample/p5/bar_graph
 https://lara-assist.jp/sample/p5/break_block
+https://lara-assist.jp/sample/bc_css_grid/magazine_style
+https://lara-assist.jp/sample/bc_css_grid/flyer_style
 https://lara-assist.jp/inquiry
 https://lara-assist.jp/references
