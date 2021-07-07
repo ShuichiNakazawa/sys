@@ -62,6 +62,27 @@
           <br><br>
 
         </div>
+
+        <div style="margin:0 auto; width: 50%">
+          <h4>
+            作成中メモ
+          </h4>
+          ◆◆◆備品マスタにて、画像登録の実装
+          <br><br>
+
+          ◆◆備品検索機能の実装
+          <br><br>
+
+          ユーザ情報の編集機能の実装
+          <br><br>
+
+          在庫管理テーブルの作成
+          <br><br>
+
+          入出庫管理、編集機能の実装
+          <br><br>
+
+        </div>
         <br><br><br>
         @endsection
 
