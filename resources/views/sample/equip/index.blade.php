@@ -63,7 +63,7 @@
 
         </div>
 
-        <div style="margin:0 auto; width: 50%">
+        <div style="margin:0 auto; width: 50%" class="memo_outer">
           <h4>
             作成中メモ
           </h4>
