@@ -241,4 +241,35 @@ class EquipController extends Controller
                         'equipments'    =>   $equipments,
                     ]);
     }
+
+    public function referUser(){
+
+        // ログインユーザの権限・部門によって、取得するユーザ一覧を変える
+        if(Auth::user()->privilege_access == 1){
+
+            // 総合管理者
+            $users  =   User::get();
+
+        } else if(Auth::user()->privilege_access == 2){
+
+            // 部門管理者
+            $users  =   User::where('m_dept_id', '=', Auth::user()->m_dept_id)
+                            ->get();
+        } else {
+
+            // 一般ユーザ、もしくは権限無し
+            $users  =   '';
+        }
+
+        // ログインユーザを取得
+        $login_user =   User::find(Auth::user()->id);
+
+        return view('sample.equip.refer_user')
+            ->with([
+                // 
+                'login_user'    =>  $login_user,
+                'users'         =>   $users,
+                'depts'         =>   M_dept::get(),
+            ]);
+    }
 }

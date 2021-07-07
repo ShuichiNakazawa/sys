@@ -53,8 +53,8 @@
 
           {{-- 権限を持ったユーザのみに表示 --}}
           @if(Auth::user()->privilege_access < 3)
-            <a href="{{ route('sample.equip.edit_privileges') }}">
-              <button disabled="disabled">ユーザー情報参照</button>
+            <a href="{{ route('sample.equip.refer_user') }}">
+              <button>ユーザー情報参照</button>
             </a>
             <br><br>
           @endif

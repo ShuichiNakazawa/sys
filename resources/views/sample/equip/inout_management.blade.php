@@ -45,7 +45,7 @@
                 備品名
               </th>
               <th class="txt_center">
-                画像ファイル
+                画像
               </th>
               <th class="txt_center">
                 在庫数
@@ -55,6 +55,9 @@
               </th>
               <th class="txt_center">
                 出庫
+              </th>
+              <th class="txt_center">
+                データ更新
               </th>
 
 
@@ -80,11 +83,14 @@
                 <td>
                   ※備品在庫テーブルから取得
                 </td>
-                <td>
-                  <button>100</button>
+                <td class="txt_center">
+                  <input type="text" maxlength="4" size="2">
                 </td>
-                <td>
-                  <button>100</button>
+                <td class="txt_center">
+                  <input type="text" maxlength="4" size="2">
+                </td>
+                <td class="txt_center">
+                  <input type="submit" value="更新">
                 </td>
 
 

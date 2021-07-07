@@ -283,6 +283,8 @@ Route::name('sample.')
                             
                             Route::post('sample/equip/register_account', 'EquipController@registerUser');
 
+                            Route::get('sample/equip/refer_user', 'EquipController@referUser')->name('refer_user');
+
                             // 権限編集画面 表示
                             Route::get('/sample/equip/edit_account', function (){
                                 return view('sample.equip.edit_account');
