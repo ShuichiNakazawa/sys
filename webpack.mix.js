@@ -13,7 +13,11 @@ const mix = require('laravel-mix');
 
 mix.js(['resources/js/app.js',
         'resources/js/jquery.js'
-        ], 'public/js')
+        ], 'public/js',
+        'resources/js/p5.min.js',
+        'resources/js/p5_index.js'
+        
+        )
     .sass('resources/sass/app.scss', 'public/css');
 
 //mix.sourceMaps().js('node_modelus/popper.js/dist/popper.js', 'public/js').sourceMaps();

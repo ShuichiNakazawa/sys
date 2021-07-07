@@ -8,6 +8,28 @@ use Stripe\Charge;
 
 class SampleController extends Controller
 {
+
+    /**
+     * p5.js　インデックス
+     */
+    public function p5_index(){
+        return view('sample.p5.index');
+    }
+
+    /**
+     * 棒グラフ
+     */
+    public function showBar_graph(){
+        return view('sample.p5.bar_graph');
+    }
+
+    /**
+     * ブロック崩し
+     */
+    public function showBreak_block(){
+        return view('sample.p5.break_block');
+    }
+
     //
 
     public function beforeStripe(Request $request) {

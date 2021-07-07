@@ -1,4 +1,7 @@
 $(function () {
+  /**
+   * used at Equip_management
+   */
   $("[name='upfile']").on('change', function (e) {
     
     var reader = new FileReader();

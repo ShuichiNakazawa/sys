@@ -37400,6 +37400,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /***/ (function(module, exports) {
 
 $(function () {
+  /**
+   * used at Equip_management
+   */
   $("[name='upfile']").on('change', function (e) {
     var reader = new FileReader();
 

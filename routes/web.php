@@ -168,6 +168,33 @@ Route::post('/kokushi/{subject_id}', 'KokushiController@startPractice');
 
 Route::get('/kokushi/{subject_id}/practice_by_question/{title_id}/{question_number}', 'KokushiController@practiceByQuestion');
 
+// 国試過去問 管理系
+Route::get('/kokushi/management/index', function() {
+    return view('kokushi.management');
+});
+
+//Route::get('/kokushi/management/store_subject', 'KokushiController@storeSubject');
+Route::get('/kokushi/management/store_subject', function() {
+    return view('kokushi.store_subject');
+});
+
+Route::post('/kokushi/management/store_subject', 'KokushiController@storeSubject');
+
+Route::get('/kokushi/management/subject_list', 'KokushiController@showSubjects');
+
+// 科目編集
+Route::post('/kokushi/management/subject_list', 'KokushiController@editSubject');
+
+// 科目削除
+Route::delete('/kokuchi/management/subject_list', 'KokushiController@destroySubject');
+
+Route::get('/kokushi/management/title_list/{$title_id}', 'KokushiController@storeTitle');
+
+Route::get('/kokushi/management/show_title', 'KokushiController@showTitle');
+
+Route::get('/kokushi/management/store_q_sentence', 'KokushiController@storeQSentence');
+
+Route::get('/kokushi/management/show_q_sentence', 'kokushiController@showQuestionSentences');
 
 /**
  * 雑記
@@ -206,6 +233,16 @@ Route::name('sample.')
             // Stripe 決済後処理
             Route::get('/sample/stripe_sample/reflect_purchase_info', 'SampleController@afterStripe');
 
+
+            // p5.js
+            Route::get('/sample/p5', 'SampleController@p5_index')
+                                ->name('p5_index');
+
+            Route::get('/sample/p5/bar_graph', 'SampleController@showBar_graph')
+                                ->name('bar_graph');
+
+            Route::get('/sample/p5/break_block', 'SampleController@showBreak_block')
+                                ->name('break_block');
 
             /**
              * テスト用

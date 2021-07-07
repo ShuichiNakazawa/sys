@@ -704,6 +704,21 @@ a:active {
   margin: 30px;
 }
 
+#defaultCanvas0 {
+  margin: 0 auto;
+}
+
+#div_canvas {
+  margin: 0 auto;
+}
+
+#canvas {
+  margin: 0 auto;
+  width: 800px;
+  border: solid 2px #888;
+  border-radius: 10px;
+}
+
 input[type="radio"]:checked + label {
     background-color: blue;
     color: white;
