@@ -275,7 +275,7 @@ Route::name('sample.')
                             Route::get('/sample/equip/refer_equip', 'EquipController@referEquipment')->name('refer_equip');
                             
                             // 入出庫管理画面 表示
-                            Route::get('/sample/equip/inout_management',  'EquipController@referInout')->name('refer_inout_management');
+                            Route::get('/sample/equip/inout_management',  'EquipController@referInout')->name('inout_management');
 
                             // 新規アカウント登録画面 表示
                             Route::get('/sample/equip/register_account', 'EquipController@showUser')
