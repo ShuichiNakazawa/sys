@@ -22,7 +22,7 @@
           <br><br>
 
           <a href="{{ route('sample.equip.inout_management') }}">
-            <button disabled="disabled">入出庫管理</button>
+            <button>入出庫管理</button>
           </a>
           <br><br><br>
 

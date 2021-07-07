@@ -271,13 +271,11 @@ Route::name('sample.')
 
 
 
-                            // 備品マスタ参照？
+                            // 備品参照
                             Route::get('/sample/equip/refer_equip', 'EquipController@referEquipment')->name('refer_equip');
                             
                             // 入出庫管理画面 表示
-                            Route::get('/sample/equip/inout_management', function (){
-                                return view('sample.equip.inout_management');
-                            })->name('inout_management');
+                            Route::get('/sample/equip/inout_management',  'EquipController@referInout')->name('refer_inout_management');
 
                             // 新規アカウント登録画面 表示
                             Route::get('/sample/equip/register_account', 'EquipController@showUser')

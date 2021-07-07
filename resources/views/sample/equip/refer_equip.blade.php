@@ -18,44 +18,49 @@
           </div>
 
           <h2 class="txt_center">備品参照</h2>
+          <br>
+
+          <form action="#">
+            検索対象：
+            <input type="radio" name="search_at" id="search_at_1" value="1" checked="checked"><label for="search_at_1">備品名</label>&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="search_at" id="search_at_2" value="2"><label for="search_at_2">タグ</label>&nbsp;&nbsp;&nbsp;
+
+            @if( Auth::user()->privilege_access == 1)
+              <input type="radio" name="search_at" id="search_at_3" value="3"><label for="search_at_3">部門</label>&nbsp;&nbsp;&nbsp;
+            @endif
+
+            <input type="text" name="serch_key"><input type="submit" value="検索">
+          </form>
           <br><br>
 
-          {{--
-          <table class="equipment_table">
-            --}}
           <table class="table table-striped equipment_table">
             <tr>
-              <th>
+              <th class="txt_center">
                 ID
               </th>
-              <th>
-                所属部門
+              <th class="txt_center">
+                部門
               </th>
-              <th>
-                備品名称
+              <th class="txt_center">
+                備品名
               </th>
-              <th>
-                在庫数
-              </th>
-              <th>
+              <th class="txt_center">
                 画像ファイル
               </th>
-              <th>
+              <th class="txt_center">
+                在庫数
+              </th>
+
+              <th class="txt_center">
                 アラート閾値
               </th>
-              <th>
-                前回アラート通知日時
+              <th class="txt_center">
+                アラート<br>通知日時
               </th>
-              <th>
-                タグ1
+              <th class="txt_center">
+                設定タグ
               </th>
-              <th>
-                タグ2
-              </th>
-              <th>
-                タグ3
-              </th>
-              <th colspan="2">
+              <th colspan="2" class="txt_center">
                 変更
               </th>
             </tr>
@@ -73,24 +78,21 @@
                   {{ $equipment->name_of_equipment }}
                 </td>
                 <td>
-                  ※備品在庫テーブルから取得
-                </td>
-                <td>
+                  <img src="" alt="備品画像({{ $equipment->name_of_equipment }})">
+                  <br>
                   {{ $equipment->image_name }}
                 </td>
                 <td>
-                  {{ $equipment->notification_min_value }}
-                </td>
-                <td>
-                  {{ $equipment->id }}datetime_alert
+                  ※備品在庫テーブルから取得
                 </td>
 
-                <td>
-                  ※備品タグテーブルから取得
+                <td class="txt_center">
+                  {{ $equipment->notification_min_value }}個
                 </td>
                 <td>
-                  ※備品タグテーブルから取得
+                  {{ date_create($equipment->datetime_alert)->format('n月j日 G時') }}
                 </td>
+
                 <td>
                   ※備品タグテーブルから取得
                 </td>
