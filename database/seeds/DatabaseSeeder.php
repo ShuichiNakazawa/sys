@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
         $this->call(M_deptsTableSeeder::class);
         $this->call(M_equipmentsTableSeeder::class);
         $this->call(T_equipment_tagsTableSeeder::class);
+        $this->call(T_equipment_stocksTableSeeder::class);
        
     }
 }

@@ -17,4 +17,9 @@ class M_equipment extends Model
     {
         return $this->hasMany('App\T_equipment_tag');
     }
+
+    public function t_equip_stock()
+    {
+        return $this->hasOne('App\T_equip_stock', 'id', 'id');
+    }
 }

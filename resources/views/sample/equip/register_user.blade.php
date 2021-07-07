@@ -27,15 +27,15 @@
             <input type="text" name="login_id">
             <br><br>
 
-            パスワード：
+            パスワード：　
             <input type="text" name="password">
             <br><br>
 
-            氏名：
+            氏名：　　　　
             <input type="text" name="user_name">
             <br><br>
 
-            所属部門：
+            所属部門：　　
             @if(Auth::user()->privilege_access == 1)
               <select name="dept_id">
                 {{-- 部門テーブルより取得 --}}
@@ -47,7 +47,7 @@
               </select>
               <br><br>
 
-              権限：
+              権限：　　　　
               <select name="privilege">
                 <option value="1">総合管理者</option>
                 <option value="2">部門管理者</option>
@@ -58,7 +58,7 @@
               <input type="text" name="dept_id" value="{{ Auth::user()->M_dept->name_of_dept }}" disabled="disabled">
               <br><br>
 
-              権限：
+              権限：　　　　
               <select name="privilege">
                 <option value="2">部門管理者</option>
                 <option value="3" selected="selected">一般</option>

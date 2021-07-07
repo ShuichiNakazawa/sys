@@ -80,8 +80,8 @@
                   <br>
                   {{ $equipment->image_name }}
                 </td>
-                <td>
-                  ※備品在庫テーブルから取得
+                <td class="txt_center">
+                  {{ $equipment->t_equip_stock->stock_quantity }}
                 </td>
                 <td class="txt_center">
                   <input type="text" maxlength="4" size="2">

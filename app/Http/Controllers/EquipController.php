@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Hash;
 
 use App\M_dept;
 use App\M_equipment;
+use App\t_equip_stock;
+
 use App\User;
 
 
@@ -83,11 +85,17 @@ class EquipController extends Controller
                     ]);
     }
 
-    // 備品マスタ 登録処理
+    /**
+     * 備品マスタ 登録処理
+     * * * * * *
+     * 備品マスタ及び備品在庫テーブルへ登録処理を行う。
+     */ 
+
     public function registerM_equip(Request $request) {
 
         // 備品情報バリデーション
 
+        // 備品マスタ 登録
         $m_equip =   new M_equipment();
         $m_equip->name_of_equipment         =  $request->name_of_equip;
         $m_equip->m_dept_id                 =  $request->dept_id;
@@ -95,7 +103,23 @@ class EquipController extends Controller
         $m_equip->notification_min_value    =  $request->notification_min_value;
         //$m_equip->datetime_alert            =  "";
 
+        // 登録
         $m_equip->save(); 
+
+        // 備品マスタ ID取得
+        $equip_id   =   M_equip::select('id')
+                                ->where('name_of_equipment', '=', $request->name_of_equip)
+                                ->limit(1)
+                                ->value('id');
+
+        // 備品在庫テーブル 登録
+        $equip_stock                    =   new T_equip_stock();
+        $equip_stock->id                =   $equip_id;
+        $equip_stock->equipment_id      =   $equip_id;
+        $equip_stock->stock_quantity    =   0;
+
+        // 登録
+        $equip_stock->save();
 
         return view('sample.equip.register_m_equip')
                     ->with([
@@ -193,6 +217,7 @@ class EquipController extends Controller
             // 総合管理者
             $depts      =   M_dept::get();
             $equipments =   M_equipment::get();
+            $stocks     =   T_equip_stock::get();
 
         } else if (Auth::user()->privilege_access == 2){
 
@@ -202,6 +227,11 @@ class EquipController extends Controller
             $equipments =   M_equipment::where('m_dept_id', '=', Auth::user()->m_dept_id)
                                     ->get();
 
+            // 紐づくM_equipmentの部門IDと一致するレコードだけ取得したい（取得条件が外部テーブルにある）
+            $stocks     =   select("select * from T_equip_stock where id in (select id from m_equipment where m_dept_id = " . Auth::user()->m_dept_id . ")");
+            //$stocks     =   T_equip_stock::where
+
+            // select * from T_equip_stock where id in select id from m_equipment where m_dept_id = 
         }
 
 
@@ -210,6 +240,7 @@ class EquipController extends Controller
                     ->with([
                         'depts'         =>   $depts,
                         'equipments'    =>   $equipments,
+                        'stocks'        =>   $stocks,
                     ]);
 
     }
