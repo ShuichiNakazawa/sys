@@ -26,46 +26,46 @@
           <table>
             <tr>
               <th class="draw_border txt_center">
-                アカウントID
+                &nbsp;&nbsp;&nbsp;アカウントID&nbsp;&nbsp;&nbsp;
               </th>
               <th class="draw_border txt_center">
-                パスワード
+                &nbsp;&nbsp;&nbsp;パスワード&nbsp;&nbsp;&nbsp;
               </th>
               <th class="draw_border txt_center">
-                権限
+                &nbsp;&nbsp;&nbsp;権限&nbsp;&nbsp;&nbsp;
               </th>
             </tr>
             <tr>
               <td class="draw_border">
-                guest_user
+                &nbsp;&nbsp;&nbsp;guest_user&nbsp;&nbsp;&nbsp;
               </td>
               <td class="draw_border">
-                guest_user
+                &nbsp;&nbsp;&nbsp;guest_user&nbsp;&nbsp;&nbsp;
               </td>
               <td class="draw_border">
-                総合管理者
-              </td>
-            </tr>
-            <tr>
-              <td class="draw_border">
-                guest_user2
-              </td>
-              <td class="draw_border">
-                guest_user2
-              </td>
-              <td class="draw_border">
-                部門管理者
+                &nbsp;&nbsp;&nbsp;総合管理者&nbsp;&nbsp;&nbsp;
               </td>
             </tr>
             <tr>
               <td class="draw_border">
-                guest_user3
+                &nbsp;&nbsp;&nbsp;guest_user2&nbsp;&nbsp;&nbsp;
               </td>
               <td class="draw_border">
-                guest_user3
+                &nbsp;&nbsp;&nbsp;guest_user2&nbsp;&nbsp;&nbsp;
               </td>
               <td class="draw_border">
-                一般ユーザー
+                &nbsp;&nbsp;&nbsp;部門管理者&nbsp;&nbsp;&nbsp;
+              </td>
+            </tr>
+            <tr>
+              <td class="draw_border">
+                &nbsp;&nbsp;&nbsp;guest_user3&nbsp;&nbsp;&nbsp;
+              </td>
+              <td class="draw_border">
+                &nbsp;&nbsp;&nbsp;guest_user3&nbsp;&nbsp;&nbsp;
+              </td>
+              <td class="draw_border">
+                &nbsp;&nbsp;&nbsp;一般ユーザー&nbsp;&nbsp;&nbsp;
               </td>
             </tr>
           </table>
@@ -79,16 +79,20 @@
 
           <br><br><br>
 
-          <a href="sample/bc_laravel">
-            <button>【書籍引用】Laravel入門</button>
-          </a>
-          <br><br><br>
-
           <a href="sample/p5">
             <button>p5.js</button>
           </a>
           <br><br><br>
 
+          <a href="sample/bc_laravel">
+            <button>【書籍引用】Laravel入門</button>
+          </a>
+          <br><br><br>
+
+          <a href="sample/bc_css_grid">
+            <button>【書籍引用】CSSグリッドレイアウト</button>
+          </a>
+          <br><br><br>
 
         </div>
         <br><br><br>

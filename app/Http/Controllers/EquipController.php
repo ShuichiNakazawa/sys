@@ -245,6 +245,48 @@ class EquipController extends Controller
 
     }
 
+    // 備品マスタ取得
+    public function getM_equip() {
+                // 権限によって、取得する備品情報を変える。
+                if(Auth::user()->privilege_access == 1){
+
+                    // 総合管理者
+                    $depts      =   M_dept::get();
+                    $equipments =   M_equipment::get();
+                    $stocks     =   T_equip_stock::get();
+        
+                } else if (Auth::user()->privilege_access == 2){
+        
+                    // 部門管理者
+                    $depts      =   M_dept::where('id', '=', Auth::user()->m_dept_id)
+                                            ->get();
+                    $equipments =   M_equipment::where('m_dept_id', '=', Auth::user()->m_dept_id)
+                                            ->get();
+        
+                    // 紐づくM_equipmentの部門IDと一致するレコードだけ取得したい（取得条件が外部テーブルにある）
+                    $stocks     =   select("select * from T_equip_stock where id in (select id from m_equipment where m_dept_id = " . Auth::user()->m_dept_id . ")");
+                    //$stocks     =   T_equip_stock::where
+        
+                    // select * from T_equip_stock where id in select id from m_equipment where m_dept_id = 
+                }
+        
+        
+                // 備品マスタを読み込み、備品登録画面を表示
+                return view('sample.equip.edit_m_equip')
+                            ->with([
+                                'depts'         =>   $depts,
+                                'equipments'    =>   $equipments,
+                                'stocks'        =>   $stocks,
+                            ]);
+        
+    }
+
+    //
+    public function editM_equip(Request $request){
+        //画面入力項目 取得
+
+    }
+
     // 備品入出庫庫 編集画面 表示
     public function referInout(){
         // 権限によって、取得する備品情報を変える。

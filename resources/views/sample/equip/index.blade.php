@@ -39,6 +39,12 @@
             <a href="{{ route('sample.equip.register_m_equip') }}">
               <button>備品マスタ登録</button>
             </a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            {{-- 備品マスタ編集 --}}
+            <a href="{{ route('sample.equip.edit_m_equip') }}">
+              <button>備品マスタ編集</button>
+            </a>
             <br><br>
           @endif
 

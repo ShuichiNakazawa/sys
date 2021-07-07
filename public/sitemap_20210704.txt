@@ -31,12 +31,11 @@ https://lara-assist.jp/text/html_basic
 https://lara-assist.jp/blog
 https://lara-assist.jp/sample
 https://lara-assist.jp/sample/equip
-https://lara-assist.jp/sample/equip/refer_equip
-https://lara-assist.jp/sample/equip/register_m_dept
-https://lara-assist.jp/sample/equip/register_m_equip
-https://lara-assist.jp/sample/equip/register_account
 https://lara-assist.jp/sample/stripe_sample
 https://lara-assist.jp/sample/bc_laravel
 https://lara-assist.jp/sample/ec_sample
+https://lara-assist.jp/sample/p5
+https://lara-assist.jp/sample/p5/bar_graph
+https://lara-assist.jp/sample/p5/break_block
 https://lara-assist.jp/inquiry
 https://lara-assist.jp/references

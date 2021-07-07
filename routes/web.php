@@ -269,6 +269,11 @@ Route::name('sample.')
                             // 備品マスタ登録画面 登録処理
                             Route::post('/sample/equip/register_m_equip', 'EquipController@registerM_equip');
 
+                            // 備品マスタ編集画面 表示
+                            Route::get('sample/equip/edit_m_equip', 'EquipController@getM_equip')->name('edit_m_equip');
+
+                            // 備品マスタ編集画面 編集処理
+                            Route::post('sample/equip/edit_m_equip/{id}', 'EquipController@editM_equip');
 
 
                             // 備品参照
@@ -302,6 +307,34 @@ Route::name('sample.')
                             Route::get('/sample/equip/edit_privileges', function (){
                                 return view('sample.equip.edit_privileges');
                             })->name('edit_privileges');
+                        });
+
+            
+                        Route::name('bc_css_grid.')
+                        ->group(function() {
+
+                            Route::get('/sample/bc_css_grid', function (){
+                                return view('sample.bc_css_grid.index');
+                            })->name('index');
+
+                            Route::get('/sample/bc_css_grid/magazine_style', function (){
+                                return view('sample.bc_css_grid.magazine_style');
+                            })->name('magazine_style');
+                            
+
+                            Route::get('/sample/bc_css_grid/flyer_style', function (){
+                                return view('sample.bc_css_grid.flyer_style');
+                            })->name('flyer_style');
+                            
+
+                            Route::get('/sample/bc_css_grid/picture_contents', function (){
+                                return view('sample.bc_css_grid.picture_contents');
+                            })->name('picture_contents');
+
+                            Route::get('/sample/bc_css_grid/picture_contents_asymmetry', function (){
+                                return view('sample.bc_css_grid.picture_contents_asymmetry');
+                            })->name('picture_contents_asymmetry');
+                            
                         });
 
 
