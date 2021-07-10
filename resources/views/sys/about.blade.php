@@ -128,6 +128,14 @@
 		</div>
 		<br><br>
 		</address>	
+
+		<div class="txt_center" style="font-size: 40px;">
+			<a href="https://twitter.com/Ie4vS8U3I36nS8T">
+				<span class="fab fa-twitter" title="Twitter"></span>
+			</a>
+		</div>
+		<br><br>
+
 		<div>
 			<h4 class="txt_center">地図</h4>
 		</div>
