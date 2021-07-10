@@ -19,10 +19,10 @@
   @php
     $count = 0;
   @endphp
-  @foreach ($fields as $field)
+  @foreach ($subject_groups as $subject_group)
     <div class="subject_outer">
       <div class="card-header">
-        <h4 class="header_center ">{{ $field->field_name }}</h4>
+        <h4 class="header_center ">{{ $subject_group->subject_group_name }}</h4>
       </div>
 
       {{--

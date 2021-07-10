@@ -16,6 +16,18 @@
     <h3>国試 管理画面トップ</h3>
   </div>
   <div class="card-body">
+
+    <div class="card-body">
+      <h4>科目グループ</h4>
+      <a href="{{ url('/kokushi/management/store_subject_group') }}">
+        <button>登録</button>
+      </a>
+
+      <a href="{{  url('/kokushi/management/subject_group_list') }}">
+        <button>一覧表示</button>
+      </a>
+    </div>
+
     <div class="card-body">
       <h4>科目</h4>
       <a href="{{ url('/kokushi/management/store_subject') }}">
@@ -26,6 +38,7 @@
         <button>一覧表示</button>
       </a>
     </div>
+
     <div class="card-body">
       <h4>問題タイトル</h4>
       <a href="{{ url('/kokushi/management/store_title') }}">

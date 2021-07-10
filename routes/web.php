@@ -103,12 +103,6 @@ Route::get('/references', function () {
 /**
  * 予約機能
  */
-// 週別予約可能数情報 取得
-/*
-Route::get('/reservation', function () {
-    return view('reservation.management.index');
-});
-*/
 
 // 予約画面（15分単位）
 Route::get('/reservation', 'ReservationController@getAcceptable');
@@ -150,51 +144,90 @@ Route::get('/sendmail', 'MailSendController@send');
 
 Route::post('/inquiry', 'MailSendController@send');
 
-/**
+
+
+/******************************
  * 国試過去問
- */
+ ******************************/
+//　ユーザー向けページ
 Route::get('/kokushi', function () {
     return view('kokushi.index');
 });
 
-Route::post('systems', 'KokushiController@before_kokushi');
+Route::post('systems', 'KokushiQuestionController@before_kokushi');
 
-Route::post('/kokushi', 'KokushiController@before_kokushi');
+Route::post('/kokushi', 'KokushiQuestionController@before_kokushi');
 
-Route::get('/kokushi/{subject_id}', 'KokushiController@showMenu');
+Route::get('/kokushi/{subject_id}', 'KokushiQuestionController@showMenu');
 
 // 国試 過去問スタート
-Route::post('/kokushi/{subject_id}', 'KokushiController@startPractice');
+Route::post('/kokushi/{subject_id}', 'KokushiQuestionController@startPractice');
 
-Route::get('/kokushi/{subject_id}/practice_by_question/{title_id}/{question_number}', 'KokushiController@practiceByQuestion');
+// 上のルートを廃止して、新規ルートから出題画面を表示させたい
+Route::post('/kokushi/set_question/{subject_id}', 'KokushiQuestionController@setQuestion');
 
-// 国試過去問 管理系
+
+// 一問一答　表示
+Route::get('/kokushi/{subject_id}/practice_by_question/{title_id}/{question_number}', 'KokushiQuestionController@practiceByQuestion');
+
+// 音声ページ
+Route::get('/kokushi/audio/{subject_id}', 'KokushiQuestionController@showAudio');
+
+/******************************
+ * 国試過去問 管理系
+ ******************************/
 Route::get('/kokushi/management/index', function() {
     return view('kokushi.management');
 });
 
 //Route::get('/kokushi/management/store_subject', 'KokushiController@storeSubject');
-Route::get('/kokushi/management/store_subject', function() {
-    return view('kokushi.store_subject');
-});
 
-Route::post('/kokushi/management/store_subject', 'KokushiController@storeSubject');
 
-Route::get('/kokushi/management/subject_list', 'KokushiController@showSubjects');
+// 科目グループ　登録画面　表示処理
+Route::get('/kokushi/management/store_subject_group', 'KokushiManagementController@pageStoreSubjectGroups');
 
-// 科目編集
-Route::post('/kokushi/management/subject_list', 'KokushiController@editSubject');
+// 科目グループ　登録処理
+Route::post('/kokushi/management/store_subject_group', 'KokushiManagementController@storeSubjectGroup');
 
-// 科目削除
-Route::delete('/kokuchi/management/subject_list', 'KokushiController@destroySubject');
+// 科目グループ一覧　表示　表示処理
+Route::get('/kokushi/management/subject_group_list', 'KokushiManagementController@showSubjectGroups');
 
-Route::get('/kokushi/management/title_list/{$title_id}', 'KokushiController@storeTitle');
+// 科目グループ一覧　編集画面　表示処理
+Route::post('/kokushi/management/subject_group_list/{id}', 'KokushiManagementController@editSubjectGroup');
 
-Route::get('/kokushi/management/show_title', 'KokushiController@showTitle');
+// 科目グループ一覧　削除処理
+Route::delete('/kokuchi/management/subject_group_list', 'KokushiManagementController@destroySubjectGroup');
 
-Route::get('/kokushi/management/store_q_sentence', 'KokushiController@storeQSentence');
+// 科目名登録　画面表示
+Route::get('/kokushi/management/store_subject', 'KokushiManagementController@pageStoreSubject');
 
-Route::get('/kokushi/management/show_q_sentence', 'kokushiController@showQuestionSentences');
+// 科目名登録　登録処理
+Route::post('/kokushi/management/store_subject', 'KokushiManagementController@storeSubject');
+
+// 科目名一覧表示　表示処理
+Route::get('/kokushi/management/subject_list', 'KokushiManagementController@showSubjects');
+
+// 科目名一覧　編集処理
+Route::post('/kokushi/management/subject_list', 'KokushiManagementController@editSubject');
+
+// 科目名一覧　削除処理
+Route::delete('/kokuchi/management/subject_list', 'KokushiManagementController@destroySubject');
+
+// 問題タイトル一覧　表示処理
+Route::get('/kokushi/management/title_list/{title_id}', 'KokushiManagementController@showTitles');
+
+// 問題タイトル一覧　削除処理
+Route::delete('/kokuchi/management/title_list', 'KokushiManagementController@destroyQuestionsTitle');
+
+// 問題文一覧　表示処理
+Route::get('/kokushi/management/qsentence_list', 'kokushiManagementController@showQuestionSentences');
+
+// 問題文一覧　編集処理
+
+
+// 問題文登録　登録処理
+Route::get('/kokushi/management/store_q_sentence', 'KokushiManagementController@storeQSentence');
+
 
 /**
  * 雑記
@@ -221,6 +254,14 @@ Route::name('sample.')
                 return view('sys.bc_laravel');
             
             })->name('bc_laravel');
+
+            Route::get('/sample/bc_vue_tubokotu', function() {
+                return view('sample.bc_vue_tubokotu.index');
+            });
+
+            Route::get('/sample/bc_vue_tubokotu/quote_form', function() {
+                return view('sample.bc_vue_tubokotu.quote_form');
+            });
 
             // サンプルページ
             Route::get('/sample/stripe_sample', function() {

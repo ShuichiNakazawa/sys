@@ -16,24 +16,14 @@
     <h3>国試過去問 管理</h3>
   </div>
 
-    <h4>科目 登録</h4>
+    <h4>科目グループ 登録</h4>
 
   <div class="card-body">
-    <form action="{{ action('KokushiManagementController@storeSubject') }}" method="POST">
+    <form action="{{ action('KokushiManagementController@storeSubjectGroup') }}" method="POST">
       @csrf
-
       <p>
         <label for="subject_group_name">科目グループ名：</label>
-        <select name="subject_group_id">
-          @foreach($subject_groups as $subject_group)
-            <option value="{{ $subject_group->id }}">{{ $subject_group->subject_group_name }}</option>
-          @endforeach
-        </select>
-      </p>      
-
-      <p>
-        <label for="subject_name">科目名：</label>
-        <input typt="text" name="subject_name" id="subject_name" value="" size="30">
+        <input typt="text" name="subject_group_name" id="subject_group_name" value="" size="30">
       </p>
       <p>
         <input type="submit" value="登録">

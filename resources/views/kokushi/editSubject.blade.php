@@ -18,7 +18,7 @@
   <div class="card-body">
     <div class="card-body">
       <h4>科目</h4>
-      <form action="{{ action('KokushiController@updateSubject') }}" method="POST">
+      <form action="{{ action('KokushiManagementController@updateSubject') }}" method="POST">
       @csrf
         <table class="table table-striped task-table">
           <thead>

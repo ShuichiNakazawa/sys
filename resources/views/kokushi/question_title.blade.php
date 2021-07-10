@@ -58,15 +58,18 @@
 							</td>
 
 							<td class="table-text">
-								<div>{{ $title->questions_title }}</div>
+								<div>{{ $title->question_title }}</div>
 							</td>
 							<td>
+								{{--
 								<a href="{{ action('KokushiController@editTitle', [$title->subject_name_id, $title->id]) }}">
+									--}}
+								<a href="{{ url('/kokushi/management/edit_title/' . $title->subject_id . '/' . $title->title_id) }}">
 									<button>編集</button>
 								</a>
 							</td>
 							<td>
-								<form action="{{ action('KokushiController@destroyQuestionsTitle', $title->id) }}" method="post">
+								<form action="{{ action('KokushiManagementController@destroyQuestionsTitle', $title->id) }}" method="post">
 								@csrf
 								@method('DELETE')
 									<button>削除</button>

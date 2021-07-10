@@ -13,42 +13,41 @@
 
 <div class="card-body">
   <div class="card-body">
-    <h3>科目名リスト</h3>
+    <h3>科目グループリスト</h3>
   </div>
   <div class="card-body">
     <div class="card-body">
-      <h4>科目</h4>
       <table class="table table-striped task-table">
 				<thead>
-	  			<th>科目一覧</th>
+	  			<th>科目グループ一覧</th>
 				</thead>
 
 				<tbody>
 	  			<tr>
-						<th>科目ID</th>
-						<th>科目名</th>
+						<th>科目グループID</th>
+						<th>科目グループ名</th>
 						<th></th>
 						<th></th>
 					</tr>
 
-					@foreach($subjects as $subject)
+					@foreach($subject_groups as $subject_group)
 
 						<tr>
 							<td class="table-text">
-								<div>{{ $subject->id }}</div>
+								<div>{{ $subject_group->id }}</div>
 							</td>
 
 							<td class="table-text">
-								<div>{{ $subject->subject_name }}</div>
+								<div>{{ $subject_group->subject_group_name }}</div>
 							</td>
 							<td>
-								<a href="{{ action('KokushiManagementController@editSubject', $subject->id) }}">
+								<a href="{{ action('KokushiManagementController@editSubjectGroup', $subject_group->id) }}">
 									<button>編集</button>
 								</a>
 							</td>
 
 							<td>
-								<form action="{{ action('KokushiManagementController@destroySubject', $subject->id) }}" method="post">
+								<form action="{{ action('KokushiManagementController@destroySubjectGroup', $subject_group->id) }}" method="post">
 								@csrf
 								@method('DELETE')
 									<button>削除</button>

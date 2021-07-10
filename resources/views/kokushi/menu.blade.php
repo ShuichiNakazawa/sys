@@ -29,7 +29,7 @@
         <button class="btn-dark">ランダム１０問に挑戦（調整中）</button>
       </div>
       <div class="btn_subject">
-        <a href="{{ url('/nurse/audio/1')  }}">
+        <a href="{{ url('/kokushi/audio/' . $subject_id)  }}">
           <button>問題文の朗読を聞いてみる</button>
         </a>
       </div>
@@ -49,7 +49,12 @@
 
     <h4 class="header_center">過去問に挑戦</h4>
 	{{-- アクションの引数：科目ID　　　タイトルIDもしくはタイトル名を渡す必要がある --}}
-    <form action="{{ action('KokushiController@startPractice', $subject_id) }}" method="post">
+
+    <form action="{{ action('KokushiQuestionController@setQuestion', $subject_id) }}" method="post">
+
+      {{--
+    <form>
+      --}}
 	    @csrf
       <div class="row justify-content-center">
         <div style="margin: 20px;">
@@ -85,7 +90,15 @@
         @foreach ($titles as $title)
           <tr>
             <td class="t_data">
+              {{--
               <input type="submit" name="question_title" value="{{ $title->question_title }}">
+              --}}
+
+              <a href="/kokushi/set_question/{{ $title->subject_name_id . "/" . $title->title_id }}">
+                <button class="btn btn-light" name="title_id" value="{{$title->title_id}}">
+                  {{ $title->question_title }}
+                </button>
+              </a>
             </td>
             <td class="t_data">
               {{-- 試験挑戦数（試験情報テーブルから取得） --}}
@@ -106,7 +119,9 @@
 
       <input type="hidden" name="subject_id" value="{{ $subject_id }}">
       <input type="hidden" name="selected_answer" value="99">
+
     </form>
+
   </div>
 </div>
 

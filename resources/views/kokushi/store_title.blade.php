@@ -19,7 +19,7 @@
   <h4>問題タイトル 登録</h4>
 
   <div class="card-body">
-    <form action="{{ action('KokushiController@storeTitle') }}" method="POST">
+    <form action="{{ action('KokushiManagementController@storeTitle') }}" method="POST">
       @csrf
 
       科目名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

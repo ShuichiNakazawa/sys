@@ -85,7 +85,12 @@
           <br><br><br>
 
           <a href="sample/bc_laravel">
-            <button>【書籍引用】Laravel入門</button>
+            <button>【書籍引用】Laravel入門書籍</button>
+          </a>
+          <br><br><br>
+
+          <a href="sample/bc_vue_tubokotu">
+            <button>【書籍引用】Vue.jsのツボとコツがゼッタイにわかる本</button>
           </a>
           <br><br><br>
 

@@ -171,7 +171,7 @@ class QuestionTitlesTableSeeder extends Seeder
             array (
                 'id' => 556,
                 'subject_name_id' => 22,
-                'title_id' => 0,
+                'title_id' => 46,
                 'question_title' => '令和元年 秋期',
                 'sight_key' => 'origin',
                 'created_at' => NULL,
@@ -181,7 +181,7 @@ class QuestionTitlesTableSeeder extends Seeder
             array (
                 'id' => 557,
                 'subject_name_id' => 22,
-                'title_id' => 0,
+                'title_id' => 44,
                 'question_title' => '平成３１年 春期',
                 'sight_key' => 'origin',
                 'created_at' => NULL,
@@ -191,7 +191,7 @@ class QuestionTitlesTableSeeder extends Seeder
             array (
                 'id' => 558,
                 'subject_name_id' => 22,
-                'title_id' => 0,
+                'title_id' => 42,
                 'question_title' => '平成３０年 秋期',
                 'sight_key' => 'origin',
                 'created_at' => NULL,
@@ -201,7 +201,7 @@ class QuestionTitlesTableSeeder extends Seeder
             array (
                 'id' => 559,
                 'subject_name_id' => 22,
-                'title_id' => 0,
+                'title_id' => 40,
                 'question_title' => '平成３０年 春期',
                 'sight_key' => 'origin',
                 'created_at' => NULL,
@@ -211,7 +211,7 @@ class QuestionTitlesTableSeeder extends Seeder
             array (
                 'id' => 560,
                 'subject_name_id' => 22,
-                'title_id' => 0,
+                'title_id' => 38,
                 'question_title' => '平成２９年 秋期',
                 'sight_key' => 'origin',
                 'created_at' => NULL,
@@ -221,7 +221,7 @@ class QuestionTitlesTableSeeder extends Seeder
             array (
                 'id' => 561,
                 'subject_name_id' => 22,
-                'title_id' => 0,
+                'title_id' => 36,
                 'question_title' => '平成２９年 春期',
                 'sight_key' => 'origin',
                 'created_at' => NULL,
@@ -231,7 +231,7 @@ class QuestionTitlesTableSeeder extends Seeder
             array (
                 'id' => 562,
                 'subject_name_id' => 22,
-                'title_id' => 0,
+                'title_id' => 34,
                 'question_title' => '平成２８年 秋期',
                 'sight_key' => 'origin',
                 'created_at' => NULL,
@@ -241,7 +241,7 @@ class QuestionTitlesTableSeeder extends Seeder
             array (
                 'id' => 563,
                 'subject_name_id' => 22,
-                'title_id' => 0,
+                'title_id' => 32,
                 'question_title' => '平成２８年 春期',
                 'sight_key' => 'origin',
                 'created_at' => NULL,

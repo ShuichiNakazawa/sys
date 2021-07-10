@@ -20,41 +20,52 @@
 {{--
       <h4>問題タイトル</h4>
 --}}
-      <form action="{{ url('management/qsentence_list') }}">
+
+      <form action="{{ url('/kokushi/management/qsentence_list') }}">
       	@csrf
         科目名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<select id="subject_name" name="subject_name">
+				<select id="subject_name" name="subject_id">
 					<option value="0"> </option>
 					@foreach($subjects as $subject)
+						{{--
 						@if ( $subject_name == $subject->subject_name)
-							<option value="{{ $subject->subject_name }}" selected="selected">{{ $subject->subject_name }}</option>
+						--}}
+						@if ( $subject_id == $subject->id)
+							<option value="{{ $subject->id }}" selected="selected">{{ $subject->subject_name }}</option>
 							@php
 								$subject_name_id = $subject->id
 							@endphp
 						@else
-              <option value="{{ $subject->subject_name }}" name="{{ $subject_id }}">{{ $subject->subject_name }}</option>
+              <option value="{{ $subject->id }}" name="{{ $subject_id }}">{{ $subject->subject_name }}</option>
 	    			@endif
 	  			@endforeach
         </select>
 
+				{{--
 				<input type="hidden" name="subject_id" value="{{ $subject_id }}">
+				--}}
 				<input type="submit" value="選択">
         <br><br>
 
         問題タイトル：
-        <select id="questions_title" name="questions_title">
+        <select id="question_title" name="title_id">
 					<option value="0"> </option>
           @foreach($titles as $title)
-						@if ($questions_title == $title->questions_title)
-							<option value="{{ $title->questions_title }}" selected="selected">{{ $title->questions_title }}</option>
+						@if ($title_id == $title->title_id)
+							<option value="{{ $title->title_id }}" selected="selected">{{ $title->question_title }}</option>
 						@else
-							<option value="{{ $title->questions_title }}">{{ $title->questions_title }}</option>
+							<option value="{{ $title->title_id }}">{{ $title->question_title }}</option>
 						@endif
 					@endforeach
 				</select>
 
 				<input type="submit" value="選択">
 			</form>
+{{--
+			@php
+				dd($subject_id, $question_title);		
+			@endphp
+--}}
 
       <table class="table table-striped task-table">
 				<thead>
@@ -65,8 +76,10 @@
 					<tr>
 						<th>問題番号</th>
 						<th>問題文</th>
-						<th></th>
-						<th></th>
+						<th>必須回答数</th>
+						<th>選択肢数</th>
+						<th>正答数</th>
+						<th colspan="2">操作</th>
 					</tr>
 
 					@foreach($qsentences as $qsentence)
@@ -77,8 +90,23 @@
 							</td>
 
 							<td class="table-text">
+								
+								<div>{{ mb_substr($qsentence->question_sentence, 0, 70) }}</div>
+								
+								{{--
 								<div>{{ $qsentence->question_sentence }}</div>
+								--}}
 							</td>
+							<td>
+								<div>{{ $qsentence->required_numOfAnswers }}</div>
+							</td>
+							<td>
+								<div>{{ $qsentence->number_of_choices }}</div>
+							</td>
+							<td>
+								<div>{{ $qsentence->number_of_answers }}</div>
+							</td>
+
 							<td>
 								<button>編集</button>
 							</td>
