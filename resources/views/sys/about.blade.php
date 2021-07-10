@@ -120,7 +120,7 @@
 							<span>メール</span><span>アドレス</span>
 						</th>
 						<td>
-							reception@lara-assist.jp
+							contact@lara-assist.jp
 						</td>
 					</tr>
 				</tbody>
