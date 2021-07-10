@@ -16,10 +16,14 @@
           <h2 class="txt_center">サンプル</h2>
           <br><br>
 
+          <a href="/sample/bc_vue_tubokotu/product_list">
+            <button>商品一覧ページ</button>
+          </a>
+          <br><br><br>
+
           <a href="/sample/bc_vue_tubokotu/quote_form">
             <button>自動見積フォーム</button>
           </a>
-
           <br><br><br>
 
 

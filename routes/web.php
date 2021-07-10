@@ -255,10 +255,17 @@ Route::name('sample.')
             
             })->name('bc_laravel');
 
+            // Vue.jsのツボとコツがゼッタイわかる本
             Route::get('/sample/bc_vue_tubokotu', function() {
                 return view('sample.bc_vue_tubokotu.index');
             });
 
+            // 商品一覧ページ
+            Route::get('/sample/bc_vue_tubokotu/product_list', function() {
+                return view('sample.bc_vue_tubokotu.product_list');
+            });
+
+            // 自動見積フォーム
             Route::get('/sample/bc_vue_tubokotu/quote_form', function() {
                 return view('sample.bc_vue_tubokotu.quote_form');
             });
