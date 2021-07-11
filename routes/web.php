@@ -220,7 +220,7 @@ Route::get('/kokushi/management/title_list/{title_id}', 'KokushiManagementContro
 Route::delete('/kokuchi/management/title_list', 'KokushiManagementController@destroyQuestionsTitle');
 
 // 問題文一覧　表示処理
-Route::get('/kokushi/management/qsentence_list', 'kokushiManagementController@showQuestionSentences');
+Route::get('/kokushi/management/qsentence_list', 'KokushiManagementController@showQuestionSentences');
 
 // 問題文一覧　編集処理
 
