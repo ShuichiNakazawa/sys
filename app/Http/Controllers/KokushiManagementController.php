@@ -200,6 +200,19 @@ class KokushiManagementController extends Controller
                   ]);
     }
 
+
+    // 問題タイトル登録画面　表示処理
+    public function showStoreTitle(){
+
+      //科目一覧 取得
+      $subjects = Subject_names::get();
+
+      return view('kokushi.store_title')
+                  ->with([
+                    'subjects' => $subjects,
+                  ]);
+    }
+
     // タイトル 登録
     public function storeTitle(Request $request){
 
@@ -217,7 +230,7 @@ class KokushiManagementController extends Controller
       $title->save();
 
       // 
-      return redirect('/management/store_title')
+      return redirect('/kokushi/management/store_title')
                   ->with('message', '登録できました。');
     }
 
@@ -408,9 +421,91 @@ class KokushiManagementController extends Controller
                 ]);
     }
 
+    // 問題文　登録画面　表示処理
+    public function showStoreQuestionSentence(Request $request){
 
-    // 問題文 登録
-    public function storeQSentence(Request $request){
+      //　科目グループ名　取得
+      $subject_groups = Subject_group::get();
+
+      if(null !== $request->subject_group_id){
+        $subject_group_id         = $request->subject_group_id;
+
+        $subject_group_name       = Subject_group::select('subject_group_name')
+                                            ->where('id', '=', $request->subject_group_id)
+                                            ->value('subject_group_name');
+      } else {
+        $subject_group_id         = 0;
+        $subject_group_name       = '';
+      }
+
+      //////////
+      // 科目リスト 取得
+      $subject_lists =  Subject_names::get();
+
+      // 科目ID $request->subject_name_id
+
+      if(null !== $request->subject_name_id){
+        // 科目名
+        $subject_name     =       Subject_names::select('subject_name')
+                                                  ->where('id', '=', $request->subject_name_id)
+                                                  ->value('subject_name');
+      } else {
+        $subject_name     =       '';
+      }
+
+      // タイトル名
+      $question_title  =       Question_titles::select('question_title')
+                                                  ->where('title_id', '=', $request->question_title_id)
+                                                  ->value('question_title');
+
+      // 科目ID 取得
+      $subject_id       =       $request->subject_id;
+      /*
+      $subject_id       =       Subject_names::select('id')
+                                          ->where('subject_name', '=', $request->subject_name)
+                                          ->limit(1)
+                                          ->value('id');
+*/
+
+      // タイトルリスト 取得
+      $title_lists	=	Question_titles::where('subject_name_id', '=', $subject_id)
+                                          ->where('sight_key', '=', 'origin')
+                                          ->orderby('title_id', 'desc')
+                                          ->get();
+
+      // 
+      $question_number  = $request->question_number + 1;
+
+      //////////
+
+      return view('kokushi.store_q_sentence')
+      ->with([
+                'subject_groups'      =>  $subject_groups,
+                'subject_group_id'    =>  $subject_group_id,
+                'subject_group_name'  =>  $subject_group_name,
+                'subjects'	          =>  $subject_lists,
+                'titles'	            =>  $title_lists,
+                'subject_id'	        =>  $subject_id,
+                'subject_name'        =>  $subject_name,
+                'question_title'      =>  $question_title,
+                'question_number'     =>  $question_number,
+      ]);
+    } 
+
+
+    // 問題文 登録処理
+    public function storeQuestionSentence(Request $request){
+
+      //　科目グループ名　取得
+      $subject_groups = Subject_group::get();
+
+      // 科目グループID
+      $subject_group_id         = $request->subject_group_id;
+
+      // 科目グループ名
+      $subject_group_name       = Subject_group::select('subject_group_name')
+                                          ->where('id', '=', $request->subject_group_id)
+                                          ->value('subject_group_name');
 
       //dd($request);
 
@@ -549,8 +644,8 @@ class KokushiManagementController extends Controller
               [
                 'subject_name_id'     =>  $request->subject_name_id,        // 科目ID
                 'subject_name'        =>  '',                               // 科目名
-                'question_title_id'  =>  $request->question_title_id,     // タイトルID
-                'question_title'     =>  '',                               // タイトル名
+                'question_title_id'  =>  $request->question_title_id,       // タイトルID
+                'question_title'     =>  '',                                // タイトル名
                 'question_number'     =>  $request->question_number,        // 問題番号
                 'choice_id'           =>  $index,                           // 選択肢ID
                 'choice_sentence'     =>  $c_sentence,                      // 選択肢文
@@ -583,8 +678,8 @@ class KokushiManagementController extends Controller
               [
                 'subject_name_id'     =>  $request->subject_name_id,        // 科目ID
                 'subject_name'        =>  '',                               // 科目名
-                'question_title_id'  =>  $request->question_title_id,     // タイトルID
-                'question_title'     =>  '',                               // タイトル名
+                'question_title_id'  =>  $request->question_title_id,       // タイトルID
+                'question_title'     =>  '',                                // タイトル名
                 'question_number'     =>  $request->question_number,        // 問題番号
                 'answer_id'           =>  $index_answer,                    // 正答ID
                 'answer_sentence'     =>  $a_sentence,                      // 正答文
@@ -640,16 +735,179 @@ class KokushiManagementController extends Controller
       // 
       return view('kokushi.store_q_sentence')
                       ->with([
-                                'subjects'	        =>  $subject_lists,
-                                'titles'	          =>  $title_lists,
-                                'subject_id'	      =>  $subject_id,
-                                'subject_name'      =>  $subject_name,
-                                'question_title'   =>  $question_title,
-                                'question_number'   =>  $question_number,
+                                'subject_groups'      =>  $subject_groups,
+                                'subject_group_id'    =>  $subject_group_id,
+                                'subject_group_name'  =>  $subject_group_name,
+                                'subjects'	          =>  $subject_lists,
+                                'titles'	            =>  $title_lists,
+                                'subject_id'	        =>  $subject_id,
+                                'subject_name'        =>  $subject_name,
+                                'question_title'      =>  $question_title,
+                                'question_number'     =>  $question_number,
                       ]);
+/*
+                  'subject_groups'      =>  $subject_groups,
+                                  'subject_group_id'    =>  $subject_group_id,
+                                  'subject_group_name'  =>  $subject_group_name,
+                                  'subjects'	          =>  $subject_lists,
+                                  'titles'	            =>  $title_lists,
+                                  'subject_id'	        =>  $subject_id,
+                                  'subject_name'        =>  $subject_name,
+                                  'question_title'      =>  $question_title,
+                                  'question_number'     =>  $question_number,
+*/
+
     }
 
+    public function showQuestionSentence ($subject_id, $title_id, $question_number){
 
+      // 科目グループID 取得
+      $subject_group_id   = Subject_names::select('subject_group_id')
+                                      ->where('id', '=', $subject_id)
+                                      ->value('subject_group_id');
+
+      // 科目グループ名 取得
+      $subject_group_name = Subject_group::select('subject_group_name')
+                                      ->where('id', '=', $subject_group_id)
+                                      ->limit(1)
+                                      ->value('subject_group_name');
+
+      // 科目名　取得
+      $subject_name       = Subject_names::select('subject_name')
+                                      ->where('id', '=', $subject_id)
+                                      ->limit(1)
+                                      ->value('subject_name');
+
+
+
+      //dd($subject_group_name, $subject_name);
+
+      // タイトル名　取得
+      $title_name         = Question_titles::select('question_title')
+                                      ->where('subject_name_id', '=', $subject_id)
+                                      ->where('title_id', '=', $title_id)
+                                      ->value('question_title');
+
+      //dd($title_name, $subject_id, $title_id);
+
+      // 問題文　取得
+      $question_sentence  = Question_sentences::where('subject_id', '=', $subject_id)
+                                      ->where('question_title_id', '=', $title_id)
+                                      ->where('question_number', '=', $question_number)
+                                      ->first();
+
+      //dd($question_sentence, $question_sentence->question_sentence);
+
+      // 選択肢文配列　取得
+      $choice_sentences   = Choice_sentences::where('subject_name_id', '=', $subject_id)
+                                      ->where('question_title_id', '=', $title_id)
+                                      ->where('question_number', '=', $question_number)
+                                      ->get();
+
+      // 正答文配列　取得
+      $answer_sentences   = Answer_sentences::where('subject_name_id', '=', $subject_id)
+                                      ->where('question_title_id', '=', $title_id)
+                                      ->where('question_number', '=', $question_number)
+                                      ->get();
+
+
+      return view('kokushi.edit_q_sentence')
+              ->with([
+                'subject_group_id'        =>  $subject_group_id,          // 科目グループID
+                'subject_group_name'      =>  $subject_group_name,        // 科目グループ名
+                'subject_id'              =>  $subject_id,                // 科目ID
+                'subject_name'            =>  $subject_name,              // 科目名
+                'title_id'                =>  $title_id,                  // タイトルID
+                'title_name'              =>  $title_name,                // タイトル名
+                'question_number'         =>  $question_number,           // 問題番号
+                'choice_sentences'        =>  $choice_sentences,          // 選択肢文配列
+                'answer_sentences'        =>  $answer_sentences,          // 正答文配列
+                'question_sentence'       =>  $question_sentence,         // 問題文レコード
+              ]);
+
+    }
+
+    // 問題文一覧　編集画面　編集処理
+    public function edtiQuestionSentence(Request $request){
+      /**
+       * 画面入力項目を取得
+       */
+      $number_of_choices_rq     = $request->number_of_choices;          // 選択肢の数
+      $required_numOfAnswers_rq = $request->required_numOfAnswers;      // 必須回答数
+      $number_of_answers_rq     = $request->number_of_answers;          // 正答の数
+      $question_sentence_rq     = $request->question_sentence;          // 問題文
+      $flag_graph_rq            = $request->flag_graph;                 // 図表の有無
+
+      /**
+       * テーブルから該当項目を取得
+       */
+      $question_sentence          = Question_sentences::where('subject_id', '=', $request->subject_id)
+                                              ->where('title_id', '=', $request->title_id)
+                                              ->where('question_number', '=', $request->question_number)
+                                              ->first();
+
+      $number_of_choices_db       = $question_sentence->number_of_choices;      // 選択肢の数
+      $required_numOfAnswers_db   = $question_sentence->required_numOfAnswers;  // 必須回答数
+      $number_of_answers_db       = $question_sentence->number_of_answers;      // 正答の数
+      $question_sentence_db       = $question_sentence->question_sentence;      // 問題文
+      $flag_graph_db              = $question_sentence->flag_graph_exists;      // グラフ有無
+
+      /**
+       * 画面入力項目とテーブルデータとの差分判定
+       */
+      // 選択肢の数　変更判定
+      if($number_of_choices_rq != $number_of_choices_db){
+        // 変更あり。問題文テーブル更新
+      }
+
+      // 必須回答数　変更判定
+      if($required_numOfAnswers_rq != $required_numOfAnswers_db){
+        // 変更あり。問題文テーブル更新
+      }
+
+      // 正答数　変更判定
+      if($number_of_answers_rq != $number_of_answers_db){
+        // 変更あり。問題文テーブル更新
+      }
+
+      // 問題文　変更判定
+      if($question_sentence_rq != $question_sentence_db){
+        // 変更あり。問題文テーブル更新
+      }
+
+      // グラフ有無　変更判定
+      if($flag_graph_rq != $flag_graph_db){
+        // 変更あり。問題文テーブル更新
+      }
+
+      /**
+       * 選択肢文　変更判定
+       * 選択肢１～９
+      **/
+      // 選択肢数が増加
+
+      // 選択肢数が減少
+
+      // 選択肢数は変化なし
+
+
+      /**
+       * 正答文　変更判定
+       * 正答文１～５
+      **/ 
+
+      // 正答数が増加
+
+      // 正答数が減少
+      // 正答数は変化なし
+
+      // 正答文が変更している
+      // 
+
+
+
+
+    }
 
 
     /**

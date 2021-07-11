@@ -15,42 +15,63 @@
     <h4>問題文 登録</h4>
     <br>
 
-    <form action="{{ url('management/store_q_sentence') }}">
+    <form action="{{ url('/kokushi/management/store_q_sentence') }}">
       @csrf
+
+      科目グループ名：
+      <select id="subject_group_id" name="subject_group_id">
+        <option value="0"> </option>
+        @foreach($subject_groups as $subject_group)
+          @if ( $subject_group_name == $subject_group->subject_group_name)
+            <option value="{{ $subject_group->id }}" selected="selected">{{ $subject_group->subject_group_name }}</option>
+            @php
+              $subject_group_id = $subject_group->id
+            @endphp
+          @else
+            <option value="{{ $subject_group->id }}" name="{{ $subject_group_id }}">{{ $subject_group->subject_group_name }}</option>
+          @endif
+        @endforeach
+      </select>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
       科目名：
-      <select id="subject_name" name="subject_name">
+      <select id="subject_id" name="subject_id">
         <option value="0"> </option>
         @foreach($subjects as $subject)
-          @if ( $subject_name == $subject->subject_name)
-            <option value="{{ $subject->subject_name }}" selected="selected">{{ $subject->subject_name }}</option>
+          @if ( $subject_id == $subject->id)
+            <option value="{{ $subject->id }}" selected="selected">{{ $subject->subject_name }}</option>
+            {{--
             @php
               $subject_id = $subject->id
             @endphp
+            --}}
           @else
-            <option value="{{ $subject->subject_name }}" name="{{ $subject_id }}">{{ $subject->subject_name }}</option>
+            <option value="{{ $subject->id }}" name="{{ $subject_id }}">{{ $subject->subject_name }}</option>
           @endif
         @endforeach
       </select>
 
+      {{--
       <input type="hidden" name="subject_id" value="{{ $subject_id }}">
+      --}}
       <input type="submit" value="選択">
     </form>
     <br>
 
-    <form enctype="multipart/form-data" action="{{ url('management/store_q_sentence') }}" method="POST">
+    <form enctype="multipart/form-data" action="{{ url('/kokushi/management/store_q_sentence') }}" method="POST">
       @csrf
 
-      問題タイトル：
-      <select id="questions_title_id" name="questions_title_id">
+      問題タイトル：　
+      <select id="question_title_id" name="question_title_id">
         <option value="0"> </option>
         @foreach($titles as $title)
-          @if ($questions_title == $title->questions_title)
-            <option value="{{ $title->title_id }}" selected="selected">{{ $title->questions_title }}</option>
+          @if ($question_title == $title->question_title)
+            <option value="{{ $title->title_id }}" selected="selected">{{ $title->question_title }}</option>
           @else
-            <option value="{{ $title->title_id }}">{{ $title->questions_title }}</option>
+            <option value="{{ $title->title_id }}">{{ $title->question_title }}</option>
           @endif
           {{--
-          <input type="hidden" name="title_name" value="{{ $title->questions_title }}">
+          <input type="hidden" name="title_name" value="{{ $title->question_title }}">
           --}}
         @endforeach
       </select>

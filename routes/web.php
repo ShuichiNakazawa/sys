@@ -150,84 +150,114 @@ Route::post('/inquiry', 'MailSendController@send');
  * 国試過去問
  ******************************/
 //　ユーザー向けページ
-Route::get('/kokushi', function () {
-    return view('kokushi.index');
-});
+Route::name('kokushi.')->group(function() {
+    Route::name('question.')->group(function() {
 
-Route::post('systems', 'KokushiQuestionController@before_kokushi');
+        Route::get('/kokushi', function () {
+            return view('kokushi.index');
+        });
 
-Route::post('/kokushi', 'KokushiQuestionController@before_kokushi');
+        Route::post('systems', 'KokushiQuestionController@before_kokushi');
 
-Route::get('/kokushi/{subject_id}', 'KokushiQuestionController@showMenu');
+        Route::post('/kokushi', 'KokushiQuestionController@before_kokushi');
 
-// 国試 過去問スタート
-Route::post('/kokushi/{subject_id}', 'KokushiQuestionController@startPractice');
+        Route::get('/kokushi/{subject_id}', 'KokushiQuestionController@showMenu');
 
-// 上のルートを廃止して、新規ルートから出題画面を表示させたい
-Route::post('/kokushi/set_question/{subject_id}', 'KokushiQuestionController@setQuestion');
+        // 国試 過去問スタート
+        Route::post('/kokushi/{subject_id}', 'KokushiQuestionController@startPractice');
+
+        // 上のルートを廃止して、新規ルートから出題画面を表示させたい
+        Route::post('/kokushi/set_question/{subject_id}', 'KokushiQuestionController@setQuestion');
 
 
-// 一問一答　表示
-Route::get('/kokushi/{subject_id}/practice_by_question/{title_id}/{question_number}', 'KokushiQuestionController@practiceByQuestion');
+        // 一問一答　表示
+        Route::get('/kokushi/{subject_id}/practice_by_question/{title_id}/{question_number}', 'KokushiQuestionController@practiceByQuestion');
 
-// 音声ページ
-Route::get('/kokushi/audio/{subject_id}', 'KokushiQuestionController@showAudio');
+        // 音声ページ
+        Route::get('/kokushi/audio/{subject_id}', 'KokushiQuestionController@showAudio');
+    });
 
 /******************************
  * 国試過去問 管理系
  ******************************/
-Route::get('/kokushi/management/index', function() {
-    return view('kokushi.management');
+    Route::name('management.')->group(function() {
+        Route::get('/kokushi/management/index', function() {
+            return view('kokushi.management');
+        });
+
+        //Route::get('/kokushi/management/store_subject', 'KokushiController@storeSubject');
+
+
+        // 科目グループ　登録画面　表示処理
+        Route::get('/kokushi/management/store_subject_group', 'KokushiManagementController@pageStoreSubjectGroups');
+
+        // 科目グループ　登録処理
+        Route::post('/kokushi/management/store_subject_group', 'KokushiManagementController@storeSubjectGroup');
+
+        // 科目グループ一覧　表示　表示処理
+        Route::get('/kokushi/management/subject_group_list', 'KokushiManagementController@showSubjectGroups');
+
+        // 科目グループ一覧　編集画面　表示処理
+        Route::post('/kokushi/management/subject_group_list/{id}', 'KokushiManagementController@editSubjectGroup');
+
+        // 科目グループ一覧　削除処理
+        Route::delete('/kokuchi/management/subject_group_list', 'KokushiManagementController@destroySubjectGroup');
+
+
+        // 科目名登録　画面表示
+        Route::get('/kokushi/management/store_subject', 'KokushiManagementController@pageStoreSubject');
+
+        // 科目名登録　登録処理
+        Route::post('/kokushi/management/store_subject', 'KokushiManagementController@storeSubject');
+
+
+        // 科目名一覧表示　表示処理
+        Route::get('/kokushi/management/subject_list', 'KokushiManagementController@showSubjects');
+
+        // 科目名一覧　編集処理
+        Route::post('/kokushi/management/subject_list', 'KokushiManagementController@editSubject');
+
+        // 科目名一覧　削除処理
+        Route::delete('/kokuchi/management/subject_list', 'KokushiManagementController@destroySubject');
+
+
+        // 問題タイトル　登録画面　表示処理
+        Route::get('/kokushi/management/store_title', 'KokushiManagementController@showStoreTitle');
+
+        // 問題タイトル　登録画面　登録処理
+        Route::post('/kokushi/management/store_title', 'KokushiManagementController@storeTitle');
+
+
+        // 問題タイトル一覧　表示処理
+        Route::get('/kokushi/management/title_list/{title_id}', 'KokushiManagementController@showTitles');
+
+        // 問題タイトル一覧　削除処理
+        Route::delete('/kokushi/management/title_list', 'KokushiManagementController@destroyQuestionsTitle');
+
+
+        // 問題文一覧　表示処理
+        Route::get('/kokushi/management/qsentence_list', 'KokushiManagementController@showQuestionSentences');
+
+        // 問題文一覧　編集画面　表示処理
+        Route::get('/kokushi/management/edit_q_sentence/{subject_id}/{title_id}/{question_number}', 'KokushiManagementController@showQuestionSentence');
+
+        // 問題文一覧　編集画面　編集処理
+        Route::post('/kokushi/management/edit_q_sentence/{subject_id}/{title_id}/{question_number}', 'KokushiManagementController@editQuestionSentence');
+
+        // 問題文一覧　削除処理
+        Route::delete('/kokushi/management/qsentence_list', 'KokushiManagementController@destroyQuestionsSentence')
+                        ->name('destroyQuestionSentence');
+
+
+        // 問題文登録　登録画面表示
+        Route::get('/kokushi/management/store_q_sentence', 'KokushiManagementController@showStoreQuestionSentence');
+
+        // 問題文登録　登録処理
+        Route::post('/kokushi/management/store_q_sentence', 'KokushiManagementController@StoreQuestionSentence');
+
+
+    });
 });
-
-//Route::get('/kokushi/management/store_subject', 'KokushiController@storeSubject');
-
-
-// 科目グループ　登録画面　表示処理
-Route::get('/kokushi/management/store_subject_group', 'KokushiManagementController@pageStoreSubjectGroups');
-
-// 科目グループ　登録処理
-Route::post('/kokushi/management/store_subject_group', 'KokushiManagementController@storeSubjectGroup');
-
-// 科目グループ一覧　表示　表示処理
-Route::get('/kokushi/management/subject_group_list', 'KokushiManagementController@showSubjectGroups');
-
-// 科目グループ一覧　編集画面　表示処理
-Route::post('/kokushi/management/subject_group_list/{id}', 'KokushiManagementController@editSubjectGroup');
-
-// 科目グループ一覧　削除処理
-Route::delete('/kokuchi/management/subject_group_list', 'KokushiManagementController@destroySubjectGroup');
-
-// 科目名登録　画面表示
-Route::get('/kokushi/management/store_subject', 'KokushiManagementController@pageStoreSubject');
-
-// 科目名登録　登録処理
-Route::post('/kokushi/management/store_subject', 'KokushiManagementController@storeSubject');
-
-// 科目名一覧表示　表示処理
-Route::get('/kokushi/management/subject_list', 'KokushiManagementController@showSubjects');
-
-// 科目名一覧　編集処理
-Route::post('/kokushi/management/subject_list', 'KokushiManagementController@editSubject');
-
-// 科目名一覧　削除処理
-Route::delete('/kokuchi/management/subject_list', 'KokushiManagementController@destroySubject');
-
-// 問題タイトル一覧　表示処理
-Route::get('/kokushi/management/title_list/{title_id}', 'KokushiManagementController@showTitles');
-
-// 問題タイトル一覧　削除処理
-Route::delete('/kokuchi/management/title_list', 'KokushiManagementController@destroyQuestionsTitle');
-
-// 問題文一覧　表示処理
-Route::get('/kokushi/management/qsentence_list', 'KokushiManagementController@showQuestionSentences');
-
-// 問題文一覧　編集処理
-
-
-// 問題文登録　登録処理
-Route::get('/kokushi/management/store_q_sentence', 'KokushiManagementController@storeQSentence');
-
 
 /**
  * 雑記

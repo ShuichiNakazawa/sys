@@ -109,10 +109,25 @@
 								</td>
 
 								<td>
-									<button>編集</button>
+									<a href="{{ url('/kokushi/management/edit_q_sentence/'
+																	 . $subject_id . '/'
+																	 . $title_id . '/'
+																	 . $qsentence->question_number) }}">
+										<button>編集</button>
+									</a>
 								</td>
 								<td>
-									<button>削除</button>
+									<form action="{{ route('kokushi.management.destroyQuestionSentence') }}" method="post">
+										@csrf
+										@method('delete')
+
+										<input type="hidden" name="subject_id" value="{{ $subject_id }}">
+										<input type="hidden" name="title_id" value="{{ $title_id }}">
+										<input type="hidden" name="question_number" value="{{ $qsentence->question_number }}">
+
+
+										<button type="submit">削除</button>
+									</form>
 								</td>
 							</tr>
 						@endforeach
