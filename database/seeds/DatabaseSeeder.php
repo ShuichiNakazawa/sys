@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         //$this->call(IndividualScoringsTableSeeder::class);	  // 個人得点
 
 	    // Stripe ECサイトサンプル
-	    //$this->call(ProductSeeder::class);			// 商品
+	    $this->call(ProductSeeder::class);			// 商品
 
         //$this->call(Book_oneweeksTableSeeder::class);
         $this->call(UsersTableSeeder::class);
