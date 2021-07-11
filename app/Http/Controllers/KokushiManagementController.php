@@ -384,7 +384,7 @@ class KokushiManagementController extends Controller
                         ->orderby('question_number', 'asc')
                         ->get();
 
-      
+      /*
       dd(
         $subject_lists,
         $title_lists,
@@ -394,7 +394,7 @@ class KokushiManagementController extends Controller
         $title_id,
         $qsentences
       );
-      
+      */
 
       return view('kokushi.qsentence_list')
                 ->with([
