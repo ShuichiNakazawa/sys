@@ -82,39 +82,41 @@
 						<th colspan="2">操作</th>
 					</tr>
 
-					@foreach($qsentences as $qsentence)
+					@if(null !== $qsentences)
+						@foreach($qsentences as $qsentence)
 
-						<tr>
-							<td class="table-text">
-								<div>{{ $qsentence->question_number }}</div>
-							</td>
+							<tr>
+								<td class="table-text">
+									<div>{{ $qsentence->question_number }}</div>
+								</td>
 
-							<td class="table-text">
-								
-								<div>{{ mb_substr($qsentence->question_sentence, 0, 70) }}</div>
-								
-								{{--
-								<div>{{ $qsentence->question_sentence }}</div>
-								--}}
-							</td>
-							<td>
-								<div>{{ $qsentence->required_numOfAnswers }}</div>
-							</td>
-							<td>
-								<div>{{ $qsentence->number_of_choices }}</div>
-							</td>
-							<td>
-								<div>{{ $qsentence->number_of_answers }}</div>
-							</td>
+								<td class="table-text">
+									
+									<div>{{ mb_substr($qsentence->question_sentence, 0, 70) }}</div>
+									
+									{{--
+									<div>{{ $qsentence->question_sentence }}</div>
+									--}}
+								</td>
+								<td>
+									<div>{{ $qsentence->required_numOfAnswers }}</div>
+								</td>
+								<td>
+									<div>{{ $qsentence->number_of_choices }}</div>
+								</td>
+								<td>
+									<div>{{ $qsentence->number_of_answers }}</div>
+								</td>
 
-							<td>
-								<button>編集</button>
-							</td>
-							<td>
-								<button>削除</button>
-							</td>
-						</tr>
-					@endforeach
+								<td>
+									<button>編集</button>
+								</td>
+								<td>
+									<button>削除</button>
+								</td>
+							</tr>
+						@endforeach
+					@endif
 				</tbody>
 			</table>
 		</div>

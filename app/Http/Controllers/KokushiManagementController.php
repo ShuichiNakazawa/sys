@@ -384,6 +384,18 @@ class KokushiManagementController extends Controller
                         ->orderby('question_number', 'asc')
                         ->get();
 
+                        /*
+      dd(
+        $subject_lists,
+        $title_lists,
+        $subject_id,
+        $request->subject_name,
+        $request->question_title,
+        $title_id,
+        $qsentences
+      );
+      */
+
       return view('kokushi.qsentence_list')
                 ->with([
                         'subjects'        =>  $subject_lists,
