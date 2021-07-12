@@ -23,13 +23,13 @@
       <select id="subject_group_id" name="subject_group_id">
         <option value="0"> </option>
         @foreach($subject_groups as $subject_group)
-          @if ( $subject_group_name == $subject_group->subject_group_name)
+          @if ( $subject_group_id == $subject_group->id)
             <option value="{{ $subject_group->id }}" selected="selected">{{ $subject_group->subject_group_name }}</option>
             @php
               $subject_group_id = $subject_group->id
             @endphp
           @else
-            <option value="{{ $subject_group->id }}" name="{{ $subject_group_id }}">{{ $subject_group->subject_group_name }}</option>
+            <option value="{{ $subject_group->id }}">{{ $subject_group->subject_group_name }}</option>
           @endif
         @endforeach
       </select>

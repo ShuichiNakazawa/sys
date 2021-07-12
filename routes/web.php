@@ -164,7 +164,7 @@ Route::name('kokushi.')->group(function() {
         Route::get('/kokushi/{subject_id}', 'KokushiQuestionController@showMenu');
 
         // 国試 過去問スタート
-        Route::post('/kokushi/{subject_id}', 'KokushiQuestionController@startPractice');
+        //Route::post('/kokushi/{subject_id}', 'KokushiQuestionController@startPractice');
 
         // 上のルートを廃止して、新規ルートから出題画面を表示させたい
         Route::post('/kokushi/set_question/{subject_id}', 'KokushiQuestionController@setQuestion');
