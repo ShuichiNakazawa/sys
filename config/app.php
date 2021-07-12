@@ -162,6 +162,9 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+	// add for Iseed 2021/07/12
+	Orangehill\Iseed\IseedServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
