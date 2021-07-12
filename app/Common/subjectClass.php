@@ -70,11 +70,11 @@ class subjectClass
     } else if ($subject_id == 5){
       return '診療放射線技師';
     } else if ($subject_id == 6){
-      return '視能訓練士';
+      return '作業療法士';
     } else if ($subject_id == 7){
       return '理学療法士';
     } else if ($subject_id == 8){
-      return '作業療法士';
+      return '視能訓練士';
     } else if ($subject_id == 9){
       return '柔道整復師';
     } else if ($subject_id == 10){
