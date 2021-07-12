@@ -19,6 +19,7 @@
       @csrf
 
       科目グループ名：
+
       <select id="subject_group_id" name="subject_group_id">
         <option value="0"> </option>
         @foreach($subject_groups as $subject_group)
