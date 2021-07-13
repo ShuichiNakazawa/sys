@@ -159,15 +159,27 @@ class KokushiQuestionController extends Controller
           // セッション『ユーザタイプ』へ”仮ユーザ”を保存
           $request->session()->put('user_type', "temp_user");
 
-          // セッション『ユーザID』へ”仮ユーザID”を保存
-          // ”仮ユーザID”は、仮ユーザテーブルから最大値となるIDを検索し、１加算した値を設定する。
-          $temp_user_id_db =  Temp_user::select('id')
-                                ->orderby('id', 'desc')
-                                ->first()
-                                ->value('id');
+          // 仮ユーザーテーブル　件数取得
+          $count_temp_user  = Temp_user::count();
+
+          // 仮ユーザーテーブル　件数判定
+          if($count_temp_user == 0){
+
+            //
+            $temp_user_id_db  = 0;
+
+          } else {
+            // セッション『ユーザID』へ”仮ユーザID”を保存
+            // ”仮ユーザID”は、仮ユーザテーブルから最大値となるIDを検索し、１加算した値を設定する。
+            $temp_user_id_db =  Temp_user::select('id')
+                                  ->orderby('id', 'desc')
+                                  ->first()
+                                  ->value('id');
+          }
 
           // 現在登録中の仮ユーザIDの最大値に１加算
-          $temp_user_id_db++;      
+          $temp_user_id_db++;
+
 
           // セッション『ユーザID』へ、仮ユーザIDを設定
           $request->session()->put('ui', $temp_user_id_db);
@@ -236,7 +248,6 @@ class KokushiQuestionController extends Controller
 
               // レコード　追加
               $temp_user->save();
-
 
               // セッション『試験回数』　保存
               $request->session()->put('number_test', 1);
