@@ -15,6 +15,7 @@ class CreateTempUsersTable extends Migration
     {
         Schema::create('temp_users', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('user_name');
             $table->timestamps();
         });
     }

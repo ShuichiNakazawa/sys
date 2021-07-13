@@ -14,6 +14,8 @@ use App\Individual_scorings;
 use App\T_choices;
 use App\T_answers;
 use App\Subject_group;
+use App\Test_score;
+use App\Temp_user;
 
 use Illuminate\Support\Facades\DB;
 use Auth;
@@ -197,31 +199,39 @@ class KokushiQuestionController extends Controller
 
             //　ユーザID　登録済チェック（仮ユーザテーブルを検索）
             //　IDによる検索。カウントが良い
-            $count_user_id_temp = Temp_user::get();
+            $count_user_id_temp = Temp_user::where('id', '=', $user_id_session)
+                                        ->count();
+
 
             //　該当ユーザ件数　判定
             if($count_user_id_temp == 0){
               /********************************
               //  仮ユーザテーブル　該当IDなし
                ********************************/
+              //　テーブル件数　取得
+              $count_temp_user  = Temp_user::count();
 
-              //　最大ID　取得
-              $max_temp_user_id = Temp_user::select('id')
-                                          ->orderby('id', 'desc')
-                                          ->first()
-                                          ->value('id');
+              if($count_temp_user > 0){
+                //　最大ID　取得　　　（仮ユーザーテーブル０件の場合にエラーになる）
+                $max_temp_user_id = Temp_user::select('id')
+                                            ->orderby('id', 'desc')
+                                            ->first()
+                                            ->value('id');
+              } else {
+                $max_temp_user_id = 0;
+              }
 
               //　新規登録ID
               $max_temp_user_id++;
 
               //　セッション『仮ユーザID』　設定
-              $request->$session()->put('ui', $max_temp_user_id);
+              $request->session()->put('ui', $max_temp_user_id);
 
               //　仮ユーザテーブル　新規レコード登録
               $temp_user  = new Temp_user();                
               $temp_user->id        = $max_temp_user_id;    // ID
               $temp_user->user_name = 'ゲスト';              // ユーザ名
-              $temp_user->created_at  = '現在日時';          // 作成日時
+              $temp_user->created_at  = new Carbon('now');  // 作成日時
               $temp_user->updated_at  = null;               // 更新日時
 
               // レコード　追加
@@ -237,7 +247,7 @@ class KokushiQuestionController extends Controller
               //　仮ユーザテーブル　該当IDあり
 
               //　試験得点テーブルから『試験回数』を取得
-              $number_test  = Test_scoring::select('number_test')
+              $number_test  = Test_score::select('number_test')
                                                 ->where('id', '=', $user_id_session)
                                                 ->orderby('id', 'desc')
                                                 ->value('id');
