@@ -82,7 +82,7 @@ class KokushiQuestionController extends Controller
 
     // 出題形式設定
     public function setQuestion($subject_id, Request $request) {
-        $subject_id		    =	$request->subject_id;               // 科目ID
+        $subject_id		      =	  $request->subject_id;               // 科目ID
         $question_title     =   $request->question_title;           // タイトル名
         $question_title_id  =   $request->title_id;                 // タイトルID
 
@@ -133,17 +133,187 @@ class KokushiQuestionController extends Controller
         /**
         * ユーザ情報 登録
         **/
+        /*    ユーザ情報へランダムな６４桁の数字を併せて持たせる事で、セキュリティを高めようとしていた。
         // ランダムな６４文字を生成
         $str = array_merge(range('a', 'z'), range('0', '9'), range('A', 'Z'));
         $r_str = null;
         for ($i = 0; $i < 64; $i++) {
             $r_str .= $str[rand(0, count($str) - 1)];
         }
-  
-        // ローカルストレージへ登録
-        
-  
-        // ユーザーテーブルへ登録
+        */
+
+        /******************************************
+         * 端末保存情報　取得
+         *****************************************/
+        // ローカルストレージ　値参照
+        $user_type_session  = $request->session()->get('user_type');
+        $user_id_session    = $request->session()->get('ui');
+
+        // ユーザタイプ　存在判定
+        if(null === $user_type_session){
+          /********************************
+           * ユーザータイプ未設定の場合
+           ********************************/
+          // セッション『ユーザタイプ』へ”仮ユーザ”を保存
+          $request->session()->put('user_type', "temp_user");
+
+          // セッション『ユーザID』へ”仮ユーザID”を保存
+          // ”仮ユーザID”は、仮ユーザテーブルから最大値となるIDを検索し、１加算した値を設定する。
+          $temp_user_id_db =  Temp_user::select('id')
+                                ->orderby('id', 'desc')
+                                ->first()
+                                ->value('id');
+
+          // 現在登録中の仮ユーザIDの最大値に１加算
+          $temp_user_id_db++;      
+
+          // セッション『ユーザID』へ、仮ユーザIDを設定
+          $request->session()->put('ui', $temp_user_id_db);
+
+          // 仮ユーザ　新規レコード編集
+          $temp_user_obj  = new Temp_user();
+          $temp_user_obj->id            = $temp_user_id_db;
+          $temp_user_obj->user_name     = "guest";
+          $temp_user_obj->created_at    = "今現在の日時、カーボン使用";
+          $temp_user_obj->updated_at    = null;
+
+          // レコード　追加
+          $temp_user_obj->save();
+
+          // セッション『試験回数』　保存
+          $request->session()->put('number_test', 1);
+
+        } else {
+          /********************************
+           * ユーザータイプ設定済
+           ********************************/
+          // ユーザタイプ　内容判定
+          if($user_type_session == "temp_user"){
+            /********************************
+             * ユーザータイプが仮ユーザの場合
+             ********************************/
+            // セッション『ユーザID』を取得
+            $temp_user_id = $request->session()->get('ui');
+
+            //　ユーザID　登録済チェック（仮ユーザテーブルを検索）
+            //　IDによる検索。カウントが良い
+            $count_user_id_temp = Temp_user::get();
+
+            //　該当ユーザ件数　判定
+            if($count_user_id_temp == 0){
+              /********************************
+              //  仮ユーザテーブル　該当IDなし
+               ********************************/
+
+              //　最大ID　取得
+              $max_temp_user_id = Temp_user::select('id')
+                                          ->orderby('id', 'desc')
+                                          ->first()
+                                          ->value('id');
+
+              //　新規登録ID
+              $max_temp_user_id++;
+
+              //　セッション『仮ユーザID』　設定
+              $request->$session()->put('ui', $max_temp_user_id);
+
+              //　仮ユーザテーブル　新規レコード登録
+              $temp_user  = new Temp_user();                
+              $temp_user->id        = $max_temp_user_id;    // ID
+              $temp_user->user_name = 'ゲスト';              // ユーザ名
+              $temp_user->created_at  = '現在日時';          // 作成日時
+              $temp_user->updated_at  = null;               // 更新日時
+
+              // レコード　追加
+              $temp_user->save();
+
+
+              // セッション『試験回数』　保存
+              $request->session()->put('number_test', 1);
+
+
+            } elseif($count_user_id_temp == 1) {
+
+              //　仮ユーザテーブル　該当IDあり
+
+              //　試験得点テーブルから『試験回数』を取得
+              $number_test  = Test_scoring::select('number_test')
+                                                ->where('id', '=', $user_id_session)
+                                                ->orderby('id', 'desc')
+                                                ->value('id');
+
+              //　試験回数　１加算
+              $number_test++;
+
+              //　セッション『試験回数』　保存
+              $request->session()->put('number_test', $number_test);
+
+            } else {
+              //　仮ユーザテーブル　該当ID　複数件あり
+              //　好ましい状態ではない。そもそも重複IDが存在することはないはず
+              //　同時アクセス・同時登録による重複はありえるか？
+              //　実装は後回しだが、新規仮ユーザとして処理する
+
+            }
+
+          } elseif ($user_type_session == "registered_user") {
+            /********************************
+             * ユーザータイプが登録済ユーザの場合
+             ********************************/
+            //　ユーザテーブル検索（該当ユーザ存在チェック）
+            $count_user_id  = User::get();      //　後で修正
+
+            //　該当ユーザ件数　判定
+            if($count_user_id == 0){
+
+              //　該当ユーザ無し　新規の仮ユーザとして処理
+              //　仮ユーザID最大値　取得
+              $max_temp_user_id = Temp_user::select('id')
+                                          ->orderby('id', 'desc')
+                                          ->first()
+                                          ->value('id');
+
+              //　ID１加算
+              $max_temp_user_id++;
+
+              //　セッション『ユーザID』　保存
+              $request->session()->put('ui', $max_temp_user_id);
+
+              //　セッション『試験回数』　保存
+              $request->session()->put('number_test', 1);
+
+            } elseif ($count_user_id == 1){
+
+              //　該当ユーザ　１件
+              //  試験回数　取得（試験得点テーブルから）
+              $number_test  = Test_scoring::select('number_test')
+                                                ->where('id', '=', $user_id_session)
+                                                ->value('number_test');
+
+              //　試験回数　１加算
+              $number_test++;
+
+              //　セッション『試験回数』　保存
+              $request->session()->put('number_test', $number_test);
+
+            } elseif ($count_user_id > 1){
+
+              //　該当ユーザ　複数件存在
+              //　ユーザによる意図的なデータ変更だと思われる。エラーとして停止してよい
+
+
+
+            }
+
+          } else {
+
+            //　一時ユーザもしくは登録済みユーザ以外が設定されている事はない。
+            //　エラーで停止させて良い
+
+
+          }
+
+        }
 
         //dd($request->testType);
 
