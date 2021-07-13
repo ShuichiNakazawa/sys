@@ -162,6 +162,8 @@ class KokushiQuestionController extends Controller
           // 仮ユーザーテーブル　件数取得
           $count_temp_user  = Temp_user::count();
 
+          dd($user_type_session, $user_id_session);
+
           // 仮ユーザーテーブル　件数判定
           if($count_temp_user == 0){
 
