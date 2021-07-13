@@ -190,7 +190,7 @@ class KokushiQuestionController extends Controller
           $temp_user_obj  = new Temp_user();
           $temp_user_obj->id            = $temp_user_id_db;
           $temp_user_obj->user_name     = "guest";
-          $temp_user_obj->created_at    = "今現在の日時、カーボン使用";
+          $temp_user_obj->created_at    = new Carbon('now');
           $temp_user_obj->updated_at    = null;
 
           // レコード　追加
