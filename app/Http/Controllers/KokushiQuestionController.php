@@ -153,7 +153,7 @@ class KokushiQuestionController extends Controller
       $user_id_session      = $request->session()->get('ui');
       $number_test_session  = $request->session()->get('number_test');
 
-      dd($user_type_session, $user_id_session, $number_test_session);
+      //ok dd($user_type_session, $user_id_session, $number_test_session);
 
       // ユーザタイプ　存在判定
       if(null === $user_type_session){
@@ -225,7 +225,7 @@ class KokushiQuestionController extends Controller
           $count_user_id_temp = Temp_user::where('id', '=', $user_id_session)
                                       ->count();
 
-          //dd($count_user_id_temp);    // 中身が１なのに新規登録？
+          dd($count_user_id_temp);    // 中身が１なのに新規登録？
 
           //　該当ユーザ件数　判定
           if($count_user_id_temp == 0){
