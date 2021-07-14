@@ -239,15 +239,18 @@ class KokushiQuestionController extends Controller
 
             if($count_temp_user > 0){
 
-              dd('通過テスト');
+              // OK dd('通過テスト');
 
               //　最大ID　取得　　　（仮ユーザーテーブル０件の場合にエラーになる）
               $max_temp_user_id = Temp_user::select('id')
                                           ->orderby('id', 'desc')
+                                          ->limit(1)
                                           //->first()
                                           ->value('id');
 
-              // ここより前　dd($max_temp_user_id);
+
+                                          
+              dd($max_temp_user_id);
 
               // テスト回数　最大値　取得
               $max_number_test  = Individual_score::select('number_test')
