@@ -89,7 +89,7 @@ class KokushiQuestionController extends Controller
       $question_title     =   $request->question_title;           // タイトル名
       $question_title_id  =   $request->title_id;                 // タイトルID
 
-      dd($question_title_id);
+      //dd($question_title_id);
 
       /*
       $question_title_id	= Question_titles::select('title_id')
@@ -153,7 +153,7 @@ class KokushiQuestionController extends Controller
       $user_id_session      = $request->session()->get('ui');
       $number_test_session  = $request->session()->get('number_test');
 
-      //dd($user_type_session, $user_id_session, $number_test_session);
+      dd($user_type_session, $user_id_session, $number_test_session);
 
       // ユーザタイプ　存在判定
       if(null === $user_type_session){
