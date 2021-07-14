@@ -153,7 +153,7 @@ class KokushiQuestionController extends Controller
       $user_id_session      = $request->session()->get('ui');
       $number_test_session  = $request->session()->get('number_test');
 
-      //dd($user_type_session, $user_id_session, $number_test_session);
+      dd($user_type_session, $user_id_session, $number_test_session);
 
       // ユーザタイプ　存在判定
       if(null === $user_type_session){
