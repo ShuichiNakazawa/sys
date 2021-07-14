@@ -895,7 +895,7 @@ class KokushiQuestionController extends Controller
                                                   ->where('number_judgement', '=', $number_judgement_session)
                                                   ->count();
 
-            dd($count_individual);
+            
 
             // 判定回数　重複判定
             if($count_individual == 0){
@@ -911,8 +911,14 @@ class KokushiQuestionController extends Controller
               $individual_score->created_at         = new Carbon('now');              // 作成日時
               $individual_score->updated_at         = null;                           // 更新日時
 
+
+              dd($individual_score);
+
               // レコード追加
               $individual_score->save();
+
+              
+
             } else if($count_individual > 0){
               // 処理なし
             }
