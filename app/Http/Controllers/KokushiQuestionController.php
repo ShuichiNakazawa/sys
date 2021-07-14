@@ -235,6 +235,8 @@ class KokushiQuestionController extends Controller
             //　テーブル件数　取得
             $count_temp_user  = Temp_user::count();
 
+            dd($count_temp_user);
+
             if($count_temp_user > 0){
               //　最大ID　取得　　　（仮ユーザーテーブル０件の場合にエラーになる）
               $max_temp_user_id = Temp_user::select('id')
@@ -242,7 +244,7 @@ class KokushiQuestionController extends Controller
                                           //->first()
                                           ->value('id');
 
-              dd($max_temp_user_id);
+              // ここより前　dd($max_temp_user_id);
 
               // テスト回数　最大値　取得
               $max_number_test  = Individual_score::select('number_test')
