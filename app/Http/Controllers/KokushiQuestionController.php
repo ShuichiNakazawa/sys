@@ -297,7 +297,7 @@ class KokushiQuestionController extends Controller
             $number_test++;
 
             // セッション『試験回数』　削除
-            $request->session()->forget('number_test');
+            //$request->session()->forget('number_test');
 
             //　セッション『試験回数』　保存
             $request->session()->put('number_test', $number_test);
@@ -421,7 +421,7 @@ class KokushiQuestionController extends Controller
         $count_judge++;
       }
 
-      dd($count_correct, $judges, $count_judge);
+      //NG  dd($count_correct, $judges, $count_judge);
 
       /*********************
       * ユーザ名　取得
