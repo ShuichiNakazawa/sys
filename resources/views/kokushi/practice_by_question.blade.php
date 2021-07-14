@@ -25,10 +25,50 @@
 @endphp
 --}}
 
+
+
 <div class="card-body width_adjustment_900">
   <div class="card-body">
     <h3 class="txt_center">一問一答</h3>
   </div>
+	<div style="text-align: right;">
+		試験中ユーザー：{{ $user_name }}
+	</div>
+	<br>
+	<div style="text-align: right;">
+		
+		<table align="right">
+			<tr>
+				<th class="" style="width: 70px;">
+					前回
+				</th>
+				<th style="width: 70px;">
+					前々回
+				</th>
+				<th style="width: 70px;">
+					３回前
+				</th>
+				<th style="width: 70px;">
+					４回前
+				</th>
+				<th style="width: 70px;">
+					５回前
+				</th>
+			</tr>
+			<tr>
+				@for($index = 0; $index < 5; $index++)
+					<td>
+						@if($judges[$index] == 1)
+							〇
+						@elseif($judges[$index] == 2)
+							×
+						@else
+							-
+						@endif
+					</td>
+				@endfor
+		</table>
+	</div>
 	<div class="card-body question_sentence_outer">
 		<form action="{{ url('kokushi/' . $subject_id . '/practice_by_question/'  . $question_sentence->question_title_id . '/' . $question_sentence->question_number) }}">
 			<p>{{ $question_sentence->subject_name }}&nbsp;&nbsp;{{ $question_sentence->question_title }}</p>
@@ -110,6 +150,7 @@
 				@if ($question_sentence->question_number != 1)
 					<input type="submit" name="another_question" value="前の問題へ">&nbsp;&nbsp;&nbsp;
 				@endif
+
 				@if ($question_sentence->question_number == $question_last_number)
 					<input type="submit" name="another_question" value="結果判定">
 				@else
@@ -137,8 +178,9 @@
     $(function(){
 			window.addEventListener("popstate", function (e) {
 
-			history.pushState(null, null, null);
-			return;
+				history.pushState(null, null, null);
+				return;
+			})
     });
   </script>
 @endsection

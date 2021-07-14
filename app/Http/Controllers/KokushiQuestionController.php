@@ -10,12 +10,13 @@ use App\Question_sentences;
 use App\Question_sentence;
 use App\Choice_sentences;
 use App\Answer_sentences;
-use App\Individual_scorings;
+use App\Individual_score;
 use App\T_choices;
 use App\T_answers;
 use App\Subject_group;
 use App\Test_score;
 use App\Temp_user;
+use App\User;
 
 use Illuminate\Support\Facades\DB;
 use Auth;
@@ -151,6 +152,8 @@ class KokushiQuestionController extends Controller
         $user_type_session  = $request->session()->get('user_type');
         $user_id_session    = $request->session()->get('ui');
 
+        //dd($user_type_session, $user_id_session);
+
         // ユーザタイプ　存在判定
         if(null === $user_type_session){
           /********************************
@@ -158,6 +161,8 @@ class KokushiQuestionController extends Controller
            ********************************/
           // セッション『ユーザタイプ』へ”仮ユーザ”を保存
           $request->session()->put('user_type', "temp_user");
+
+          $user_type  = 'temp_user';          // ユーザタイプ　設定
 
           // 仮ユーザーテーブル　件数取得
           $count_temp_user  = Temp_user::count();
@@ -168,7 +173,17 @@ class KokushiQuestionController extends Controller
           if($count_temp_user == 0){
 
             //
-            $temp_user_id_db  = 0;
+            //$temp_user_id_db  = 1;
+
+            // 仮ユーザ　新規レコード編集
+            $temp_user_obj  = new Temp_user();
+            $temp_user_obj->id            = 1;
+            $temp_user_obj->user_name     = "guest";
+            $temp_user_obj->created_at    = new Carbon('now');
+            //$temp_user_obj->updated_at    = '';
+
+          // レコード　追加
+          $temp_user_obj->save();
 
           } else {
             // セッション『ユーザID』へ”仮ユーザID”を保存
@@ -179,22 +194,18 @@ class KokushiQuestionController extends Controller
                                   ->value('id');
           }
 
+          // セッション『ユーザID』へ”仮ユーザID”を保存
+          $request->session()->put('ui', 1);
+
           // 現在登録中の仮ユーザIDの最大値に１加算
           $temp_user_id_db++;
 
-
           // セッション『ユーザID』へ、仮ユーザIDを設定
           $request->session()->put('ui', $temp_user_id_db);
+          $user_id  = $temp_user_id_db;
 
-          // 仮ユーザ　新規レコード編集
-          $temp_user_obj  = new Temp_user();
-          $temp_user_obj->id            = $temp_user_id_db;
-          $temp_user_obj->user_name     = "guest";
-          $temp_user_obj->created_at    = new Carbon('now');
-          $temp_user_obj->updated_at    = null;
+          // 既存ユーザの場合は、登録する必要がないのでは？
 
-          // レコード　追加
-          $temp_user_obj->save();
 
           // セッション『試験回数』　保存
           $request->session()->put('number_test', 1);
@@ -216,6 +227,7 @@ class KokushiQuestionController extends Controller
             $count_user_id_temp = Temp_user::where('id', '=', $user_id_session)
                                         ->count();
 
+            //dd($count_user_id_temp);    // 中身が１なのに新規登録？
 
             //　該当ユーザ件数　判定
             if($count_user_id_temp == 0){
@@ -238,22 +250,23 @@ class KokushiQuestionController extends Controller
               //　新規登録ID
               $max_temp_user_id++;
 
-              //　セッション『仮ユーザID』　設定
-              $request->session()->put('ui', $max_temp_user_id);
+              //　ユーザID　設定
+              $request->session()->put('ui', $max_temp_user_id);    // セッション『仮ユーザID』
+              $user_id  = $max_temp_user_id;                        // 画面表示用
+              $user_type = 'temp_user';
 
               //　仮ユーザテーブル　新規レコード登録
               $temp_user  = new Temp_user();                
               $temp_user->id        = $max_temp_user_id;    // ID
               $temp_user->user_name = 'ゲスト';              // ユーザ名
               $temp_user->created_at  = new Carbon('now');  // 作成日時
-              $temp_user->updated_at  = null;               // 更新日時
+              //$temp_user->updated_at  = '';               // 更新日時
 
               // レコード　追加
               $temp_user->save();
 
               // セッション『試験回数』　保存
               $request->session()->put('number_test', 1);
-
 
             } elseif($count_user_id_temp == 1) {
 
@@ -271,6 +284,11 @@ class KokushiQuestionController extends Controller
               //　セッション『試験回数』　保存
               $request->session()->put('number_test', $number_test);
 
+              // ユーザID　設定
+              $user_id    =  $temp_user_id;
+              $user_type  = 'temp_user';
+
+
             } else {
               //　仮ユーザテーブル　該当ID　複数件あり
               //　好ましい状態ではない。そもそも重複IDが存在することはないはず
@@ -284,7 +302,8 @@ class KokushiQuestionController extends Controller
              * ユーザータイプが登録済ユーザの場合
              ********************************/
             //　ユーザテーブル検索（該当ユーザ存在チェック）
-            $count_user_id  = User::get();      //　後で修正
+            $count_user_id  = User::where('id', '=', $user_id_session)
+                                            ->count();
 
             //　該当ユーザ件数　判定
             if($count_user_id == 0){
@@ -305,6 +324,12 @@ class KokushiQuestionController extends Controller
               //　セッション『試験回数』　保存
               $request->session()->put('number_test', 1);
 
+              // ユーザID　設定
+              $user_id  = $max_temp_user_id;
+
+              // ユーザタイプ　設定
+              $user_type  = 'temp_user';
+
             } elseif ($count_user_id == 1){
 
               //　該当ユーザ　１件
@@ -318,6 +343,9 @@ class KokushiQuestionController extends Controller
 
               //　セッション『試験回数』　保存
               $request->session()->put('number_test', $number_test);
+
+              $user_id = $user_id_session;
+              $user_type = "registered_user";
 
             } elseif ($count_user_id > 1){
 
@@ -338,6 +366,67 @@ class KokushiQuestionController extends Controller
 
         }
 
+
+
+        // 正誤履歴データ　件数取得
+        $count_correct    =   Individual_score::where('user_id', '=', $user_id)
+                                        ->count();
+
+        //dd($count_correct);
+
+        // 正誤履歴データ　取得
+        $array_corrects  = Individual_score::where('user_id', '=', $user_id)
+                                      ->orderby('created_at', 'desc')
+                                      ->limit(5)
+                                      ->get();
+
+        $judges  = array();
+
+        $count_judge = 0;
+
+        // 画面表示用　正誤配列へ格納
+        foreach($array_corrects as $array_correct){
+          //
+          $judges[$count_judge] = $array_correct->judge;
+
+          //
+          $count_judge++;
+        }
+
+        for($index = 0; $index < (5 - $count_correct); $index++){
+
+          $judges[$count_judge] = '-';
+
+          // 
+          $count_judge++;
+        }
+
+        //dd($count_correct, $judges, $count_judge);
+
+        /*********************
+        * ユーザ名　取得
+        **********************/
+        // ユーザタイプ　判定
+        if($user_type == 'temp_user'){
+
+          // ユーザ名　ユーザテーブルから取得
+          $user_name  = User::SELECT('name')
+                                ->where('id', '=', $user_id)
+                                ->value('name');
+
+        } else if($user_type == 'registered_user'){
+
+          // ユーザ名　仮ユーザテーブルから取得
+          $user_name  = Temp_user::SELECT('user_name')
+                                ->where('id', '=', $user_id)
+                                ->value('user_name');
+
+        } else {
+
+          //
+          $user_name = "";
+        }
+
         //dd($request->testType);
 
         // テスト形式 判別
@@ -352,6 +441,8 @@ class KokushiQuestionController extends Controller
                           'question_last_number'  =>      $question_last_number,
                           'selected_answer'    	  =>    	'99',
                           'choice_characters'     =>      $choice_characters,
+                          'user_name'             =>      $user_name,
+                          'judges'                =>      $judges,
                    ]);
   
         } else if ($request->testType == 2){
@@ -364,6 +455,8 @@ class KokushiQuestionController extends Controller
                           'question_last_number'  =>      $question_last_number,
                           'choice_characters'     =>      $choice_characters,
                           'selected_answer'    	  =>    	'99',
+                          'user_name'             =>      $user_name,
+                          'judges'                =>      $judges,
                    ]);
         }
   
@@ -493,9 +586,9 @@ class KokushiQuestionController extends Controller
 
       // 押下ボタン 判定
       if ($request->another_question == '次の問題へ'){
-	$question_number += 1;
+	      $question_number += 1;
       } else if ($request->another_question == '前の問題へ'){
-	$question_number -= 1;
+	      $question_number -= 1;
 
 //      } else if ($request->another_question == '結果判定'){
 	//結果判定処理へ
@@ -568,12 +661,40 @@ class KokushiQuestionController extends Controller
       $flag_correct = 0;                // 正解フラグ 初期化
       $selected_answer = 99;            // 選択された正答
 
+      /*
       if(null !== Auth::user() ){
         $user_id  = Auth::user()->id;     // ユーザーID
       } else {
         $user_id  = 0;
       }
-      
+      */
+
+      // セッション『ユーザタイプ』　取得
+      $user_type_session  = $request->session()->get('user_type');
+
+      // セッション『ユーザーID』　取得
+      $user_id_session    = $request->session()->get('ui');
+
+      // セッション『判定回数』　取得
+      $number_judgement_session = $request->session()->get('number_test');
+
+      // ユーザタイプ　判定
+      if($user_type_session == 'temp_user'){
+
+        // 仮ユーザテーブルからユーザ名を取得
+        $user_name  = Temp_user::select('user_name')
+                                  ->where('id', '=', $user_id_session)
+                                  ->first()
+                                  ->value('user_name');
+
+      } elseif($user_type_session == 'registered_user') {
+
+        // ユーザテーブルからユーザ名を取得
+        $user_name  = User::select('name')
+                              ->where('')
+                              ->first()
+                              ->value('name');
+      }
 
       // 押下ボタン 判定
       if ($request->another_question == '次の問題へ'){
@@ -640,6 +761,90 @@ class KokushiQuestionController extends Controller
       $array_selected_answers	=	array();
       $array_correce_answers = array();
 
+      // セッション情報　取得
+      $user_type_session  = $request->session()->get('user_type');
+      $user_id_session    = $request->session()->get('ui');
+
+      //********************
+      // 正誤配列　取得
+      //********************
+
+        // 正誤履歴データ　件数取得
+        $count_correct    =   Individual_score::where('user_id', '=', $user_id_session)
+                                                  ->where('subject_name_id', '=', $subject_id)
+                                                  ->where('question_title_id', '=', $title_id)
+                                                  ->where('question_number', '=', $question_number)
+                                                  ->where('number_judgement', '=', $number_judgement_session)
+                                                  ->count();
+
+        //dd($count_correct);
+
+        // 正誤履歴データ　取得
+        $array_corrects  = Individual_score::where('user_id', '=', $user_id_session)
+                                      ->where('subject_name_id', '=', $subject_id)
+                                      ->where('question_title_id', '=', $title_id)
+                                      ->where('question_number', '=', $question_number)
+                                      ->where('number_judgement', '=', $number_judgement_session)
+                                      ->orderby('created_at', 'desc')
+                                      ->limit(5)
+                                      ->get();
+
+        $judges  = array();
+
+        $count_judge = 0;
+
+        // 画面表示用　正誤配列へ格納
+        foreach($array_corrects as $array_correct){
+          //
+          $judges[$count_judge] = $array_correct->judgement;
+
+          //
+          $count_judge++;
+        }
+
+        for($index = 0; $index < (5 - $count_correct); $index++){
+
+          $judges[$count_judge] = '-';
+
+          // 
+          $count_judge++;
+        }
+
+        //dd($count_correct, $judges, $count_judge);
+
+        /*********************
+        * ユーザ名　取得
+        **********************/
+        // ユーザタイプ　判定
+        if($user_type_session == 'temp_user'){
+
+          // ユーザ名　仮ユーザテーブルから取得
+          $user_name  = Temp_user::SELECT('user_name')
+                                ->where('id', '=', $user_id_session)
+                                ->value('user_name');
+
+        } else if($user_type_session == 'registered_user'){
+
+          // ユーザ名　ユーザテーブルから取得
+          $user_name  = User::SELECT('name')
+                                ->where('id', '=', $user_id_session)
+                                ->value('name');
+
+        } else {
+
+          //
+          $user_name = "";
+        }
+
+        //dd($user_type_session, $user_id_session);
+
+        // 判定回数　取得
+        $number_judgement_session = $request->session()->get('number_test');
+                                                  
+
+
+
+      
 /**
  * 判定処理
  */
@@ -680,10 +885,42 @@ class KokushiQuestionController extends Controller
               $flag_correct = 2;
             }
 
+            //　個別得点　重複レコード件数　取得
+            $count_individual = Individual_score::where('user_id', '=', $user_id_session)
+                                                  ->where('subject_name_id', '=', $subject_id)
+                                                  ->where('question_title_id', '=', $title_id)
+                                                  ->where('question_number', '=', $question_number)
+                                                  ->where('number_judgement', '=', $number_judgement_session)
+                                                  ->count();
+
+            // 判定回数　重複判定
+            if($count_individual == 0){
+              // 個別点数　登録処理
+              $individual_score = new Individual_score();
+              $individual_score->user_id            = $user_id_session;               // ユーザID
+              $individual_score->subject_name_id    = $subject_id;                    // 科目ID
+              $individual_score->question_title_id  = $title_id;                      // タイトルID
+              $individual_score->question_number    = $question_number;               // 問題番号
+              $individual_score->number_judgement   = $number_judgement_session;      // 判定回数
+              $individual_score->judgement          = $flag_correct;                  // 正誤フラグ
+              $individual_score->sight_key          = 'origin';                       // サイトキー
+              $individual_score->created_at         = new Carbon('now');              // 作成日時
+              $individual_score->updated_at         = null;                           // 更新日時
+
+              // レコード追加
+              $individual_score->save();
+            } else if($count_individual > 0){
+              // 処理なし
+            }
+
+
+
+            /*
             // ログイン済みなら個別得点テーブル 登録
             if ( $user_id != 0){
               //KokushiQuestionController::storeScore($user_id, $subject_id, $title_id, $question_number, $flag_correct);
             }
+            */
 
             // 正解としてビューを返す
             return view('kokushi.practice_by_question')
@@ -700,6 +937,8 @@ class KokushiQuestionController extends Controller
                               'number_of_need_select'	=>	    $numOfNeedSelect,           // 必須回答数
                               'number_of_answers'     =>      $number_of_answers,         // 正答の数
                               'flag_correct'          =>      $flag_correct,              // 正解フラグ
+                              'user_name'             =>      $user_name,                 // ユーザ名
+                              'judges'                =>      $judges,                    // 正誤配列
                         ]);
             
           } else {
@@ -727,6 +966,22 @@ class KokushiQuestionController extends Controller
 
             //dd(Auth::user()->id);
 
+            // 個別点数　登録処理
+            $individual_score = new Individual_score();
+            $individual_score->user_id  = $user_id;                     // ユーザID
+            $individual_score->subject_name_id  = $subject_id;          // 科目ID
+            $individual_score->question_title_id  = $title_id;          // タイトルID
+            $individual_score->question_number  = $question_number;     // 問題番号
+            $individual_score->number_judgement = '';                   // 判定回数
+            $individual_score->judge  = $flag_correct;                  // 正誤フラグ
+            $individual_score->sight_key  = 'origin';                   // サイトキー
+            $individual_score->created_at = new Carbon('now');          // 作成日時
+            $individual_score->updated_at = null;                       // 更新日時
+
+            // レコード追加
+            $individual_score->save();
+
+
             // ログイン済みなら個別得点テーブル 登録
             if ( $user_id != 0 ){
               //KokushiQuestionController::storeScore($user_id, $subject_id, $title_id, $question_number, $flag_correct);
@@ -734,18 +989,20 @@ class KokushiQuestionController extends Controller
 
             return view('kokushi.practice_by_question')
             ->with([
-                    'subject_id'            =>      $subject_id,
-                    'question_sentence'     =>      $question_sentence,
-                    'choice_sentences'      =>      $choice_sentences,
-                    'subject_short_name'    =>      $subject_short_name,
-                    'question_last_number'  =>      $question_last_number,
-                    'choice_characters'     =>      $choice_characters,
-                    'number_of_need_select' =>      $numOfNeedSelect,
-                    'number_of_answers'     =>      $number_of_answers,
-                    'selected_answer'	      =>	    $selected_answer,
-                    'array_sa'              =>      $array_selected_answers,
-                    'array_ca'              =>      $answers,
-                    'flag_correct'          =>      $flag_correct,
+                    'subject_id'            =>      $subject_id,                // 科目ID
+                    'question_sentence'     =>      $question_sentence,         // 問題文
+                    'choice_sentences'      =>      $choice_sentences,          // 選択肢文
+                    'subject_short_name'    =>      $subject_short_name,        // 科目略称
+                    'question_last_number'  =>      $question_last_number,      // 最終問題番号
+                    'choice_characters'     =>      $choice_characters,         // 選択肢文字配列
+                    'number_of_need_select' =>      $numOfNeedSelect,           // 必須回答数
+                    'number_of_answers'     =>      $number_of_answers,         // 正答数
+                    'selected_answer'	      =>	    $selected_answer,           // 選択された回答
+                    'array_sa'              =>      $array_selected_answers,    // 選択された回答配列
+                    'array_ca'              =>      $answers,                   // 正答配列
+                    'flag_correct'          =>      $flag_correct,              // 
+                    'user_name'             =>      $user_name,                 // ユーザ名
+                    'judges'                =>      $judges,                    // 正誤配列
             ]);
           }
         } else {
@@ -873,6 +1130,8 @@ class KokushiQuestionController extends Controller
                   'array_sa'              =>      $array_selected_answers,    // 選択済み選択肢配列
                   'array_ca'              =>      $answers,                   // 正答配列
                   'flag_correct'          =>      $flag_correct,              // 正解フラグ
+                  'user_name'             =>      $user_name,                 // ユーザ名
+                  'judges'                =>      $judges,                    // 正誤配列
           ]);
 
         }
@@ -885,16 +1144,18 @@ class KokushiQuestionController extends Controller
         return view('kokushi.practice_by_question')
                   ->with([
                           'subject_id'            =>      $subject_id,                // 科目ID
-                          'question_sentence'     =>      $question_sentence,
-                          'choice_sentences'      =>      $choice_sentences,
-                          'subject_short_name'    =>      $subject_short_name,
-                          'question_last_number'  =>      $question_last_number,
-                          'choice_characters'     =>      $choice_characters,
-                          'selected_answer'    	  =>    	$selected_answer,
-                          'array_sa'              =>      $array_selected_answers,
-                          'number_of_need_select'	=>	    $numOfNeedSelect,
-                          'number_of_answers'     =>      $number_of_answers,
-                          'flag_correct'          =>      $flag_correct,
+                          'question_sentence'     =>      $question_sentence,         // 問題文
+                          'choice_sentences'      =>      $choice_sentences,          // 選択肢文
+                          'subject_short_name'    =>      $subject_short_name,        // 科目名略称
+                          'question_last_number'  =>      $question_last_number,      // 最終問題番号
+                          'choice_characters'     =>      $choice_characters,         // 選択肢文字列配列
+                          'selected_answer'    	  =>    	$selected_answer,           // 
+                          'array_sa'              =>      $array_selected_answers,    // 選択された正答配列
+                          'number_of_need_select'	=>	    $numOfNeedSelect,           // 必須回答数
+                          'number_of_answers'     =>      $number_of_answers,         // 正答数
+                          'flag_correct'          =>      $flag_correct,              // 正答フラグ
+                          'user_name'             =>      $user_name,                 // ユーザ名
+                          'judges'                =>      $judges,                    // 正誤配列
                   ]);
 
 /*
