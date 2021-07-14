@@ -225,7 +225,7 @@ class KokushiQuestionController extends Controller
           $count_user_id_temp = Temp_user::where('id', '=', $user_id_session)
                                       ->count();
 
-          dd($count_user_id_temp);    // 中身が１なのに新規登録？
+          //OK dd($count_user_id_temp);    // 中身が１なのに新規登録？
 
           //　該当ユーザ件数　判定
           if($count_user_id_temp == 0){
@@ -253,6 +253,8 @@ class KokushiQuestionController extends Controller
 
               // セッション『試験回数』　保存
               $request->session()->put('number_test', $max_number_test);
+
+              dd($max_number_test);
 
             } else {
               $max_temp_user_id = 0;
