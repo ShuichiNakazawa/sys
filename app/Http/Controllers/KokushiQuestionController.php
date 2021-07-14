@@ -149,8 +149,8 @@ class KokushiQuestionController extends Controller
        * 端末保存情報　取得
        *****************************************/
       // ローカルストレージ　値参照
-      $user_type_session  = $request->session()->get('user_type');
-      $user_id_session    = $request->session()->get('ui');
+      $user_type_session    = $request->session()->get('user_type');
+      $user_id_session      = $request->session()->get('ui');
       $number_test_session  = $request->session()->get('number_test');
 
       //dd($user_type_session, $user_id_session, $number_test_session);
@@ -421,7 +421,7 @@ class KokushiQuestionController extends Controller
         $count_judge++;
       }
 
-      //dd($count_correct, $judges, $count_judge);
+      dd($count_correct, $judges, $count_judge);
 
       /*********************
       * ユーザ名　取得
