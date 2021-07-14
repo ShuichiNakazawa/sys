@@ -37392,30 +37392,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/js/jquery.js":
-/*!********************************!*\
-  !*** ./resources/js/jquery.js ***!
-  \********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-$(function () {
-  /**
-   * used at Equip_management
-   */
-  $("[name='upfile']").on('change', function (e) {
-    var reader = new FileReader();
-
-    reader.onload = function (e) {
-      $("#preview").attr('src', e.target.result);
-    };
-
-    reader.readAsDataURL(e.target.files[0]);
-  });
-});
-
-/***/ }),
-
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -37428,14 +37404,13 @@ $(function () {
 /***/ }),
 
 /***/ 0:
-/*!**************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/js/jquery.js ./resources/sass/app.scss ***!
-  \**************************************************************************************/
+/*!*************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! C:\Business\ララアシスト\sys\sys\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\Business\ララアシスト\sys\sys\resources\js\jquery.js */"./resources/js/jquery.js");
 module.exports = __webpack_require__(/*! C:\Business\ララアシスト\sys\sys\resources\sass\app.scss */"./resources/sass/app.scss");
 
 

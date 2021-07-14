@@ -85,380 +85,407 @@ class KokushiQuestionController extends Controller
 
     // 出題形式設定
     public function setQuestion($subject_id, Request $request) {
-        $subject_id		      =	  $request->subject_id;               // 科目ID
-        $question_title     =   $request->question_title;           // タイトル名
-        $question_title_id  =   $request->title_id;                 // タイトルID
+      $subject_id		      =	  $request->subject_id;               // 科目ID
+      $question_title     =   $request->question_title;           // タイトル名
+      $question_title_id  =   $request->title_id;                 // タイトルID
 
-        //dd($question_title_id);
+      //dd($question_title_id);
 
-        /*
-        $question_title_id	= Question_titles::select('title_id')
-                                        ->where('subject_name_id', '=', $subject_id)
-                                        ->where('question_title', '=', $question_title)
-                                        ->where('sight_key', '=', 'origin')
-                                        ->value('title_id');
-        */
+      /*
+      $question_title_id	= Question_titles::select('title_id')
+                                      ->where('subject_name_id', '=', $subject_id)
+                                      ->where('question_title', '=', $question_title)
+                                      ->where('sight_key', '=', 'origin')
+                                      ->value('title_id');
+      */
 
-        //dd($subject_id, $title_id);
-  
-        // 問題文 取得
-        $question_sentence        =       Question_sentences::where('subject_id', '=', $subject_id)
-                                                  ->where('question_title_id', '=', $question_title_id)
-                                                  ->where('question_number', '=', 1)
-                                                  ->first();
-  
-        //dd($question_sentence);
-  
-        // 最終問題番号 取得 （下のコメントを流用）
-        $question_last_number     =       Question_sentences::select('question_number')
-                                                          ->where('subject_id', '=', $subject_id)
-                                                          ->where('question_title_id', '=', $question_title_id)
-                                                          ->orderby('question_number', 'desc')
-                                                          ->limit(1)
-                                                          ->value('question_number');
-  
-        // 選択肢ボタンの文字配列 設定
-        $choice_characters        =       [
-                                                  'ア', 'イ', 'ウ', 'エ', 'オ', 'カ', 'キ', 'ク', 'ケ', 'コ',
-                                          ];
-  
-        // 選択肢 取得
-        $choice_sentences         =       Choice_sentences::where('subject_name_id', '=', $subject_id)
-                                                  ->where('question_title_id', '=', $question_title_id)
-                                                  ->where('question_number', '=', 1)
-                                                  ->get();
-  
-        // 科目略称 設定
-        $subject_short_name   = subjectClass::getShortName($subject_id);
-  
-        //dd($question_sentence);
+      //dd($subject_id, $title_id);
 
-        /**
-        * ユーザ情報 登録
-        **/
-        /*    ユーザ情報へランダムな６４桁の数字を併せて持たせる事で、セキュリティを高めようとしていた。
-        // ランダムな６４文字を生成
-        $str = array_merge(range('a', 'z'), range('0', '9'), range('A', 'Z'));
-        $r_str = null;
-        for ($i = 0; $i < 64; $i++) {
-            $r_str .= $str[rand(0, count($str) - 1)];
-        }
-        */
+      // 問題文 取得
+      $question_sentence        =       Question_sentences::where('subject_id', '=', $subject_id)
+                                                ->where('question_title_id', '=', $question_title_id)
+                                                ->where('question_number', '=', 1)
+                                                ->first();
 
-        /******************************************
-         * 端末保存情報　取得
-         *****************************************/
-        // ローカルストレージ　値参照
-        $user_type_session  = $request->session()->get('user_type');
-        $user_id_session    = $request->session()->get('ui');
+      //dd($question_sentence);
+
+      // 最終問題番号 取得 （下のコメントを流用）
+      $question_last_number     =       Question_sentences::select('question_number')
+                                                        ->where('subject_id', '=', $subject_id)
+                                                        ->where('question_title_id', '=', $question_title_id)
+                                                        ->orderby('question_number', 'desc')
+                                                        ->limit(1)
+                                                        ->value('question_number');
+
+      // 選択肢ボタンの文字配列 設定
+      $choice_characters        =       [
+                                                'ア', 'イ', 'ウ', 'エ', 'オ', 'カ', 'キ', 'ク', 'ケ', 'コ',
+                                        ];
+
+      // 選択肢 取得
+      $choice_sentences         =       Choice_sentences::where('subject_name_id', '=', $subject_id)
+                                                ->where('question_title_id', '=', $question_title_id)
+                                                ->where('question_number', '=', 1)
+                                                ->get();
+
+      // 科目略称 設定
+      $subject_short_name   = subjectClass::getShortName($subject_id);
+
+      //dd($question_sentence);
+
+      /**
+      * ユーザ情報 登録
+      **/
+      /*    ユーザ情報へランダムな６４桁の数字を併せて持たせる事で、セキュリティを高めようとしていた。
+      // ランダムな６４文字を生成
+      $str = array_merge(range('a', 'z'), range('0', '9'), range('A', 'Z'));
+      $r_str = null;
+      for ($i = 0; $i < 64; $i++) {
+          $r_str .= $str[rand(0, count($str) - 1)];
+      }
+      */
+
+      /******************************************
+       * 端末保存情報　取得
+       *****************************************/
+      // ローカルストレージ　値参照
+      $user_type_session  = $request->session()->get('user_type');
+      $user_id_session    = $request->session()->get('ui');
+      $number_test_session  = $request->session()->get('number_test');
+
+      //dd($user_type_session, $user_id_session, $number_test_session);
+
+      // ユーザタイプ　存在判定
+      if(null === $user_type_session){
+        /********************************
+         * ユーザータイプ未設定の場合
+         ********************************/
+        // セッション『ユーザタイプ』へ”仮ユーザ”を保存
+        $request->session()->put('user_type', "temp_user");
+
+        $user_type  = 'temp_user';          // ユーザタイプ　設定
+
+        // 仮ユーザーテーブル　件数取得
+        $count_temp_user  = Temp_user::count();
 
         //dd($user_type_session, $user_id_session);
 
-        // ユーザタイプ　存在判定
-        if(null === $user_type_session){
-          /********************************
-           * ユーザータイプ未設定の場合
-           ********************************/
-          // セッション『ユーザタイプ』へ”仮ユーザ”を保存
-          $request->session()->put('user_type', "temp_user");
+        // 仮ユーザーテーブル　件数判定
+        if($count_temp_user == 0){
 
-          $user_type  = 'temp_user';          // ユーザタイプ　設定
+          //
+          //$temp_user_id_db  = 1;
 
-          // 仮ユーザーテーブル　件数取得
-          $count_temp_user  = Temp_user::count();
-
-          //dd($user_type_session, $user_id_session);
-
-          // 仮ユーザーテーブル　件数判定
-          if($count_temp_user == 0){
-
-            //
-            //$temp_user_id_db  = 1;
-
-            // 仮ユーザ　新規レコード編集
-            $temp_user_obj  = new Temp_user();
-            $temp_user_obj->id            = 1;
-            $temp_user_obj->user_name     = "guest";
-            $temp_user_obj->created_at    = new Carbon('now');
-            //$temp_user_obj->updated_at    = '';
+          // 仮ユーザ　新規レコード編集
+          $temp_user_obj  = new Temp_user();
+          $temp_user_obj->id            = 1;
+          $temp_user_obj->user_name     = "guest";
+          $temp_user_obj->created_at    = new Carbon('now');
+          //$temp_user_obj->updated_at    = '';
 
           // レコード　追加
           $temp_user_obj->save();
 
-          } else {
-            // セッション『ユーザID』へ”仮ユーザID”を保存
-            // ”仮ユーザID”は、仮ユーザテーブルから最大値となるIDを検索し、１加算した値を設定する。
-            $temp_user_id_db =  Temp_user::select('id')
-                                  ->orderby('id', 'desc')
-                                  ->first()
-                                  ->value('id');
-          }
-
           // セッション『ユーザID』へ”仮ユーザID”を保存
           $request->session()->put('ui', 1);
 
-          // 現在登録中の仮ユーザIDの最大値に１加算
-          $temp_user_id_db++;
-
-          // セッション『ユーザID』へ、仮ユーザIDを設定
-          $request->session()->put('ui', $temp_user_id_db);
-          $user_id  = $temp_user_id_db;
-
-          // 既存ユーザの場合は、登録する必要がないのでは？
-
-
-          // セッション『試験回数』　保存
-          $request->session()->put('number_test', 1);
-
         } else {
+          // セッション『ユーザID』へ”仮ユーザID”を保存
+          // ”仮ユーザID”は、仮ユーザテーブルから最大値となるIDを検索し、１加算した値を設定する。
+          $temp_user_id_db =  Temp_user::select('id')
+                                ->orderby('id', 'desc')
+                                ->first()
+                                ->value('id');
+        }
+
+        // 現在登録中の仮ユーザIDの最大値に１加算
+        $temp_user_id_db++;
+
+        // セッション『ユーザID』へ、仮ユーザIDを設定
+        $request->session()->put('ui', $temp_user_id_db);
+        $user_id  = $temp_user_id_db;
+
+        // セッション『試験回数』　保存
+        $request->session()->put('number_test', 1);
+
+      } else {
+        /********************************
+         * ユーザータイプ設定済
+         ********************************/
+        // ユーザタイプ　内容判定
+        if($user_type_session == "temp_user"){
           /********************************
-           * ユーザータイプ設定済
+           * ユーザータイプが仮ユーザの場合
            ********************************/
-          // ユーザタイプ　内容判定
-          if($user_type_session == "temp_user"){
+          // セッション『ユーザID』を取得
+          $temp_user_id = $request->session()->get('ui');
+
+          //　ユーザID　登録済チェック（仮ユーザテーブルを検索）
+          //　IDによる検索。カウントが良い
+          $count_user_id_temp = Temp_user::where('id', '=', $user_id_session)
+                                      ->count();
+
+          //dd($count_user_id_temp);    // 中身が１なのに新規登録？
+
+          //　該当ユーザ件数　判定
+          if($count_user_id_temp == 0){
             /********************************
-             * ユーザータイプが仮ユーザの場合
-             ********************************/
-            // セッション『ユーザID』を取得
-            $temp_user_id = $request->session()->get('ui');
+            //  仮ユーザテーブル　該当IDなし
+              ********************************/
+            //　テーブル件数　取得
+            $count_temp_user  = Temp_user::count();
 
-            //　ユーザID　登録済チェック（仮ユーザテーブルを検索）
-            //　IDによる検索。カウントが良い
-            $count_user_id_temp = Temp_user::where('id', '=', $user_id_session)
-                                        ->count();
-
-            //dd($count_user_id_temp);    // 中身が１なのに新規登録？
-
-            //　該当ユーザ件数　判定
-            if($count_user_id_temp == 0){
-              /********************************
-              //  仮ユーザテーブル　該当IDなし
-               ********************************/
-              //　テーブル件数　取得
-              $count_temp_user  = Temp_user::count();
-
-              if($count_temp_user > 0){
-                //　最大ID　取得　　　（仮ユーザーテーブル０件の場合にエラーになる）
-                $max_temp_user_id = Temp_user::select('id')
-                                            ->orderby('id', 'desc')
-                                            ->first()
-                                            ->value('id');
-              } else {
-                $max_temp_user_id = 0;
-              }
-
-              //　新規登録ID
-              $max_temp_user_id++;
-
-              //　ユーザID　設定
-              $request->session()->put('ui', $max_temp_user_id);    // セッション『仮ユーザID』
-              $user_id  = $max_temp_user_id;                        // 画面表示用
-              $user_type = 'temp_user';
-
-              //　仮ユーザテーブル　新規レコード登録
-              $temp_user  = new Temp_user();                
-              $temp_user->id        = $max_temp_user_id;    // ID
-              $temp_user->user_name = 'ゲスト';              // ユーザ名
-              $temp_user->created_at  = new Carbon('now');  // 作成日時
-              //$temp_user->updated_at  = '';               // 更新日時
-
-              // レコード　追加
-              $temp_user->save();
-
-              // セッション『試験回数』　保存
-              $request->session()->put('number_test', 1);
-
-            } elseif($count_user_id_temp == 1) {
-
-              //　仮ユーザテーブル　該当IDあり
-
-              //　試験得点テーブルから『試験回数』を取得
-              $number_test  = Test_score::select('number_test')
-                                                ->where('id', '=', $user_id_session)
-                                                ->orderby('id', 'desc')
-                                                ->value('id');
-
-              //　試験回数　１加算
-              $number_test++;
-
-              //　セッション『試験回数』　保存
-              $request->session()->put('number_test', $number_test);
-
-              // ユーザID　設定
-              $user_id    =  $temp_user_id;
-              $user_type  = 'temp_user';
-
-
-            } else {
-              //　仮ユーザテーブル　該当ID　複数件あり
-              //　好ましい状態ではない。そもそも重複IDが存在することはないはず
-              //　同時アクセス・同時登録による重複はありえるか？
-              //　実装は後回しだが、新規仮ユーザとして処理する
-
-            }
-
-          } elseif ($user_type_session == "registered_user") {
-            /********************************
-             * ユーザータイプが登録済ユーザの場合
-             ********************************/
-            //　ユーザテーブル検索（該当ユーザ存在チェック）
-            $count_user_id  = User::where('id', '=', $user_id_session)
-                                            ->count();
-
-            //　該当ユーザ件数　判定
-            if($count_user_id == 0){
-
-              //　該当ユーザ無し　新規の仮ユーザとして処理
-              //　仮ユーザID最大値　取得
+            if($count_temp_user > 0){
+              //　最大ID　取得　　　（仮ユーザーテーブル０件の場合にエラーになる）
               $max_temp_user_id = Temp_user::select('id')
                                           ->orderby('id', 'desc')
                                           ->first()
                                           ->value('id');
 
-              //　ID１加算
-              $max_temp_user_id++;
+              // テスト回数　最大値　取得
+              $max_number_test  = Individual_score::select('number_test')
+                                          ->orderby('number_test', 'desc')
+                                          ->first()
+                                          ->value('number_test');
 
-              //　セッション『ユーザID』　保存
-              $request->session()->put('ui', $max_temp_user_id);
+              // テスト回数　加算
+              $max_number_test++;
 
-              //　セッション『試験回数』　保存
+              // セッション『試験回数』　保存
+              $request->session()->put('number_test', $max_number_test);
+
+            } else {
+              $max_temp_user_id = 0;
+
+              // セッション『試験回数』　保存
               $request->session()->put('number_test', 1);
-
-              // ユーザID　設定
-              $user_id  = $max_temp_user_id;
-
-              // ユーザタイプ　設定
-              $user_type  = 'temp_user';
-
-            } elseif ($count_user_id == 1){
-
-              //　該当ユーザ　１件
-              //  試験回数　取得（試験得点テーブルから）
-              $number_test  = Test_scoring::select('number_test')
-                                                ->where('id', '=', $user_id_session)
-                                                ->value('number_test');
-
-              //　試験回数　１加算
-              $number_test++;
-
-              //　セッション『試験回数』　保存
-              $request->session()->put('number_test', $number_test);
-
-              $user_id = $user_id_session;
-              $user_type = "registered_user";
-
-            } elseif ($count_user_id > 1){
-
-              //　該当ユーザ　複数件存在
-              //　ユーザによる意図的なデータ変更だと思われる。エラーとして停止してよい
-
-
 
             }
 
-          } else {
+            //　新規登録ID
+            $max_temp_user_id++;
 
-            //　一時ユーザもしくは登録済みユーザ以外が設定されている事はない。
-            //　エラーで停止させて良い
+            //　ユーザID　設定
+            $request->session()->put('ui', $max_temp_user_id);    // セッション『仮ユーザID』
+            $user_id            = $max_temp_user_id;                        // 画面表示用
+            $user_type          = 'temp_user';
+
+            //　仮ユーザテーブル　新規レコード登録
+            $temp_user              = new Temp_user();                
+            $temp_user->id          = $max_temp_user_id;    // ID
+            $temp_user->user_name   = 'ゲスト';              // ユーザ名
+            $temp_user->created_at  = new Carbon('now');  // 作成日時
+            //$temp_user->updated_at  = '';               // 更新日時
+
+            // レコード　追加
+            $temp_user->save();
+
+
+          } elseif($count_user_id_temp == 1) {
+
+            //　仮ユーザテーブル　該当IDあり
+
+            //　試験得点テーブルから『試験回数』を取得
+            $number_test  = Individual_score::select('number_judgement')
+                                              ->where('user_id', '=', $user_id_session)
+                                              ->orderby('number_judgement', 'desc')
+                                              ->value('number_judgement');
+
+            
+
+            //　試験回数　１加算
+            $number_test++;
+
+            // セッション『試験回数』　削除
+            $request->session()->forget('number_test');
+
+            //　セッション『試験回数』　保存
+            $request->session()->put('number_test', $number_test);
+
+            // ユーザID　設定
+            $user_id    =  $temp_user_id;
+            $user_type  = 'temp_user';
+
+            
+
+          } else {
+            //　仮ユーザテーブル　該当ID　複数件あり
+            //　好ましい状態ではない。そもそも重複IDが存在することはないはず
+            //　同時アクセス・同時登録による重複はありえるか？
+            //　実装は後回しだが、新規仮ユーザとして処理する
+
+          }
+
+        } elseif ($user_type_session == "registered_user") {
+          /********************************
+           * ユーザータイプが登録済ユーザの場合
+           ********************************/
+          //　ユーザテーブル検索（該当ユーザ存在チェック）
+          $count_user_id  = User::where('id', '=', $user_id_session)
+                                          ->count();
+
+          //　該当ユーザ件数　判定
+          if($count_user_id == 0){
+
+            //　該当ユーザ無し　新規の仮ユーザとして処理
+            //　仮ユーザID最大値　取得
+            $max_temp_user_id = Temp_user::select('id')
+                                        ->orderby('id', 'desc')
+                                        ->first()
+                                        ->value('id');
+
+            //　ID１加算
+            $max_temp_user_id++;
+
+            //　セッション『ユーザID』　保存
+            $request->session()->put('ui', $max_temp_user_id);
+
+            //　セッション『試験回数』　保存
+            $request->session()->put('number_test', 1);
+
+            // ユーザID　設定
+            $user_id  = $max_temp_user_id;
+
+            // ユーザタイプ　設定
+            $user_type  = 'temp_user';
+
+          } elseif ($count_user_id == 1){
+
+            //　該当ユーザ　１件
+            //  試験回数　取得（試験得点テーブルから）
+            $number_test  = Test_scoring::select('number_test')
+                                              ->where('id', '=', $user_id_session)
+                                              ->value('number_test');
+
+            //　試験回数　１加算
+            $number_test++;
+
+            //　セッション『試験回数』　保存
+            $request->session()->put('number_test', $number_test);
+
+            $user_id = $user_id_session;
+            $user_type = "registered_user";
+
+          } elseif ($count_user_id > 1){
+
+            //　該当ユーザ　複数件存在
+            //　ユーザによる意図的なデータ変更だと思われる。エラーとして停止してよい
+
 
 
           }
 
-        }
-
-
-
-        // 正誤履歴データ　件数取得
-        $count_correct    =   Individual_score::where('user_id', '=', $user_id)
-                                        ->count();
-
-        //dd($count_correct);
-
-        // 正誤履歴データ　取得
-        $array_corrects  = Individual_score::where('user_id', '=', $user_id)
-                                      ->orderby('created_at', 'desc')
-                                      ->limit(5)
-                                      ->get();
-
-        $judges  = array();
-
-        $count_judge = 0;
-
-        // 画面表示用　正誤配列へ格納
-        foreach($array_corrects as $array_correct){
-          //
-          $judges[$count_judge] = $array_correct->judge;
-
-          //
-          $count_judge++;
-        }
-
-        for($index = 0; $index < (5 - $count_correct); $index++){
-
-          $judges[$count_judge] = '-';
-
-          // 
-          $count_judge++;
-        }
-
-        //dd($count_correct, $judges, $count_judge);
-
-        /*********************
-        * ユーザ名　取得
-        **********************/
-        // ユーザタイプ　判定
-        if($user_type == 'temp_user'){
-
-          // ユーザ名　ユーザテーブルから取得
-          $user_name  = User::SELECT('name')
-                                ->where('id', '=', $user_id)
-                                ->value('name');
-
-        } else if($user_type == 'registered_user'){
-
-          // ユーザ名　仮ユーザテーブルから取得
-          $user_name  = Temp_user::SELECT('user_name')
-                                ->where('id', '=', $user_id)
-                                ->value('user_name');
-
         } else {
 
-          //
-          $user_name = "";
+          //　一時ユーザもしくは登録済みユーザ以外が設定されている事はない。
+          //　エラーで停止させて良い
+
+
         }
 
-        //dd($request->testType);
+      }
 
-        // テスト形式 判別
-        if ($request->testType == 1){
-          return redirect('kokushi/' . $subject_id . '/practice_by_question/' . $question_title_id . '/1')
-                    ->with([
-                          'subject_id'            =>      $subject_id,
-                          'question_title_id'     =>      $question_title_id,
-                          'question_sentence'     =>      $question_sentence,
-                          'choice_sentences'      =>      $choice_sentences,
-                          'subject_short_name'    =>      $subject_short_name,
-                          'question_last_number'  =>      $question_last_number,
-                          'selected_answer'    	  =>    	'99',
-                          'choice_characters'     =>      $choice_characters,
-                          'user_name'             =>      $user_name,
-                          'judges'                =>      $judges,
-                   ]);
-  
-        } else if ($request->testType == 2){
-          return redirect($subject_short_name . '/practice/' . $subject_id . '/' . $question_title_id . '/1')
-                    ->with([
-                          'subject_id'            =>      $subject_id,
-                          'question_sentence'     =>      $question_sentence,
-                          'choice_sentences'      =>      $choice_sentences,
-                          'subject_short_name'    =>      $subject_short_name,
-                          'question_last_number'  =>      $question_last_number,
-                          'choice_characters'     =>      $choice_characters,
-                          'selected_answer'    	  =>    	'99',
-                          'user_name'             =>      $user_name,
-                          'judges'                =>      $judges,
-                   ]);
-        }
+      //　セッション『音声タイプ』　保存
+      $request->session()->put('soundType', $request->soundType);
+
+      // 正誤履歴データ　件数取得
+      $count_correct    =   Individual_score::where('user_id', '=', $user_id)
+                                      ->count();
+
+      //dd($count_correct);
+
+      // 正誤履歴データ　取得
+      $array_corrects  = Individual_score::where('user_id', '=', $user_id)
+                                    ->orderby('created_at', 'desc')
+                                    ->limit(5)
+                                    ->get();
+
+      $judges  = array();
+
+      $count_judge = 0;
+
+      // 画面表示用　正誤配列へ格納
+      foreach($array_corrects as $array_correct){
+        //
+        $judges[$count_judge] = $array_correct->judgement;
+
+        //
+        $count_judge++;
+      }
+
+      for($index = 0; $index < (5 - $count_correct); $index++){
+
+        $judges[$count_judge] = '-';
+
+        // 
+        $count_judge++;
+      }
+
+      //dd($count_correct, $judges, $count_judge);
+
+      /*********************
+      * ユーザ名　取得
+      **********************/
+      // ユーザタイプ　判定
+      if($user_type == 'temp_user'){
+
+        // ユーザ名　ユーザテーブルから取得
+        $user_name  = User::SELECT('name')
+                              ->where('id', '=', $user_id)
+                              ->value('name');
+
+      } else if($user_type == 'registered_user'){
+
+        // ユーザ名　仮ユーザテーブルから取得
+        $user_name  = Temp_user::SELECT('user_name')
+                              ->where('id', '=', $user_id)
+                              ->value('user_name');
+
+      } else {
+
+        //
+        $user_name = "";
+      }
+
+      //dd($request->testType);
+/*
+      // 個別得点テーブルへ登録されないため、セッション内容を調査
+      $a = $request->session()->get('user_type');
+      $b = $request->session()->get('ui');
+      $c = $request->session()->get('number_test');
+
+      dd($a, $b, $c);
+*/
+      // テスト形式 判別
+      if ($request->testType == 1){
+        return redirect('kokushi/' . $subject_id . '/practice_by_question/' . $question_title_id . '/1')
+                  ->with([
+                        'subject_id'            =>      $subject_id,
+                        'question_title_id'     =>      $question_title_id,
+                        'question_sentence'     =>      $question_sentence,
+                        'choice_sentences'      =>      $choice_sentences,
+                        'subject_short_name'    =>      $subject_short_name,
+                        'question_last_number'  =>      $question_last_number,
+                        'selected_answer'    	  =>    	'99',
+                        'choice_characters'     =>      $choice_characters,
+                        'user_name'             =>      $user_name,
+                        'judges'                =>      $judges,
+                  ]);
+
+      } else if ($request->testType == 2){
+        return redirect($subject_short_name . '/practice/' . $subject_id . '/' . $question_title_id . '/1')
+                  ->with([
+                        'subject_id'            =>      $subject_id,
+                        'question_sentence'     =>      $question_sentence,
+                        'choice_sentences'      =>      $choice_sentences,
+                        'subject_short_name'    =>      $subject_short_name,
+                        'question_last_number'  =>      $question_last_number,
+                        'choice_characters'     =>      $choice_characters,
+                        'selected_answer'    	  =>    	'99',
+                        'user_name'             =>      $user_name,
+                        'judges'                =>      $judges,
+                  ]);
+      }
   
     }
 
@@ -767,6 +794,8 @@ class KokushiQuestionController extends Controller
       $user_type_session  = $request->session()->get('user_type');
       $user_id_session    = $request->session()->get('ui');
 
+      $soundType          = $request->session()->get('soundType');
+
       //********************
       // 正誤配列　取得
       //********************
@@ -786,10 +815,12 @@ class KokushiQuestionController extends Controller
                                       ->where('subject_name_id', '=', $subject_id)
                                       ->where('question_title_id', '=', $title_id)
                                       ->where('question_number', '=', $question_number)
-                                      ->where('number_judgement', '=', $number_judgement_session)
+                                      //->where('number_judgement', '=', $number_judgement_session)
                                       ->orderby('created_at', 'desc')
                                       ->limit(5)
                                       ->get();
+
+        //dd($user_id_session, $subject_id, $title_id, $question_number, $number_judgement_session);
 
         $judges  = array();
 
@@ -944,6 +975,7 @@ class KokushiQuestionController extends Controller
                               'flag_correct'          =>      $flag_correct,              // 正解フラグ
                               'user_name'             =>      $user_name,                 // ユーザ名
                               'judges'                =>      $judges,                    // 正誤配列
+                              'soundType'             =>      $soundType,                 // 正解時音声
                         ]);
             
           } else {
@@ -972,16 +1004,16 @@ class KokushiQuestionController extends Controller
             //dd(Auth::user()->id);
 
             // 個別点数　登録処理
-            $individual_score = new Individual_score();
-            $individual_score->user_id  = $user_id;                     // ユーザID
-            $individual_score->subject_name_id  = $subject_id;          // 科目ID
-            $individual_score->question_title_id  = $title_id;          // タイトルID
-            $individual_score->question_number  = $question_number;     // 問題番号
-            $individual_score->number_judgement = '';                   // 判定回数
-            $individual_score->judge  = $flag_correct;                  // 正誤フラグ
-            $individual_score->sight_key  = 'origin';                   // サイトキー
-            $individual_score->created_at = new Carbon('now');          // 作成日時
-            $individual_score->updated_at = null;                       // 更新日時
+            $individual_score                     = new Individual_score();
+            $individual_score->user_id            = $user_id;                   // ユーザID
+            $individual_score->subject_name_id    = $subject_id;                // 科目ID
+            $individual_score->question_title_id  = $title_id;                  // タイトルID
+            $individual_score->question_number    = $question_number;           // 問題番号
+            $individual_score->number_judgement   = '';                         // 判定回数
+            $individual_score->judge              = $flag_correct;              // 正誤フラグ
+            $individual_score->sight_key          = 'origin';                   // サイトキー
+            $individual_score->created_at         = new Carbon('now');          // 作成日時
+            $individual_score->updated_at         = null;                       // 更新日時
 
             // レコード追加
             $individual_score->save();
@@ -1008,6 +1040,7 @@ class KokushiQuestionController extends Controller
                     'flag_correct'          =>      $flag_correct,              // 
                     'user_name'             =>      $user_name,                 // ユーザ名
                     'judges'                =>      $judges,                    // 正誤配列
+                    'soundType'             =>      $soundType,                 // 正解時音声
             ]);
           }
         } else {
@@ -1137,6 +1170,7 @@ class KokushiQuestionController extends Controller
                   'flag_correct'          =>      $flag_correct,              // 正解フラグ
                   'user_name'             =>      $user_name,                 // ユーザ名
                   'judges'                =>      $judges,                    // 正誤配列
+                  'soundType'             =>      $soundType,                 // 正解時音声
           ]);
 
         }
@@ -1161,6 +1195,7 @@ class KokushiQuestionController extends Controller
                           'flag_correct'          =>      $flag_correct,              // 正答フラグ
                           'user_name'             =>      $user_name,                 // ユーザ名
                           'judges'                =>      $judges,                    // 正誤配列
+                          'soundType'             =>      $soundType,                 // 正解時音声
                   ]);
 
 /*

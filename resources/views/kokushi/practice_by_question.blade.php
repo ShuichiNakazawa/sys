@@ -63,7 +63,7 @@
 						@elseif($judges[$index] == 2)
 							×
 						@else
-							-
+							{{ $judges[$index] }}
 						@endif
 					</td>
 				@endfor
@@ -123,6 +123,8 @@
 					<input type="submit" name ="judge" value="判定" disabled="disabled">&nbsp;&nbsp;&nbsp;&nbsp;
 				@endif
 
+				<input type="hidden" id="flag_correct" value="{{ $flag_correct }}">
+				<input type="hidden" id="sound_type" value="{{ $soundType }}">
 				@switch($flag_correct)
 					@case(0)
 						@break
@@ -158,10 +160,12 @@
 				@endif
 			</div>
 		</form>
-</div>
-
+	</div>
 </div>
 <br>
+
+<audio src="{{ asset('/audio/itako_seikai.wav')}}" id="audio2"></audio>
+<audio src="{{ asset('/audio/correct.mp3')}}" id="audio3"></audio>
 
   <div class="listArea">
     <div class="innerList">
@@ -174,13 +178,7 @@
 @endsection
 
 @section('script')
-  <script type="module">
-    $(function(){
-			window.addEventListener("popstate", function (e) {
+	<script src="{{ asset('js/play_audio.js') }}"type="module">
 
-				history.pushState(null, null, null);
-				return;
-			})
-    });
-  </script>
+	</script>
 @endsection

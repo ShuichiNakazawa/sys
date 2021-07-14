@@ -56,17 +56,57 @@
     <form>
       --}}
 	    @csrf
-      <div class="row justify-content-center">
-        <div style="margin: 20px;">
+      <div>
+
+          
+
+      <group class="inline-radio">
+        <div>
+          <label>
+            テスト形式
+          </label>
+        </div>
+        <div>
           <input type="radio" name="testType" id="question_one_answer" value="1" checked="checked">
-          <label for="question_one_answer">一問一答</label>
+          <label for="question_one_answer" style="font-size: 20px;"><b>一問一答</b></label>
         </div>
 
-        <div style="margin: 20px;">
+        <div>
           <input type="radio" name="testType" id="test_format" value="2">
-          <label for="test_format">試験形式</label>
+          <label for="test_format" style="font-size: 20px;"><b>試験形式</b></label>
         </div>
+      </group>
+      <br>
+
+      {{--
+      <div class="row justify-content-center">
+        --}}
+      <div>
+        
+        <group class="inline-radio">
+          <div>
+            <label>
+              正解時音声
+            </label>
+          </div>
+          <div>
+            <input type="radio" name="soundType" id="silent" value="1" checked="checked">
+            <label for="silent" style="font-size: 20px;"><b>無音</b></label>
+          </div>
+
+          <div>
+            <input type="radio" name="soundType" id="itako" value="2">
+            <label for="itako" style="font-size: 20px;"><b>東北イタコ様</b></label>
+          </div>
+
+          <div>
+            <input type="radio" name="soundType" id="chime" value="3">
+            <label for="chime" style="font-size: 20px;"><b>チャイム</b></label>
+          </div>
+        </group>
       </div>
+
+      
 
       <div class="card-body">
       <table class="table table-striped task-table">

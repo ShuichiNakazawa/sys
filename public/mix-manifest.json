@@ -1,4 +1,8 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/js/p5.min.js": "/js/p5.min.js",
+    "/js/p5_index.js": "/js/p5_index.js",
+    "/js/play_audio.js": "/js/play_audio.js",
+    "/js/popper.js": "/js/popper.js"
 }
