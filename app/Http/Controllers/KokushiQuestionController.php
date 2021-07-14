@@ -703,6 +703,8 @@ class KokushiQuestionController extends Controller
         $question_number -= 1;
       } else if ($request->another_question == '結果判定'){
         //結果判定処理へ
+
+
       } else if ($request->judge == '判定'){
         $selected_answer  = $request->selected_answer;
         //dd($selected_answer);
@@ -892,6 +894,8 @@ class KokushiQuestionController extends Controller
                                                   ->where('question_number', '=', $question_number)
                                                   ->where('number_judgement', '=', $number_judgement_session)
                                                   ->count();
+
+            dd($count_individual);
 
             // 判定回数　重複判定
             if($count_individual == 0){
