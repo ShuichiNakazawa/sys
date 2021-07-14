@@ -250,7 +250,7 @@ class KokushiQuestionController extends Controller
 
 
                                           
-              dd($max_temp_user_id);
+              //dd($max_temp_user_id);
 
               // テスト回数　最大値　取得
               $max_number_test  = Individual_score::select('number_test')
