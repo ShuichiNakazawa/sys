@@ -11747,6 +11747,17 @@ input[name="soundType"] {
     margin: 0 auto;
   }
 
+  .news_outer {
+    display: flex;
+    margin: 0 auto;
+    max-width: 480px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 15px;
+    background-color: #f8fafc;
+  }
+
   .question_sentence_outer {
     width: 480px;
     margin: 0 auto;
@@ -11762,6 +11773,17 @@ input[name="soundType"] {
     width: 410px;
     padding: 0px;
     margin: 0 auto;
+  }
+
+  .news_outer {
+    display: flex;
+    margin: 0 auto;
+    max-width: 400px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 15px;
+    background-color: #f8fafc;
   }
 
   .question_sentence_outer {

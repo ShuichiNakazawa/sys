@@ -13,8 +13,10 @@
 
 
 	  <br>
-
+	{{--
 	<div style="margin:0 auto; width: 50%">
+		--}}
+	<div class="width_adjustment_900">
 	  <h2 style="text-align:center;">お知らせ</h2>
 		<div class="news_outer">
 			<table class="table">
