@@ -16,14 +16,14 @@
 
 @include('common.errors')
 
-<div class="card-body">
+<div class="width_adjustment_900">
   <div class="card-body">
     <h3 class="header_center">{{ $subject_name }}過去問</h3>
   </div>
   {{--
   {{ Breadcrumbs::render('kokushi.nurse') }}
   --}}
-  <div class="card-body">
+  <div class="card-body subject_outer">
     <div class="row justify-content-center">
       <div class="btn_subject">
         <button class="btn-dark">ランダム１０問に挑戦（調整中）</button>
@@ -48,12 +48,12 @@
     <br><br>
 
     <h4 class="header_center">過去問に挑戦</h4>
-	{{-- アクションの引数：科目ID　　　タイトルIDもしくはタイトル名を渡す必要がある --}}
+	  {{-- アクションの引数：科目ID　　　タイトルIDもしくはタイトル名を渡す必要がある --}}
 
     <form action="{{ action('KokushiQuestionController@setQuestion', $subject_id) }}" method="post">
 
       {{--
-    <form>
+      <form>
       --}}
 	    @csrf
       <div>
@@ -68,12 +68,12 @@
         </div>
         <div>
           <input type="radio" name="testType" id="question_one_answer" value="1" checked="checked">
-          <label for="question_one_answer" style="font-size: 20px;"><b>一問一答</b></label>
+          <label for="question_one_answer" class="font_adjust_big" ><b>一問一答</b></label>
         </div>
 
         <div>
           <input type="radio" name="testType" id="test_format" value="2">
-          <label for="test_format" style="font-size: 20px;"><b>試験形式</b></label>
+          <label for="test_format" class="font_adjust_big"><b>試験形式</b></label>
         </div>
       </group>
       <br>
@@ -91,17 +91,17 @@
           </div>
           <div>
             <input type="radio" name="soundType" id="silent" value="1" checked="checked">
-            <label for="silent" style="font-size: 20px;"><b>無音</b></label>
+            <label for="silent" class="font_adjust_big"><b>無音</b></label>
           </div>
 
           <div>
             <input type="radio" name="soundType" id="itako" value="2">
-            <label for="itako" style="font-size: 20px;"><b>東北イタコ様</b></label>
+            <label for="itako" class="font_adjust_big"><b>東北イタコ様</b></label>
           </div>
 
           <div>
             <input type="radio" name="soundType" id="chime" value="3">
-            <label for="chime" style="font-size: 20px;"><b>チャイム</b></label>
+            <label for="chime" class="font_adjust_big"><b>チャイム</b></label>
           </div>
         </group>
       </div>

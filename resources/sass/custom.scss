@@ -774,7 +774,7 @@ input[name="soundType"] {
   border-radius: 3px;
   overflow: hidden;
   border: 1px solid #b6b6b6;
-  width: 60%;
+  width: 80%;
 
 
   div {
@@ -817,7 +817,9 @@ input[name="soundType"] {
 /**
 * 国師過去問
 */
-
+.font_adjust_big {
+  font-size: 20px;
+}
 @media(max-width: 900px){
 
   .width_adjustment_900 {
@@ -855,6 +857,18 @@ input[name="soundType"] {
     padding: 10px;
     margin-bottom: 5px;
     border-radius: 15px;
+  }
+
+  .font_adjust_big {
+    font-size: 15px;
+  }
+
+  .inline-radio {
+    display: flex;
+    border-radius: 3px;
+    overflow: hidden;
+    border: 1px solid #b6b6b6;
+    width: 90%;
   }
 }
 
@@ -895,6 +909,18 @@ input[name="soundType"] {
     padding: 10px;
     margin-bottom: 5px;
     border-radius: 15px;
+  }
+
+  .font_adjust_big {
+    font-size: 12px;
+  }
+
+  .inline-radio {
+    display: flex;
+    border-radius: 3px;
+    overflow: hidden;
+    border: 1px solid #b6b6b6;
+    width: 100%;
   }
 }
 
