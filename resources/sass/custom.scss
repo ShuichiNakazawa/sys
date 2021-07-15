@@ -819,8 +819,9 @@ input[name="soundType"] {
 */
 @media(max-width: 500px){
 
-  .navbar {
-    width: 480px;
+  .width_adjustment_900 {
+    width: 450px;
+    margin: 0 auto;
   }
 
   .question_sentence_outer {
