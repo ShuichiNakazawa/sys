@@ -32,7 +32,7 @@
         <button class="btn-dark">ランダム１０問に挑戦（調整中）</button>
       </div>
       <br>
-      
+
       <div class="btn_subject">
         <a href="{{ url('/kokushi/audio/' . $subject_id)  }}">
           <button>問題文の朗読を聞いてみる</button>
@@ -121,10 +121,10 @@
             タイトル
           </th>
           <th class="t_header txt_center">
-            挑戦者数<br>（今日）
+            正答率
           </th>
           <th class="t_header txt_center">
-            正答率
+            挑戦者数<br>（今日）
           </th>
 
         </tr>
