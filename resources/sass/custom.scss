@@ -684,7 +684,7 @@ a:active {
 }
 
 .width_adjustment_900 {
-  width: 900px;
+  width: 850px;
   margin: 0 auto;
 }
 
@@ -817,6 +817,25 @@ input[name="soundType"] {
 /**
 * 国師過去問
 */
+
+@media(max-width: 900px){
+
+  .width_adjustment_900 {
+    width: 550px;
+    margin: 0 auto;
+  }
+
+  .question_sentence_outer {
+    width: 550px;
+    margin: 0 auto;
+  
+    box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 15px;
+  }
+}
+
 @media(max-width: 500px){
 
   .width_adjustment_900 {
