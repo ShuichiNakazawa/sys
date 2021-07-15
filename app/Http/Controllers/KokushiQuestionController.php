@@ -256,7 +256,7 @@ class KokushiQuestionController extends Controller
                                           ->limit(1)
                                           ->value('number_try');
 
-              dd($max_number_try);
+              //dd($max_number_try);
 
               // テスト回数　加算
               $max_number_try++;
