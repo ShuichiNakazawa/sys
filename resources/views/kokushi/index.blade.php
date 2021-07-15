@@ -11,7 +11,7 @@
 
 @include('common.errors')
 
-<div class="card-body">
+<div class="width_adjustment_900">
   <div class="card-body">
     <h3 class="header_center">国試過去問</h3>
   </div>
@@ -63,6 +63,7 @@
   @endforeach
     </div>
   </div>
+
 </div>
 <br>
 
