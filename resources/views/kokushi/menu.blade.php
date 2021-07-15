@@ -106,8 +106,6 @@
         </group>
       </div>
 
-      
-
       <div class="card-body">
       <table class="table table-striped task-table">
         <tr>
