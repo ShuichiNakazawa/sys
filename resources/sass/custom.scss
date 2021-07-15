@@ -813,3 +813,19 @@ input[name="soundType"] {
   }
 
 }
+
+/**
+* 国師過去問
+*/
+@media(max-width: 500px){
+  .question_sentence_outer {
+    width: 480px;
+    margin: 0 auto;
+  
+    box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 15px;
+  }
+}
+

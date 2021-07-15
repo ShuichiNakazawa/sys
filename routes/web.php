@@ -79,6 +79,11 @@ Route::get('/memo/html_tag_main_list', function() {
     return view('memo.html_tag_main_list');
 });
 
+Route::get('/memo/display_setting_for_sns', function() {
+    return view('memo.display_setting_for_sns');
+});
+
+
 
 // テキスト
 Route::get('/text', function () {

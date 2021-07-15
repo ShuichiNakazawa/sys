@@ -827,6 +827,16 @@ class QuestionTitlesTableSeeder extends Seeder
                 'created_at' => '2021-05-17 16:57:25',
                 'updated_at' => '2021-05-17 16:57:25',
             ),
+            81 => 
+            array (
+                'id' => 622,
+                'subject_name_id' => 6,
+                'title_id' => 28,
+                'question_title' => '令和３年　午前',
+                'sight_key' => 'origin',
+                'created_at' => '2021-05-17 16:57:25',
+                'updated_at' => '2021-05-17 16:57:25',
+            ),
         ));
         
         

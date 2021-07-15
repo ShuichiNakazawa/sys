@@ -34,6 +34,11 @@
 					</a>
 				</li>
 
+				<li>
+					<a href="/memo/display_setting_for_sns">
+						SNSでの表示設定(html)
+					</a>
+				</li>
 			</ul>
 			<br><br>
 
