@@ -4,7 +4,7 @@
   $question_sentence  問題文
 --}}
 
-@extends('layouts.app')
+@extends('layouts.app_kokushi')
 {{--
 @extends('layouts.app_no_cache')
 --}}
