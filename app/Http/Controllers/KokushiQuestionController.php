@@ -723,7 +723,7 @@ class KokushiQuestionController extends Controller
         // 仮ユーザテーブルからユーザ名を取得
         $user_name  = Temp_user::select('user_name')
                                   ->where('id', '=', $user_id_session)
-                                  ->first()
+                                  ->limit(1)
                                   ->value('user_name');
 
       } elseif($user_type_session == 'registered_user') {
@@ -731,7 +731,7 @@ class KokushiQuestionController extends Controller
         // ユーザテーブルからユーザ名を取得
         $user_name  = User::select('name')
                               ->where('')
-                              ->first()
+                              ->limit(1)
                               ->value('name');
       }
 
@@ -895,11 +895,21 @@ class KokushiQuestionController extends Controller
 
       if ($request->judge == '判定'){
 
-        // 正答の数 取得
+
+        // 正答の数 取得(問題文の正答数では？)
+        $numOfAnswers = Question_sentences::select('number_of_answers')
+                                                ->where('subject_id', '=', $subject_id)
+                                                ->where('question_title_id', '=', $title_id)
+                                                ->where('question_number', '=', $question_number)
+                                                ->limit(1)
+                                                ->value('number_of_answers');
+
+        /*
         $numOfAnswers	=	Answer_sentences::where('subject_name_id', '=', $subject_id)
                         ->where('question_title_id', '=', $title_id)
                         ->where('question_number', '=', $question_number)
                         ->count();
+        */
 
         // 必須回答数 判定
         if ($numOfNeedSelect == 1){
@@ -1016,12 +1026,12 @@ class KokushiQuestionController extends Controller
 
             // 個別点数　登録処理
             $individual_score                     = new Individual_score();
-            $individual_score->user_id            = $user_id;                   // ユーザID
+            $individual_score->user_id            = $user_id_session;           // ユーザID
             $individual_score->subject_name_id    = $subject_id;                // 科目ID
             $individual_score->question_title_id  = $title_id;                  // タイトルID
             $individual_score->question_number    = $question_number;           // 問題番号
             $individual_score->number_try         = $number_try_session;        // 判定回数
-            $individual_score->judge              = $flag_correct;              // 正誤フラグ
+            $individual_score->judgement          = $flag_correct;              // 正誤フラグ
             $individual_score->sight_key          = 'origin';                   // サイトキー
             $individual_score->created_at         = new Carbon('now');          // 作成日時
             $individual_score->updated_at         = null;                       // 更新日時
@@ -1029,11 +1039,12 @@ class KokushiQuestionController extends Controller
             // レコード追加
             $individual_score->save();
 
-
+            /*
             // ログイン済みなら個別得点テーブル 登録
-            if ( $user_id != 0 ){
+            if ( $user_id_session != 0 ){
               //KokushiQuestionController::storeScore($user_id, $subject_id, $title_id, $question_number, $flag_correct);
             }
+            */
 
             return view('kokushi.practice_by_question')
             ->with([
