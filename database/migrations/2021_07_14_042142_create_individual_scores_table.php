@@ -19,7 +19,7 @@ class CreateIndividualScoresTable extends Migration
             $table->integer('subject_name_id');     // 科目名ID
             $table->integer('question_title_id');   // 問題タイトルID
             $table->integer('question_number');     // 問題番号
-            $table->integer('number_judgement');    // 判定回数
+            $table->integer('number_try');          // 挑戦回数
             $table->integer('judgement');           // 正誤フラグ
             $table->string('sight_key');            // サイトキー
             $table->timestamps();                   // タイムスタンプ

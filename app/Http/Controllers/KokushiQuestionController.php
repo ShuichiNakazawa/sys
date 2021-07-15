@@ -151,9 +151,9 @@ class KokushiQuestionController extends Controller
       // ローカルストレージ　値参照
       $user_type_session    = $request->session()->get('user_type');
       $user_id_session      = $request->session()->get('ui');
-      $number_test_session  = $request->session()->get('number_test');
+      $number_try_session   = $request->session()->get('number_try');
 
-      //ok dd($user_type_session, $user_id_session, $number_test_session);
+      //ok dd($user_type_session, $user_id_session, $number_try_session);
 
       // ユーザタイプ　存在判定
       if(null === $user_type_session){
@@ -174,7 +174,7 @@ class KokushiQuestionController extends Controller
         if($count_temp_user == 0){
 
           //
-          //$temp_user_id_db  = 1;
+          $temp_user_id_db  = 0;
 
           // 仮ユーザ　新規レコード編集
           $temp_user_obj  = new Temp_user();
@@ -206,7 +206,7 @@ class KokushiQuestionController extends Controller
         $user_id  = $temp_user_id_db;
 
         // セッション『試験回数』　保存
-        $request->session()->put('number_test', 1);
+        $request->session()->put('number_try', 1);
 
       } else {
         /********************************
@@ -251,24 +251,26 @@ class KokushiQuestionController extends Controller
               //dd($max_temp_user_id);
 
               // テスト回数　最大値　取得
-              $max_number_test  = Individual_score::select('number_test')
-                                          ->orderby('number_test', 'desc')
+              $max_number_try  = Individual_score::select('number_try')
+                                          ->orderby('number_try', 'desc')
                                           ->limit(1)
-                                          ->value('number_test');
+                                          ->value('number_try');
+
+              dd($max_number_try);
 
               // テスト回数　加算
-              $max_number_test++;
+              $max_number_try++;
 
               // セッション『試験回数』　保存
-              $request->session()->put('number_test', $max_number_test);
+              $request->session()->put('number_trt', $max_number_try);
 
-              dd($max_number_test);
+              // dd($max_number_try);
 
             } else {
               $max_temp_user_id = 0;
 
               // セッション『試験回数』　保存
-              $request->session()->put('number_test', 1);
+              $request->session()->put('number_try', 1);
 
             }
 
@@ -296,21 +298,21 @@ class KokushiQuestionController extends Controller
             //　仮ユーザテーブル　該当IDあり
 
             //　試験得点テーブルから『試験回数』を取得
-            $number_test  = Individual_score::select('number_judgement')
+            $number_try  = Individual_score::select('number_try')
                                               ->where('user_id', '=', $user_id_session)
-                                              ->orderby('number_judgement', 'desc')
-                                              ->value('number_judgement');
+                                              ->orderby('number_try', 'desc')
+                                              ->value('number_try');
 
             
 
             //　試験回数　１加算
-            $number_test++;
+            $number_try++;
 
             // セッション『試験回数』　削除
-            //$request->session()->forget('number_test');
+            //$request->session()->forget('number_try');
 
             //　セッション『試験回数』　保存
-            $request->session()->put('number_test', $number_test);
+            $request->session()->put('number_try', $number_try);
 
             // ユーザID　設定
             $user_id    =  $temp_user_id;
@@ -351,7 +353,7 @@ class KokushiQuestionController extends Controller
             $request->session()->put('ui', $max_temp_user_id);
 
             //　セッション『試験回数』　保存
-            $request->session()->put('number_test', 1);
+            $request->session()->put('number_try', 1);
 
             // ユーザID　設定
             $user_id  = $max_temp_user_id;
@@ -363,15 +365,15 @@ class KokushiQuestionController extends Controller
 
             //　該当ユーザ　１件
             //  試験回数　取得（試験得点テーブルから）
-            $number_test  = Test_scoring::select('number_test')
+            $number_try  = Test_scoring::select('number_try')
                                               ->where('id', '=', $user_id_session)
-                                              ->value('number_test');
+                                              ->value('number_try');
 
             //　試験回数　１加算
-            $number_test++;
+            $number_try++;
 
             //　セッション『試験回数』　保存
-            $request->session()->put('number_test', $number_test);
+            $request->session()->put('number_try', $number_try);
 
             $user_id = $user_id_session;
             $user_type = "registered_user";
@@ -462,7 +464,7 @@ class KokushiQuestionController extends Controller
       // 個別得点テーブルへ登録されないため、セッション内容を調査
       $a = $request->session()->get('user_type');
       $b = $request->session()->get('ui');
-      $c = $request->session()->get('number_test');
+      $c = $request->session()->get('number_try');
 
       dd($a, $b, $c);
 */
@@ -713,7 +715,7 @@ class KokushiQuestionController extends Controller
       $user_id_session    = $request->session()->get('ui');
 
       // セッション『判定回数』　取得
-      $number_judgement_session = $request->session()->get('number_test');
+      $number_try_session = $request->session()->get('number_try');
 
       // ユーザタイプ　判定
       if($user_type_session == 'temp_user'){
@@ -815,7 +817,7 @@ class KokushiQuestionController extends Controller
                                                   ->where('subject_name_id', '=', $subject_id)
                                                   ->where('question_title_id', '=', $title_id)
                                                   ->where('question_number', '=', $question_number)
-                                                  ->where('number_judgement', '=', $number_judgement_session)
+                                                  ->where('number_try', '=', $number_try_session)
                                                   ->count();
 
         //dd($count_correct);
@@ -825,12 +827,11 @@ class KokushiQuestionController extends Controller
                                       ->where('subject_name_id', '=', $subject_id)
                                       ->where('question_title_id', '=', $title_id)
                                       ->where('question_number', '=', $question_number)
-                                      //->where('number_judgement', '=', $number_judgement_session)
                                       ->orderby('created_at', 'desc')
                                       ->limit(5)
                                       ->get();
 
-        //dd($user_id_session, $subject_id, $title_id, $question_number, $number_judgement_session);
+        //dd($user_id_session, $subject_id, $title_id, $question_number, $number_try_session);
 
         $judges  = array();
 
@@ -882,7 +883,7 @@ class KokushiQuestionController extends Controller
         //dd($user_type_session, $user_id_session);
 
         // 判定回数　取得
-        $number_judgement_session = $request->session()->get('number_test');
+        $number_try_session = $request->session()->get('number_try');
                                                   
 
 
@@ -933,7 +934,7 @@ class KokushiQuestionController extends Controller
                                                   ->where('subject_name_id', '=', $subject_id)
                                                   ->where('question_title_id', '=', $title_id)
                                                   ->where('question_number', '=', $question_number)
-                                                  ->where('number_judgement', '=', $number_judgement_session)
+                                                  ->where('number_try', '=', $number_try_session)
                                                   ->count();
 
             
@@ -946,7 +947,7 @@ class KokushiQuestionController extends Controller
               $individual_score->subject_name_id    = $subject_id;                    // 科目ID
               $individual_score->question_title_id  = $title_id;                      // タイトルID
               $individual_score->question_number    = $question_number;               // 問題番号
-              $individual_score->number_judgement   = $number_judgement_session;      // 判定回数
+              $individual_score->number_try         = $number_try_session;            // 判定回数
               $individual_score->judgement          = $flag_correct;                  // 正誤フラグ
               $individual_score->sight_key          = 'origin';                       // サイトキー
               $individual_score->created_at         = new Carbon('now');              // 作成日時
@@ -1019,7 +1020,7 @@ class KokushiQuestionController extends Controller
             $individual_score->subject_name_id    = $subject_id;                // 科目ID
             $individual_score->question_title_id  = $title_id;                  // タイトルID
             $individual_score->question_number    = $question_number;           // 問題番号
-            $individual_score->number_judgement   = '';                         // 判定回数
+            $individual_score->number_try         = $number_try_session;        // 判定回数
             $individual_score->judge              = $flag_correct;              // 正誤フラグ
             $individual_score->sight_key          = 'origin';                   // サイトキー
             $individual_score->created_at         = new Carbon('now');          // 作成日時

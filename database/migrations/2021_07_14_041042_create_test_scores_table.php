@@ -18,7 +18,7 @@ class CreateTestScoresTable extends Migration
             $table->integer('user_id');                 // ユーザID
             $table->integer('subject_name_id');         // 科目名ID
             $table->integer('question_title_id');       // 問題タイトルID
-            $table->integer('number_test');             // 試験回数
+            $table->integer('number_try');              // 挑戦回数
             $table->decimal('score');                   // 得点
             $table->string('sight_key');                // サイトキー
             $table->timestamps();                       // タイムスタンプ
