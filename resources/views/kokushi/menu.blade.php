@@ -24,15 +24,22 @@
   {{ Breadcrumbs::render('kokushi.nurse') }}
   --}}
   <div class="card-body subject_outer">
+    {{--
     <div class="row justify-content-center">
+      --}}
+    <div class="">
       <div class="btn_subject">
         <button class="btn-dark">ランダム１０問に挑戦（調整中）</button>
       </div>
+      <br>
+      
       <div class="btn_subject">
         <a href="{{ url('/kokushi/audio/' . $subject_id)  }}">
           <button>問題文の朗読を聞いてみる</button>
         </a>
       </div>
+      <br>
+
       <div class="btn_subject">
         <form action="{{ url('/nurse/history') }}">
           @csrf
@@ -44,6 +51,7 @@
           @endif
         </form>
       </div>
+      <br>
     </div>
     <br><br>
 
@@ -106,24 +114,19 @@
         </group>
       </div>
 
-      <div class="card-body">
+      <div class="">
       <table class="table table-striped task-table">
         <tr>
-          <th class="t_header">
+          <th class="t_header txt_center">
             タイトル
           </th>
-          <th class="t_header">
-            挑戦者数（今日）
+          <th class="t_header txt_center">
+            挑戦者数<br>（今日）
           </th>
-          <th class="t_header">
-            ランキング
+          <th class="t_header txt_center">
+            正答率
           </th>
-          <th class="t_header">
-            
-          </th>
-          <th class="t_header">
-            
-          </th>
+
         </tr>
         @foreach ($titles as $title)
           <tr>
@@ -140,13 +143,6 @@
             </td>
             <td class="t_data">
               {{-- 試験挑戦数（試験情報テーブルから取得） --}}
-            </td>
-            <td class="t_data">
-              {{-- 正答率 --}}
-            </td>
-            <td class="t_data">
-              {{-- 個別・累積解答数 --}}
-
             </td>
             <td class="t_data">
               {{-- 正答率 --}}
