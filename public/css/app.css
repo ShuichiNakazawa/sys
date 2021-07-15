@@ -11741,6 +11741,10 @@ input[name="soundType"] {
 */
 
 @media (max-width: 500px) {
+  .navbar {
+    width: 480px;
+  }
+
   .question_sentence_outer {
     width: 480px;
     margin: 0 auto;

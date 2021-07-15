@@ -35,7 +35,7 @@
 		試験中ユーザー：{{ $user_name }}
 	</div>
 	<br>
-	<div style="text-align: right;">
+	<div style="display: flex;">
 		
 		<table align="right">
 			<tr>
@@ -69,7 +69,7 @@
 				@endfor
 		</table>
 	</div>
-	
+
 	<div class="card-body question_sentence_outer">
 		<form action="{{ url('kokushi/' . $subject_id . '/practice_by_question/'  . $question_sentence->question_title_id . '/' . $question_sentence->question_number) }}">
 			<p>{{ $question_sentence->subject_name }}&nbsp;&nbsp;{{ $question_sentence->question_title }}</p>
