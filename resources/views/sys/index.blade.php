@@ -26,6 +26,16 @@
 						内容
 					</th>
 				</tr>
+
+				<tr>
+					<td style="vertical-align: middle;">
+						2021年7月16日
+					</td>
+					<td>
+						国師過去問で、判定ボタン押下時の不具合を修正しました。
+					</td>
+				</tr>
+
 				<tr>
 					<td style="vertical-align: middle;">
 						2021年7月15日
