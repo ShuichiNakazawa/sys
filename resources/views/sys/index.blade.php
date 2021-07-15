@@ -19,21 +19,31 @@
 		<div class="news_outer">
 			<table class="table">
 				<tr>
-					<th class="news_head news_date">
+					<th class="news_head news_date txt_center" style="width: 150px;">
 						日付
 					</th>
-					<th class="news_head">
+					<th class="news_head txt_center">
 						内容
 					</th>
 				</tr>
 				<tr>
-					<th>
-						2021年6月17日
-					</th>
-					<th>
-						サイト更新
-					</th>
+					<td style="vertical-align: middle;">
+						2021年7月15日
+					</td>
+					<td>
+						国師過去問で正解時に、音声を再生させられるようになりました。
+					</td>
 				</tr>
+
+				<tr>
+					<td style="vertical-align: middle;">
+						2021年6月17日
+					</td>
+					<td>
+						サイト更新
+					</td>
+				</tr>
+
 			</table>
 		</div>
 	</div>
