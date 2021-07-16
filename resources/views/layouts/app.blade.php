@@ -68,43 +68,47 @@
               {{--
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
               --}}
-              <a class="nav-link" href="{{ url('/') }}">Top</a>
+              <a class="nav-link_custom" href="{{ url('/') }}">Top</a>
 
             </li>
             <li class="nav-item">
               {{--
               <a class="nav-link" href="#">Link</a>
               --}}
-              <a class="nav-link" href="{{ url('about') }}">ご挨拶</a>
+              <a class="nav-link_custom" href="{{ url('about') }}">ご挨拶</a>
             </li>
             <li class="nav-item">
               {{--
               <a class="nav-link disabled" href="#">Disabled</a>
               --}}
-              <a class="nav-link" href="{{ url('systems') }}">システム</a>
+              <a class="nav-link_custom" href="{{ url('systems') }}">システム</a>
             </li>
             <li>
-              <a class="nav-link" href="{{ url('reservation') }}">リモート予約</a>
+              <a class="nav-link_custom" href="{{ url('reservation') }}">リモート予約</a>
             </li>
             <li>
-              <a class="nav-link" href="{{ url('memo') }}">技術情報</a>
+              <a class="nav-link_custom" href="{{ url('memo') }}">技術情報</a>
             </li>
             <li>
-              <a class="nav-link" href="{{ url('text') }}">テキスト</a>
+              <a class="nav-link_custom" href="{{ url('text') }}">テキスト</a>
             </li>
+
+            {{--
             <li>
-              {{--
               <a class="nav-link" href="{{ url('blog') }}">雑記</a>
-              --}}
+
+            </li>
+            --}}
+
+            <li>
+              <a class="nav-link_custom" href="{{ url('sample') }}">サンプル</a>
+            </li>
+
+            <li>
+              <a class="nav-link_custom" href="{{ url('inquiry') }}">お問合せ</a>
             </li>
             <li>
-              <a class="nav-link" href="{{ url('sample') }}">サンプル</a>
-            </li>
-            <li>
-              <a class="nav-link" href="{{ url('inquiry') }}">お問合せ</a>
-            </li>
-            <li>
-              <a class="nav-link" href="{{ url('references') }}">参考サイト</a>
+              <a class="nav-link_custom" href="{{ url('references') }}">参考サイト</a>
             </li>
 
           </ul>

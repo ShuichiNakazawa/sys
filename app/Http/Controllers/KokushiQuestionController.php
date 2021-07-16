@@ -58,7 +58,7 @@ class KokushiQuestionController extends Controller
               ]);
     }
 
-    public function showMenu($subject_id) {
+    public function showMenu(Request $request, $subject_id) {
 
       $subject_name_kanji   =  subjectClass::getKanjiName($subject_id);
 
@@ -73,13 +73,70 @@ class KokushiQuestionController extends Controller
         $logind = 0;
       }
 
+      // ユーザID　取得
+      $user_id_session  = $request->session()->get('ui');
+
+      // 正答率配列　宣言
+      $arrayCorrectAnswerRate = array();
+      $index_rate             = 0;
+
+      foreach($titles as $title){
+
+        //********************
+        // 正答率　取得
+        //********************
+        // 正解件数　取得
+        $NumberOfCorrectAnsers  = Individual_score::where('user_id', '=', $user_id_session)
+                                                  ->where('subject_name_id', '=', $subject_id)
+                                                  ->where('question_title_id', '=', $title->title_id)
+                                                  ->where('judgement', '=', 1)
+                                                  ->count();
+
+        // 回答件数　取得
+        $numberOfResponses      = Individual_score::where('user_id', '=', $user_id_session)
+                                                  ->where('subject_name_id', '=', $subject_id)
+                                                  ->where('question_title_id', '=', $title->title_id)
+                                                  ->count();
+
+        //dd($user_id_session, $subject_id, $title->title_id);
+        //dd($NumberOfCorrectAnsers, $numberOfResponses);
+
+        if($numberOfResponses != 0 && $NumberOfCorrectAnsers != 0){
+          // 正答率　算出
+          $correctAnswerRate      = round($NumberOfCorrectAnsers / $numberOfResponses, 3) * 100;
+        } else {
+          $correctAnswerRate  = 0;
+        }
+
+
+        // 正答率配列　格納
+        $arrayCorrectAnswerRate[$index_rate]  = $correctAnswerRate;
+
+        // 要素数　加算
+        $index_rate++;
+
+
+
+        // 挑戦者数　取得
+        $numberOfChallengers    = Test_score::where('subject_name_id', '=', $subject_id)
+                                                ->where('question_title_id', '=', $title->question_title_id)
+                                                ->count();
+
+        // 挑戦者数配列　格納
+        $arrayCorrectChallenger[$index_rate]  = $numberOfChallengers;
+      }
+
+
+
       return view('kokushi.menu')
       //return view('kokushi.menu', (['kokushi', $subject_id]))
               ->with([
-                'subject_id'      =>    $subject_id,
-                'subject_name'    =>    $subject_name_kanji,
-                'titles'          =>    $titles,
-                'logind'          =>    $logind,
+                'subject_id'          =>    $subject_id,
+                'subject_name'        =>    $subject_name_kanji,
+                'titles'              =>    $titles,
+                'logind'              =>    $logind,
+                'CorrectAnswerRates'  =>    $arrayCorrectAnswerRate,
+                'numberOfChallengers' =>    $numberOfChallengers,
               ]);
     }
 

@@ -70,8 +70,8 @@
 
       <group class="inline-radio">
         <div>
-          <label>
-            テスト形式
+          <label style="background-color: #d81b60; color: white;">
+            <b>テスト形式</b>
           </label>
         </div>
         <div>
@@ -93,8 +93,8 @@
         
         <group class="inline-radio">
           <div>
-            <label>
-              正解時音声
+            <label style="background-color: #d81b60; color: white;">
+              <b>正解時音声</b>
             </label>
           </div>
           <div>
@@ -128,6 +128,9 @@
           </th>
 
         </tr>
+        @php
+          $index = 0;
+        @endphp
         @foreach ($titles as $title)
           <tr>
             <td class="t_data">
@@ -141,13 +144,26 @@
                 </button>
               </a>
             </td>
-            <td class="t_data">
-              {{-- 試験挑戦数（試験情報テーブルから取得） --}}
-            </td>
-            <td class="t_data">
+            <td class="t_data txt_center">
               {{-- 正答率 --}}
+              @if($CorrectAnswerRates[$index] !== null && $CorrectAnswerRates[$index] != 0)
+                {{ $CorrectAnswerRates[$index] }}％
+              @else
+                -
+              @endif
+            </td>
+            <td class="t_data txt_center">
+              {{-- 試験挑戦数（試験情報テーブルから取得） --}}
+              @if($numberOfChallengers !== null && $numberOfChallengers != 0)
+                {{ $numberOfChallengers }}人
+              @else
+                -
+              @endif
             </td>
           </tr>
+          @php
+            $index++;
+          @endphp
         @endforeach
       </table>
 

@@ -807,7 +807,7 @@ input[name="soundType"] {
   }
 
   input:checked + label {
-    background: #d81b60;
+    background: #e86ba0;
     font-weight: 500;
     color: #fff;
   }
@@ -926,4 +926,9 @@ input[name="soundType"] {
 
 .bg_theme {
   background-color: #dcdcd2;
+}
+
+.nav-link_custom {
+  padding-right: 26px;
+  padding-left: 26px;
 }
