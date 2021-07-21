@@ -11852,6 +11852,16 @@ input[name="soundType"] {
   padding-left: 26px;
 }
 
+.nav-link_custom:hover {
+  background-color: #00a08d;
+}
+
+@media (max-width: 1240px) {
+  .navbar .nav-item {
+    margin-bottom: 20px;
+  }
+}
+
 /*!
  * Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)

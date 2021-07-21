@@ -63,7 +63,7 @@
           {{--
           <a class="navbar-brand" href="#">Hidden brand</a>
           --}}
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0 w-100 nav-justified">
             <li class="nav-item">
               {{--
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
@@ -83,13 +83,13 @@
               --}}
               <a class="nav-link_custom" href="{{ url('systems') }}">システム</a>
             </li>
-            <li>
-              <a class="nav-link_custom" href="{{ url('reservation') }}">リモート予約</a>
+            <li class="nav-item">
+              <a class="nav-link_custom" href="{{ url('reservation') }}">予約</a>
             </li>
-            <li>
+            <li class="nav-item">
               <a class="nav-link_custom" href="{{ url('memo') }}">技術情報</a>
             </li>
-            <li>
+            <li class="nav-item">
               <a class="nav-link_custom" href="{{ url('text') }}">テキスト</a>
             </li>
 
@@ -100,15 +100,18 @@
             </li>
             --}}
 
-            <li>
+            <li class="nav-item">
               <a class="nav-link_custom" href="{{ url('sample') }}">サンプル</a>
             </li>
 
-            <li>
+            <li class="nav-item">
               <a class="nav-link_custom" href="{{ url('inquiry') }}">お問合せ</a>
             </li>
-            <li>
+            <li class="nav-item">
+              {{--
               <a class="nav-link_custom" href="{{ url('references') }}">参考サイト</a>
+              --}}
+              <a href="{{ url('references') }}">参考サイト</a>
             </li>
 
           </ul>

@@ -798,6 +798,7 @@ class KokushiQuestionController extends Controller
       } else if ($request->another_question == '前の問題へ'){
         $question_number -= 1;
       } else if ($request->another_question == '結果判定'){
+        
         //結果判定処理へ
 
 

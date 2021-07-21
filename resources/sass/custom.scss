@@ -932,3 +932,15 @@ input[name="soundType"] {
   padding-right: 26px;
   padding-left: 26px;
 }
+
+.nav-link_custom:hover {
+  background-color: rgb(0, 160, 141);
+
+}
+
+@media(max-width: 1240px){
+
+  .navbar .nav-item {
+    margin-bottom: 20px;
+  }
+}
