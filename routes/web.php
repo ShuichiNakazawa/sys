@@ -490,4 +490,4 @@ Route::post('/sample/register', 'ResisterSampleController@register');
 /**
  * テスト環境
  */
-
+Route::get('/app_test', 'IpquestionController@showIndex');
