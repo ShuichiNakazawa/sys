@@ -16,11 +16,19 @@
           <h2 class="txt_center">システム</h2>
           <br><br>
 
+          <a href="https://ipquestion.jp">
+            <img src="{{ asset('image/logo.png') }}" alt="IPQuestionロゴ">
+            <img src="{{ asset('image/title_mini.png') }}" alt="情報処理過去問ロゴ">
+          </a>
+          <br><br><br>
+
           <form action="{{ url('systems') }}" method="POST">
             @csrf
             <button>国試過去問</button>
           </form>
           <br><br>
+
+
 
           {{--
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -29,11 +37,6 @@
           <br><br>
 
           問題集管理システム
-          <br><br>
-          --}}
-
-          {{--
-          <a href="stripe_sample">Stripe クレジットカード決済サンプルページ</a>
           <br><br>
           --}}
 

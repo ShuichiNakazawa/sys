@@ -491,3 +491,5 @@ Route::post('/sample/register', 'ResisterSampleController@register');
  * テスト環境
  */
 Route::get('/app_test', 'IpquestionController@showIndex');
+
+Route::post('/app_test', 'IpquestionController@selectMenu')->name('select_menu');

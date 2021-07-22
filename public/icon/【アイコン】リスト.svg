@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+]>
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="100px" height="100px" viewBox="0.5 0 100 100" enable-background="new 0.5 0 100 100"
+	 xml:space="preserve">
+<defs>
+</defs>
+<rect x="6.774" y="10.5" fill="none" width="87.525" height="27"/>
+<text transform="matrix(1 0 0 1 11.2207 36.2813)" fill="#9FA0A0" font-family="'HGSMinchoB'" font-size="30">L i s t</text>
+<rect x="9.712" y="49.324" fill="none" stroke="#9FA0A0" stroke-width="3" stroke-miterlimit="10" width="7.703" height="8.102"/>
+<line fill="none" stroke="#9FA0A0" stroke-width="3" stroke-miterlimit="10" x1="25.933" y1="57.605" x2="85.808" y2="57.605"/>
+<rect x="9.712" y="67.824" fill="none" stroke="#9FA0A0" stroke-width="3" stroke-miterlimit="10" width="7.703" height="8.102"/>
+<line fill="none" stroke="#9FA0A0" stroke-width="3" stroke-miterlimit="10" x1="25.933" y1="76.105" x2="85.808" y2="76.105"/>
+<rect x="9.712" y="86.324" fill="none" stroke="#9FA0A0" stroke-width="3" stroke-miterlimit="10" width="7.703" height="8.102"/>
+<line fill="none" stroke="#9FA0A0" stroke-width="3" stroke-miterlimit="10" x1="25.933" y1="94.605" x2="85.808" y2="94.605"/>
+<path fill="none" stroke="#9FA0A0" stroke-width="3" stroke-miterlimit="10" d="M99.334,87c0,6.627-5.373,12-12,12H13.5
+	c-6.627,0-12-5.373-12-12V13.5c0-6.627,5.373-12,12-12h73.834c6.627,0,12,5.373,12,12V87z"/>
+</svg>

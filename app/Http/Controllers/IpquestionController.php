@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Subject;
-use App\Title;
+use App\Subject_name;
+use App\Question_titles;
 use App\Question_sentence;
 use App\Choice_sentence;
 use App\Answer_sentence;
@@ -22,14 +22,14 @@ class IpquestionController extends Controller
 {
     //
     public function showIndex(){
-        $subject_names  =   Subject::where('subject_group_id', '=', 2)
+        $subject_names  =   Subject_name::where('subject_group_id', '=', 2)
                                             ->get();
 
         $index = 0;
         $titles = array();
 
         foreach($subject_names as $subject){
-            $work_titles = Title::where('subject_id', '=', $subject->id)
+            $work_titles = Question_titles::where('subject_name_id', '=', $subject->id)
                                         ->orderby('title_id', 'desc')
                                         ->get();
             //$subject->id
