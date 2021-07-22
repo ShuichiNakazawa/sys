@@ -11889,6 +11889,18 @@ input[name="soundType"] {
   }
 }
 
+.comment_outer {
+  display: flex;
+  margin: 0 auto;
+  max-width: 1200px;
+  min-width: 250px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 15px;
+  background-color: #f8fafc;
+}
+
 /*!
  * Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)

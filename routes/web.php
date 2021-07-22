@@ -493,3 +493,6 @@ Route::post('/sample/register', 'ResisterSampleController@register');
 Route::get('/app_test', 'IpquestionController@showIndex');
 
 Route::post('/app_test', 'IpquestionController@selectMenu')->name('select_menu');
+
+Route::get('/test/musatrasama', 'MusatrasamaController@showIndex');
+
