@@ -16,10 +16,22 @@
           <h2 class="txt_center">システム</h2>
           <br><br>
 
-          <a href="https://ipquestion.jp">
-            <img src="{{ asset('image/logo.png') }}" alt="IPQuestionロゴ">
-            <img src="{{ asset('image/title_mini.png') }}" alt="情報処理過去問ロゴ">
-          </a>
+          <div class="">
+            <a href="https://ipquestion.jp">
+            <div class="" style="display: flex;">
+              <div>
+                <img src="{{ asset('image/logo.png') }}" alt="IPQuestionロゴ">
+              </div>
+              <div style="margin-left: 20px;">
+                情報処理試験の過去問題をスムーズに実施できるサイトです。広告が無くシンプルデザインです。
+              </div>
+                {{--
+                <img src="{{ asset('image/title_mini.png') }}" alt="情報処理過去問ロゴ">
+                --}}
+              </div>
+            </a>
+          </div>
+
           <br><br><br>
 
           <form action="{{ url('systems') }}" method="POST">
