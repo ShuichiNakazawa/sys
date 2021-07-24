@@ -99,8 +99,14 @@
           </a>
           <br><br><br>
 
+          <a href="https://appli-support.jp/deliveryManagement/index.html">
+            <button>デリバリー管理システム（開発中断）</button>
+          </a>
+
         </div>
         <br><br><br>
+
+
 
         @endsection
 

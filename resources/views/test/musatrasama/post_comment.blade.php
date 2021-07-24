@@ -28,7 +28,7 @@
           {{--
             [$comment->id]
           --}}
-          ファイルリンク：
+          ファイル
           @foreach($files[$comment->id] as $file)
             <p>
               {{ $file->file_name }}
