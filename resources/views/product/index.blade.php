@@ -7,7 +7,7 @@
 
 @section('content')
 <div class="jumbotron top-img">
-  <p class="text-center text-white top-img-text">{{ config('app.name', 'Laravel') }}</p>
+  <p class="text-center text-white top-img-text">{{ config('app.name.ec.sample', 'Straipe決済サンプル') }}</p>
 </div>
 
 <div class="container">
