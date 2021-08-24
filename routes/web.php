@@ -499,6 +499,3 @@ Route::get('/test/musatrasama', 'MusatrasamaController@showIndex');
 Route::get('/test' , function() {
     return view('test.test');
 });
-
-
-
