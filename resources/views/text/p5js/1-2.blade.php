@@ -42,7 +42,7 @@
               
               プレビューエリア・・・プログラムの実行結果が表示されるエリア<br><br>
                 <a href="/text/p5_js/1/3">
-                    <button>
+                    <button disabled>
                         次のチャプターへ
                     </button>
                 </a>
