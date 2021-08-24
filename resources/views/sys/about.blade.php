@@ -123,7 +123,7 @@
 							<span>メール</span><span>アドレス</span>
 						</th>
 						<td>
-							contact@lara-assist.jp
+							shuichi-nakazawa@lara-assist.jp
 						</td>
 					</tr>
 				</tbody>
