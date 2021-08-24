@@ -19,11 +19,36 @@
 	    <div class="card-header text_center">
         学習支援
       </div>
+
       <div class="card-body bg_light">
-        <a href="https://www.crammedia.com/">CramMedia</a>
+        <div style="display: flex;">
+          <div class="item" style="width: 100px;">
+            <a href="https://paiza.jp/">Paiza</a>
+          </div>
+          <div style="width: 500px;">
+            様々なプログラミング言語のコーディングスキルを判定するサイトです。
+          </div>
+        </div>
         <br><br>
 
-        <a href="https://ping-t.com/">Ping-t</a>
+        <div style="display: flex;">
+          <div class="item" style="width: 100px;">
+            <a href="https://www.crammedia.com/">CramMedia</a>
+          </div>
+          <div style="width: 500px;">
+            クラウド、Microsoft、スマホ等を対象としたベンダー資格試験の模擬問題を実施できます。
+          </div>
+        </div>
+        <br><br>
+
+        <div style="display: flex;">
+          <div class="item" style="width: 100px;">
+            <a href="https://ping-t.com/">Ping-t</a>
+          </div>
+          <div class="item" style="width: 500px;">
+            インフラエンジニアとして活動する上で必要となる、サーバー、ネットワーク、データベースのベンダー資格試験の模擬問題を実施できます。
+          </div>
+        </div>
         <br><br>
       </div>
       <br><br>
