@@ -21,9 +21,13 @@
       </div>
 
       <div class="card-body bg_light">
-        <div style="display: flex;">
-          <div class="item" style="width: 100px;">
-            <a href="https://paiza.jp/">Paiza</a>
+        <div class="row" style="display: flex;">
+          <div class="item" style="width: 100px; display:flex;">
+            <a href="https://paiza.jp/">
+              <b>
+                Paiza
+              </b>
+            </a>
           </div>
           <div style="width: 500px;">
             様々なプログラミング言語のコーディングスキルを判定するサイトです。
@@ -31,9 +35,13 @@
         </div>
         <br><br>
 
-        <div style="display: flex;">
-          <div class="item" style="width: 100px;">
-            <a href="https://www.crammedia.com/">CramMedia</a>
+        <div class="row" style="display: flex;">
+          <div class="item" style="width: 100px; display:flex;">
+            <a href="https://www.crammedia.com/">
+              <b>
+                CramMedia
+              </b>
+            </a>
           </div>
           <div style="width: 500px;">
             クラウド、Microsoft、スマホ等を対象としたベンダー資格試験の模擬問題を実施できます。
@@ -41,9 +49,13 @@
         </div>
         <br><br>
 
-        <div style="display: flex;">
-          <div class="item" style="width: 100px;">
-            <a href="https://ping-t.com/">Ping-t</a>
+        <div class="row" style="display: flex;">
+          <div class="item" style="width: 100px; display:flex;">
+            <a href="https://ping-t.com/">
+              <b>
+                Ping-t
+              </b>
+            </a>
           </div>
           <div class="item" style="width: 500px;">
             インフラエンジニアとして活動する上で必要となる、サーバー、ネットワーク、データベースのベンダー資格試験の模擬問題を実施できます。
