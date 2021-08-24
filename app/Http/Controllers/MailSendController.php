@@ -19,7 +19,7 @@ class MailSendController extends Controller
 
         $toSelf =   [
             [
-                'email' =>  'contact@lara-assist.jp',
+                'email' =>  'shuichi-nakazawa@lara-assist.jp',
                 'name'  =>  $sender,
             ]
         ];
@@ -98,11 +98,12 @@ class MailSendController extends Controller
 
         // テーブル登録
 
+        \Session::flash('message', 'お問合わせを受付けました。３営業日以内にご連絡がない場合には、お手数ですが再度ご連絡ください。');
 
         // ビュー表示
         return view('sys.inquiry')
                     ->with([
-                        'message'   =>  'お問合わせを受付けました。３営業日以内にご連絡がない場合には、お手数ですが再度ご連絡'
+                        'message'   =>  'お問合わせを受付けました。３営業日以内にご連絡がない場合には、お手数ですが再度ご連絡ください。'
                     ]);
 
     }
