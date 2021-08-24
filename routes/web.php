@@ -149,7 +149,18 @@ Route::get('/sendmail', 'MailSendController@send');
 
 Route::post('/inquiry', 'MailSendController@send');
 
+/******************************
+ * テキスト
+******************************/
+//Route::get('/text/p5_js/{lesson}/{chapter}', 'TextController@showText');      テキストをブレード化した時用
 
+Route::get('/text/p5_js/1/1', function(){
+    return view('text.p5js.1-1');
+});
+
+Route::get('/text/p5_js/1/2', function(){
+    return view('text.p5js.1-2');
+});
 
 /******************************
  * 国試過去問

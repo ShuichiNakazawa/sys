@@ -19,6 +19,18 @@
 			<div><br></div>
 			--}}
 			<ul class="text_ul">
+
+				<li class="text_list">
+					<a href="/text/p5_js/1/1" class="text_a">
+					<button>p5.js</button>
+					{{--
+						p5.jsについての概要が表示されていると良い。
+
+						p5.jsは、
+						--}}
+					</a>
+				</li>
+
 				<li class="text_list">
 					<a href="/text/html_basic" class="text_a">
 						<button>html基礎</button>
