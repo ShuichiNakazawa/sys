@@ -23,7 +23,7 @@
 
     <p>　Webシステムの制作・お見積りやご相談、リモートスクールへのご質問などお気軽にお問合せください。
       お問合せ内容を確認のうえ、３営業日以内にこちらからご連絡をさせていただきます。<br>
-      　メールによるご連絡をご希望の場合には<a href="mailto:shuichi-nakazawa@lara-assist.jp">shuichi-nakazawa@lara-assist.jp</a>宛てに送信をお願いいたします。
+      　メールによるご連絡をご希望の場合には<a href="mailto:shuichi-nakazawa@lara-assist.jp"><span style="color:blue;">shuichi-nakazawa@lara-assist.jp</span></a>宛てに送信をお願いいたします。
     </p>
   
       <form action="{{ action('MailSendController@send') }}" method="POST" style="margin:0 atuo;">
