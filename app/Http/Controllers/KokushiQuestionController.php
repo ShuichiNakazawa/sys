@@ -51,10 +51,15 @@ class KokushiQuestionController extends Controller
 
       //dd($fields, $All_subjects, $fields_pluck);
 
+      // 科目略称 取得
+      $subject_short_names = ["nurse", "phn", "midwife", "clt", "rt", "ot", "pt", "ort", "jrt"];
+
+
       return view('kokushi.index')
               ->with([
                   'subject_groups'    =>  $subject_groups,
                   'subjects'  =>  $All_subjects,
+                  'subject_short_names' =>  $subject_short_names
               ]);
     }
 

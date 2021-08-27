@@ -179,9 +179,13 @@ Route::get('/text/p5_js/1/2', function(){
 Route::name('kokushi.')->group(function() {
     Route::name('question.')->group(function() {
 
+        Route::get('/kokushi', 'KokushiQuestionController@before_kokushi');
+
+        /*
         Route::get('/kokushi', function () {
             return view('kokushi.index');
         });
+        */
 
         Route::post('systems', 'KokushiQuestionController@before_kokushi');
 
