@@ -52,7 +52,7 @@
 
                     <button style="background: white; border-radius: 15px; width: 180px; height: 200px;">
 
-                    <img src="{{ "images/medical/" . $subject_short_names[($id - 1)] . ".png" }}" alt="job_image" width="auto" height="150px">
+                    <img src="{{ "images/medical/" . $subject_short_names[($id - 1)] . ".png" }}" alt="{{$subject_short_names[($id - 1)]}}" width="auto" height="150px">
                     <br>
                     {{ $subject }}
                     {{--
