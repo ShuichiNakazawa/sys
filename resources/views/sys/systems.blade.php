@@ -34,7 +34,7 @@
 
           <br><br><br>
 
-          <form action="{{ url('systems') }}" method="POST">
+          <form action="{{ url('kokushi') }}" method="POST">
             @csrf
             <button>国試過去問</button>
           </form>

@@ -67,23 +67,33 @@ Route::get('/memo', function () {
     return view('sys.memo');
 });
 
+// Laravel コマンドリスト
 Route::get('/memo/laravel_command_list', function() {
     return view('memo.laravel_command_list');
 });
 
+// git コマンドリスト
 Route::get('/memo/git_command_list', function() {
     return view('memo.git_command_list');
 });
 
+// 主要HTMLタグ
 Route::get('/memo/html_tag_main_list', function() {
     return view('memo.html_tag_main_list');
 });
 
+// SNS用のメタタグ設定
 Route::get('/memo/display_setting_for_sns', function() {
     return view('memo.display_setting_for_sns');
 });
 
+/**
+ * Vue.js コツツボ
+ */
 
+Route::get('/memo/vue_kotutubo', function() {
+    return view('memo.vue_kotutubo');
+});
 
 // テキスト
 Route::get('/text', function () {
@@ -175,6 +185,8 @@ Route::name('kokushi.')->group(function() {
 
         Route::post('systems', 'KokushiQuestionController@before_kokushi');
 
+
+        
         Route::post('/kokushi', 'KokushiQuestionController@before_kokushi');
 
         Route::get('/kokushi/{subject_id}', 'KokushiQuestionController@showMenu');
@@ -510,3 +522,20 @@ Route::get('/test/musatrasama', 'MusatrasamaController@showIndex');
 Route::get('/test' , function() {
     return view('test.test');
 });
+
+
+/**
+ * 練習ページ
+ */
+Route::get('/practice/3_1', function() {
+    return view('practice.3_1');
+});
+
+Route::get('/practice/3_3', function() {
+    return view('practice.3_3');
+});
+
+Route::get('/practice/4_2', function() {
+    return view('practice.4_2');
+});
+

@@ -17,6 +17,9 @@ const mix = require('laravel-mix');
     .js('resources/js/p5_index.js', 'public/js')
     .js('resources/js/play_audio.js', 'public/js')
     .js('resources/js/popper.js', 'public/js')
+    .js('resources/js/custom.js', 'public/js')
+    .js('resources/js/practice3_3.js', 'public/js')
+    .js('resources/js/practice4_2.js', 'public/js')
 .sass('resources/sass/app.scss', 'public/css');
 
 /*

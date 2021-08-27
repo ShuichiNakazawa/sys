@@ -107,13 +107,26 @@
         <br><br><br>
 
 
+        <div id="cut_in_outer" style="position: absolute; top: 200px; left:2000px; background-color: white;">
+          <div id="cut_in_inner" style="border: solid 2px #aaa; border-radius: 10px; width: 300px; height: 500px; background-color: lightgray;">
+            カットイン テスト
+          </div>
+        </div>
 
         @endsection
 
         @section('footer')
-        <div class="container copyright">
-          &copy;2020 - 2021 lara-assist.jp
-        </div>
-      @endsection
+          <div class="container copyright">
+            &copy;2020 - 2021 lara-assist.jp
+          </div>
+        @endsection
+
+        @section('script')
+
+          <!-- Scripts -->
+          <script src="{{ asset('js/custom.js') }}" defer></script>
+
+        @endsection
+
     </body>
 </html>

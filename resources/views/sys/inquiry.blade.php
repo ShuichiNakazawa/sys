@@ -29,9 +29,9 @@
       <form action="{{ action('MailSendController@send') }}" method="POST" style="margin:0 atuo;">
         @csrf
         <div class="contuctForm">
-          <table style="margin:0 auto;">
+          <table style="margin:0 auto; width: 700px;">
             <tr>
-              <th>
+              <th style="width: 280px;">
                 会社名・屋号名
               </th>
               <td>
@@ -118,8 +118,7 @@
 
             <tr>
               <th>
-                当サイトを知った
-                <br>きっかけ【必須】
+                当サイトを知った<wbr>きっかけ【必須】
               </th>
               <td>
                 <select id = "trigger" name="trigger">
@@ -164,7 +163,7 @@
                 お問合せ内容<br>【必須】
               </th>
               <td>
-                <textarea id="inquiryContent" name="inquiryContent"></textarea>
+                <textarea id="inquiryContent" name="inquiryContent" rows="5" cols="60"></textarea>
                 
               </td>
             </tr>

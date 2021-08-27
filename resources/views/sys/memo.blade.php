@@ -16,6 +16,13 @@
 	  <h2 style="text-align:center;">技術情報</h2>
 		<div class="memo_outer">
 			<ul>
+
+				<li>
+					<a href="/memo/vue_kotutubo">
+						Vue.js 基本
+					</a>
+				</li>
+
 				<li>
 					<a href="/memo/laravel_command_list">
 						Laravel コマンドリスト

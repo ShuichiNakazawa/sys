@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
         // 外部キー制約　無効化
         \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
-        //$this->call(ReservationsTableSeeder::class);            // 予約
-        /*
+        $this->call(ReservationsTableSeeder::class);            // 予約
+        
         $this->call(FieldsTableSeeder::class);                  // 大分類
         $this->call(Subject_namesTableSeeder::class);           // 科目名
         $this->call(QuestionTitlesTableSeeder::class);          // 問題タイトル
@@ -40,10 +40,10 @@ class DatabaseSeeder extends Seeder
         $this->call(T_equipment_tagsTableSeeder::class);
         $this->call(T_equipment_stocksTableSeeder::class);
         $this->call(Subject_groupsTableSeeder::class);
-        */
+        
 
-        $this->call(Musatra_commentsTableSeeder::class);
-        $this->call(Musatra_filesTableSeeder::class);
+        //$this->call(Musatra_commentsTableSeeder::class);
+        //$this->call(Musatra_filesTableSeeder::class);
 
         // 外部キー制約　有効化
         \DB::statement('SET FOREIGN_KEY_CHECKS=1;');

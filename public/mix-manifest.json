@@ -1,8 +1,11 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/js/custom.js": "/js/custom.js",
     "/js/p5.min.js": "/js/p5.min.js",
     "/js/p5_index.js": "/js/p5_index.js",
     "/js/play_audio.js": "/js/play_audio.js",
-    "/js/popper.js": "/js/popper.js"
+    "/js/popper.js": "/js/popper.js",
+    "/js/practice3_3.js": "/js/practice3_3.js",
+    "/js/practice4_2.js": "/js/practice4_2.js"
 }
