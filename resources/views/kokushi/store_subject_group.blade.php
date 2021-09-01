@@ -16,7 +16,7 @@
     <h3>国試過去問 管理</h3>
   </div>
 
-    <h4>科目グループ 登録</h4>
+  <h4>科目グループ 登録</h4>
 
   <div class="card-body">
     <form action="{{ action('KokushiManagementController@storeSubjectGroup') }}" method="POST">

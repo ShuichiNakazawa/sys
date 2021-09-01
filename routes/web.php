@@ -543,3 +543,21 @@ Route::get('/practice/4_2', function() {
     return view('practice.4_2');
 });
 
+/**
+ * リニューアル国試
+ */
+// 科目ごとにメニュー表示
+ Route::get('/excercise_menu/{subject}', 'ExcerciseController@showMenu');
+
+ // ランダム演習 
+ Route::get('/excercise_random/{subject}', 'ExcerciseController@startRandomExcercise');
+
+ // 年度指定演習
+ Route::get('/excercise_selected/{subject}', 'ExcerciseController@startSelectedExcercise');
+
+
+
+ /*
+ *  テンプレート
+ */ 
+Route::get('/template', 'TemplateController@showIndex');

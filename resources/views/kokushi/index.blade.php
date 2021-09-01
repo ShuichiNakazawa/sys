@@ -21,7 +21,7 @@
   @endphp
   @foreach ($subject_groups as $subject_group)
     @if((int)$subject_group->id == 1)
-      <div class="subject_outer">
+      <div class="subject_outer" style="background: rgb(255, 255, 240);">
         {{--
         <div class="card-header">
           <h4 class="header_center ">{{ $subject_group->subject_group_name }}</h4>
@@ -31,7 +31,7 @@
         {{--
         <div class="card-body row justify-content-center">
         --}}
-        <div class="card-body justify-content-center row" style="background: lightyellow;">
+        <div class="card-body justify-content-center row" style="background: rgb(255, 255, 240);">
           {{--
             ここに、foreachを使って、テーブルに登録されている科目名（分野ごと）のリストを表示させる
           --}}
@@ -47,10 +47,15 @@
                 {{--
                 <a href="{{  url('/kokushi/' . $id) }}">
                 --}}
+                  
                   <form action="{{ url('/kokushi/' . $id) }}">
+                  
+                  {{--
+                    <form action="{{ url('/excercise_menu/' . $id) }}">
+                  --}}
                     @csrf
 
-                    <button style="background: white; border-radius: 15px; width: 180px; height: 200px;">
+                    <button style="background: white; border-color: #ccc; border-radius: 15px; width: 180px; height: 200px;">
 
                     <img src="{{ "images/medical/" . $subject_short_names[($id - 1)] . ".png" }}" alt="{{$subject_short_names[($id - 1)]}}" width="auto" height="150px">
                     <br>

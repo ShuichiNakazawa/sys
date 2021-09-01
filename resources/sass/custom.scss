@@ -987,3 +987,11 @@ input[name="soundType"] {
   border-radius: 15px;
   background-color: #f8fafc;
 }
+
+.activeDiv {
+  display: block;
+}
+
+.inactiveDiv {
+  display: none;
+}
