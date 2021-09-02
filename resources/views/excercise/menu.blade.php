@@ -571,6 +571,8 @@
                         this.choices = this.arrayChoiceSentences[0];                                          // 選択肢配列
                         this.answers = this.arrayAnswerSentences[0];                                          // 正答配列
 
+                        this.question_number = 1;
+
                     }.bind(this))
                     .fail(function(jqXHR, textStatus, errorThrown) {
                         console.log('ajax失敗');
