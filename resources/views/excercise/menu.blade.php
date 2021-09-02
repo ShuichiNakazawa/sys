@@ -400,7 +400,7 @@
                     //});
 
                     // 出題コンテンツ フラグオン
-                    isQuestionMode  true;
+                    isQuestionMode = true;
 
                     this.isRandomTabActive      =   false;
                     this.isSelectYearTabActive  =   false;
