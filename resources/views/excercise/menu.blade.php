@@ -380,7 +380,7 @@
                         // 回答履歴配列
                         arrayCorrects = data[3];
 
-                        console.log('arrayQustionSentences[0]: ' + arrayQustionSentences[0]);
+                        console.log('arrayQustionSentences[0]["question_sentence"]: ' + arrayQustionSentences[0]["question_sentence"]);
 
                     }.bind(this))
                     .fail(function(jqXHR, textStatus, errorThrown) {
