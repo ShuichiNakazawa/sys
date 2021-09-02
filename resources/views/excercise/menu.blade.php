@@ -227,9 +227,21 @@
                 </template>
 
                 {{-- 選択肢文 --}}
-                <template v-for="choices">
+                {{-- 必須回答数によって、表示内容が異なる。radio か checkbox か --}}
+                <template v-if="isSingleAnswer">
+
+                    {{-- ラジオボタンにバインド --}}
+
                     
                 </template>
+
+                <template v-if="isMultiAnswer">
+
+                    {{-- チェックボックスにバインド --}}
+
+
+                </template>
+
 
                 {{-- 前の問題へ --}}
                 <template v-if="isNotFirstQuestion">
