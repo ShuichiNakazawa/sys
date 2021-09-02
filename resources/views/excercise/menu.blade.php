@@ -422,30 +422,30 @@
 
                         this.questionInfo = data;
 
-                        arrayQuestionSentences = data[0];
+                        this.arrayQuestionSentences = data[0];
 
                         // 選択肢配列
-                        arrayChoiceSentences = data[1];
+                        this.arrayChoiceSentences = data[1];
 
                         // 正答配列
-                        arrayAnswerSentences = data[2];
+                        this.arrayAnswerSentences = data[2];
 
                         // 回答履歴配列
-                        arrayCorrects = data[3];
+                        this.arrayCorrects = data[3];
 
-                        console.log('arrayQuestionSentences[0]["question_sentence"]: ' + arrayQuestionSentences[0]["question_sentence"]);
+                        console.log('arrayQuestionSentences[0]["question_sentence"]: ' + this.arrayQuestionSentences[0]["question_sentence"]);
 
                         // 問題文情報 設定
-                        question_number =   arrayQuestionSentences[0]["question_number"];         // 問題番号
-                        question_sentence = arrayQuestionSentences[0]["question_sentence"];       // 問題文
+                        this.question_number =   arrayQuestionSentences[0]["question_number"];         // 問題番号
+                        this.question_sentence = arrayQuestionSentences[0]["question_sentence"];       // 問題文
 
-                        required_numOfAnser = arrayQuestionSentences[0]["question_sentence"];     // 必須回答数
-                        required_numOfAnser = arrayQuestionSentences[0]["question_sentence"];     // 正解の数
+                        this.required_numOfAnser = arrayQuestionSentences[0]["question_sentence"];     // 必須回答数
+                        this.required_numOfAnser = arrayQuestionSentences[0]["question_sentence"];     // 正解の数
 
-                        choices = arrayChoiceSentences[0];                                          // 選択肢配列
-                        answers = arrayAnswerSentences[0];                                          // 正答配列
+                        this.choices = arrayChoiceSentences[0];                                          // 選択肢配列
+                        this.answers = arrayAnswerSentences[0];                                          // 正答配列
 
-                        
+
 
                     }.bind(this))
                     .fail(function(jqXHR, textStatus, errorThrown) {
@@ -484,6 +484,16 @@
                 onShowResult: function() {
 
                 },
+            },
+
+            watch: {
+                question_number: function (new_question_number, old_question_number){
+
+                }
+
+                question_sentence: function(new_question_sentence, old_question_sentence){
+
+                }
             },
 
 
