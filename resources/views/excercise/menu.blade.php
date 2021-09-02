@@ -251,7 +251,7 @@
                     {{-- ラジオボタンにバインド --}}
                     <template v-for="item in choices">
                         <div style="display: flex; align-items: center;">
-                            <div>
+                            <div style="align-items: center; width: 45px;">
                                 <input type="radio" name="choice" :id="item.choice_id" style="display: none;" :value="item.choice_id">
                                 <label class="btn-choice" :for="item.choice_id">(% arrayChoiceCharacter[item.choice_id] %)</label>
                             </div>
