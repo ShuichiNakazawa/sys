@@ -422,7 +422,7 @@
 
                         this.questionInfo = data;
 
-                        arrayQustionSentences = data[0];
+                        arrayQuestionSentences = data[0];
 
                         // 選択肢配列
                         arrayChoiceSentences = data[1];
@@ -433,7 +433,19 @@
                         // 回答履歴配列
                         arrayCorrects = data[3];
 
-                        console.log('arrayQustionSentences[0]["question_sentence"]: ' + arrayQustionSentences[0]["question_sentence"]);
+                        console.log('arrayQuestionSentences[0]["question_sentence"]: ' + arrayQuestionSentences[0]["question_sentence"]);
+
+                        // 問題文情報 設定
+                        question_number =   arrayQuestionSentences[0]["question_number"];         // 問題番号
+                        question_sentence = arrayQuestionSentences[0]["question_sentence"];       // 問題文
+
+                        required_numOfAnser = arrayQuestionSentences[0]["question_sentence"];     // 必須回答数
+                        required_numOfAnser = arrayQuestionSentences[0]["question_sentence"];     // 正解の数
+
+                        choices = arrayChoiceSentences[0];                                          // 選択肢配列
+                        answers = arrayAnswerSentences[0];                                          // 正答配列
+
+                        
 
                     }.bind(this))
                     .fail(function(jqXHR, textStatus, errorThrown) {
