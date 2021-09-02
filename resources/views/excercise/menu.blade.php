@@ -708,6 +708,20 @@
                     console.log('this.choices: ' + this.choices);
                     console.log('this.answers: ' + this.answers);
 
+                    // 最初の問題番号判定
+                    if(this.question_number != 1){
+                        this.isNotFirstQuestion = true;
+                    }
+
+                    if(this.question_number == lastQuestionNumber){
+                        this.isLastQuestion = true;
+                        this.isNotLastQuestion = false;
+
+                    } else {
+
+                        this.isLastQuestion    = false;
+                        this.isNotLastQuestion = true;
+                    }
 
                 },
 
