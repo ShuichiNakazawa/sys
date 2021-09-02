@@ -666,6 +666,10 @@
                     this.choices = this.arrayChoiceSentences[index];                                          // 選択肢配列
                     this.answers = this.arrayAnswerSentences[index];                                          // 正答配列
 
+                    console.log('this.choices: ' + this.choices);
+                    console.log('this.answers: ' + this.answers);
+
+
                 },
 
                 question_sentence: function(new_question_sentence, old_question_sentence){
