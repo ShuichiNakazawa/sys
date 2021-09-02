@@ -520,6 +520,9 @@
                         this.answers = this.arrayAnswerSentences[0];                                          // 正答配列
 
                         console.log('選択肢配列["choice_sentence"]： ' + this.choices['choice_sentence']);
+
+                        console.log('選択肢配列７番目の選択肢文： ' + this.arrayChoiceSentences[6]['choice_sentence']);
+
                         console.log('選択肢配列1： ' + this.choices[1]);
                         console.log('選択肢配列2： ' + this.choices[2]);
                         console.log('選択肢配列3： ' + this.choices[3]);

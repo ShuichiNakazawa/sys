@@ -62,12 +62,21 @@ class ExcerciseController extends Controller
             $choiceSentences = Choice_sentences::where('subject_name_id', '=', $subject_id)
                                                     ->where('question_title_id', '=', $param)
                                                     ->where('sight_key', '=', "origin")
+                                                    ->orderby('question_number', 'ASC')
+                                                    ->orderby('choice_id', 'ASC')
                                                     ->get();
+
+            // 現状では問題番号に関係なく、０から順に配列へ保存されてしまう。
+            // 問題番号ごとの配列として保存したい。
+
+            // ①for文で取得し、回しながら新規配列へ格納する
 
             // 正答文 取得
             $answerSentences = Answer_sentences::where('subject_name_id', '=', $subject_id)
                                                     ->where('question_title_id', '=', $param)
                                                     ->where('sight_key', '=', "origin")
+                                                    ->orderby('question_number', 'ASC')
+                                                    ->orderby('answer_id', 'ASC')
                                                     ->get();
 
             // ログイン判定
