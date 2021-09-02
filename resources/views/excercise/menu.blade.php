@@ -631,15 +631,15 @@
                     // 答えが選択済みかどうかを判定
                     if(this.arraySelectedChoice[this.question_number] !== null){
 
-                    var id = this.arraySelectedChoice[this.question_number];
+                        var id = this.arraySelectedChoice[this.question_number];
 
-                    var selector = "input[id='" + id + "']";
+                        var selector = "input[id='" + id + "']";
 
-                    // いったんチェックを外す
-                    $('input[name="choice"]').prop('checked',false);
+                        // いったんチェックを外す
+                        $('input[name="choice"]').prop('checked',false);
 
-                    // チェックを付ける処理
-                    $(selector).prop('checked', true);
+                        // チェックを付ける処理
+                        $(selector).prop('checked', true);
 
                     } else {
 
@@ -716,7 +716,7 @@
             watch: {
                 question_number: function (new_question_number, old_question_number){
 
-                    var index = old_question_number;
+                    var index = new_question_number + 1;
 
                     // 問題文 更新
                     //this.question_number =   this.arrayQuestionSentences[0]["question_number"];         // 問題番号
