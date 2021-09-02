@@ -328,6 +328,10 @@
                 question_number: 0,         // 問題番号
                 question_sentence: "",      // 問題文
                 hasGrapgh: false,           // 図表フラグ
+
+                required_numOfAnswer: 0,    // 必須回答数
+                number_of_answers: 0,       // 正答の数
+
                 choices: [],                // 選択肢配列
                 answers: [],                // 正答配列
 
@@ -351,6 +355,9 @@
 
                 // 選択肢の文字列
                 arrayChoiceCharacter: ['ア', 'イ', 'ウ', 'エ', 'オ', 'カ', 'キ', 'ク', 'ケ', 'コ'],
+
+                // 選択済み回答配列
+                arraySelectedChoice: [],
             },
 
             methods: {
@@ -568,7 +575,35 @@
 
                 },
 
+                // 『次の問題へ』ボタン押下時の処理
                 onNextQuestion: function() {
+
+                    // 必須回答数が０，１，２で処理分岐
+                    if(isSingleSelect){
+
+                        // 必須回答数が１
+                        // 押下されているボタンを取得
+                        var selectedChoice = $('input[name="choice"]:checked').val();
+
+                        arraySelectedChoice[this.question_number] = selectedChoice;
+
+                    } else if(isMultiSelect){
+
+                        // 必須回答数が複数
+                        var selectedChoice = $('input[name="choice"]:checked').val();
+
+                        console.log('selectedChoice: ' + selectedChoice);
+
+
+                    } else if(isNoSelect){
+
+                        // 必須回答数が０
+                        arraySelectedChoice[question_number] = "";
+                    }
+
+                    // 選ばれた選択肢の値を取得し、保存
+
+                    this.question_number++;
 
                 },
 
