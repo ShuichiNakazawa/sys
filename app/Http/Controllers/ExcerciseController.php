@@ -84,8 +84,8 @@ class ExcerciseController extends Controller
                     $index_array = 0;
                 }
 
-                $work_array[$index]['choice_id']        = $choice->choice_id;
-                $work_array[$index]['choice_sentence']  = $choice->choice_sentence;
+                $work_array[$index_array]['choice_id']        = $choice->choice_id;
+                $work_array[$index_array]['choice_sentence']  = $choice->choice_sentence;
 
                 $index_array++;
 
