@@ -243,7 +243,7 @@
                     {{-- ラジオボタンにバインド --}}
                     <template v-for="item in choices">
                         <input type="radio" name="choice" :id="item.choice_id">
-                        <label class="btn-choice" :for="item.choice_id">(% item.choice_sentence %)</label>
+                        <label class="btn-choice" :for="item.choice_id">(% arrayChoiceCatacter[item.choice_id] %)</label>(% item.choice_sentence %)
 
                         <br>
                     </template>
@@ -348,6 +348,9 @@
 
                 // 最終問題である
                 isLastQuestion: false,
+
+                // 選択肢の文字列
+                arrayChoiceCharacter = ['ア', 'イ', 'ウ', 'エ', 'オ', 'カ', 'キ', 'ク', 'ケ', 'コ'],
             },
 
             methods: {
