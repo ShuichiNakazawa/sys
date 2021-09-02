@@ -517,6 +517,8 @@
                         this.choices = this.arrayChoiceSentences[0];                                          // 選択肢配列
                         this.answers = this.arrayAnswerSentences[0];                                          // 正答配列
 
+                        console.log('選択肢配列： ' + this.choices);
+                        console.log('正答配列： ' + this.answers);
 
 
                     }.bind(this))
