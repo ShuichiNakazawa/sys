@@ -466,7 +466,7 @@
 
                         console.log('arrayQuestionSentences[0]["question_sentence"]: ' + this.arrayQuestionSentences[0]["question_sentence"]);
 
-                        console.log('arrayQuestionSentences[91]["choice_sentence"]: ' + this.arrayQuestionSentences[91]["choice_sentence"]);
+                        //console.log('arrayQuestionSentences[91]["choice_sentence"]: ' + this.arrayQuestionSentences[91]["choice_sentence"]);
 
                         // 問題文情報 設定
                         this.question_number =   this.arrayQuestionSentences[0]["question_number"];         // 問題番号
@@ -519,7 +519,7 @@
                         this.choices = this.arrayChoiceSentences[0];                                          // 選択肢配列
                         this.answers = this.arrayAnswerSentences[0];                                          // 正答配列
 
-                        console.log('選択肢配列0： ' + this.choices[0]);
+                        console.log('選択肢配列["choice_sentence"]： ' + this.choices['choice_sentence']);
                         console.log('選択肢配列1： ' + this.choices[1]);
                         console.log('選択肢配列2： ' + this.choices[2]);
                         console.log('選択肢配列3： ' + this.choices[3]);
