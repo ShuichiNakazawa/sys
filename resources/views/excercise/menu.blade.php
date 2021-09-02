@@ -217,11 +217,28 @@
                 (% question_number %)
 
                 {{-- 問題文 --}}
+                (% question_sentence %)
 
                 {{-- 選択肢文 --}}
+                <template>
 
+                </template>
 
-                
+                {{-- 前の問題へ --}}
+                <template v-if="isNotFirstQuestion">
+                    <button>前の問題へ</button>
+                </template>
+
+                {{-- 次の問題へ --}}
+                <template v-if="isNotLastQuestion">
+                    <button>次の問題へ</button>
+                </template>
+
+                {{-- 結果判定 --}}
+                <template v-if="isLastQuestion">
+                    <button>結果判定</button>
+                </template>
+
             </div>
         </div>
 
@@ -275,8 +292,14 @@
                 // 問題番号
                 question_number: 0,
 
-                // 
+                // 最初の問題ではない
+                isNotFirstQuestion: false,
 
+                // 最終問題ではない
+                isNotLastQuestion:  true,
+
+                // 最終問題である
+                isLastQuestion: false,
             },
 
             methods: {
