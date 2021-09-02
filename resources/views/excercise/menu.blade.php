@@ -286,7 +286,7 @@
 
                     {{-- 前の問題へ --}}
                     <template v-if="isNotFirstQuestion">
-                        <div style="width: 100px; padding-left: 20px; background:rgb(73, 172, 157); border-top-left-radius: 15px; border-bottom-left-radius: 15px; color: white; font-weight: bold;" v-on:click="onBeforeQuestion">前の問題へ</div>
+                        <div style="width: 100px; padding-left: 10px; background:rgb(73, 172, 157); border-top-left-radius: 15px; border-bottom-left-radius: 15px; color: white; font-weight: bold;" v-on:click="onBeforeQuestion">前の問題へ</div>
                     </template>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -295,7 +295,7 @@
                         {{--
                         <button v-on:click="onNextQuestion">次の問題へ</button>
                         --}}
-                        <div style="width: 100px; padding-left: 20px; background:rgb(73, 172, 157); border-top-right-radius: 15px; border-bottom-right-radius: 15px; color: white; font-weight: bold;" v-on:click="onNextQuestion">次の問題へ</div>
+                        <div style="width: 100px; padding-left: 10px; background:rgb(73, 172, 157); border-top-right-radius: 15px; border-bottom-right-radius: 15px; color: white; font-weight: bold;" v-on:click="onNextQuestion">次の問題へ</div>
                     </template>
 
                     {{-- 結果判定 --}}
@@ -303,7 +303,7 @@
                         {{--
                         <button v-on:click="onShowResult">結果判定</button>
                         --}}
-                        <div style="width: 100px; padding-left: 20px; background:rgb(73, 172, 157); border-radius: 15px; color: white; font-weight: bold;" v-on:click="onShowResult">結果判定</div>
+                        <div style="width: 100px; padding-left: 10px; background:rgb(73, 172, 157); border-radius: 15px; color: white; font-weight: bold;" v-on:click="onShowResult">結果判定</div>
                     </template>
                 </div>
                 <br>
