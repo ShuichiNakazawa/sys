@@ -185,7 +185,7 @@
                     @endif
 
                     <div style="margin: 10px; width: 135px;">
-                        <input type="radio" name="title_id" id="title_{{ $title->title_id }}" value="{{ $title->title_id }}" style="display: none;" v-on:click="onGetTitleId">
+                        <input type="radio" name="title_id" style="display: none;" id="title_{{ $title->title_id }}" value="{{ $title->title_id }}" v-on:click="onGetTitleId">
                         <label for="title_{{ $title->title_id }}" class="btn-choice">
                             {{ $title->question_title }}
                         </label>
