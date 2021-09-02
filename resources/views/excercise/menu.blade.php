@@ -425,6 +425,10 @@
 
                 // 選択済み回答配列
                 arraySelectedChoice: [],
+
+
+                // 結果表示用配列
+                arrayResult: [],
             },
 
             methods: {
@@ -753,13 +757,12 @@
                     */
 
                     // 結果表示用配列 作成
-                    var arrayResult = [];
 
                     for(index = 0; index < this.lastQuestionNumber; index++){
 
                         indexPlus1 = index + 1;
 
-                        arrayResult[index] = [
+                        this.arrayResult[index] = [
                             indexPlus1, 
                             this.arrayQuestionSentences[index]['question_sentence'],
                             ""
