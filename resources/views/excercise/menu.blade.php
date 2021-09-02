@@ -237,7 +237,7 @@
                     <template v-for="item in choices">
                         <input type="radio" name="choice" :id="item.choice_id">
                         <label class="btn-choice" :for="item.choice_id">(% item.choice_sentence %)</label>
-                        (% item.choice_id %)
+
                         <br>
                     </template>
 
