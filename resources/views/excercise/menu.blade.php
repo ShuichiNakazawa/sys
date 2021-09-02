@@ -414,7 +414,7 @@
                 arrayChoiceCharacter: ['ア', 'イ', 'ウ', 'エ', 'オ', 'カ', 'キ', 'ク', 'ケ', 'コ'],
 
                 // 選択済み回答配列
-                arraySelectedChoice: [][],
+                arraySelectedChoice: [],
             },
 
             methods: {
@@ -682,10 +682,7 @@
                         // 押下されているボタンを取得
                         var selectedChoice = $('input[name="choice"]:checked').val();
 
-
-                        this.arraySelectedChoice[this.question_number][0] = this.question_number;
-                        this.arraySelectedChoice[this.question_number][1] = this.question_sentence;
-                        this.arraySelectedChoice[this.question_number][2] = selectedChoice;
+                        this.arraySelectedChoice[this.question_number] = selectedChoice;
 
                     } else if(this.isMultiSelect){
 
@@ -707,9 +704,9 @@
 
                     // 次の問題の為の処理
                     // 答えが選択済みかどうかを判定
-                    if(this.arraySelectedChoice[this.question_number][2] !== null){
+                    if(this.arraySelectedChoice[this.question_number] !== null){
 
-                        var id = this.arraySelectedChoice[this.question_number][2];
+                        var id = this.arraySelectedChoice[this.question_number];
 
                         var selector = "input[id='" + id + "']";
 
@@ -738,6 +735,29 @@
                     this.isResultMode = true;
 
                     // 選択済み配列をもとに、正答配列と比較して個別に採点、採点配列へ格納
+                    // 採点処理の配列を、結果表示用配列へ格納
+                    /*
+                    for(){
+
+                    }
+                    */
+
+                    // 結果表示用配列 作成
+                    var arrayResult = [];
+
+                    for(index = 0; index < this.lastQuestionNumber; index++){
+
+                        indexPlus1 = index + 1;
+
+                        arrayResult[index] = [
+                            'questionNumber'    =>  indexPlus1, 
+                            'questionSentence'  =>  this.arrayQuestionSentences[index]['question_sentence'],
+                            'correct'           =>  ""
+                        ];
+
+                    }
+
+
 
 
                     // 合計得点計算
