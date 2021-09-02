@@ -414,7 +414,7 @@
                 arrayChoiceCharacter: ['ア', 'イ', 'ウ', 'エ', 'オ', 'カ', 'キ', 'ク', 'ケ', 'コ'],
 
                 // 選択済み回答配列
-                arraySelectedChoice: [],
+                arraySelectedChoice: [][],
             },
 
             methods: {
