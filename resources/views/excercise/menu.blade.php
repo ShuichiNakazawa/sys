@@ -255,7 +255,7 @@
                                 <input type="radio" name="choice" :id="item.choice_id" style="display: none;" :value="item.choice_id">
                                 <label class="btn-choice" :for="item.choice_id">(% arrayChoiceCharacter[item.choice_id] %)</label>
                             </div>
-                            <div>
+                            <div style="margin-left: 10px;">
                                 (% item.choice_sentence %)
                             </div>
                         </div>
