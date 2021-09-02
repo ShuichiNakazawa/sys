@@ -350,7 +350,7 @@
                 isLastQuestion: false,
 
                 // 選択肢の文字列
-                arrayChoiceCharacter = ['ア', 'イ', 'ウ', 'エ', 'オ', 'カ', 'キ', 'ク', 'ケ', 'コ'],
+                arrayChoiceCharacter: ['ア', 'イ', 'ウ', 'エ', 'オ', 'カ', 'キ', 'ク', 'ケ', 'コ'],
             },
 
             methods: {
