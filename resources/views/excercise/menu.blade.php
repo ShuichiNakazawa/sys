@@ -209,6 +209,8 @@
         {{-- 出題画面 --}}
         <div v-bind:class="[isQuestionMode ? 'questionModeActive' : 'inactiveDiv']" style="border: solid 5px rgb(73, 172, 157); border-radius: 10px; width: 380px; background: white;">
             <div>
+                出題画面<br>
+
                 {{-- ランダム出題か年度指定かを表示 --}}
 
                 {{-- 問題番号 --}}
