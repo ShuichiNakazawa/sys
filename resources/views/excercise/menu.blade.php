@@ -215,6 +215,7 @@
 
                 {{-- 問題番号 --}}
                 (% question_number %)
+                <br>
 
                 {{-- 問題文 --}}
                 (% question_sentence %)
