@@ -88,10 +88,13 @@ class ExcerciseController extends Controller
 
             $retVal = json_encode($retVal);
 
+            return $retVal;
+            /*
             return view('excercise.setJson')
                     ->with([
                         'retVal'  =>  $retVal,
                     ]);
+            */
         }
     }
 
