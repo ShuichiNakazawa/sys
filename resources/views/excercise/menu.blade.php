@@ -232,7 +232,7 @@
 
                     {{-- ラジオボタンにバインド --}}
 
-                    
+
                 </template>
 
                 <template v-if="isMultiAnswer">
@@ -315,7 +315,8 @@
                 hasGrapgh: false,           // 図表フラグ
                 choices: [],                // 選択肢配列
                 answers: [],                // 正答配列
-
+                isSingleAnswer: false,      // 必須回答数が１
+                isMultiAnswer: false,       // 必須回答数が複数
 
 
                 // 最初の問題ではない
