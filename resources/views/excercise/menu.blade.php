@@ -517,8 +517,11 @@
                         this.choices = this.arrayChoiceSentences[0];                                          // 選択肢配列
                         this.answers = this.arrayAnswerSentences[0];                                          // 正答配列
 
-                        console.log('選択肢配列： ' + this.choices);
-                        console.log('正答配列： ' + this.answers);
+                        console.log('選択肢配列0： ' + this.choices[0]);
+                        console.log('選択肢配列1： ' + this.choices[1]);
+                        console.log('選択肢配列2： ' + this.choices[2]);
+                        console.log('選択肢配列3： ' + this.choices[3]);
+                        console.log('正答配列： ' + this.answers[0]);
 
 
                     }.bind(this))
