@@ -229,7 +229,7 @@
 
                 {{-- 問題文 --}}
                 (% question_sentence %)
-                <br>
+                <br><br>
 
                 {{-- 図の表示 --}}
                 <template v-if="hasGrapgh">
