@@ -324,10 +324,17 @@
                     </tr>
 
                     <template v-for="item in arrayResult">
-                        (% item[0] %) ,
-                        (% item[1] %) ,
-                        (% item[2] %) 
-
+                        <tr>
+                            <td>
+                                (% item[0] %)
+                            </td>
+                            <td>
+                                (% item[0] %) 
+                            </td>
+                            <td>
+                                (% item[2] %)
+                            </td>
+                        </tr>
                     </template>
                 </table>
             </div>
