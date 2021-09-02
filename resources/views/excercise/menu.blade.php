@@ -282,7 +282,7 @@
 
                 </template>
 
-                <div class="row" style="margin-left: 100px; ">
+                <div class="row" style="margin-left: 30px; ">
 
                     {{-- 前の問題へ --}}
                     <template v-if="isNotFirstQuestion">
