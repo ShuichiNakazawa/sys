@@ -295,7 +295,7 @@
 
                 {{-- 結果判定 --}}
                 <template v-if="isLastQuestion">
-                    <button v-on:click="showResult">結果判定</button>
+                    <button v-on:click="onShowResult">結果判定</button>
                 </template>
                 <br>
 
@@ -648,6 +648,10 @@
 
                 onShowResult: function() {
 
+                    // 出題モード解除
+
+                    // 結果出力モード オン
+                    
                 },
             },
 
