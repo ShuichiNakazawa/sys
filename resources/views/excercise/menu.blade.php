@@ -371,6 +371,7 @@
                 isMultiAnswer: false,       // 正解の数が複数
                 isNoAnswer: false,          // 正解の数が０
 
+                lastQuestionNumber: 0,      // 最終問題番号
 
                 // 最初の問題ではない
                 isNotFirstQuestion: false,
@@ -504,6 +505,11 @@
 
                         // 回答履歴配列
                         this.arrayCorrects = data[3];
+
+                        // 最終問題番号
+                        this.lastQuestionNumber = data[0].length;
+
+                        console.log('最終問題番号： ' + this.lastQuestionNumber);
 
                         // 問題文情報 設定
                         this.question_number =   this.arrayQuestionSentences[0]["question_number"];         // 問題番号
