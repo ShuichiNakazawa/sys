@@ -549,6 +549,9 @@ Route::get('/practice/4_2', function() {
 // 科目ごとにメニュー表示
  Route::get('/excercise_menu/{subject}', 'ExcerciseController@showMenu');
 
+// API
+Route::get('/excercise_menu/{subject_id}/{questionMode}/{param}', 'ExcerciseController@setQuestionInfo');
+
  // ランダム演習 
  Route::get('/excercise_random/{subject}', 'ExcerciseController@startRandomExcercise');
 

@@ -1,4 +1,3 @@
-
 @extends('layouts.app_excercise')
 
 @section('content')
@@ -13,8 +12,15 @@
     <br>
     <div style="width: 90%; margin: 0 auto;">
         <h3>{{ $subject_name }} 過去問</h3>
-        <div style="text-align: left;">ゲストユーザー</div>
-        <div style="margin: 0 auto;">
+        <input type="hidden" name="subject_id" id="subject_id" value="{{ $subject_id }}">
+        <div style="text-align: left;">
+            ゲストユーザー
+        </div>
+
+
+        {{-- 出題形式選択 --}}
+        {{-- 初回に表示、出題時は非表示、出題形式選択で再表示 --}}
+        <div style="margin: 0 auto;" v-bind:class="[isSelectQuestionFormatActive ? 'selectQuestionFormatActive' : 'inactiveDiv']">
             <table>
                 <tr>
                     <td>
@@ -91,7 +97,7 @@
             棒グラフ表示<br>
             <br><br>
 
-
+            {{-- メニュータブ --}}
             <div class="row" style="text-align: center;">
                 <div v-bind:class="[isRandomTabActive ? 'randomTabActive' : 'tabInactive']" style="padding: 5px; margin-left: 10px; width: 120px; z-index: 10; border-top: solid 4px rgb(73, 172, 157);; border-left: solid 4px rgb(73, 172, 157);; border-right: solid 4px rgb(73, 172, 157);; border-top-left-radius: 10px; border-top-right-radius: 10px; background:white; color: rgb(73, 172, 157);" v-on:click="onRandomTab">
                     <b>ランダム出題</b>
@@ -111,41 +117,61 @@
                 @endif
             </div>
 
+            {{-- ランダム出題コンテンツ --}}
             <div class="row" v-bind:class="[isRandomTabActive ? 'randomTabActive' : 'inactiveDiv']" id="random_question" style="border: solid 5px rgb(73, 172, 157);; border-radius: 10px; width: 380px; background: white;">
+                <div style="padding-left: 30px;">
+                    <br>
+                    <div style="width: 130px; background: rgb(73, 172, 157); color: white; font-weight: bold; text-align: center; border-top-right-radius: 25px; border-bottom-right-radius: 25px;" v-on:click="onStartQuestion">
+                        出題スタート
+                    </div>
+                    </div>
+                    <div style="width: 100%;">
+                </div>
 
                 <div style="margin: 25px;">
-                    <input type="radio" name="numOfQuestion" id="question10" style="display: none;">
+                    <input type="radio" name="numOfQuestion" id="question10" style="display: none;" v-on:click="onSet10">
                     <label for="question10" class="btn-choice">１０問</label>
                 </div>
                 <div style="margin: 25px;">
-                    <input type="radio" name="numOfQuestion" id="question30" style="display: none;">
+                    <input type="radio" name="numOfQuestion" id="question30" style="display: none;" v-on:click="onSet30">
                     <label for="question30" class="btn-choice">３０問</label>
                 </div>
                 <div style="margin: 25px;">
-                    <input type="radio" name="numOfQuestion" id="question50" style="display: none;">
+                    <input type="radio" name="numOfQuestion" id="question50" style="display: none;" v-on:click="onSet50">
                     <label for="question50" class="btn-choice">５０問</label>
                 </div>
                 <div style="margin: 25px;">
-                    <input type="radio" name="numOfQuestion" id="question100" style="display: none;">
+                    <input type="radio" name="numOfQuestion" id="question100" style="display: none;" v-on:click="onSet100">
                     <label for="question100" class="btn-choice">１００問</label>
                 </div>
                 <div style="width: 100%;">
 
                 </div>
-
-                <div style="padding-left: 30px;">
-                    <div style="width: 130px; background: rgb(73, 172, 157); color: white; font-weight: bold; text-align: center; border-top-right-radius: 25px; border-bottom-right-radius: 25px;">
-                        出題スタート
-                    </div>
-                    <br><br>
-                </div>
+                <br><br>
 
             </div>
 
+
+            {{-- 年度指定コンテンツ --}}
             <div class="row inactive" v-bind:class="[isSelectYearTabActive ? 'SelectYearTabActive' : 'inactiveDiv']" id="selected_question" style="border: solid 5px darkblue; border-radius: 10px; max-width: 700px; background: white;">
+
+                <div style="padding-left: 30px;">
+                    <br>
+    
+                    <div style="width: 130px; background: darkblue; color: white; font-weight: bold; text-align: center; border-top-right-radius: 25px; border-bottom-right-radius: 25px;" v-on:click="onStartQuestion">
+                        出題スタート
+                    </div>
+                    <br>
+                </div>
+
+                <div style="width: 100%;">
+
+                </div>
+
                 @php
                     $index = 0;
                 @endphp
+
                 @foreach($titles as $title)
 
                     @if($index % 2 == 0)
@@ -153,7 +179,7 @@
                     @endif
 
                     <div style="margin: 10px; width: 135px;">
-                        <input type="radio" name="title_name" id="title_{{ $title->title_id }}" value="{{ $title->title_id }}" style="display: none;">
+                        <input type="radio" name="title_id" id="title_{{ $title->title_id }}" value="{{ $title->title_id }}" style="display: none;" v-on:click="onGetTitleId">
                         <label for="title_{{ $title->title_id }}" class="btn-choice">
                             {{ $title->question_title }}
                         </label>
@@ -172,16 +198,23 @@
 
                 </div>
                 <div style="padding-left: 30px;">
-                    <div style="width: 130px; background: darkblue; color: white; font-weight: bold; text-align: center; border-top-right-radius: 25px; border-bottom-right-radius: 25px;">
+                    <div style="width: 130px; background: darkblue; color: white; font-weight: bold; text-align: center; border-top-right-radius: 25px; border-bottom-right-radius: 25px;" v-on:click="onStartQuestion">
                         出題スタート
                     </div>
                     <br><br>
                 </div>
             </div>
         </div>
+
+        {{-- 出題画面 --}}
+        <div v-bind:class="[isQuestionMode ? 'questionModeActive' : 'inactiveDiv']" style="border: solid 5px rgb(73, 172, 157); border-radius: 10px; width: 380px; background: white;">
+
+        </div>
     </div>
 
-    <div></div>
+
+
+
     <div></div>
     <div></div>
     <div></div>
@@ -196,9 +229,35 @@
             delimiters: ["(%","%)"] ,
             el: '#app',
             data: {
+                // タブ有効フラグ
+                isSelectQuestionFormatActive:   true,
                 isRandomTabActive:      true,
                 isSelectYearTabActive:  false,
                 isStatisticsTabActive:  false,
+
+                //
+                isQuestionMode: false,
+
+                // ランダム出題数
+                number_randomQuestion: 0,
+
+                //
+                title_id: 0,
+
+                questionInfo: "",
+
+                // 問題文配列
+                arrayQustionSentences: [],
+
+                // 選択肢配列
+                arrayChoiceSentences: [],
+
+                // 正答配列
+                arrayAnswerSentences: [],
+
+                // 回答履歴配列
+                arrayCorrects: [],
+
             },
 
             methods: {
@@ -229,9 +288,99 @@
                     this.isRandomTabActive      =   false;
                     this.isSelectYearTabActive  =   false;
                     this.isStatisticsTabActive  =   true;
+                },
+
+                onSet10: function() {
+                    console.log('ランダム１０設定');
+                    // ランダム出題数 設定
+                    this.number_randomQuestion = 10;
+                },
+
+                onSet30: function() {
+                    console.log('ランダム３０設定');
+                    // ランダム出題数 設定
+                    this.number_randomQuestion = 30;
+                },
+
+                onSet50: function() {
+                    console.log('ランダム５０設定');
+                    // ランダム出題数 設定
+                    this.number_randomQuestion = 50;
+                },
+
+                onSet100: function() {
+                    console.log('ランダム１００設定');
+                    // ランダム出題数 設定
+                    this.number_randomQuestion = 100;
+                },
+
+                onGetTitleId: function() {
+                    console.log('タイトル取得');
+
+                    this.title_id = $('input[name="title_id"]:checked').val();
+
+                    console.log('title_id: ' + this.title_id);
+                },
+
+                onStartQuestion: function() {
+
+                    console.log('出題スタート');
+
+                    // 出題形式 取得（ランダムか年度指定か）
+                    if(this.isRandomTabActive == true){
+
+                        // ランダム出題
+                        // APIに投げる値を変更（ランダムモードと問題数が渡せればOK）
+                        var reqString1 = 'get_random';
+                        var reqString2 = this.number_randomQuestion;
+                        //var getMode = 'get_random';
+                        //var reqString = getMode + '/' + this.number_randomQuestion;
+
+                    } else if(this.isSelectYearTabActive == true){
+
+                        // 年度指定出題
+                        // APIに投げる値を変更（年度指定モードとタイトルが渡せればOK
+                        var reqString1 = 'get_title';
+                        var reqString2 = this.title_id;
+
+                        //var getMode = 2;
+                        //var reqString = getMode + '/' + this.title_id;
+                    }
+
+                    var subject_id = $('#subject_id').val();
+
+                    var reqString = subject_id + '/' + reqString1 + '/' + reqString2;
+
+                    console.log('reqString: ' + reqString);
+
+                    var url = "http://localhost:8080/excercise_menu/" + reqString;
+
+                    console.log('url: ' + url);
+
+                    // APIを投げて、問題文、選択肢文、正答文、回答履歴を取得
+                    $.ajax({
+                        url :   url,
+                        type:   'GET',
+                        dataType:   'json',
+                    })
+                    .done(function(data, textStatus, jqXHR) {
+                        console.log('ajax成功');
+
+                        this.questionInfo = data;
+                    }.bind(this))
+                    .fail(function(jqXHR, textStatus, errorThrown) {
+                        console.log('ajax失敗');
+                        console.log('jqXHR: ' + jqXHR);
+                        console.log('textStatus: ' + textStatus);
+                        console.log('errorThrown: ' + errorThrown);
+                        this.isError = true;
+                        this.message = '問題文の読込に失敗しました。';
+                    }.bind(this));
+                    //})
+                    //});
 
 
-                }
+                },
             },
 
 
