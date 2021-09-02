@@ -71,6 +71,31 @@ class ExcerciseController extends Controller
 
             // ①for文で取得し、回しながら新規配列へ格納する
 
+            $old_question_number = 1;
+            $array_choiceSentencesPerQuestion = [];
+            $index_array = 0;
+
+            // 問題番号ごとに格納し直す
+            foreach($choiceSentences as $choice){
+
+                if($old_question_number != $choice->question_number){
+                    $array_choiceSentencesPerQuestion[] = $work_array;
+                    $work_array = [];
+                    $index_array = 0;
+                }
+
+                $work_array[$index]['choice_id']        = $choice->choice_id;
+                $work_array[$index]['choice_sentence']  = $choice->choice_sentence;
+
+                $index_array++;
+
+                // 問題番号が変わるまで、１つの配列へ選択肢文を追加していく
+
+            }
+
+            $array_choiceSentencesPerQuestion[] = $work_array;
+
+
             // 正答文 取得
             $answerSentences = Answer_sentences::where('subject_name_id', '=', $subject_id)
                                                     ->where('question_title_id', '=', $param)
@@ -90,7 +115,7 @@ class ExcerciseController extends Controller
 
             $retVal = [
                 $questionSentences,
-                $choiceSentences,
+                $array_choiceSentencesPerQuestion,
                 $answerSentences,
                 $corrects
             ];
