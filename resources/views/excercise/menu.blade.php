@@ -250,7 +250,7 @@
 
                     {{-- ラジオボタンにバインド --}}
                     <template v-for="item in choices">
-                        <input type="radio" name="choice" :id="item.choice_id" style="display: none;" :value="item.choice_id">
+                        <input type="radio" name="choice" :id="item.choice_id" style="display: none;" :value="item.choice_id" :checked="isChecked">
                         <label class="btn-choice" :for="item.choice_id">(% arrayChoiceCharacter[item.choice_id] %)</label>(% item.choice_sentence %)
 
                         <br>
