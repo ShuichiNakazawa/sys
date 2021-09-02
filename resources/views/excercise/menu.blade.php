@@ -579,7 +579,7 @@
                 onNextQuestion: function() {
 
                     // 必須回答数が０，１，２で処理分岐
-                    if(isSingleSelect){
+                    if(this.isSingleSelect){
 
                         // 必須回答数が１
                         // 押下されているボタンを取得
@@ -587,7 +587,7 @@
 
                         arraySelectedChoice[this.question_number] = selectedChoice;
 
-                    } else if(isMultiSelect){
+                    } else if(this.isMultiSelect){
 
                         // 必須回答数が複数
                         var selectedChoice = $('input[name="choice"]:checked').val();
@@ -595,7 +595,7 @@
                         console.log('selectedChoice: ' + selectedChoice);
 
 
-                    } else if(isNoSelect){
+                    } else if(this.isNoSelect){
 
                         // 必須回答数が０
                         arraySelectedChoice[question_number] = "";
