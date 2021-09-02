@@ -250,9 +250,15 @@
 
                     {{-- ラジオボタンにバインド --}}
                     <template v-for="item in choices">
-                        <input type="radio" name="choice" :id="item.choice_id" style="display: none;" :value="item.choice_id">
-                        <label class="btn-choice" :for="item.choice_id">(% arrayChoiceCharacter[item.choice_id] %)</label>(% item.choice_sentence %)
-
+                        <div class="row">
+                            <div>
+                                <input type="radio" name="choice" :id="item.choice_id" style="display: none;" :value="item.choice_id">
+                                <label class="btn-choice" :for="item.choice_id">(% arrayChoiceCharacter[item.choice_id] %)</label>
+                            </div>
+                            <div>
+                                (% item.choice_sentence %)
+                            </div>
+                        </div>
                         <br>
                     </template>
 
@@ -462,12 +468,9 @@
 
                     var reqString = subject_id + '/' + reqString1 + '/' + reqString2;
 
-                    console.log('reqString: ' + reqString);
-
                     //var url = "http://localhost:8080/excercise_menu/" + reqString;
                     var url = "https://lara-assist.jp/excercise_menu/" + reqString;
 
-                    console.log('url: ' + url);
 
                     // APIを投げて、問題文、選択肢文、正答文、回答履歴を取得
                     $.ajax({
@@ -490,10 +493,6 @@
 
                         // 回答履歴配列
                         this.arrayCorrects = data[3];
-
-                        console.log('arrayQuestionSentences[0]["question_sentence"]: ' + this.arrayQuestionSentences[0]["question_sentence"]);
-
-                        //console.log('arrayQuestionSentences[91]["choice_sentence"]: ' + this.arrayQuestionSentences[91]["choice_sentence"]);
 
                         // 問題文情報 設定
                         this.question_number =   this.arrayQuestionSentences[0]["question_number"];         // 問題番号
@@ -545,16 +544,6 @@
 
                         this.choices = this.arrayChoiceSentences[0];                                          // 選択肢配列
                         this.answers = this.arrayAnswerSentences[0];                                          // 正答配列
-
-                        console.log('選択肢配列["choice_sentence"]： ' + this.choices['choice_sentence']);
-
-                        console.log('選択肢配列７番目の選択肢文： ' + this.arrayChoiceSentences[6]['choice_sentence']);
-
-                        console.log('選択肢配列1： ' + this.choices[1]);
-                        console.log('選択肢配列2： ' + this.choices[2]);
-                        console.log('選択肢配列3： ' + this.choices[3]);
-                        console.log('正答配列： ' + this.answers[0]);
-
 
                     }.bind(this))
                     .fail(function(jqXHR, textStatus, errorThrown) {
