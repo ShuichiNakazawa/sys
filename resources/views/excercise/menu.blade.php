@@ -489,7 +489,7 @@
             watch: {
                 question_number: function (new_question_number, old_question_number){
 
-                }
+                },
 
                 question_sentence: function(new_question_sentence, old_question_sentence){
 
