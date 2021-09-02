@@ -219,6 +219,12 @@
 
                 {{-- 問題文 --}}
                 (% question_sentence %)
+                <br>
+
+                {{-- 図の表示 --}}
+                <template v-if="hasGrapgh">
+
+                </template>
 
                 {{-- 選択肢文 --}}
                 <template>
@@ -227,17 +233,17 @@
 
                 {{-- 前の問題へ --}}
                 <template v-if="isNotFirstQuestion">
-                    <button>前の問題へ</button>
+                    <button v-on:click="onBeforeQuestion">前の問題へ</button>
                 </template>
 
                 {{-- 次の問題へ --}}
                 <template v-if="isNotLastQuestion">
-                    <button>次の問題へ</button>
+                    <button v-on:click="onNextQuestion">次の問題へ</button>
                 </template>
 
                 {{-- 結果判定 --}}
                 <template v-if="isLastQuestion">
-                    <button>結果判定</button>
+                    <button v-on:click="showResult">結果判定</button>
                 </template>
 
             </div>
