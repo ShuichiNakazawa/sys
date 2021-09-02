@@ -599,6 +599,55 @@
 
                 onBeforeQuestion: function() {
 
+
+                    // 必須回答数が０，１，２で処理分岐
+                    if(this.isSingleSelect){
+
+                        // 必須回答数が１
+                        // 押下されているボタンを取得
+                        var selectedChoice = $('input[name="choice"]:checked').val();
+
+                        this.arraySelectedChoice[this.question_number] = selectedChoice;
+
+                    } else if(this.isMultiSelect){
+
+                        // 必須回答数が複数
+                        var selectedChoice = $('input[name="choice"]:checked').val();
+
+                        console.log('selectedChoice: ' + selectedChoice);
+
+
+                    } else if(this.isNoSelect){
+
+                        // 必須回答数が０
+                        this.arraySelectedChoice[question_number] = "";
+                    }
+
+                    // 選ばれた選択肢の値を取得し、保存
+
+                    this.question_number--;
+
+                    // 次の問題の為の処理
+                    // 答えが選択済みかどうかを判定
+                    if(this.arraySelectedChoice[this.question_number] !== null){
+
+                    var id = this.arraySelectedChoice[this.question_number];
+
+                    var selector = "input[id='" + id + "']";
+
+                    // いったんチェックを外す
+                    $('input[name="choice"]').prop('checked',false);
+
+                    // チェックを付ける処理
+                    $(selector).prop('checked', true);
+
+                    } else {
+
+                    // ラジオボタンのチェックを外す
+                    $('input[name="choice"]').prop('checked',false);
+                    }
+
+
                 },
 
                 // 『次の問題へ』ボタン押下時の処理
