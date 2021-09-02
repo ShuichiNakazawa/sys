@@ -303,7 +303,7 @@
                         {{--
                         <button v-on:click="onShowResult">結果判定</button>
                         --}}
-                        <div style="width: 100px; padding-left: 15px; background:rgb(73, 172, 157); border-radius: 15px; color: white; font-weight: bold;" v-on:click="onShowResult">結果判定</div>
+                        <div style="width: 100px; padding-left: 25px; background:rgb(73, 172, 157); border-radius: 15px; color: white; font-weight: bold;" v-on:click="onShowResult">結果判定</div>
                     </template>
                 </div>
                 <br>
