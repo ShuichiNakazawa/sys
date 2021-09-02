@@ -304,6 +304,12 @@
             </div>
         </div>
 
+        {{-- 結果判定画面 --}}
+        <div v-bind:class="[isResultMode ? 'resultModeActive' : 'inactiveDiv']" style="border: solid 5px rgb(73, 172, 157); border-radius: 10px; width: 380px; background: white;">
+            <div>
+                問題番号、問題文、〇×のリスト
+            </div>
+        </div>
     </div>
 
 
@@ -330,6 +336,9 @@
 
                 // 出題モードフラグ
                 isQuestionMode: false,
+
+                // 結果判定モードフラグ
+                isResultMode: false,
 
                 // ランダム出題数
                 number_randomQuestion: 0,
@@ -651,7 +660,7 @@
                     // 出題モード解除
 
                     // 結果出力モード オン
-                    
+
                 },
             },
 
