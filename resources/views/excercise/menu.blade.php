@@ -413,7 +413,7 @@
                     //});
 
                     // 出題コンテンツ フラグオン
-                    isQuestionMode = true;
+                    this.isQuestionMode = true;
 
                     // 進捗表 オフ
                     this.isSelectQuestionFormatActive = false;  
