@@ -215,8 +215,8 @@
         {{-- 出題画面 --}}
         <div v-bind:class="[isQuestionMode ? 'questionModeActive' : 'inactiveDiv']" style="border: solid 5px rgb(73, 172, 157); border-radius: 10px; width: 380px; background: white;">
             <div>
-                {{-- 回答履歴を表示するエリア --}}
-                回答履歴 表示エリア
+                {{-- 正誤履歴を表示するエリア --}}
+                正誤履歴 表示エリア
             </div>
             <div>
                 <br>
