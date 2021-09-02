@@ -309,6 +309,24 @@
         <div v-bind:class="[isResultMode ? 'resultModeActive' : 'inactiveDiv']" style="border: solid 5px rgb(73, 172, 157); border-radius: 10px; width: 380px; background: white;">
             <div>
                 問題番号、問題文、〇×のリスト
+                <table>
+                    <tr>
+                        <th>
+                            問題番号
+                        </th>
+                        <th>
+                            問題文
+                        </th>
+                        <th>
+                            正誤
+                        </th>
+
+                    </tr>
+
+                    <template v-for="">
+
+                    </template>
+                </table>
             </div>
         </div>
     </div>
@@ -557,6 +575,7 @@
 
                             // 正解１つ
                             this.isSingleAnswer = true;
+
                         } else if(this.numberOfAnsers > 1){
 
                             // 正解複数
@@ -710,8 +729,17 @@
                 onShowResult: function() {
 
                     // 出題モード解除
+                    this.isQuestionModes = false;
 
                     // 結果出力モード オン
+                    this.isResultMode = true;
+
+                    // 選択済み配列をもとに、正答配列と比較して個別に採点、採点配列へ格納
+
+
+                    // 合計得点計算
+
+
 
                 },
             },
