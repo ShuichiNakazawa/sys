@@ -236,6 +236,12 @@
 
                 </template>
 
+                {{-- 変数チェック --}}
+                isSingleSelect: (% isSingleSelect %)
+                <br>
+
+                choices: (% choices %)
+
                 {{-- 選択肢文 --}}
                 {{-- 必須回答数によって、表示内容が異なる。radio か checkbox か --}}
                 <template v-if="isSingleSelect">
