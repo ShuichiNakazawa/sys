@@ -368,6 +368,20 @@
                         console.log('ajax成功');
 
                         this.questionInfo = data;
+
+                        arrayQustionSentences = data[0];
+
+                        // 選択肢配列
+                        arrayChoiceSentences = data[1];
+
+                        // 正答配列
+                        arrayAnswerSentences = data[2];
+
+                        // 回答履歴配列
+                        arrayCorrects = data[3];
+
+                        console.log('arrayQustionSentences[0]: ' + arrayQustionSentences[0]);
+
                     }.bind(this))
                     .fail(function(jqXHR, textStatus, errorThrown) {
                         console.log('ajax失敗');
