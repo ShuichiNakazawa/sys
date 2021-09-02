@@ -280,6 +280,7 @@
                 <template v-if="isLastQuestion">
                     <button v-on:click="showResult">結果判定</button>
                 </template>
+                <br>
 
                 選択済み配列：(% arraySelectedChoice %)
 
@@ -615,9 +616,27 @@
 
                     this.question_number++;
 
-                    // ラジオボタンのチェックを外す
-                    //$('input:[name="choice"]').attr('checked',false);
-                    $('input[name="choice"]').prop('checked',false);
+                    // 次の問題の為の処理
+                    // 答えが選択済みかどうかを判定
+                    if(arraySelectedChoice[question_number] !== null){
+
+                        var id = arraySelectedChoice[question_number];
+
+                        var selector = "input[id='" + id + "']";
+
+                        // いったんチェックを外す
+                        $('input[name="choice"]').prop('checked',false);
+
+                        // チェックを付ける処理
+                        $(selector).prop('checked', true);
+
+                    } else {
+
+                        // ラジオボタンのチェックを外す
+                        $('input[name="choice"]').prop('checked',false);
+                    }
+
+
 
                 },
 
