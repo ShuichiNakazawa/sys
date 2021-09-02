@@ -773,9 +773,12 @@
                     console.log('this.choices: ' + this.choices);
                     console.log('this.answers: ' + this.answers);
 
+
                     // 最初の問題番号判定
                     if(this.question_number != 1){
                         this.isNotFirstQuestion = true;
+                    } else {
+                        this.isNotFirstQuestion = false;
                     }
 
                     if(this.question_number == this.lastQuestionNumber){
