@@ -353,7 +353,8 @@
 
                     console.log('reqString: ' + reqString);
 
-                    var url = "http://localhost:8080/excercise_menu/" + reqString;
+                    //var url = "http://localhost:8080/excercise_menu/" + reqString;
+                    var url = "https://lara-assist.jp/excercise_menu/" + reqString;
 
                     console.log('url: ' + url);
 
