@@ -235,7 +235,7 @@
                 isSelectYearTabActive:  false,
                 isStatisticsTabActive:  false,
 
-                //
+                // 出題モードフラグ
                 isQuestionMode: false,
 
                 // ランダム出題数
@@ -257,6 +257,11 @@
 
                 // 回答履歴配列
                 arrayCorrects: [],
+
+                // 問題番号
+                question_number: 0,
+
+                // 
 
             },
 
@@ -394,6 +399,12 @@
                     //})
                     //});
 
+                    // 出題コンテンツ フラグオン
+                    isQuestionMode  true;
+
+                    this.isRandomTabActive      =   false;
+                    this.isSelectYearTabActive  =   false;
+                    this.isStatisticsTabActive  =   false;
 
                 },
             },
