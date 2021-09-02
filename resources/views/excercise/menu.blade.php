@@ -618,9 +618,9 @@
 
                     // 次の問題の為の処理
                     // 答えが選択済みかどうかを判定
-                    if(arraySelectedChoice[question_number] !== null){
+                    if(this.arraySelectedChoice[question_number] !== null){
 
-                        var id = arraySelectedChoice[question_number];
+                        var id = this.arraySelectedChoice[question_number];
 
                         var selector = "input[id='" + id + "']";
 
