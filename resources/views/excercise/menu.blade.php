@@ -96,7 +96,7 @@
             </table>
 
             <div id="">
-                <canvas id="" width="400" height="200">
+                <canvas id="" width="380" height="50">
 
                 </canvas>
             </div>
