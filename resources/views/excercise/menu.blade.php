@@ -287,6 +287,7 @@
                 <template v-if="isNotFirstQuestion">
                     <button v-on:click="onBeforeQuestion">前の問題へ</button>
                 </template>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                 {{-- 次の問題へ --}}
                 <template v-if="isNotLastQuestion">
