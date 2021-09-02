@@ -209,6 +209,9 @@
         {{-- 出題画面 --}}
         <div v-bind:class="[isQuestionMode ? 'questionModeActive' : 'inactiveDiv']" style="border: solid 5px rgb(73, 172, 157); border-radius: 10px; width: 380px; background: white;">
             <div>
+                {{-- 回答履歴を表示するエリア --}}
+            </div>
+            <div>
                 出題画面<br>
 
                 {{-- ランダム出題か年度指定かを表示 --}}
@@ -231,7 +234,10 @@
                 <template v-if="isSingleAnswer">
 
                     {{-- ラジオボタンにバインド --}}
-
+                    <template v-for="item in choices">
+                        <input type="radio" name="choice" id="choice(% item.choice_id %)">
+                        <label for="choice(% item.choice_id %)">(% item.choice_sentence %)</label>
+                    </template>
 
                 </template>
 
@@ -455,8 +461,49 @@
                         this.question_number =   this.arrayQuestionSentences[0]["question_number"];         // 問題番号
                         this.question_sentence = this.arrayQuestionSentences[0]["question_sentence"];       // 問題文
 
-                        this.required_numOfAnser = this.arrayQuestionSentences[0]["question_sentence"];     // 必須回答数
-                        this.required_numOfAnser = this.arrayQuestionSentences[0]["question_sentence"];     // 正解の数
+                        this.required_numOfAnser = this.arrayQuestionSentences[0]["required_numOfAnswers"];     // 必須回答数
+                        
+                        // 必須回答数 判定
+                        if(this.required_numOfAnser == 1){
+
+                            // 必須回答数 １
+                            this.isSingleSelect =   true;
+                            this.isMultiSelect  =   false;
+                            this.isNoSelect     =   false;
+
+                        } else if(this.required_numOfAnser > 1){
+
+                            // 必須回答数 複数
+                            this.isSingleSelect =   false;
+                            this.isMultiSelect  =   true;
+                            this.isNoSelect     =   false;
+
+                        } else if(this.required_numOfAnser == 0){
+
+                            // 必須回答　無し
+                            this.isSingleSelect =   false;
+                            this.isMultiSelect  =   false;
+                            this.isNoSelect     =   true;
+                        }
+                        
+
+                        this.numberOfAnsers = this.arrayQuestionSentences[0]["number_of_answers"];     // 正解の数
+
+                        if(this.numberOfAnsers == 1){
+
+                            // 正解１つ
+                            this.isSingleAnswer = true;
+                        } else if(this.numberOfAnsers > 1){
+
+                            // 正解複数
+                            this.isSingleAnswer = false;
+                            this.isMultiAnswer  = false;
+
+                        } else if(this.numberOfAnsers == 0){
+
+                            // 正答なし
+                            this.isNoAnswer     = true;
+                        }
 
                         this.choices = this.arrayChoiceSentences[0];                                          // 選択肢配列
                         this.answers = this.arrayAnswerSentences[0];                                          // 正答配列
