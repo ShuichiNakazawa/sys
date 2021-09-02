@@ -466,6 +466,8 @@
 
                         console.log('arrayQuestionSentences[0]["question_sentence"]: ' + this.arrayQuestionSentences[0]["question_sentence"]);
 
+                        console.log('arrayQuestionSentences[91]["choice_sentence"]: ' + this.arrayQuestionSentences[91]["choice_sentence"]);
+
                         // 問題文情報 設定
                         this.question_number =   this.arrayQuestionSentences[0]["question_number"];         // 問題番号
                         this.question_sentence = this.arrayQuestionSentences[0]["question_sentence"];       // 問題文
