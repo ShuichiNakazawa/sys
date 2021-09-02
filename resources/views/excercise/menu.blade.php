@@ -230,10 +230,11 @@
             el: '#app',
             data: {
                 // タブ有効フラグ
-                isSelectQuestionFormatActive:   true,
-                isRandomTabActive:      true,
-                isSelectYearTabActive:  false,
-                isStatisticsTabActive:  false,
+                isSelectQuestionFormatActive:   true,       // 進捗表
+
+                isRandomTabActive:      true,               // ランダム出題コンテンツ
+                isSelectYearTabActive:  false,              // 年度指定コンテンツ
+                isStatisticsTabActive:  false,              // 統計情報コンテンツ
 
                 // 出題モードフラグ
                 isQuestionMode: false,
@@ -402,9 +403,14 @@
                     // 出題コンテンツ フラグオン
                     isQuestionMode = true;
 
-                    this.isRandomTabActive      =   false;
-                    this.isSelectYearTabActive  =   false;
-                    this.isStatisticsTabActive  =   false;
+                    // 進捗表 オフ
+                    this.isSelectQuestionFormatActive = false;  
+
+                    // 進捗バー オフ
+
+                    this.isRandomTabActive      =   false;  // ランダム出題コンテンツ オフ
+                    this.isSelectYearTabActive  =   false;  // 年度指定コンテンツ オフ
+                    this.isStatisticsTabActive  =   false;  // 統計情報コンテンツ オフ
 
                 },
             },
