@@ -713,7 +713,7 @@
                         this.isNotFirstQuestion = true;
                     }
 
-                    if(this.question_number == lastQuestionNumber){
+                    if(this.question_number == this.lastQuestionNumber){
                         this.isLastQuestion = true;
                         this.isNotLastQuestion = false;
 
