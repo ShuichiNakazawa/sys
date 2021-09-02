@@ -281,6 +281,8 @@
                     <button v-on:click="showResult">結果判定</button>
                 </template>
 
+                選択済み配列：(% arraySelectedChoice %)
+
             </div>
         </div>
 
