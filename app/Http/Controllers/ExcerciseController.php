@@ -82,6 +82,7 @@ class ExcerciseController extends Controller
                     $array_choiceSentencesPerQuestion[] = $work_array;
                     $work_array = [];
                     $index_array = 0;
+                    $old_question_number = $choice->question_number;
                 }
 
                 $work_array[$index_array]['choice_id']        = $choice->choice_id;
