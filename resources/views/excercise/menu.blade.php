@@ -322,8 +322,14 @@
                 hasGrapgh: false,           // 図表フラグ
                 choices: [],                // 選択肢配列
                 answers: [],                // 正答配列
-                isSingleAnswer: false,      // 必須回答数が１
-                isMultiAnswer: false,       // 必須回答数が複数
+
+                isSingleSelect: false,      // 必須回答数が１
+                isMultiSelect:  false,      // 必須回答数が複数
+                isNoSelect:     false,      // 必須回答数が０
+
+                isSingleAnswer: false,      // 正解の数が１
+                isMultiAnswer: false,       // 正解の数が複数
+                isNoAnswer: false,          // 正解の数が０
 
 
                 // 最初の問題ではない
