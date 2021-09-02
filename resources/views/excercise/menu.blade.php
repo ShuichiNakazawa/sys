@@ -767,7 +767,7 @@
                             this.arrayQuestionSentences[index]['question_sentence'],
                             ""
                         ];
-
+                        console.log('結果の２番目：' + this.arrayQuestionSentences[index]['question_sentence']);
                     }
 
 
