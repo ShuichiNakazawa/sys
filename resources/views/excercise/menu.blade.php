@@ -436,14 +436,14 @@
                         console.log('arrayQuestionSentences[0]["question_sentence"]: ' + this.arrayQuestionSentences[0]["question_sentence"]);
 
                         // 問題文情報 設定
-                        this.question_number =   arrayQuestionSentences[0]["question_number"];         // 問題番号
-                        this.question_sentence = arrayQuestionSentences[0]["question_sentence"];       // 問題文
+                        this.question_number =   this.arrayQuestionSentences[0]["question_number"];         // 問題番号
+                        this.question_sentence = this.arrayQuestionSentences[0]["question_sentence"];       // 問題文
 
-                        this.required_numOfAnser = arrayQuestionSentences[0]["question_sentence"];     // 必須回答数
-                        this.required_numOfAnser = arrayQuestionSentences[0]["question_sentence"];     // 正解の数
+                        this.required_numOfAnser = this.arrayQuestionSentences[0]["question_sentence"];     // 必須回答数
+                        this.required_numOfAnser = this.arrayQuestionSentences[0]["question_sentence"];     // 正解の数
 
-                        this.choices = arrayChoiceSentences[0];                                          // 選択肢配列
-                        this.answers = arrayAnswerSentences[0];                                          // 正答配列
+                        this.choices = this.arrayChoiceSentences[0];                                          // 選択肢配列
+                        this.answers = this.arrayAnswerSentences[0];                                          // 正答配列
 
 
 
