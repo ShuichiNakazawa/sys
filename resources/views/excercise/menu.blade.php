@@ -750,9 +750,9 @@
                         indexPlus1 = index + 1;
 
                         arrayResult[index] = [
-                            'questionNumber'    =  indexPlus1, 
-                            'questionSentence'  =  this.arrayQuestionSentences[index]['question_sentence'],
-                            'correct'           =  ""
+                            indexPlus1, 
+                            this.arrayQuestionSentences[index]['question_sentence'],
+                            ""
                         ];
 
                     }
