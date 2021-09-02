@@ -585,7 +585,7 @@
                         // 押下されているボタンを取得
                         var selectedChoice = $('input[name="choice"]:checked').val();
 
-                        arraySelectedChoice[this.question_number] = selectedChoice;
+                        this.arraySelectedChoice[this.question_number] = selectedChoice;
 
                     } else if(this.isMultiSelect){
 
@@ -598,7 +598,7 @@
                     } else if(this.isNoSelect){
 
                         // 必須回答数が０
-                        arraySelectedChoice[question_number] = "";
+                        this.arraySelectedChoice[question_number] = "";
                     }
 
                     // 選ばれた選択肢の値を取得し、保存
