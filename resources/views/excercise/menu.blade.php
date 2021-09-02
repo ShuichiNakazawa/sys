@@ -615,6 +615,16 @@
             watch: {
                 question_number: function (new_question_number, old_question_number){
 
+                    var index = old_question_number;
+
+                    // 問題文 更新
+                    //this.question_number =   this.arrayQuestionSentences[0]["question_number"];         // 問題番号
+                    this.question_sentence = this.arrayQuestionSentences[index]["question_sentence"];       // 問題文
+                    this.required_numOfAnser = this.arrayQuestionSentences[index]["required_numOfAnswers"];     // 必須回答数
+
+                    // 選択肢文 更新
+
+                    // 正答文 更新
                 },
 
                 question_sentence: function(new_question_sentence, old_question_sentence){
