@@ -235,8 +235,8 @@
 
                     {{-- ラジオボタンにバインド --}}
                     <template v-for="item in choices">
-                        <input type="radio" name="choice" id="choice(% item.choice_id %)">
-                        <label for="choice(% item.choice_id %)">(% item.choice_sentence %)</label>
+                        <input type="radio" name="choice" :id="item.choice_id">
+                        <label :for="item.choice_id">(% item.choice_sentence %)</label>
                         <br>
                     </template>
 
