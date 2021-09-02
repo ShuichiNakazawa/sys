@@ -296,8 +296,12 @@
                 // 回答履歴配列
                 arrayCorrects: [],
 
-                // 問題番号
-                question_number: 0,
+
+                // 問題文情報                
+                question_number: 0,         // 問題番号
+                question_sentence: "",      // 問題文
+                hasGrapgh: false,           // 図表フラグ
+
 
                 // 最初の問題ではない
                 isNotFirstQuestion: false,
@@ -454,6 +458,18 @@
                     this.isRandomTabActive      =   false;  // ランダム出題コンテンツ オフ
                     this.isSelectYearTabActive  =   false;  // 年度指定コンテンツ オフ
                     this.isStatisticsTabActive  =   false;  // 統計情報コンテンツ オフ
+
+                },
+
+                onBeforeQuestion: function() {
+
+                },
+
+                onNextQuestion: function() {
+
+                },
+
+                onShowResult: function() {
 
                 },
             },
