@@ -718,7 +718,7 @@
             watch: {
                 question_number: function (new_question_number, old_question_number){
 
-                    var index = new_question_number + 1;
+                    var index = new_question_number - 1;
 
                     // 問題文 更新
                     //this.question_number =   this.arrayQuestionSentences[0]["question_number"];         // 問題番号
