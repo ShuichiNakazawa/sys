@@ -231,7 +231,7 @@
 
                 {{-- 選択肢文 --}}
                 {{-- 必須回答数によって、表示内容が異なる。radio か checkbox か --}}
-                <template v-if="isSingleAnswer">
+                <template v-if="isSingleSelect">
 
                     {{-- ラジオボタンにバインド --}}
                     <template v-for="item in choices">
@@ -242,7 +242,7 @@
 
                 </template>
 
-                <template v-if="isMultiAnswer">
+                <template v-if="isMultiSelect">
 
                     {{-- チェックボックスにバインド --}}
 
