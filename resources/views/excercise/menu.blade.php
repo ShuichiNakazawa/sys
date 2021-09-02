@@ -94,6 +94,12 @@
                     @endif
                 </tr>
             </table>
+
+            <div id="">
+                <canvas id="" width="400" height="200">
+
+                </canvas>
+            </div>
             棒グラフ表示<br>
             <br><br>
 
