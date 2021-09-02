@@ -212,7 +212,7 @@
                 {{-- ランダム出題か年度指定かを表示 --}}
 
                 {{-- 問題番号 --}}
-                (% arrayQustionSentences[question_number]['question_sentence'] %)
+                (% question_number %)
 
                 {{-- 問題文 --}}
 
