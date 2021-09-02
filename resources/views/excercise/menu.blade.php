@@ -615,6 +615,9 @@
 
                     this.question_number++;
 
+                    // ラジオボタンのチェックを外す
+                    $("input:[name=choice]").attr("checked",false);
+
                 },
 
                 onShowResult: function() {
