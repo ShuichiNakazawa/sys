@@ -227,8 +227,8 @@
                 </template>
 
                 {{-- 選択肢文 --}}
-                <template>
-
+                <template v-for="choices">
+                    
                 </template>
 
                 {{-- 前の問題へ --}}
@@ -301,6 +301,9 @@
                 question_number: 0,         // 問題番号
                 question_sentence: "",      // 問題文
                 hasGrapgh: false,           // 図表フラグ
+                choices: [],                // 選択肢配列
+                answers: [],                // 正答配列
+
 
 
                 // 最初の問題ではない
