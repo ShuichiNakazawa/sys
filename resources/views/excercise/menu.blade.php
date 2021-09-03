@@ -722,8 +722,12 @@
                         // いったんチェックを外す
                         $('input[name="choice"]').prop('checked',false);
 
+                        console.log('エラーはこの次か？');
+
                         // チェックを付ける処理
                         $(selector).prop('checked', true);
+
+                        console.log('エラーはこの前か？');
 
                     } else {
 
