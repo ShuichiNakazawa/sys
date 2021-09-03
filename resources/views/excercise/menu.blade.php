@@ -728,7 +728,7 @@
                         }
 
                         // 選択済み配列へ、選択された回答（の配列）を格納
-                        this.arraySelectedChoice[this.question_number] = selectedChoice;
+                        this.arraySelectedChoice[this.question_number] = workArray;
 
                         console.log('workArray: ' + workArray);
 
