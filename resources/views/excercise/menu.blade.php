@@ -681,8 +681,12 @@
                         // 押下されているボタンを取得
                         var selectedChoice = $('input[name="choice"]:checked').val();
 
-                        // 選択済み回答配列 値格納
-                        this.arraySelectedChoice[this.question_number] = selectedChoice;
+                        if(selectedChoice >= 0){
+                            // 選択済み回答配列 値格納
+                            this.arraySelectedChoice[this.question_number] = selectedChoice;
+                        } else {
+                            this.arraySelectedChoice[this.question_number] = "";
+                        }
 
                         console.log('前の問題へボタン 押下、選択済み配列へ格納');
                         
