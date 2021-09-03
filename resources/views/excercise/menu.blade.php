@@ -850,7 +850,7 @@
                         // 数値かどうかを判定
 
                         console.log('チェック変数："' + this.arraySelectedChoice[this.question_number]) + '"';
-                        if(!isNaN(this.arraySelectedChoice[this.question_number])) {
+                        if(isNaN(this.arraySelectedChoice[this.question_number])) {
 
                             var id = this.arraySelectedChoice[this.question_number];
 
@@ -867,6 +867,7 @@
                             // ラジオボタンのチェックを外す
                             $('input[name="choice"]').prop('checked',false);
                         }
+
                     } else if(this.isMultiSelect){
 
                     }
