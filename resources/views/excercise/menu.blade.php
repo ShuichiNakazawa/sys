@@ -312,7 +312,7 @@
                 問題番号： (% question_number %)
                 <br>
 
-                インデックス：(%  %)
+                インデックス：(% indexQuestion %)
                 <br>
 
                 選択済み配列：(% arraySelectedChoice %)
