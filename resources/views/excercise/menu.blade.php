@@ -880,12 +880,12 @@
             watch: {
                 question_number: function (new_question_number, old_question_number){
 
-                    var index = new_question_number - 1;
+                    var indexQuestionNumber = new_question_number - 1;
 
                     // 問題文 更新
                     //this.question_number =   this.arrayQuestionSentences[0]["question_number"];         // 問題番号
-                    this.question_sentence = this.arrayQuestionSentences[index]["question_sentence"];       // 問題文
-                    this.required_numOfAnser = this.arrayQuestionSentences[index]["required_numOfAnswers"];     // 必須回答数
+                    this.question_sentence = this.arrayQuestionSentences[indexQuestionNumber]["question_sentence"];       // 問題文
+                    this.required_numOfAnser = this.arrayQuestionSentences[indexQuestionNumber]["required_numOfAnswers"];     // 必須回答数
                         
                     // 必須回答数 判定
                     if(this.required_numOfAnser == 1){
@@ -910,7 +910,7 @@
                         this.isNoSelect     =   true;
                     }
                     
-                    this.numberOfAnsers = this.arrayQuestionSentences[0]["number_of_answers"];     // 正解の数
+                    this.numberOfAnsers = this.arrayQuestionSentences[indexQuestionNumber]["number_of_answers"];     // 正解の数
 
                     if(this.numberOfAnsers == 1){
 
@@ -928,11 +928,11 @@
                         this.isNoAnswer     = true;
                     }
 
-                    this.choices = this.arrayChoiceSentences[index];                                          // 選択肢配列
-                    this.answers = this.arrayAnswerSentences[index];                                          // 正答配列
+                    this.choices = this.arrayChoiceSentences[indexQuestionNumber];                                          // 選択肢配列
+                    this.answers = this.arrayAnswerSentences[indexQuestionNumber];                                          // 正答配列
 
-                    console.log('this.choices: ' + this.choices);
-                    console.log('this.answers: ' + this.answers);
+                    //console.log('this.choices: ' + this.choices);
+                    //console.log('this.answers: ' + this.answers);
 
 
                     // 最初の問題番号判定
