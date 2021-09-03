@@ -419,6 +419,8 @@
 
                 // 問題文情報                
                 question_number: 0,         // 問題番号
+                indexQuestion: 0,           // 問題インデックス
+
                 question_sentence: "",      // 問題文
                 hasGrapgh: false,           // 図表フラグ
 
@@ -711,6 +713,7 @@
                     // 選ばれた選択肢の値を取得し、保存
 
                     this.question_number--;
+                    this.indexQuestion = this.question_number - 1;
 
                     // 次の問題の為の処理
 
@@ -721,7 +724,7 @@
 
 
                     //if(this.isSingleSelect){
-                    if(this.arrayQuestionSentence[(this.question_number - 1)]['required_numOfAnswers'] == 1){
+                    if(this.arrayQuestionSentence[this.indexQuestion]['required_numOfAnswers'] == 1){
 
                         // 答えが選択済みかどうかを判定
                         if(this.arraySelectedChoice[this.question_number] !== null){
@@ -808,6 +811,7 @@
                     // 選ばれた選択肢の値を取得し、保存
 
                     this.question_number++;
+                    this.indexQuestion = this.question_number - 1;
 
                     // 表示させる問題の必須回答数によって、処理を変える必要がある
                     
@@ -817,7 +821,7 @@
                     // isSingleSelect の値の変更が間に合ったいないので、下の条件式は変更が必要
                     // arrayQuestionSentence[(question_number - 1)]['required_numOfAnswers'] == 1
                     //if(this.isSingleSelect){
-                    if(this.arrayQuestionSentence[(this.question_number - 1)]['required_numOfAnswers'] == 1){
+                    if(this.arrayQuestionSentence[this.indexQuestion]['required_numOfAnswers'] == 1){
 
                         // 答えが選択済みかどうかを判定
                         if(this.arraySelectedChoice[this.question_number] !== null){
