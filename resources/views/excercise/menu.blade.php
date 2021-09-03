@@ -1020,6 +1020,10 @@
                     console.log('watchで値設定');
                     console.log('selectedAnswer: ' + selectedAnswer);
 
+                    // 
+                    var selector = "#" + selectedAnswer;
+                    $(selector).prop("checked", true);
+
                 }
             },
 
