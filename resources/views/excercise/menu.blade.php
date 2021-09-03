@@ -733,7 +733,8 @@
                     if(this.arrayQuestionSentences[this.indexQuestion]['required_numOfAnswers'] == 1){
 
                         // 答えが選択済みかどうかを判定
-                        if(this.arraySelectedChoice[this.question_number] !== null){
+                        if(this.arraySelectedChoice[this.question_number] !== null
+                        || this.arraySelectedChoice[this.question_number] !== "" ){
 
                             var id = this.arraySelectedChoice[this.question_number];
 
