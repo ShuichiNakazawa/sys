@@ -740,6 +740,8 @@
                     //if(this.isSingleSelect){
                     if(this.arrayQuestionSentences[this.indexQuestion]['required_numOfAnswers'] == 1){
 
+                        console.log('必須回答数が１判定');
+
                         // 答えが選択済みかどうかを判定
                         if(this.arraySelectedChoice[this.question_number] !== null
                         && this.arraySelectedChoice[this.question_number] !== "" ){
@@ -747,6 +749,8 @@
                             var id = this.arraySelectedChoice[this.question_number];
 
                             var selector = "#" + id;
+
+                            console.log('セレクタ：' + selector);
 
                             // いったんチェックを外す
                             $('input[name="choice"]').prop('checked',false);
