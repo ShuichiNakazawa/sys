@@ -582,6 +582,11 @@
 
                         console.log('最終問題番号： ' + this.lastQuestionNumber);
 
+                        // 選択済み回答配列 初期化
+                        for(var i=0; i<this.lastQuestionNumber; i++){
+                            this.lastQuestionNumber[i] = "";
+                        }
+
                         // 問題文情報 設定
                         this.question_number =   this.arrayQuestionSentences[0]["question_number"];         // 問題番号
                         this.question_sentence = this.arrayQuestionSentences[0]["question_sentence"];       // 問題文
@@ -635,6 +640,7 @@
                         this.answers = this.arrayAnswerSentences[0];                                          // 正答配列
 
                         this.question_number = 1;
+                        this.indexQuestion = 0;
 
                     }.bind(this))
                     .fail(function(jqXHR, textStatus, errorThrown) {
