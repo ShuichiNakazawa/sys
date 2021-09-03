@@ -712,29 +712,38 @@
 
                     console.log('選択済み配列の中の値：' + this.arraySelectedChoice[this.question_number]);
 
-                    // 答えが選択済みかどうかを判定
-                    if(this.arraySelectedChoice[this.question_number] !== null
-                    && this.arraySelectedChoice[this.question_number] !== []){
+                    if(this.isSingleSelect){
 
-                        var id = this.arraySelectedChoice[this.question_number];
+                        // 答えが選択済みかどうかを判定
+                        if(this.arraySelectedChoice[this.question_number] !== null){
 
-                        var selector = "#" + id;
+                            var id = this.arraySelectedChoice[this.question_number];
 
-                        // いったんチェックを外す
-                        $('input[name="choice"]').prop('checked',false);
+                            var selector = "#" + id;
 
-                        console.log('エラーはこの次か？');
+                            // いったんチェックを外す
+                            $('input[name="choice"]').prop('checked',false);
 
-                        // チェックを付ける処理
-                        $(selector).prop('checked', true);
+                            console.log('エラーはこの次か？');
 
-                        console.log('エラーはこの前か？');
+                            // チェックを付ける処理
+                            $(selector).prop('checked', true);
 
-                    } else {
+                            console.log('エラーはこの前か？');
 
-                        // ラジオボタンのチェックを外す
-                        $('input[name="choice"]').prop('checked',false);
-                    }
+                        } else {
+
+                            // ラジオボタンのチェックを外す
+                            $('input[name="choice"]').prop('checked',false);
+                        }
+
+                    } else if(isMultiSelect){
+
+                            
+
+                        }
+
+
 
 
                 },
@@ -796,24 +805,31 @@
                     //
 
                     // 次の問題の為の処理
-                    // 答えが選択済みかどうかを判定
-                    if(this.arraySelectedChoice[this.question_number] !== null){
 
-                        var id = this.arraySelectedChoice[this.question_number];
+                    if(isSingleSelect){
 
-                        var selector = "#" + id;
+                        // 答えが選択済みかどうかを判定
+                        if(this.arraySelectedChoice[this.question_number] !== null){
 
-                        // いったんチェックを外す
-                        $('input[name="choice"]').prop('checked',false);
+                            var id = this.arraySelectedChoice[this.question_number];
 
-                        // チェックを付ける処理
-                        $(selector).prop('checked', true);
+                            var selector = "#" + id;
 
-                    } else {
+                            // いったんチェックを外す
+                            $('input[name="choice"]').prop('checked',false);
 
-                        // ラジオボタンのチェックを外す
-                        $('input[name="choice"]').prop('checked',false);
+                            // チェックを付ける処理
+                            $(selector).prop('checked', true);
+
+                        } else {
+
+                            // ラジオボタンのチェックを外す
+                            $('input[name="choice"]').prop('checked',false);
+                        }
+                    } else if(isMultiSelect){
+
                     }
+
 
 
 
