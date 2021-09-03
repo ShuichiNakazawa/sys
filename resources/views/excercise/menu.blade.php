@@ -953,6 +953,7 @@
                         this.isNoSelect     =   false;
 
                         $('input[name="choice"]').val([selectedAnswer]);
+                        console.log('watchで値設定');
 
                     } else if(this.required_numOfAnser > 1){
 
