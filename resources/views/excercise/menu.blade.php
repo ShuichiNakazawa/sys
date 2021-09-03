@@ -859,12 +859,12 @@
                         // 数値かどうかを判定
 
                         console.log('チェック変数："' + this.arraySelectedChoice[this.question_number]) + '"';
-                        if(isNaN(this.arraySelectedChoice[this.question_number])) {
+
+                        if(this.arraySelectedChoice[this.question_number] >= 0) {
 
                             var id = this.arraySelectedChoice[this.question_number];
 
                             //var selector = "#" + id;
-
                             // いったんチェックを外す
                             $('input[name="choice"]').prop('checked',false);
 
