@@ -310,9 +310,10 @@
 
                 {{-- テスト用表示項目 --}}
                 問題番号： (% question_number %)
+                <br>
 
                 インデックス：(%  %)
-
+                <br>
 
                 選択済み配列：(% arraySelectedChoice %)
                 <br>
