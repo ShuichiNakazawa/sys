@@ -252,7 +252,7 @@
                     <template v-for="item in choices">
                         <div style="display: flex; align-items: center;">
                             <div style="align-items: center; width: 45px;">
-                                <input type="radio" name="choice" :id="item.choice_id" style="display: none;" :value="item.choice_id">
+                                <input type="radio" name="choice" :id="item.choice_id" style="display: none;" v-model="radioAnswer"  :value="item.choice_id">
                                 <label class="btn-choice" :for="item.choice_id">(% arrayChoiceCharacter[item.choice_id] %)</label>
                             </div>
                             <div style="margin-left: 10px;">
@@ -270,7 +270,7 @@
                     <template v-for="item in choices">
                         <div style="display: flex; align-items: center;">
                             <div style="align-items: center; width: 45px;">
-                                <input type="checkbox" name="choice" :id="item.choice_id" style="display: none;" :value="item.choice_id">
+                                <input type="checkbox" name="choice" :id="item.choice_id" style="display: none;" v-model="checkboxAnswer" :value="item.choice_id">
                                 <label class="btn-choice" :for="item.choice_id">(% arrayChoiceCharacter[item.choice_id] %)</label>
                             </div>
                             <div style="margin-left: 10px;">
@@ -453,6 +453,12 @@
                 arrayChoiceCharacter: ['ア', 'イ', 'ウ', 'エ', 'オ', 'カ', 'キ', 'ク', 'ケ', 'コ'],
 
                 selectedAnswer: 0,
+
+                // ラジオボタン 選択
+                radioAnswer: "",
+
+                // チェックボックス 選択
+                checkboxAnswer: "",
 
                 // 選択済み回答配列
                 arraySelectedChoice: [],
