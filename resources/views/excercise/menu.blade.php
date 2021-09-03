@@ -710,6 +710,8 @@
 
                     // 必須回答数による処理分けが必要なのでは？
 
+                    console.log('選択済み配列の中の値：' + this.arraySelectedChoice[this.question_number]);
+
                     // 答えが選択済みかどうかを判定
                     if(this.arraySelectedChoice[this.question_number] !== null){
 
