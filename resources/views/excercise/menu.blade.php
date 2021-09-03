@@ -737,11 +737,11 @@
                             $('input[name="choice"]').prop('checked',false);
                         }
 
-                    } else if(isMultiSelect){
+                    } else if(this.isMultiSelect){
 
                             
 
-                        }
+                    }
 
 
 
@@ -806,7 +806,7 @@
 
                     // 次の問題の為の処理
 
-                    if(isSingleSelect){
+                    if(this.isSingleSelect){
 
                         // 答えが選択済みかどうかを判定
                         if(this.arraySelectedChoice[this.question_number] !== null){
@@ -826,7 +826,7 @@
                             // ラジオボタンのチェックを外す
                             $('input[name="choice"]').prop('checked',false);
                         }
-                    } else if(isMultiSelect){
+                    } else if(this.isMultiSelect){
 
                     }
 
