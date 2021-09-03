@@ -308,7 +308,18 @@
                 </div>
                 <br>
 
+                {{-- テスト用表示項目 --}}
                 選択済み配列：(% arraySelectedChoice %)
+                <br>
+
+                isSingleSelect: (% isSingleSelect &)
+                <br>
+
+                isMultiSelect: (% isMultiSelect %)
+                <br>
+
+                isNoSelect: (% isNoSelect %)
+                <br>
 
             </div>
         </div>
@@ -746,13 +757,20 @@
 
                     this.question_number++;
 
+                    // 表示させる問題の必須回答数によって、処理を変える必要がある
+                    
+                    //
+                    if(){
+
+                    }
+
                     // 次の問題の為の処理
                     // 答えが選択済みかどうかを判定
                     if(this.arraySelectedChoice[this.question_number] !== null){
 
                         var id = this.arraySelectedChoice[this.question_number];
 
-                        var selector = "input[id='" + id + "']";
+                        var selector = "#" + id;
 
                         // いったんチェックを外す
                         $('input[name="choice"]').prop('checked',false);
