@@ -452,6 +452,8 @@
                 // 選択肢の文字列
                 arrayChoiceCharacter: ['ア', 'イ', 'ウ', 'エ', 'オ', 'カ', 'キ', 'ク', 'ケ', 'コ'],
 
+                selectedAnswer: 0,
+
                 // 選択済み回答配列
                 arraySelectedChoice: [],
 
@@ -768,6 +770,7 @@
                             //$(selector).prop('checked', true);
 
                             //console.log('エラーはこの前か？');
+                            console.log('チェックを付ける処理の直後（BEFORE）');
 
                         } else {
 
@@ -875,6 +878,8 @@
                             $('input[name="choice"]').val([id]);
                             //$(selector).prop('checked', true);
 
+                            console.log('チェックを付ける処理の直後（NEXT）');
+
                         } else {
 
                             // ラジオボタンのチェックを外す
@@ -941,6 +946,10 @@
                     this.question_sentence      = this.arrayQuestionSentences[indexQuestionNumber]["question_sentence"];           // 問題文
                     this.required_numOfAnser    = this.arrayQuestionSentences[indexQuestionNumber]["required_numOfAnswers"];       // 必須回答数
 
+                    this.selectedAnswer         =   this.arraySelectedChoice[new_question_number];
+
+
+
                     // 必須回答数 判定
                     if(this.required_numOfAnser == 1){
 
@@ -948,7 +957,6 @@
                         this.isSingleSelect =   true;
                         this.isMultiSelect  =   false;
                         this.isNoSelect     =   false;
-
 
                     } else if(this.required_numOfAnser > 1){
 
