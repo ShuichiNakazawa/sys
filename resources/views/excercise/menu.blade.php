@@ -743,12 +743,12 @@
                         console.log('必須回答数が１判定');
 
                         // 答えが選択済みかどうかを判定
-                        if(this.arraySelectedChoice[this.question_number] !== null
-                        && this.arraySelectedChoice[this.question_number] !== "" ){
+                        if( this.arraySelectedChoice[this.question_number] !== null
+                        &&  this.arraySelectedChoice[this.question_number] !== "" ){
 
                             var id = this.arraySelectedChoice[this.question_number];
 
-                            var selector = "#" + id;
+                            var selector = "'#" + id + "'";
 
                             console.log('セレクタ：' + selector);
 
