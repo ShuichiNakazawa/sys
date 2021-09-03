@@ -934,12 +934,16 @@
                 question_number: function (new_question_number, old_question_number){
 
                     var indexQuestionNumber = new_question_number - 1;
+                    var selectedAnswer;
 
                     // 問題文 更新
-                    //this.question_number =   this.arrayQuestionSentences[0]["question_number"];         // 問題番号
-                    this.question_sentence = this.arrayQuestionSentences[indexQuestionNumber]["question_sentence"];       // 問題文
-                    this.required_numOfAnser = this.arrayQuestionSentences[indexQuestionNumber]["required_numOfAnswers"];     // 必須回答数
-                        
+                    //this.question_number =   this.arrayQuestionSentences[0]["question_number"];                               // 問題番号
+                    this.question_sentence      = this.arrayQuestionSentences[indexQuestionNumber]["question_sentence"];           // 問題文
+                    this.required_numOfAnser    = this.arrayQuestionSentences[indexQuestionNumber]["required_numOfAnswers"];       // 必須回答数
+
+                    // 選択済み回答 取得
+                    selectedAnswer = this.arraySelectedChoice[this.question_number];
+
                     // 必須回答数 判定
                     if(this.required_numOfAnser == 1){
 
@@ -947,6 +951,8 @@
                         this.isSingleSelect =   true;
                         this.isMultiSelect  =   false;
                         this.isNoSelect     =   false;
+
+                        $('input[name="choice"]').val([selectedAnswer]);
 
                     } else if(this.required_numOfAnser > 1){
 
@@ -1004,6 +1010,8 @@
                         this.isLastQuestion    = false;
                         this.isNotLastQuestion = true;
                     }
+
+                    // 
 
                 },
 
