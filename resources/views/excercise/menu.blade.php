@@ -762,7 +762,7 @@
                             console.log('エラーはこの次か？');
 
                             // チェックを付ける処理
-                            $('input[name="choice"]').val(id);
+                            $('input[name="choice"]').val([id]);
                             //$(selector).prop('checked', true);
 
                             console.log('エラーはこの前か？');
