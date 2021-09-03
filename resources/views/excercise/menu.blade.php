@@ -709,9 +709,24 @@
                     } else if(this.isMultiSelect){
 
                         // 必須回答数が複数
-                        var selectedChoice = $('input[name="choice"]:checked').val();
 
-                        console.log('selectedChoice: ' + selectedChoice);
+                        var workArray = [];
+                        // チェックされているIDで判定か？
+                        for(var i=0; i<10; i++){
+                            var selector = "#" + i;
+
+                            if($(i).prop("checked") == true){
+
+                                // チェック判定。選択済み配列
+                                workArray[] = i;
+                            }
+                            
+                        }
+
+                        // 選択済み配列へ、選択された回答（の配列）を格納
+                        this.arraySelectedChoice[this.question_number] = selectedChoice;
+
+                        console.log('workArray: ' + workArray);
 
 
                     } else if(this.isNoSelect){
