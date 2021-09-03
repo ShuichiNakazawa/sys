@@ -1029,9 +1029,10 @@
                     console.log('selectedAnswer: ' + selectedAnswer);
 
                     // 
+                    /*
                     var selector = "#" + selectedAnswer;
                     $(selector).prop("checked", true);
-
+                    */
                 }
             },
 
