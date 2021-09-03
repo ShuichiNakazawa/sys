@@ -312,7 +312,7 @@
                 選択済み配列：(% arraySelectedChoice %)
                 <br>
 
-                isSingleSelect: (% isSingleSelect &)
+                isSingleSelect: (% isSingleSelect %)
                 <br>
 
                 isMultiSelect: (% isMultiSelect %)
