@@ -721,7 +721,7 @@
 
 
                     //if(this.isSingleSelect){
-                    if(this.arrayQuestionSentence[(question_number - 1)]['required_numOfAnswers'] == 1){
+                    if(this.arrayQuestionSentence[(this.question_number - 1)]['required_numOfAnswers'] == 1){
 
                         // 答えが選択済みかどうかを判定
                         if(this.arraySelectedChoice[this.question_number] !== null){
@@ -817,7 +817,7 @@
                     // isSingleSelect の値の変更が間に合ったいないので、下の条件式は変更が必要
                     // arrayQuestionSentence[(question_number - 1)]['required_numOfAnswers'] == 1
                     //if(this.isSingleSelect){
-                    if(this.arrayQuestionSentence[(question_number - 1)]['required_numOfAnswers'] == 1){
+                    if(this.arrayQuestionSentence[(this.question_number - 1)]['required_numOfAnswers'] == 1){
 
                         // 答えが選択済みかどうかを判定
                         if(this.arraySelectedChoice[this.question_number] !== null){
