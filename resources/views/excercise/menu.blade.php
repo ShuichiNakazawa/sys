@@ -678,7 +678,8 @@
                         // 押下されているボタンを取得
                         var selectedChoice = $('input[name="choice"]:checked').val();
 
-                        this.arraySelectedChoice[this.indexQuestion] = selectedChoice;
+                        // 選択済み回答配列 値格納
+                        this.arraySelectedChoice[this.questionNumber] = selectedChoice;
 
                     } else if(this.isMultiSelect){
 
