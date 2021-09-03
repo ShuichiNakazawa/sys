@@ -679,9 +679,10 @@
                         var selectedChoice = $('input[name="choice"]:checked').val();
 
                         // 選択済み回答配列 値格納
-                        this.arraySelectedChoice[this.questionNumber] = selectedChoice;
+                        this.arraySelectedChoice[this.question_number] = selectedChoice;
 
                         console.log('前の問題へボタン 押下、選択済み配列へ格納');
+                        
 
                     } else if(this.isMultiSelect){
 
