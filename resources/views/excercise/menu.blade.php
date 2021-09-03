@@ -711,6 +711,7 @@
                         // 必須回答数が複数
 
                         var workArray = [];
+                        var indexArray = 0;
                         // チェックされているIDで判定か？
                         for(var i=0; i<10; i++){
                             var selector = "#" + i;
@@ -718,7 +719,8 @@
                             if($(i).prop("checked") == true){
 
                                 // チェック判定。選択済み配列
-                                workArray[] = i;
+                                workArray[indexArray] = i;
+                                indexArray++;
                             }
                             
                         }
