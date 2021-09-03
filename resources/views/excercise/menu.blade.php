@@ -745,11 +745,14 @@
                     if(this.arrayQuestionSentences[this.indexQuestion]['required_numOfAnswers'] == 1){
 
                         console.log('必須回答数が１判定');
+                        console.log('問題番号：' + this.question_number);
 
                         // 答えが選択済みかどうかを判定
+                        if( this.arraySelectedChoice[this.question_number] >= 0) {
+                        /*
                         if( this.arraySelectedChoice[this.question_number] !== null
                         &&  this.arraySelectedChoice[this.question_number] !== "" ){
-
+                        */
                             var id = this.arraySelectedChoice[this.question_number];
 
                             //var selector = "#" + id;
