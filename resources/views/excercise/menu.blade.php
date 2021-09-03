@@ -719,7 +719,7 @@
 
                             console.log('selector: ' + selector);
 
-                            if($(i).prop("checked") == true){
+                            if($(selector).prop("checked") == true){
 
                                 // チェック判定。選択済み配列
                                 workArray[indexArray] = i;
