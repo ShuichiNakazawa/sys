@@ -849,7 +849,7 @@
                             */
                         // 数値かどうかを判定
 
-                        console.log('チェック変数：' + this.arraySelectedChoice[this.question_number]);
+                        console.log('チェック変数："' + this.arraySelectedChoice[this.question_number]) + '"';
                         if(!isNaN(this.arraySelectedChoice[this.question_number])) {
 
                             var id = this.arraySelectedChoice[this.question_number];
