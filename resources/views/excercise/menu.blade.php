@@ -681,6 +681,8 @@
                         // 選択済み回答配列 値格納
                         this.arraySelectedChoice[this.questionNumber] = selectedChoice;
 
+                        console.log('前の問題へボタン 押下、選択済み配列へ格納');
+
                     } else if(this.isMultiSelect){
 
                         // 必須回答数が複数
