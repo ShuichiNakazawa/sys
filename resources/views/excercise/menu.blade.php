@@ -716,6 +716,8 @@
                         for(var i=0; i<10; i++){
                             var selector = "#" + i;
 
+                            console.log('selector: ' + selector);
+
                             if($(i).prop("checked") == true){
 
                                 // チェック判定。選択済み配列
