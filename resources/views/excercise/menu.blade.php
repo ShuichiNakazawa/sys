@@ -864,13 +864,14 @@
 
                             var id = this.arraySelectedChoice[this.question_number];
 
-                            var selector = "#" + id;
+                            //var selector = "#" + id;
 
                             // いったんチェックを外す
                             $('input[name="choice"]').prop('checked',false);
 
                             // チェックを付ける処理
-                            $(selector).prop('checked', true);
+                            $('input[name="choice"]').val([id]);
+                            //$(selector).prop('checked', true);
 
                         } else {
 
