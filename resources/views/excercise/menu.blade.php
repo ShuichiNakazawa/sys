@@ -309,6 +309,11 @@
                 <br>
 
                 {{-- テスト用表示項目 --}}
+                問題番号： (% question_number %)
+
+                インデックス：(%  %)
+
+
                 選択済み配列：(% arraySelectedChoice %)
                 <br>
 
