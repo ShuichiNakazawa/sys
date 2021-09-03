@@ -720,7 +720,8 @@
                     console.log('isSingleSelect: ' + this.isSingleSelect);
 
 
-                    if(this.isSingleSelect){
+                    //if(this.isSingleSelect){
+                    if(arrayQuestionSentence[(question_number - 1)]['required_numOfAnswers'] == 1){
 
                         // 答えが選択済みかどうかを判定
                         if(this.arraySelectedChoice[this.question_number] !== null){
@@ -813,8 +814,10 @@
                     //
 
                     // 次の問題の為の処理
-
-                    if(this.isSingleSelect){
+                    // isSingleSelect の値の変更が間に合ったいないので、下の条件式は変更が必要
+                    // arrayQuestionSentence[(question_number - 1)]['required_numOfAnswers'] == 1
+                    //if(this.isSingleSelect){
+                    if(arrayQuestionSentence[(question_number - 1)]['required_numOfAnswers'] == 1){
 
                         // 答えが選択済みかどうかを判定
                         if(this.arraySelectedChoice[this.question_number] !== null){
