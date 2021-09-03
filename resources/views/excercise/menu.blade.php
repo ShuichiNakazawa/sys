@@ -583,8 +583,8 @@
                         console.log('最終問題番号： ' + this.lastQuestionNumber);
 
                         // 選択済み回答配列 初期化
-                        for(var i=0; i<this.lastQuestionNumber; i++){
-                            this.lastQuestionNumber[i] = "";
+                        for(var i=0; i < this.lastQuestionNumber; i++){
+                            this.arraySelectedChoice[i] = "";
                         }
 
                         // 問題文情報 設定
