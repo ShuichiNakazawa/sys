@@ -941,9 +941,6 @@
                     this.question_sentence      = this.arrayQuestionSentences[indexQuestionNumber]["question_sentence"];           // 問題文
                     this.required_numOfAnser    = this.arrayQuestionSentences[indexQuestionNumber]["required_numOfAnswers"];       // 必須回答数
 
-                    // 選択済み回答 取得
-                    selectedAnswer = this.arraySelectedChoice[this.question_number];
-
                     // 必須回答数 判定
                     if(this.required_numOfAnser == 1){
 
@@ -952,8 +949,6 @@
                         this.isMultiSelect  =   false;
                         this.isNoSelect     =   false;
 
-                        $('input[name="choice"]').val([selectedAnswer]);
-                        console.log('watchで値設定');
 
                     } else if(this.required_numOfAnser > 1){
 
@@ -1017,6 +1012,12 @@
                 },
 
                 question_sentence: function(new_question_sentence, old_question_sentence){
+
+                    // 選択済み回答 取得
+                    selectedAnswer = this.arraySelectedChoice[this.question_number];
+
+                    $('input[name="choice"]').val([selectedAnswer]);
+                    console.log('watchで値設定');
 
                 }
             },
