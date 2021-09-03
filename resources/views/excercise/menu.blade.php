@@ -711,6 +711,8 @@
                     // 必須回答数による処理分けが必要なのでは？
 
                     console.log('選択済み配列の中の値：' + this.arraySelectedChoice[this.question_number]);
+                    console.log('isSingleSelect: ' + this.isSingleSelect);
+
 
                     if(this.isSingleSelect){
 
