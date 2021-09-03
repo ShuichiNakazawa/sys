@@ -1018,6 +1018,7 @@
 
                     $('input[name="choice"]').val([selectedAnswer]);
                     console.log('watchで値設定');
+                    console.log('selectedAnswer: ' + selectedAnswer);
 
                 }
             },
