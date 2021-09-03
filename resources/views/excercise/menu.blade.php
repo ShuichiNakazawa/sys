@@ -756,7 +756,7 @@
                             var id = this.arraySelectedChoice[this.question_number];
 
                             //var selector = "#" + id;
-                            //console.log('セレクタ：' + selector);
+                            console.log('ID:' + id);
 
                             // いったんチェックを外す
                             $('input[name="choice"]').prop('checked',false);
