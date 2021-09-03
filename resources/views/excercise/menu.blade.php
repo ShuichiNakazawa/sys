@@ -669,9 +669,31 @@
                     } else if(this.isMultiSelect){
 
                         // 必須回答数が複数
-                        var selectedChoice = $('input[name="choice"]:checked').val();
 
-                        console.log('selectedChoice: ' + selectedChoice);
+                        var workArray = [];
+                        var indexArray = 0;
+
+                        // チェックされているIDで判定か？
+                        for(var i=0; i<10; i++){
+                            var selector = "#" + i;
+
+                            console.log('selector: ' + selector);
+
+                            if($(selector).prop("checked") == true){
+
+                                // チェック判定。選択済み配列
+                                workArray[indexArray] = i;
+                                indexArray++;
+
+                                console.log('チェックされてる判定');
+                            }
+                            
+                        }
+
+                        // 選択済み配列へ、選択された回答（の配列）を格納
+                        this.arraySelectedChoice[this.question_number] = workArray;
+
+                        console.log('workArray: ' + workArray);
 
 
                     } else if(this.isNoSelect){
@@ -685,12 +707,15 @@
                     this.question_number--;
 
                     // 次の問題の為の処理
+
+                    // 必須回答数による処理分けが必要なのでは？
+
                     // 答えが選択済みかどうかを判定
                     if(this.arraySelectedChoice[this.question_number] !== null){
 
                         var id = this.arraySelectedChoice[this.question_number];
 
-                        var selector = "input[id='" + id + "']";
+                        var selector = "#" + id;
 
                         // いったんチェックを外す
                         $('input[name="choice"]').prop('checked',false);
@@ -700,8 +725,8 @@
 
                     } else {
 
-                    // ラジオボタンのチェックを外す
-                    $('input[name="choice"]').prop('checked',false);
+                        // ラジオボタンのチェックを外す
+                        $('input[name="choice"]').prop('checked',false);
                     }
 
 
