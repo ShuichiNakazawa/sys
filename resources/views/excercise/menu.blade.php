@@ -672,7 +672,10 @@
 
 
                     // 必須回答数が０，１，２で処理分岐
-                    if(this.isSingleSelect){
+
+                    if(this.arrayQuestionSentences[this.indexQuestion]['required_numOfAnswers'] == 1){
+
+                    //if(this.isSingleSelect){
 
                         // 必須回答数が１
                         // 押下されているボタンを取得
@@ -731,6 +734,7 @@
 
                     console.log('選択済み配列の中の値：' + this.arraySelectedChoice[this.question_number]);
                     console.log('isSingleSelect: ' + this.isSingleSelect);
+
 
 
                     //if(this.isSingleSelect){
