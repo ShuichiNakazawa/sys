@@ -789,7 +789,12 @@
                         // 押下されているボタンを取得
                         var selectedChoice = $('input[name="choice"]:checked').val();
 
-                        this.arraySelectedChoice[this.question_number] = selectedChoice;
+                        if(selectedChoice >= 0){
+                            this.arraySelectedChoice[this.question_number] = selectedChoice;
+                        } else {
+                            this.arraySelectedChoice[this.question_number] = "";
+                        }
+
 
                     } else if(this.isMultiSelect){
 
