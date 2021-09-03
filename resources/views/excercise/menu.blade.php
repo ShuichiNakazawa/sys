@@ -748,7 +748,7 @@
 
                             var id = this.arraySelectedChoice[this.question_number];
 
-                            var selector = "'#" + id + "'";
+                            var selector = "#" + id;
 
                             console.log('セレクタ：' + selector);
 
