@@ -752,20 +752,19 @@
 
                             var id = this.arraySelectedChoice[this.question_number];
 
-                            var selector = "#" + id;
-
-                            console.log('セレクタ：' + selector);
+                            //var selector = "#" + id;
+                            //console.log('セレクタ：' + selector);
 
                             // いったんチェックを外す
                             $('input[name="choice"]').prop('checked',false);
 
-                            console.log('エラーはこの次か？');
+                            //console.log('エラーはこの次か？');
 
                             // チェックを付ける処理
                             $('input[name="choice"]').val([id]);
                             //$(selector).prop('checked', true);
 
-                            console.log('エラーはこの前か？');
+                            //console.log('エラーはこの前か？');
 
                         } else {
 
