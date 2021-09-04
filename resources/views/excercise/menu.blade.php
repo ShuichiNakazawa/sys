@@ -718,6 +718,9 @@
                     this.question_number--;
                     this.indexQuestion = this.question_number - 1;
 
+                    this.radioAnswer = "";
+                    this.checkboxAnswer = [];
+
                     // 次の問題の為の処理
 
                     // 必須回答数 判定
@@ -751,8 +754,6 @@
                             this.checkboxAnswer = [];
                         }
 
-                        // チェックボックスのモデルへ、選択済み回答の値を格納
-                        //this.checkboxAnswer = this.arraySelectedChoice[this.question_number];
                     }
                 },
 
@@ -788,14 +789,12 @@
                     this.question_number++;
                     this.indexQuestion = this.question_number - 1;
 
+                    this.radioAnswer = "";
+                    this.checkboxAnswer = [];
+
                     // 表示させる問題の必須回答数によって、処理を変える必要がある
                     
-                    //
-
                     // 次の問題の為の処理
-                    // isSingleSelect の値の変更が間に合ったいないので、下の条件式は変更が必要
-                    // arrayQuestionSentence[(question_number - 1)]['required_numOfAnswers'] == 1
-                    //if(this.isSingleSelect){
                     if(this.arrayQuestionSentences[this.indexQuestion]['required_numOfAnswers'] == 1){
 
                         // 答えが選択済みかどうかを判定
