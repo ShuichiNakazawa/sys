@@ -902,28 +902,23 @@
 
                         seikai = this.arrayAnswerSentences[indexQ];
 
-
+                        // 連想配列を取得しているだけで、すぐ利用できる形式になっていない
+                        console.log('seikaiの要素数：' + seikai.length);
 
                         console.log('問題番号：' + indexQPlus1 + ", 正解： " + seikai);
 
                         //seikai['answer_id']
                         //seikai['answer_sentence']
 
-                        console.log("seikai['answer_id']: " + seikai['answer_id']);
-                        console.log("seikai['answer_sentence']: " + seikai['answer_sentence']);
-
                         console.log("seikai[0]['answer_id']: " + seikai[0]['answer_id']);
                         console.log("seikai[0]['answer_sentence']: " + seikai[0]['answer_sentence']);
-
+/*
                         console.log("seikai[1]['answer_id']: " + seikai[1]['answer_id']);
                         console.log("seikai[1]['answer_sentence']: " + seikai[1]['answer_sentence']);
 
                         console.log("seikai[2]['answer_id']: " + seikai[2]['answer_id']);
                         console.log("seikai[2]['answer_sentence']: " + seikai[2]['answer_sentence']);
-
-
-
-
+*/
 
                         // 必須回答数 取得
                         hissu = this.arrayQuestionSentences[indexQ]["required_numOfAnswers"];
@@ -954,7 +949,7 @@
 
                             } else if(seikaisu == 1) {
 
-                                if(checkAnswer == seikai){
+                                if(checkAnswer == seikai[0]['answer_sentence']){
 
                                     // 得点加算
                                     seikai++;
