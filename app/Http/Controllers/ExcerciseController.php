@@ -106,6 +106,33 @@ class ExcerciseController extends Controller
                                                     ->orderby('answer_id', 'ASC')
                                                     ->get();
 
+
+            $old_question_number = 1;
+            $array_answerSentencesPerQuestion = [];
+            $index_array = 0;
+
+            // 問題番号ごとに格納し直す
+            foreach($answerSentences as $answer){
+
+                if($old_question_number != $answer->question_number){
+                    $array_answerSentencesPerQuestion[] = $work_array;
+                    $work_array = [];
+                    $index_array = 0;
+
+                    $old_question_number = $answer->question_number;
+                }
+
+                $work_array[$index_array]['answer_id']        = $answer->answer_id;
+                $work_array[$index_array]['answer_sentence']  = $answer->answer_sentence;
+
+                $index_array++;
+
+                // 問題番号が変わるまで、１つの配列へ選択肢文を追加していく
+
+            }
+
+            $array_answerSentencesPerQuestion[] = $work_array;
+
             // ログイン判定
             if(Auth::user() !== null){
                 // 回答履歴取得
@@ -118,7 +145,8 @@ class ExcerciseController extends Controller
             $retVal = [
                 $questionSentences,
                 $array_choiceSentencesPerQuestion,
-                $answerSentences,
+                $array_answerSentencesPerQuestion,
+                //$answerSentences,
                 $corrects
             ];
 

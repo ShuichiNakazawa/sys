@@ -1021,6 +1021,7 @@
 
                                     // 今回正誤配列 格納
                                     this.arrayNowCorrects[indexQ] = "〇";
+
                                 } else {
                                     // 今回正誤配列 格納
                                     this.arrayNowCorrects[indexQ] = "×";
