@@ -911,7 +911,7 @@
                             var work_array = [];
 
                             for(var i = 0; i < seikai.length; i++){
-                                work_array[i] = seikai[i].['answer_sentence'];
+                                work_array[i] = seikai[i]['answer_sentence'];
                             }
 
                             seikai  = work_array;
