@@ -340,7 +340,7 @@
                     得点：(% score_string %)
                 </div>
                 <br><br>
-                
+
                 <table>
                     <tr>
                         <th>
@@ -1104,7 +1104,7 @@
                     score;
                     bunbo;
                     */
-                    var score_percent = Math.round(score / bunbo * 100 * (Math.pow( 10, 1 )  / Math.pow( 10, 1 ) ) );
+                    var score_percent = Math.round(score / bunbo * 100 * (Math.pow( 10, 2 )  / Math.pow( 10, 2 ) ) );
 
                     this.score_string = score_percent + "％" + "(" + score + "/" + bunbo + ")";
 
