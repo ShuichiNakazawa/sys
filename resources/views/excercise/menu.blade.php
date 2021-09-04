@@ -471,7 +471,7 @@
             methods: {
                 // 科目グループタブのクリックイベントハンドラ
                 onRandomTab: function() {
-                    console.log('ランダム出題タブ 押下');
+                    //console.log('ランダム出題タブ 押下');
 
                     // 登録と一覧表示の、どっちが押下されているかによって、アクティブにするコンテンツが変わるため、条件分岐が必要
                     this.isRandomTabActive      = true;
@@ -481,7 +481,7 @@
                 },
 
                 onSelectYearTab: function() {
-                    console.log('年度指定タブ 押下');
+                    //console.log('年度指定タブ 押下');
 
                     //
                     this.isRandomTabActive      =   false;
@@ -491,7 +491,7 @@
                 },
 
                 onStatisticsTab: function() {
-                    console.log('統計情報タブ 押下');
+                    //console.log('統計情報タブ 押下');
 
                     this.isRandomTabActive      =   false;
                     this.isSelectYearTabActive  =   false;
@@ -499,40 +499,40 @@
                 },
 
                 onSet10: function() {
-                    console.log('ランダム１０設定');
+                    //console.log('ランダム１０設定');
                     // ランダム出題数 設定
                     this.number_randomQuestion = 10;
                 },
 
                 onSet30: function() {
-                    console.log('ランダム３０設定');
+                    //console.log('ランダム３０設定');
                     // ランダム出題数 設定
                     this.number_randomQuestion = 30;
                 },
 
                 onSet50: function() {
-                    console.log('ランダム５０設定');
+                    //console.log('ランダム５０設定');
                     // ランダム出題数 設定
                     this.number_randomQuestion = 50;
                 },
 
                 onSet100: function() {
-                    console.log('ランダム１００設定');
+                    //console.log('ランダム１００設定');
                     // ランダム出題数 設定
                     this.number_randomQuestion = 100;
                 },
 
                 onGetTitleId: function() {
-                    console.log('タイトル取得');
+                    // console.log('タイトル取得');
 
                     this.title_id = $('input[name="title_id"]:checked').val();
 
-                    console.log('title_id: ' + this.title_id);
+                    //console.log('title_id: ' + this.title_id);
                 },
 
                 onStartQuestion: function() {
 
-                    console.log('出題スタート');
+                    //console.log('出題スタート');
 
                     // 出題形式 取得（ランダムか年度指定か）
                     if(this.isRandomTabActive == true){
@@ -570,7 +570,7 @@
                         dataType:   'json',
                     })
                     .done(function(data, textStatus, jqXHR) {
-                        console.log('ajax成功');
+                        //console.log('ajax成功');
 
                         this.questionInfo = data;
 
@@ -588,10 +588,10 @@
                         // 最終問題番号
                         this.lastQuestionNumber = data[0].length;
 
-                        console.log('最終問題番号： ' + this.lastQuestionNumber);
+                        //console.log('最終問題番号： ' + this.lastQuestionNumber);
 
                         // 選択済み回答配列 初期化
-                        for(var i=0; i < this.lastQuestionNumber; i++){
+                        for(var i=0; i < (this.lastQuestionNumber + 1); i++){
                             this.arraySelectedChoice[i] = "";
                         }
 
@@ -697,7 +697,7 @@
                             this.arraySelectedChoice[this.question_number] = "";
                         }
 
-                        console.log('前の問題へボタン 押下、選択済み配列へ格納');
+                        //console.log('前の問題へボタン 押下、選択済み配列へ格納');
                         
 
                     } else if(this.isMultiSelect){
@@ -705,7 +705,7 @@
                         // 選択済み配列へ、選択された回答（の配列）を格納
                         this.arraySelectedChoice[this.question_number] = this.checkboxAnswer;
 
-                        console.log('checkboxAnswer: ' + this.checkboxAnswer);
+                        //console.log('checkboxAnswer: ' + this.checkboxAnswer);
 
 
                     } else if(this.isNoSelect){
@@ -726,8 +726,8 @@
                     // 必須回答数 判定
                     if(this.arrayQuestionSentences[this.indexQuestion]['required_numOfAnswers'] == 1){
 
-                        console.log('必須回答数が１判定');
-                        console.log('問題番号：' + this.question_number);
+                        //console.log('必須回答数が１判定');
+                        //console.log('問題番号：' + this.question_number);
 
                         // 答えが選択済みかどうかを判定
                         if( this.arraySelectedChoice[this.question_number] >= 0) {
@@ -806,7 +806,7 @@
                             */
                         // 数値かどうかを判定
 
-                        console.log('チェック変数："' + this.arraySelectedChoice[this.question_number]) + '"';
+                        //console.log('チェック変数："' + this.arraySelectedChoice[this.question_number]) + '"';
 
                         if(this.arraySelectedChoice[this.question_number] >= 0) {
 
@@ -822,7 +822,7 @@
                     // 必須回答数 判別
                     } else if(this.arrayQuestionSentences[this.indexQuestion]['required_numOfAnswers'] > 1){
 
-                        console.log('this.arraySelectedChoice[this.question_number]: ' + this.arraySelectedChoice[this.question_number]);
+                        //console.log('this.arraySelectedChoice[this.question_number]: ' + this.arraySelectedChoice[this.question_number]);
 
                         if($.isArray(this.arraySelectedChoice[this.question_number])  ){
 
@@ -867,7 +867,7 @@
                             this.arrayQuestionSentences[index]['question_sentence'],
                             ""
                         ];
-                        console.log('結果の２番目：' + this.arrayQuestionSentences[index]['question_sentence']);
+                        //console.log('結果の２番目：' + this.arrayQuestionSentences[index]['question_sentence']);
                     }
 
 
