@@ -979,7 +979,7 @@
 
                                 // **********
                                 if((Number(checkAnswer) + 1) == seikai
-                                && !(isNaN(checkAnswer)) ){
+                                && checkAnswer != "" ){
 
                                     // 得点加算
                                     score++;
@@ -1003,7 +1003,7 @@
 
                                 // **********
                                 if(seikai.includes((Number(checkAnswer) + 1))
-                                &&  !(isNaN(checkAnswer)) ){
+                                &&  checkAnswer != "" ){
 
                                     // 得点加算
                                     score++;
@@ -1050,7 +1050,7 @@
 
                                     // **********
                                     if(seikai.includes((Number(checkAnswer[i]) + 1))
-                                    &&  !(isNaN(checkAnswer[i]) ) ){
+                                    &&  checkAnswer[i] != "" ){
                                         number_correct++;
                                     }
 
