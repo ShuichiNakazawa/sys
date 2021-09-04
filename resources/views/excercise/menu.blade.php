@@ -902,16 +902,32 @@
 
                         seikai = this.arrayAnswerSentences[indexQ];
 
+                        if(seikai.length == 0){
+                            seikai = "";
+                        } else if(seikai.length == 1){
+                            seikai = seikai[0]['answer_sentence'];
+                        } else if(seikai.length > 1){
+
+                            var work_array = [];
+
+                            for(var i = 0; i < seikai.length; i++){
+                                work_array[] = seikai[i].['answer_sentence'];
+                            }
+
+                            seikai  = work_array;
+                        }
+
                         // 連想配列を取得しているだけで、すぐ利用できる形式になっていない
-                        console.log('seikaiの要素数：' + seikai.length);
+                        console.log('seikai：' + seikai);
+                        //console.log('seikaiの要素数：' + seikai.length);
 
                         console.log('問題番号：' + indexQPlus1 + ", 正解： " + seikai);
 
                         //seikai['answer_id']
                         //seikai['answer_sentence']
 
-                        console.log("seikai[0]['answer_id']: " + seikai[0]['answer_id']);
-                        console.log("seikai[0]['answer_sentence']: " + seikai[0]['answer_sentence']);
+                        //console.log("seikai[0]['answer_id']: " + seikai[0]['answer_id']);
+                        //console.log("seikai[0]['answer_sentence']: " + seikai[0]['answer_sentence']);
 /*
                         console.log("seikai[1]['answer_id']: " + seikai[1]['answer_id']);
                         console.log("seikai[1]['answer_sentence']: " + seikai[1]['answer_sentence']);
