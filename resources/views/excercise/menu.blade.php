@@ -458,7 +458,7 @@
                 radioAnswer: "",
 
                 // チェックボックス 選択
-                checkboxAnswer: "",
+                checkboxAnswer: [],
 
                 // 選択済み回答配列
                 arraySelectedChoice: [],
