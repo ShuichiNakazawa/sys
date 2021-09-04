@@ -762,6 +762,10 @@
                         if( this.arraySelectedChoice[this.question_number] !== null
                         &&  this.arraySelectedChoice[this.question_number] !== "" ){
                         */
+                            // 
+                            this.radioAnswer = this.arraySelectedChoice[this.question_number];
+
+                            /*
                             var id = this.arraySelectedChoice[this.question_number];
 
                             //var selector = "#" + id;
@@ -778,7 +782,7 @@
 
                             //console.log('エラーはこの前か？');
                             console.log('チェックを付ける処理の直後（BEFORE）');
-
+                            */
                         } else {
 
                             // ラジオボタンのチェックを外す
@@ -787,7 +791,11 @@
 
                     } else if(this.isMultiSelect){
 
-                            
+                        // 配列もしくは変数として格納されている。判定条件を変える必要があると思われる。
+                        if( this.arraySelectedChoice[this.question_number] >= 0) {
+
+                            this.checkboxAnswer = this.arraySelectedChoice[this.question_number];
+                        }
 
                     }
 
@@ -815,8 +823,11 @@
 
                     } else if(this.isMultiSelect){
 
-                        // 必須回答数が複数
+                        // 選択済み配列へ、選択された回答（の配列）を格納
+                        this.arraySelectedChoice[this.question_number] = this.checkboxAnswer;
 
+                        // 必須回答数が複数
+                        /*
                         var workArray = [];
                         var indexArray = 0;
 
@@ -841,7 +852,7 @@
                         this.arraySelectedChoice[this.question_number] = workArray;
 
                         console.log('workArray: ' + workArray);
-
+                        */
 
                     } else if(this.isNoSelect){
 
@@ -875,6 +886,10 @@
 
                         if(this.arraySelectedChoice[this.question_number] >= 0) {
 
+                            // ラジオボタンのモデルへ選択された回答を格納
+                            this.radioAnswer = this.arraySelectedChoice[this.question_number];
+
+                            /*
                             var id = this.arraySelectedChoice[this.question_number];
 
                             //var selector = "#" + id;
@@ -886,6 +901,7 @@
                             //$(selector).prop('checked', true);
 
                             console.log('チェックを付ける処理の直後（NEXT）');
+                            */
 
                         } else {
 
