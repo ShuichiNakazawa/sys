@@ -978,7 +978,8 @@
                                 console.log('checkAnswer, seikai: ' + checkAnswer + ', ' + seikai);
 
                                 // **********
-                                if((Number(checkAnswer) + 1) == seikai){
+                                if((Number(checkAnswer) + 1) == seikai
+                                && !(isNaN(checkAnswer)) ){
 
                                     // 得点加算
                                     score++;
@@ -1001,7 +1002,8 @@
                                 console.log('checkAnswer: ' + checkAnswer);
 
                                 // **********
-                                if(seikai.includes((Number(checkAnswer) + 1))){
+                                if(seikai.includes((Number(checkAnswer) + 1))
+                                &&  !(isNaN(checkAnswer)) ){
 
                                     // 得点加算
                                     score++;
@@ -1047,7 +1049,8 @@
                                 for(i = 0; i < checkAnswer.length; i++){
 
                                     // **********
-                                    if(seikai.includes((Number(checkAnswer[i]) + 1))){
+                                    if(seikai.includes((Number(checkAnswer[i]) + 1))
+                                    &&  !(isNaN(checkAnswer[i]) ) ){
                                         number_correct++;
                                     }
 
