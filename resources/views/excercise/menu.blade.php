@@ -691,7 +691,7 @@
 
                         if(selectedChoice >= 0){
                             // 選択済み回答配列 値格納
-                            this.arraySelectedChoice[this.question_number] = radioAnswer;
+                            this.arraySelectedChoice[this.question_number] = this.radioAnswer;
                             //this.arraySelectedChoice[this.question_number] = selectedChoice;
                         } else {
                             this.arraySelectedChoice[this.question_number] = "";
@@ -726,9 +726,9 @@
                         */
 
                         // 選択済み配列へ、選択された回答（の配列）を格納
-                        this.arraySelectedChoice[this.question_number] = checkboxAnswer;
+                        this.arraySelectedChoice[this.question_number] = this.checkboxAnswer;
 
-                        console.log('checkboxAnswer: ' + checkboxAnswer);
+                        console.log('checkboxAnswer: ' + this.checkboxAnswer);
 
 
                     } else if(this.isNoSelect){
