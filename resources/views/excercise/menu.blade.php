@@ -938,10 +938,29 @@
 
                                     // 今回正誤配列 格納
                                     this.arrayNowCorrects[indexQ] = "〇";
+
                                 } else {
+
                                     // 今回正誤配列 格納
                                     this.arrayNowCorrects[indexQ] = "×";
                                 }
+                            } else if(seikaisu > 1) {
+
+                                if(seikai.includes(checkAnswer)){
+
+                                    // 得点加算
+                                    seikai++;
+
+                                    // 今回正誤配列 格納
+                                    this.arrayNowCorrects[indexQ] = "〇";
+
+                                } else {
+
+                                    // 今回正誤配列 格納
+                                    this.arrayNowCorrects[indexQ] = "×";
+
+                                }
+
                             }
 
                         } else if(hissu > 1){
