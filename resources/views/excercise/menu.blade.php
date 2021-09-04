@@ -927,7 +927,7 @@
                                 bunbo--;
 
                                 // 今回正誤配列 格納
-                                arrayNowCorrects[indexQ] = "-";
+                                this.arrayNowCorrects[indexQ] = "-";
 
                             } else if(seikaisu == 1) {
 
@@ -937,10 +937,10 @@
                                     seikai++;
 
                                     // 今回正誤配列 格納
-                                    arrayNowCorrects[indexQ] = "〇";
+                                    this.arrayNowCorrects[indexQ] = "〇";
                                 } else {
                                     // 今回正誤配列 格納
-                                    arrayNowCorrects[indexQ] = "×";
+                                    this.arrayNowCorrects[indexQ] = "×";
                                 }
                             }
 
@@ -955,28 +955,13 @@
                                 bunbo--;
 
                                 // 今回正誤配列 格納
-                                arrayNowCorrects[indexQ] = "-";
+                                this.arrayNowCorrects[indexQ] = "-";
 
                             } else if(seikaisu == 1) {
 
                                 // 今回正誤配列 格納
-                                arrayNowCorrects[indexQ] = "-";
+                                this.arrayNowCorrects[indexQ] = "-";
 
-
-                                // 正解が１なのに２つ選んでいる状態。採点対象外とする
-                                /*
-                                if(checkAnswer == seikai){
-
-                                    // 得点加算
-                                    seikai++;
-
-                                    // 今回正誤配列 格納
-                                    arrayNowCorrects[indexQ] = "〇";
-                                } else {
-                                    // 今回正誤配列 格納
-                                    arrayNowCorrects[indexQ] = "×";
-                                }
-                                */
                             } else if(seikaisu > 1){
 
                                 var number_correct = 0;
@@ -1000,7 +985,7 @@
                                     seikai++;
 
                                     // 今回正誤配列 格納
-                                    arrayNowCorrects[indexQ] = "〇";
+                                    this.arrayNowCorrects[indexQ] = "〇";
                                 }
 
                             }
@@ -1018,7 +1003,7 @@
                         this.arrayResult[index] = [
                             indexPlus1, 
                             this.arrayQuestionSentences[index]['question_sentence'],
-                            arrayNowCorrects[index]
+                            this.arrayNowCorrects[index]
                         ];
 
                         //console.log('結果の２番目：' + this.arrayQuestionSentences[index]['question_sentence']);
