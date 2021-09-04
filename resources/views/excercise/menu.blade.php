@@ -894,7 +894,7 @@
                     var checkAnswer;
                     var seikai;
 
-                    for(var indexQ = 0; indexQ < this.lastQuestionNumber + 1; indexQ++){
+                    for(var indexQ = 0; indexQ < this.lastQuestionNumber; indexQ++){
 
                         hissu = 0;
                         checkAnswer = "";
