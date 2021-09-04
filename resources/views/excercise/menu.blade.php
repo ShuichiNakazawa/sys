@@ -702,29 +702,6 @@
 
                     } else if(this.isMultiSelect){
 
-                        /*
-                        // 必須回答数が複数
-                        var workArray = [];
-                        var indexArray = 0;
-
-                        // チェックされているIDで判定か？
-                        for(var i=0; i<10; i++){
-                            var selector = "#" + i;
-
-                            console.log('selector: ' + selector);
-
-                            if($(selector).prop("checked") == true){
-
-                                // チェック判定。選択済み配列
-                                workArray[indexArray] = i;
-                                indexArray++;
-
-                                console.log('チェックされてる判定');
-                            }
-                            
-                        }
-                        */
-
                         // 選択済み配列へ、選択された回答（の配列）を格納
                         this.arraySelectedChoice[this.question_number] = this.checkboxAnswer;
 
@@ -743,14 +720,7 @@
 
                     // 次の問題の為の処理
 
-                    // 必須回答数による処理分けが必要なのでは？
-
-                    //console.log('選択済み配列の中の値：' + this.arraySelectedChoice[this.question_number]);
-                    //console.log('isSingleSelect: ' + this.isSingleSelect);
-
-
-
-                    //if(this.isSingleSelect){
+                    // 必須回答数 判定
                     if(this.arrayQuestionSentences[this.indexQuestion]['required_numOfAnswers'] == 1){
 
                         console.log('必須回答数が１判定');
@@ -758,50 +728,21 @@
 
                         // 答えが選択済みかどうかを判定
                         if( this.arraySelectedChoice[this.question_number] >= 0) {
-                        /*
-                        if( this.arraySelectedChoice[this.question_number] !== null
-                        &&  this.arraySelectedChoice[this.question_number] !== "" ){
-                        */
-                            // 
+
+                            // ラジオボタンのモデルへ、選択済み回答の値を格納
                             this.radioAnswer = this.arraySelectedChoice[this.question_number];
 
-                            /*
-                            var id = this.arraySelectedChoice[this.question_number];
-
-                            //var selector = "#" + id;
-                            console.log('ID:' + id);
-
-                            // いったんチェックを外す
-                            $('input[name="choice"]').prop('checked',false);
-
-                            //console.log('エラーはこの次か？');
-
-                            // チェックを付ける処理
-                            $('input[name="choice"]').val([id]);
-                            //$(selector).prop('checked', true);
-
-                            //console.log('エラーはこの前か？');
-                            console.log('チェックを付ける処理の直後（BEFORE）');
-                            */
                         } else {
 
                             // ラジオボタンのチェックを外す
                             $('input[name="choice"]').prop('checked',false);
                         }
 
-                    } else if(this.isMultiSelect){
+                    } else if(this.arrayQuestionSentences[this.indexQuestion]['required_numOfAnswers'] > 1){
 
-                        // 配列もしくは変数として格納されている。判定条件を変える必要があると思われる。
-                        if( this.arraySelectedChoice[this.question_number] >= 0) {
-
-                            this.checkboxAnswer = this.arraySelectedChoice[this.question_number];
-                        }
-
+                        // チェックボックスのモデルへ、選択済み回答の値を格納
+                        this.checkboxAnswer = this.arraySelectedChoice[this.question_number];
                     }
-
-
-
-
                 },
 
                 // 『次の問題へ』ボタン押下時の処理
@@ -820,39 +761,10 @@
                             this.arraySelectedChoice[this.question_number] = "";
                         }
 
-
                     } else if(this.isMultiSelect){
 
                         // 選択済み配列へ、選択された回答（の配列）を格納
                         this.arraySelectedChoice[this.question_number] = this.checkboxAnswer;
-
-                        // 必須回答数が複数
-                        /*
-                        var workArray = [];
-                        var indexArray = 0;
-
-                        // チェックされているIDで判定か？
-                        for(var i=0; i<10; i++){
-                            var selector = "#" + i;
-
-                            console.log('selector: ' + selector);
-
-                            if($(selector).prop("checked") == true){
-
-                                // チェック判定。選択済み配列
-                                workArray[indexArray] = i;
-                                indexArray++;
-
-                                console.log('チェックされてる判定');
-                            }
-                            
-                        }
-
-                        // 選択済み配列へ、選択された回答（の配列）を格納
-                        this.arraySelectedChoice[this.question_number] = workArray;
-
-                        console.log('workArray: ' + workArray);
-                        */
 
                     } else if(this.isNoSelect){
 
@@ -886,22 +798,8 @@
 
                         if(this.arraySelectedChoice[this.question_number] >= 0) {
 
-                            // ラジオボタンのモデルへ選択された回答を格納
+                            // ラジオボタンのモデルへ、選択された回答を格納
                             this.radioAnswer = this.arraySelectedChoice[this.question_number];
-
-                            /*
-                            var id = this.arraySelectedChoice[this.question_number];
-
-                            //var selector = "#" + id;
-                            // いったんチェックを外す
-                            $('input[name="choice"]').prop('checked',false);
-
-                            // チェックを付ける処理
-                            $('input[name="choice"]').val([id]);
-                            //$(selector).prop('checked', true);
-
-                            console.log('チェックを付ける処理の直後（NEXT）');
-                            */
 
                         } else {
 
@@ -909,12 +807,12 @@
                             $('input[name="choice"]').prop('checked',false);
                         }
 
-                    } else if(this.isMultiSelect){
+                    // 必須回答数 判別
+                    } else if(this.arrayQuestionSentences[this.indexQuestion]['required_numOfAnswers'] > 1)){
 
+                        // チェックボックスのモデルへ、選択された回答を格納
+                        this.checkboxAnswer = this.arrayQuestionSentences[this.indexQuestion]['required_numOfAnswers'];
                     }
-
-
-
 
                 },
 
