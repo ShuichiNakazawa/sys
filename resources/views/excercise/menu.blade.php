@@ -691,7 +691,8 @@
 
                         if(selectedChoice >= 0){
                             // 選択済み回答配列 値格納
-                            this.arraySelectedChoice[this.question_number] = selectedChoice;
+                            this.arraySelectedChoice[this.question_number] = radioAnswer;
+                            //this.arraySelectedChoice[this.question_number] = selectedChoice;
                         } else {
                             this.arraySelectedChoice[this.question_number] = "";
                         }
@@ -701,8 +702,8 @@
 
                     } else if(this.isMultiSelect){
 
+                        /*
                         // 必須回答数が複数
-
                         var workArray = [];
                         var indexArray = 0;
 
@@ -722,11 +723,12 @@
                             }
                             
                         }
+                        */
 
                         // 選択済み配列へ、選択された回答（の配列）を格納
-                        this.arraySelectedChoice[this.question_number] = workArray;
+                        this.arraySelectedChoice[this.question_number] = checkboxAnswer;
 
-                        console.log('workArray: ' + workArray);
+                        console.log('checkboxAnswer: ' + checkboxAnswer);
 
 
                     } else if(this.isNoSelect){
@@ -735,8 +737,7 @@
                         this.arraySelectedChoice[question_number] = "";
                     }
 
-                    // 選ばれた選択肢の値を取得し、保存
-
+                    // 問題番号　１減算
                     this.question_number--;
                     this.indexQuestion = this.question_number - 1;
 
@@ -744,8 +745,8 @@
 
                     // 必須回答数による処理分けが必要なのでは？
 
-                    console.log('選択済み配列の中の値：' + this.arraySelectedChoice[this.question_number]);
-                    console.log('isSingleSelect: ' + this.isSingleSelect);
+                    //console.log('選択済み配列の中の値：' + this.arraySelectedChoice[this.question_number]);
+                    //console.log('isSingleSelect: ' + this.isSingleSelect);
 
 
 
@@ -1045,7 +1046,4 @@
 
         })
     </script>
-    {{--
-    <script src="{{ asset('js/practice3_3.js') }}"></script>
-    --}}
 @endsection
