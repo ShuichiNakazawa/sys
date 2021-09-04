@@ -740,8 +740,19 @@
 
                     } else if(this.arrayQuestionSentences[this.indexQuestion]['required_numOfAnswers'] > 1){
 
+                        // 配列判定
+                        if(this.arraySelectedChoice[this.question_number].isArray()  ){
+
+                            // チェックボックスのモデルへ、選択された回答を格納
+                            this.checkboxAnswer = this.arraySelectedChoice[this.question_number];
+
+                        } else {
+
+                            this.checkboxAnswer = [];
+                        }
+
                         // チェックボックスのモデルへ、選択済み回答の値を格納
-                        this.checkboxAnswer = this.arraySelectedChoice[this.question_number];
+                        //this.checkboxAnswer = this.arraySelectedChoice[this.question_number];
                     }
                 },
 
@@ -810,8 +821,18 @@
                     // 必須回答数 判別
                     } else if(this.arrayQuestionSentences[this.indexQuestion]['required_numOfAnswers'] > 1){
 
-                        // チェックボックスのモデルへ、選択された回答を格納
-                        this.checkboxAnswer = this.arraySelectedChoice[this.question_number];
+                        console.log('this.arraySelectedChoice[this.question_number]: ' + this.arraySelectedChoice[this.question_number]);
+
+                        if(this.arraySelectedChoice[this.question_number].isArray()  ){
+
+                            // チェックボックスのモデルへ、選択された回答を格納
+                            this.checkboxAnswer = this.arraySelectedChoice[this.question_number];
+
+                        } else {
+
+                            this.checkboxAnswer = [];
+                        }
+
                     }
 
                 },
