@@ -811,7 +811,7 @@
                     } else if(this.arrayQuestionSentences[this.indexQuestion]['required_numOfAnswers'] > 1){
 
                         // チェックボックスのモデルへ、選択された回答を格納
-                        this.checkboxAnswer = this.arrayQuestionSentences[this.indexQuestion]['required_numOfAnswers'];
+                        this.checkboxAnswer = this.arraySelectedChoice[this.question_number];
                     }
 
                 },
