@@ -808,7 +808,7 @@
                         }
 
                     // 必須回答数 判別
-                    } else if(this.arrayQuestionSentences[this.indexQuestion]['required_numOfAnswers'] > 1)){
+                    } else if(this.arrayQuestionSentences[this.indexQuestion]['required_numOfAnswers'] > 1){
 
                         // チェックボックスのモデルへ、選択された回答を格納
                         this.checkboxAnswer = this.arrayQuestionSentences[this.indexQuestion]['required_numOfAnswers'];
