@@ -977,7 +977,7 @@
 
                                 console.log('checkAnswer, seikai: ' + checkAnswer + ', ' + seikai);
 
-                                if(checkAnswer == seikai){
+                                if((checkAnswer + 1) == seikai){
 
                                     // 得点加算
                                     score++;
@@ -999,7 +999,7 @@
 
                                 console.log('checkAnswer: ' + checkAnswer);
 
-                                if(seikai.includes(checkAnswer)){
+                                if(seikai.includes((checkAnswer + 1))){
 
                                     // 得点加算
                                     score++;
@@ -1045,7 +1045,7 @@
                                 for(i = 0; i < checkAnswer.length; i++){
 
                                     // 
-                                    if(seikai.includes(checkAnswer[i])){
+                                    if(seikai.includes((checkAnswer[i] + 1))){
                                         number_correct++;
                                     }
 
