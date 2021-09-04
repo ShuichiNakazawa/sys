@@ -335,8 +335,8 @@
         {{-- 結果判定画面 --}}
         <div v-bind:class="[isResultMode ? 'resultModeActive' : 'inactiveDiv']" style="border: solid 5px rgb(73, 172, 157); border-radius: 10px; width: 380px; background: white;">
             <div>
-
-                <div style="font-size: 20; font-weight: bold; text-align: center;">
+                <br>
+                <div style="font-size: 30; font-weight: bold; text-align: center;">
                     得点：(% score_string %)
                 </div>
                 <br><br>
