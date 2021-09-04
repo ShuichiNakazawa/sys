@@ -339,6 +339,8 @@
                 <div>
                     得点：(% score_string %)
                 </div>
+                <br><br>
+                
                 <table>
                     <tr>
                         <th>
