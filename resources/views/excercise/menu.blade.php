@@ -902,6 +902,8 @@
 
                         seikai = this.arrayAnswerSentences[indexQ];
 
+                        console.log('正解の要素数：' + seikai.length);
+
                         if(seikai.length == 0){
                             seikai = "";
                         } else if(seikai.length == 1){
