@@ -947,6 +947,10 @@
                             } else if(seikaisu > 1) {
 
                                 console.log('seikai: ' + seikai);
+                                console.log('seikai[0]: ' + seikai[0]);
+                                console.log('seikai[1]: ' + seikai[1]);
+
+
                                 console.log('checkAnswer: ' + checkAnswer);
 
                                 if(seikai.includes(checkAnswer)){
