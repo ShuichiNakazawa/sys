@@ -946,6 +946,9 @@
                                 }
                             } else if(seikaisu > 1) {
 
+                                console.log('seikai: ' + seikai);
+                                console.log('checkAnswer: ' + checkAnswer);
+
                                 if(seikai.includes(checkAnswer)){
 
                                     // 得点加算
