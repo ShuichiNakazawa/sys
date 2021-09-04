@@ -903,6 +903,11 @@
                         seikai = this.arrayAnswerSentences[indexQ];
 
                         console.log('問題番号：' + indexQPlus1 + ", 正解： " + seikai);
+                        console.log('seikai[0]: ' + seikai[0]);
+                        console.log('seikai[1]: ' + seikai[1]);
+                        console.log('seikai[2]: ' + seikai[2]);
+
+
 
                         // 必須回答数 取得
                         hissu = this.arrayQuestionSentences[indexQ]["required_numOfAnswers"];
