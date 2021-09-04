@@ -975,10 +975,12 @@
 
                             } else if(seikaisu == 1) {
 
-                                if(checkAnswer == seikai[0]['answer_sentence']){
+                                console.log('checkAnswer, seikai: ' + checkAnswer + ', ' + seikai);
+
+                                if(checkAnswer == seikai){
 
                                     // 得点加算
-                                    seikai++;
+                                    score++;
 
                                     // 今回正誤配列 格納
                                     this.arrayNowCorrects[indexQ] = "〇";
@@ -1000,7 +1002,7 @@
                                 if(seikai.includes(checkAnswer)){
 
                                     // 得点加算
-                                    seikai++;
+                                    score++;
 
                                     // 今回正誤配列 格納
                                     this.arrayNowCorrects[indexQ] = "〇";
@@ -1054,7 +1056,7 @@
                                 &&  i == hissu){
 
                                     // 得点加算
-                                    seikai++;
+                                    score++;
 
                                     // 今回正誤配列 格納
                                     this.arrayNowCorrects[indexQ] = "〇";
