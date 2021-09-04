@@ -977,7 +977,8 @@
 
                                 console.log('checkAnswer, seikai: ' + checkAnswer + ', ' + seikai);
 
-                                if((checkAnswer + 1) == seikai){
+                                // **********
+                                if((Number(checkAnswer) + 1) == seikai){
 
                                     // 得点加算
                                     score++;
@@ -999,7 +1000,8 @@
 
                                 console.log('checkAnswer: ' + checkAnswer);
 
-                                if(seikai.includes((checkAnswer + 1))){
+                                // **********
+                                if(seikai.includes((Number(checkAnswer) + 1))){
 
                                     // 得点加算
                                     score++;
@@ -1044,8 +1046,8 @@
                                 // 選んだもの全てが正解かつ、必須回答数の分だけ選んでいる、が正解の条件
                                 for(i = 0; i < checkAnswer.length; i++){
 
-                                    // 
-                                    if(seikai.includes((checkAnswer[i] + 1))){
+                                    // **********
+                                    if(seikai.includes((Number(checkAnswer[i]) + 1))){
                                         number_correct++;
                                     }
 
