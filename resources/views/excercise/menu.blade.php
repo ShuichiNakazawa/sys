@@ -463,6 +463,8 @@
                 // 選択済み回答配列
                 arraySelectedChoice: [],
 
+                // 今回正誤配列
+                arrayNowCorrects: [],
 
                 // 結果表示用配列
                 arrayResult: [],
@@ -881,11 +883,131 @@
 
                     // 選択済み配列をもとに、正答配列と比較して個別に採点、採点配列へ格納
                     // 採点処理の配列を、結果表示用配列へ格納
-                    /*
-                    for(){
+
+                    // 得点 初期化
+                    var score = 0;
+
+                    // 算定対象問題数
+                    var bunbo = this.lastQuestionNumber;
+
+                    var hissu;
+                    var checkAnswer;
+                    var seikai;
+
+                    for(var indexQ = 0; indexQ < this.lastQuestionNumber + 1; indexQ++){
+
+                        hissu = 0;
+                        checkAnswer = "";
+                        var indexQPlus1 = indexQ + 1;
+
+                        seikai = this.arrayAnswerSentences[indexQ];
+
+                        // 必須回答数 取得
+                        hissu = this.arrayQuestionSentences[indexQ]["required_numOfAnswers"];
+
+                        // 正解の数 取得
+                        seikaisu = this.arrayQuestionSentences[indexQ]["number_of_answers"];
+
+                        // 正解配列
+
+                        // 必須回答数 判別
+                        if(hissu == 0){
+
+                            // 必須回答数 ０
+                            bunbo--;
+
+                        } else if(hissu == 1){
+
+                            // 必須回答数 １
+                            checkAnswer = this.arraySelectedChoice[indexQPlus1];
+
+                            // 正解の数 判定
+                            if(seikaisu == 0){
+
+                                bunbo--;
+
+                                // 今回正誤配列 格納
+                                arrayNowCorrects[indexQ] = "-";
+
+                            } else if(seikaisu == 1) {
+
+                                if(checkAnswer == seikai){
+
+                                    // 得点加算
+                                    seikai++;
+
+                                    // 今回正誤配列 格納
+                                    arrayNowCorrects[indexQ] = "〇";
+                                } else {
+                                    // 今回正誤配列 格納
+                                    arrayNowCorrects[indexQ] = "×";
+                                }
+                            }
+
+                        } else if(hissu > 1){
+
+                            // 必須回答数 複数
+                            checkAnswer = this.arraySelectedChoice[indexQPlus1];
+
+                            // 正解の数 判定
+                            if(seikaisu == 0){
+
+                                bunbo--;
+
+                                // 今回正誤配列 格納
+                                arrayNowCorrects[indexQ] = "-";
+
+                            } else if(seikaisu == 1) {
+
+                                // 今回正誤配列 格納
+                                arrayNowCorrects[indexQ] = "-";
+
+
+                                // 正解が１なのに２つ選んでいる状態。採点対象外とする
+                                /*
+                                if(checkAnswer == seikai){
+
+                                    // 得点加算
+                                    seikai++;
+
+                                    // 今回正誤配列 格納
+                                    arrayNowCorrects[indexQ] = "〇";
+                                } else {
+                                    // 今回正誤配列 格納
+                                    arrayNowCorrects[indexQ] = "×";
+                                }
+                                */
+                            } else if(seikaisu > 1){
+
+                                var number_correct = 0;
+
+                                // checkAnswer複数、seikai は配列。
+                                // 選んだもの全てが正解かつ、必須回答数の分だけ選んでいる、が正解の条件
+                                for(i = 0; i < checkAnswer.length(); i++){
+
+                                    // 
+                                    if(seikai.includes(checkAnswer[i])){
+                                        number_correct++;
+                                    }
+
+                                }
+
+                                // 正解判定（必須回答数と同じ数だけ選択している、正解だった数が必須回答数と一致している）
+                                if( number_correct == hissu
+                                &&  i == hissu){
+
+                                    // 得点加算
+                                    seikai++;
+
+                                    // 今回正誤配列 格納
+                                    arrayNowCorrects[indexQ] = "〇";
+                                }
+
+                            }
+                        }
 
                     }
-                    */
+                    
 
                     // 結果表示用配列 作成
 
@@ -896,13 +1018,11 @@
                         this.arrayResult[index] = [
                             indexPlus1, 
                             this.arrayQuestionSentences[index]['question_sentence'],
-                            ""
+                            arrayNowCorrects[index]
                         ];
+
                         //console.log('結果の２番目：' + this.arrayQuestionSentences[index]['question_sentence']);
                     }
-
-
-
 
                     // 合計得点計算
 
@@ -996,20 +1116,7 @@
                 },
 
                 question_sentence: function(new_question_sentence, old_question_sentence){
-                    /*
-                    // 選択済み回答 取得
-                    selectedAnswer = this.arraySelectedChoice[this.question_number];
 
-                    $('input[name="choice"]').val([selectedAnswer]);
-                    console.log('watchで値設定');
-                    console.log('selectedAnswer: ' + selectedAnswer);
-                    */
-
-                    // 
-                    /*
-                    var selector = "#" + selectedAnswer;
-                    $(selector).prop("checked", true);
-                    */
                 }
             },
 
