@@ -762,6 +762,8 @@
                 // 『次の問題へ』ボタン押下時の処理
                 onNextQuestion: function() {
 
+                    // 選ばれた選択肢の値を取得し、保存
+
                     // 必須回答数が０，１，２で処理分岐
                     if(this.isSingleSelect){
 
@@ -786,7 +788,6 @@
                         this.arraySelectedChoice[question_number] = "";
                     }
 
-                    // 選ばれた選択肢の値を取得し、保存
 
                     this.question_number++;
                     this.indexQuestion = this.question_number - 1;
@@ -842,8 +843,38 @@
 
                 onShowResult: function() {
 
+                    // 最終問題の回答を『選択済み回答配列』へ保存
+                    // 選ばれた選択肢の値を取得し、保存
+
+                    // 必須回答数が０，１，２で処理分岐
+                    if(this.isSingleSelect){
+
+                        // 必須回答数が１
+                        // 押下されているボタンを取得
+                        var selectedChoice = $('input[name="choice"]:checked').val();
+
+                        if(selectedChoice >= 0){
+
+                            this.arraySelectedChoice[this.question_number] = selectedChoice;
+
+                        } else {
+
+                            this.arraySelectedChoice[this.question_number] = "";
+                        }
+
+                    } else if(this.isMultiSelect){
+
+                        // 選択済み配列へ、選択された回答（の配列）を格納
+                        this.arraySelectedChoice[this.question_number] = this.checkboxAnswer;
+
+                    } else if(this.isNoSelect){
+
+                        // 必須回答数が０
+                        this.arraySelectedChoice[question_number] = "";
+                    }
+
                     // 出題モード解除
-                    this.isQuestionModes = false;
+                    this.isQuestionMode = false;
 
                     // 結果出力モード オン
                     this.isResultMode = true;
