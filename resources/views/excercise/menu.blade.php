@@ -917,7 +917,8 @@
 
                             for(var i = 0; i < seikai.length; i++){
                                 if( seikai[i]['answer_sentence'] !== ""
-                                &&  seikai[i]['answer_sentence'] !== null ){
+                                &&  seikai[i]['answer_sentence'] !== null
+                                &&  !(isNaN(seikai[i]['answer_sentence'])) ){
                                     work_array[index_work_array] = seikai[i]['answer_sentence'];
                                     index_work_array++;
                                 }
