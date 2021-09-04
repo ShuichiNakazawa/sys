@@ -965,13 +965,14 @@
                 },
 
                 question_sentence: function(new_question_sentence, old_question_sentence){
-
+                    /*
                     // 選択済み回答 取得
                     selectedAnswer = this.arraySelectedChoice[this.question_number];
 
                     $('input[name="choice"]').val([selectedAnswer]);
                     console.log('watchで値設定');
                     console.log('selectedAnswer: ' + selectedAnswer);
+                    */
 
                     // 
                     /*
