@@ -1104,7 +1104,7 @@
                     score;
                     bunbo;
                     */
-                    var score_percent = Math.round(score / bunbo * 100 * (Math.pow( 10, 2 )  / Math.pow( 10, 2 ) ) );
+                    var score_percent = Math.round(score / bunbo * 100 * (Math.pow( 10, 2 ) ) ) / Math.pow( 10, 2 );
 
                     this.score_string = score_percent + "％" + "(" + score + "/" + bunbo + ")";
 
