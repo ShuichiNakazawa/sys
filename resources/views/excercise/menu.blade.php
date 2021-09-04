@@ -336,6 +336,9 @@
         <div v-bind:class="[isResultMode ? 'resultModeActive' : 'inactiveDiv']" style="border: solid 5px rgb(73, 172, 157); border-radius: 10px; width: 380px; background: white;">
             <div>
 
+                <div>
+                    得点：(% score_string %)
+                </div>
                 <table>
                     <tr>
                         <th>
@@ -468,6 +471,8 @@
 
                 // 結果表示用配列
                 arrayResult: [],
+
+                score_string: "",
             },
 
             methods: {
@@ -1093,7 +1098,13 @@
                     }
 
                     // 合計得点計算
+                    /*
+                    score;
+                    bunbo;
+                    */
+                    var score_percent = Math.round(score / bunbo * Math.pow( 10, 1 ) ) / Math.pow( 10, 1 ));
 
+                    this.score_string = score_percent + "％" + "(" + score + "/" bunbo + ")";
 
 
                 },
