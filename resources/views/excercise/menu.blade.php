@@ -997,6 +997,8 @@
 
                             } else if(seikaisu > 1){
 
+                                console.log('必須も正解数も複数');
+
                                 var number_correct = 0;
 
                                 // checkAnswer複数、seikai は配列。
