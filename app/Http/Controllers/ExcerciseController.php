@@ -133,6 +133,7 @@ class ExcerciseController extends Controller
 
             $array_answerSentencesPerQuestion[] = $work_array;
 
+
             // ログイン判定
             if(Auth::user() !== null){
                 // 回答履歴取得

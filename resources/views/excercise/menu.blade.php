@@ -902,10 +902,26 @@
 
                         seikai = this.arrayAnswerSentences[indexQ];
 
+
+
                         console.log('問題番号：' + indexQPlus1 + ", 正解： " + seikai);
-                        console.log('seikai[0]: ' + seikai[0]);
-                        console.log('seikai[1]: ' + seikai[1]);
-                        console.log('seikai[2]: ' + seikai[2]);
+
+                        //seikai['answer_id']
+                        //seikai['answer_sentence']
+
+                        console.log("seikai['answer_id']: " + seikai['answer_id']);
+                        console.log("seikai['answer_sentence']: " + seikai['answer_sentence']);
+
+                        console.log("seikai[0]['answer_id']: " + seikai[0]['answer_id']);
+                        console.log("seikai[0]['answer_sentence']: " + seikai[0]['answer_sentence']);
+
+                        console.log("seikai[1]['answer_id']: " + seikai[1]['answer_id']);
+                        console.log("seikai[1]['answer_sentence']: " + seikai[1]['answer_sentence']);
+
+                        console.log("seikai[2]['answer_id']: " + seikai[2]['answer_id']);
+                        console.log("seikai[2]['answer_sentence']: " + seikai[2]['answer_sentence']);
+
+
 
 
 
