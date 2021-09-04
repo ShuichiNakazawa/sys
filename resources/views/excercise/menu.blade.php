@@ -968,7 +968,7 @@
 
                                 // checkAnswer複数、seikai は配列。
                                 // 選んだもの全てが正解かつ、必須回答数の分だけ選んでいる、が正解の条件
-                                for(i = 0; i < checkAnswer.length(); i++){
+                                for(i = 0; i < checkAnswer.length; i++){
 
                                     // 
                                     if(seikai.includes(checkAnswer[i])){
