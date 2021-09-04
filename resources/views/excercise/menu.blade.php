@@ -905,13 +905,20 @@
                         if(seikai.length == 0){
                             seikai = "";
                         } else if(seikai.length == 1){
+
                             seikai = seikai[0]['answer_sentence'];
+
                         } else if(seikai.length > 1){
 
                             var work_array = [];
+                            var index_work_array = 0;
 
                             for(var i = 0; i < seikai.length; i++){
-                                work_array[i] = seikai[i]['answer_sentence'];
+                                if( seikai[i]['answer_sentence'] !== ""
+                                &&  seikai[i]['answer_sentence'] !== null ){
+                                    work_array[index_work_array] = seikai[i]['answer_sentence'];
+                                    index_work_array++;
+                                }
                             }
 
                             seikai  = work_array;
