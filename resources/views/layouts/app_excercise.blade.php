@@ -64,7 +64,7 @@
               <a class="nav-link_custom" href="{{ url('') }}">マイページ</a>
             </li>
             <li class="nav-link_custom">
-              <a class="nav-link_custom" href="{{ url('') }}">不具合指摘</a>
+              <a class="nav-link_custom" href="{{ url('') }}">間違いの指摘</a>
             </li>
             <li>
               <a class="nav-link_custom" href="{{ url('') }}">お問合せ</a>
