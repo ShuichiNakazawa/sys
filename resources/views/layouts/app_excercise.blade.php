@@ -81,6 +81,11 @@
               <li class="nav-item">
                 <a class="nav-link_custom" href="{{ url('') }}">サインアップ</a>
               </li>
+
+            @else
+              <li class="nav-item">
+                <a class="nav-link_custom" href="{{ url('') }}">ログアウト</a>
+              </li>
             @endif
 
           </ul>
