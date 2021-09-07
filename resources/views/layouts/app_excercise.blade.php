@@ -88,8 +88,7 @@
               <a class="nav-link_custom" href="{{ url('') }}"></a>
             </li>
             --}}
-
-            
+           
           </ul>
 
         </div>
