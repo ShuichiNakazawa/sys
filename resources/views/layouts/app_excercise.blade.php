@@ -79,7 +79,7 @@
                 <a class="nav-link_custom" href="{{ url('') }}">ログイン</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link_custom" href="{{ url('') }}">サインアップ</a>
+                <a class="nav-link_custom" href="{{ url('') }}">ユーザー登録</a>
               </li>
 
             @else
