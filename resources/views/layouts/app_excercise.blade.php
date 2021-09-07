@@ -63,10 +63,10 @@
             <li class="nav-item">
               <a class="nav-link_custom" href="{{ url('') }}">マイページ</a>
             </li>
-            <li class="nav-link_custom">
+            <li class="nav-item">
               <a class="nav-link_custom" href="{{ url('') }}">訂正掲示板</a>
             </li>
-            <li>
+            <li class="nav-item">
               <a class="nav-link_custom" href="{{ url('') }}">お問合せ</a>
             </li>
             {{--
