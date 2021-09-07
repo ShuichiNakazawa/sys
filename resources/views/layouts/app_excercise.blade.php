@@ -74,7 +74,7 @@
               <a class="nav-link_custom" href="{{ url('') }}">お問合せ</a>
             </li>
 
-            @if(Auth::user() !== null)
+            @if(Auth::user() === null)
               <li class="nav-item">
                 <a class="nav-link_custom" href="{{ url('') }}">ログイン</a>
               </li>
