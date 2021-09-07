@@ -564,3 +564,10 @@ Route::get('/excercise_menu/{subject_id}/{questionMode}/{param}', 'ExcerciseCont
  *  テンプレート
  */ 
 Route::get('/template', 'TemplateController@showIndex');
+
+/*
+*   CARHYTHM（キャリズム）
+*/
+Route::get('/carhythm', function(){
+    return view('carhythm.index');
+});
