@@ -4,291 +4,42 @@
 
     <br>
     <div style="width: 100%; margin: 0 auto;">
-        <h3></h3>
-        <input type="hidden" name="subject_id" id="subject_id" value="{{ $subject_id }}">
-
-
-            {{-- メニュータブ --}}
-            <div class="row" style="text-align: center;">
-                <div v-bind:class="[isRandomTabActive ? 'randomTabActive' : 'tabInactive']" style="padding: 5px; margin-left: 10px; width: 120px; z-index: 10; border-top: solid 4px rgb(73, 172, 157);; border-left: solid 4px rgb(73, 172, 157);; border-right: solid 4px rgb(73, 172, 157);; border-top-left-radius: 10px; border-top-right-radius: 10px; background:white; color: rgb(73, 172, 157);" v-on:click="onRandomTab">
-                    <b>ランダム出題</b>
-                </div>
-                <div v-bind:class="[isSelectYearTabActive ? 'selectYearTabActive' : 'tabInactive']" style="padding: 5px; margin-left: 15px; width: 100px; background: white; z-index: 10; border-top: solid 4px darkblue; border-left: solid 4px darkblue; border-right: solid 4px darkblue; border-top-left-radius: 10px; border-top-right-radius: 10px; color: darkblue;" v-on:click="onSelectYearTab">
-                    <b>年度指定</b>
-                </div>
-
-                @if( Auth::user() !== null )
-                    <div v-bind:class="[isStatisticsTabActive ? 'statisticsTabActive' : 'tabInactive']" style="padding: 5px; margin-left: 15px; width: 100px; background: white; z-index: 10; border-top: solid 4px rgb(175, 139, 62); border-left: solid 4px rgb(175, 139, 62); border-right: solid 4px rgb(175, 139, 62); border-top-left-radius: 10px; border-top-right-radius: 10px; color: rgb(175, 139, 62);" v-on:click="onStatisticsTab">
-                        <b>統計情報</b>
-                    </div>
-                @else
-                    <div style="padding: 5px; margin-left: 15px; width: 100px; background: white; z-index: 10; border-top: solid 4px lightgray; border-left: solid 4px lightgray; border-right: solid 4px lightgray; border-top-left-radius: 10px; border-top-right-radius: 10px; color: lightgray;">
-                        <b>統計情報</b>
-                    </div>
-                @endif
-            </div>
-
-            {{-- ランダム出題コンテンツ --}}
-            <div class="row" v-bind:class="[isRandomTabActive ? 'randomTabActive' : 'inactiveDiv']" id="random_question" style="border: solid 5px rgb(73, 172, 157);; border-radius: 10px; width: 380px; background: white;">
-                <div style="padding-left: 30px;">
-                    <br>
-                    <div style="width: 130px; background: rgb(73, 172, 157); color: white; font-weight: bold; text-align: center; border-top-right-radius: 25px; border-bottom-right-radius: 25px;" v-on:click="onStartQuestion">
-                        出題スタート
-                    </div>
-                    </div>
-                    <div style="width: 100%;">
-                </div>
-
-                <div style="margin: 25px;">
-                    <input type="radio" name="numOfQuestion" id="question10" style="display: none;" v-on:click="onSet10">
-                    <label for="question10" class="btn-choice">１０問</label>
-                </div>
-                <div style="margin: 25px;">
-                    <input type="radio" name="numOfQuestion" id="question30" style="display: none;" v-on:click="onSet30">
-                    <label for="question30" class="btn-choice">３０問</label>
-                </div>
-                <div style="margin: 25px;">
-                    <input type="radio" name="numOfQuestion" id="question50" style="display: none;" v-on:click="onSet50">
-                    <label for="question50" class="btn-choice">５０問</label>
-                </div>
-                <div style="margin: 25px;">
-                    <input type="radio" name="numOfQuestion" id="question100" style="display: none;" v-on:click="onSet100">
-                    <label for="question100" class="btn-choice">１００問</label>
-                </div>
-                <div style="width: 100%;">
-
-                </div>
-                <br><br>
-
-            </div>
-
-
-            {{-- 年度指定コンテンツ --}}
-            <div class="row inactive" v-bind:class="[isSelectYearTabActive ? 'SelectYearTabActive' : 'inactiveDiv']" id="selected_question" style="border: solid 5px darkblue; border-radius: 10px; max-width: 700px; background: white;">
-
-                <div style="padding-left: 30px;">
-                    <br>
-    
-                    <div style="width: 130px; background: darkblue; color: white; font-weight: bold; text-align: center; border-top-right-radius: 25px; border-bottom-right-radius: 25px;" v-on:click="onStartQuestion">
-                        出題スタート
-                    </div>
-                    <br>
-                </div>
-
-                <div style="width: 100%;">
-
-                </div>
-
-                @php
-                    $index = 0;
-                @endphp
-
-                @foreach($titles as $title)
-
-                    @if($index % 2 == 0)
-                        <div class="row" style="margin: 10px;">
-                    @endif
-
-                    <div style="margin: 10px; width: 135px;">
-                        <input type="radio" name="title_id" style="display: none;" id="title_{{ $title->title_id }}" value="{{ $title->title_id }}" v-on:click="onGetTitleId">
-                        <label for="title_{{ $title->title_id }}" class="btn-choice">
-                            {{ $title->question_title }}
-                        </label>
-                    </div>
-
-                    @if($index % 2 == 1)
-                        </div>
-                    @endif
-
-                    @php
-                        $index++;
-                    @endphp
-                @endforeach
-
-                <div style="width: 100%;">
-
-                </div>
-                <div style="padding-left: 30px;">
-                    <div style="width: 130px; background: darkblue; color: white; font-weight: bold; text-align: center; border-top-right-radius: 25px; border-bottom-right-radius: 25px;" v-on:click="onStartQuestion">
-                        出題スタート
-                    </div>
-                    <br><br>
-                </div>
-            </div>
-        </div>
-        
-        {{-- 出題画面 --}}
-        <div v-bind:class="[isQuestionMode ? 'questionModeActive' : 'inactiveDiv']" style="border: solid 5px rgb(73, 172, 157); border-radius: 10px; width: 380px; background: white;">
-            <div>
-                {{-- 正誤履歴を表示するエリア --}}
-                正誤履歴 表示エリア
-            </div>
-            <div>
-                <br>
-
-                {{-- ランダム出題か年度指定かを表示 --}}
-
-                {{-- 問題番号 --}}
-                問&nbsp;(% question_number %)
-                <br>
-
-                {{-- 問題文 --}}
-                (% question_sentence %)
-                <br><br>
-
-                {{-- 図の表示 --}}
-                <template v-if="hasGrapgh">
-
-                </template>
-
-                {{-- 変数チェック --}}
-                {{--
-                isSingleSelect: (% isSingleSelect %)
-                <br>
-
-                choices: (% choices %)
-                --}}
-
-                {{-- 選択肢文 --}}
-                {{-- 必須回答数によって、表示内容が異なる。radio か checkbox か --}}
-                <template v-if="isSingleSelect">
-
-                    {{-- ラジオボタンにバインド --}}
-                    <template v-for="item in choices">
-                        <div style="display: flex; align-items: center;">
-                            <div style="align-items: center; width: 45px;">
-                                <input type="radio" name="choice" :id="item.choice_id" style="display: none;" v-model="radioAnswer"  :value="item.choice_id">
-                                <label class="btn-choice" :for="item.choice_id">(% arrayChoiceCharacter[item.choice_id] %)</label>
-                            </div>
-                            <div style="margin-left: 10px;">
-                                (% item.choice_sentence %)
-                            </div>
-                        </div>
-                        <br>
-                    </template>
-
-                </template>
-
-                <template v-if="isMultiSelect">
-
-                    {{-- チェックボックスにバインド --}}
-                    <template v-for="item in choices">
-                        <div style="display: flex; align-items: center;">
-                            <div style="align-items: center; width: 45px;">
-                                <input type="checkbox" name="choice" :id="item.choice_id" style="display: none;" v-model="checkboxAnswer" :value="item.choice_id">
-                                <label class="btn-choice" :for="item.choice_id">(% arrayChoiceCharacter[item.choice_id] %)</label>
-                            </div>
-                            <div style="margin-left: 10px;">
-                                (% item.choice_sentence %)
-                            </div>
-                        </div>
-                        <br>
-                    </template>
-
-                </template>
-
-                <div class="row" style="margin-left: 30px; ">
-
-                    {{-- 前の問題へ --}}
-                    <template v-if="isNotFirstQuestion">
-                        <div style="width: 100px; text-align: center; background:rgb(73, 172, 157); border-top-left-radius: 15px; border-bottom-left-radius: 15px; color: white; font-weight: bold;" v-on:click="onBeforeQuestion">前の問題へ</div>
-                    </template>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                    {{-- 次の問題へ --}}
-                    <template v-if="isNotLastQuestion">
-                        {{--
-                        <button v-on:click="onNextQuestion">次の問題へ</button>
-                        --}}
-                        <div style="width: 100px; text-align: center; background:rgb(73, 172, 157); border-top-right-radius: 15px; border-bottom-right-radius: 15px; color: white; font-weight: bold;" v-on:click="onNextQuestion">次の問題へ</div>
-                    </template>
-
-                    {{-- 結果判定 --}}
-                    <template v-if="isLastQuestion">
-                        {{--
-                        <button v-on:click="onShowResult">結果判定</button>
-                        --}}
-                        <div style="width: 100px; text-align: center; background:rgb(73, 172, 157); border-radius: 15px; color: white; font-weight: bold;" v-on:click="onShowResult">結果判定</div>
-                    </template>
-                </div>
-                <br>
-
-                {{-- テスト用表示項目 --}}
-                問題番号： (% question_number %)
-                <br>
-
-                インデックス：(% indexQuestion %)
-                <br>
-
-                選択済み配列：(% arraySelectedChoice %)
-                <br>
-
-                isSingleSelect: (% isSingleSelect %)
-                <br>
-
-                isMultiSelect: (% isMultiSelect %)
-                <br>
-
-                isNoSelect: (% isNoSelect %)
-                <br>
-
-
-
-            </div>
+        <div>
+            <h4>
+                メッセージ
+            </h4>
         </div>
 
-        {{-- 結果判定画面 --}}
-        <div v-bind:class="[isResultMode ? 'resultModeActive' : 'inactiveDiv']" style="border: solid 5px rgb(73, 172, 157); border-radius: 10px; width: 380px; background: white;">
-            <div>
-                <br>
-                <div style=" text-align: center;">
-                    <span style="font-size: 36; font-weight: bold;">得点：(% score_string %)</span>
-                </div>
-                <br><br>
+        <div>
+            <h4>
+                所属ライバー
+            </h4>
+        </div>
 
-                <table>
-                    <tr>
-                        <th>
-                            問題番号
-                        </th>
-                        <th>
-                            問題文
-                        </th>
-                        <th>
-                            正誤
-                        </th>
+        <div>
+            <h4>
+                提携ライバー
+            </h4>
+        </div>
 
-                    </tr>
-
-                    <template v-for="item in arrayResult">
-                        <tr>
-                            <td>
-                                (% item[0] %)
-                            </td>
-                            <td>
-                                (% item[1] %) 
-                            </td>
-                            <td>
-                                (% item[2] %)
-                            </td>
-                        </tr>
-                    </template>
-                </table>
-            </div>
+        <div>
+            <h4>
+                会社概要
+            </h4>
         </div>
     </div>
 
 
-    <div></div>
-    <div></div>
-    <div></div>
+
+
 
 @endsection
+
 
 @section('script')
     <script src="https://jp.vuejs.org/js/vue.js"></script>
     <script>
-        
+
         var app = new Vue({
             delimiters: ["(%","%)"] ,
             el: '#app',
@@ -1005,10 +756,7 @@
                     }
 
                     // 合計得点計算
-                    /*
-                    score;
-                    bunbo;
-                    */
+
                     var score_percent = Math.round(score / bunbo * 100 * (Math.pow( 10, 2 ) ) ) / Math.pow( 10, 2 );
 
                     this.score_string = score_percent + "％" + "(" + score + "/" + bunbo + ")";
@@ -1096,17 +844,12 @@
                         this.isLastQuestion    = false;
                         this.isNotLastQuestion = true;
                     }
-
-                    // 
-
                 },
 
                 question_sentence: function(new_question_sentence, old_question_sentence){
 
                 }
             },
-
-
         })
     </script>
 @endsection
