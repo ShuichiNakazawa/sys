@@ -66,32 +66,23 @@
                 <a class="nav-link_custom" href="{{ url('') }}">マイページ</a>
               </li>
             @endif
+
             <li class="nav-item">
               <a class="nav-link_custom" href="{{ url('') }}">訂正掲示板</a>
             </li>
             <li class="nav-item">
               <a class="nav-link_custom" href="{{ url('') }}">お問合せ</a>
             </li>
-            {{--
-            <li>
-              <a class="nav-link_custom" href="{{ url('') }}"></a>
-            </li>
-            <li>
-              <a class="nav-link_custom" href="{{ url('') }}"></a>
-            </li>
-            <li>
-            </li>
-            <li>
-              <a class="nav-link_custom" href="{{ url('') }}"></a>
-            </li>
-            <li>
-              <a class="nav-link_custom" href="{{ url('') }}"></a>
-            </li>
-            <li>
-              <a class="nav-link_custom" href="{{ url('') }}"></a>
-            </li>
-            --}}
-           
+
+            @if(Auth::user() !== null)
+              <li class="nav-item">
+                <a class="nav-link_custom" href="{{ url('') }}">ログイン</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link_custom" href="{{ url('') }}">サインアップ</a>
+              </li>
+            @endif
+
           </ul>
 
         </div>
