@@ -61,32 +61,33 @@
               <a class="nav-link_custom" href="{{ url('/') }}">Top</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link_custom" href="{{ url('about') }}">ご挨拶</a>
+              <a class="nav-link_custom" href="{{ url('') }}">マイページ</a>
             </li>
             <li class="nav-link_custom">
-              <a class="nav-link_custom" href="{{ url('systems') }}">システム</a>
+              <a class="nav-link_custom" href="{{ url('') }}">不具合指摘</a>
             </li>
             <li>
-              <a class="nav-link_custom" href="{{ url('reservation') }}">リモート予約</a>
+              <a class="nav-link_custom" href="{{ url('') }}">お問合せ</a>
+            </li>
+            {{--
+            <li>
+              <a class="nav-link_custom" href="{{ url('') }}"></a>
             </li>
             <li>
-              <a class="nav-link_custom" href="{{ url('memo') }}">技術情報</a>
-            </li>
-            <li>
-              <a class="nav-link_custom" href="{{ url('text') }}">テキスト</a>
+              <a class="nav-link_custom" href="{{ url('') }}"></a>
             </li>
             <li>
             </li>
             <li>
-              <a class="nav-link_custom" href="{{ url('sample') }}">サンプル</a>
+              <a class="nav-link_custom" href="{{ url('') }}"></a>
             </li>
             <li>
-              <a class="nav-link_custom" href="{{ url('inquiry') }}">お問合せ</a>
+              <a class="nav-link_custom" href="{{ url('') }}"></a>
             </li>
             <li>
-              <a class="nav-link_custom" href="{{ url('references') }}">参考サイト</a>
+              <a class="nav-link_custom" href="{{ url('') }}"></a>
             </li>
-
+            --}}
           </ul>
 
         </div>

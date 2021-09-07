@@ -336,8 +336,8 @@
         <div v-bind:class="[isResultMode ? 'resultModeActive' : 'inactiveDiv']" style="border: solid 5px rgb(73, 172, 157); border-radius: 10px; width: 380px; background: white;">
             <div>
                 <br>
-                <div>
-                    <span style="font-size: 36; font-weight: bold; text-align: center;">得点：(% score_string %)</span>
+                <div style=" text-align: center;">
+                    <span style="font-size: 36; font-weight: bold;">得点：(% score_string %)</span>
                 </div>
                 <br><br>
 
