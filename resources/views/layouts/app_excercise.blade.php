@@ -60,9 +60,12 @@
             <li class="nav-item">
               <a class="nav-link_custom" href="{{ url('/') }}">Top</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link_custom" href="{{ url('') }}">マイページ</a>
-            </li>
+
+            @if(Auth::user() !== null)
+              <li class="nav-item">
+                <a class="nav-link_custom" href="{{ url('') }}">マイページ</a>
+              </li>
+            @endif
             <li class="nav-item">
               <a class="nav-link_custom" href="{{ url('') }}">訂正掲示板</a>
             </li>
