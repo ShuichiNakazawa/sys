@@ -29,7 +29,7 @@ class LoginController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
-    // Add for login by login_id 20210909
+    // Add for login by login_id 20210909 START
     protected function authenticated(Request $request, $user)
     {
         dd($request);
@@ -40,6 +40,8 @@ class LoginController extends Controller
 
         return redirect('home2');
     }
+    // Add for login by login_id 20210909 END
+
 
     /**
      * Create a new controller instance.
