@@ -1,10 +1,153 @@
-@extends('layouts.app_carhythm')
 
-@section('content')
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        
+        <meta name="csrf-token" content="7gSWlPLE96Lce3ZIIOF4SIBvXvVju1BklA9uz95l">
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
+        <title>エギングスタジアム</title>
+        <meta name="description" content="ポイント還元型エギング釣果情報サイトです。エギング釣果を投稿するとポイントが貯まり、貯まったポイントを様々な商品と交換できるサイトです。ここでしか手に入らないアイテムもあるので、ぜひゲットしてみて下さい。株式会社釣研が運営しています。">
+        <meta name="keywords" content="エギングスタジアム,エギング,エギ,イカ釣り,釣果,釣果投稿">
+        
+        <link rel="shortcut icon" href="/favicon.ico">
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-<main class="pt-0">
+        
+        
+        
+        <!-- <link rel="stylesheet" href="/css/bootstrap.min.css?id=88d5cfd3c98d263b4a1a"> -->
+        <!-- <link rel="stylesheet" href="/css/font-awesome.min.css?id=88d5cfd3c98d263ffa1a"> -->
+        <link rel="stylesheet" href="/css/aos.css?id=88d5cfd3c98d263aoa1a">
+        <link rel="stylesheet" href="/css/owl.carousel.min.css?id=88d5cfd3c98d263owa1a">
+        <link rel="stylesheet" href="/css/owl.theme.default.min.css?id=88d5cfd3c98d263owt4a1">
+        <link rel="stylesheet" href="/css/app.css?id=88d5cfd3c98d263f4a1a" >
+        <link rel="stylesheet" href="/css/toastr.css?id=88d5cfd3c98d263toa1a">
+
+        
+        
+        <link rel="stylesheet" href="/css/style.css?id=88d5cfd3c98d263sta1a">
+		<link rel="stylesheet" href="/css/bp_style.css?id=88d5cfd3c98d263toa1a">
+        <script src="/js/jquery.min.js?id=c9dbc53eb32d9bejq3d0"></script>
+        
+        
+        <script>
+            window.Laravel = {"csrfToken":"7gSWlPLE96Lce3ZIIOF4SIBvXvVju1BklA9uz95l"};
+        </script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/css/swiper.min.css" />
+<link rel="stylesheet" href="/css/bp_top.css">
+		
+		
+		
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-SEHLS7GM14"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-SEHLS7GM14');
+		</script>
+    </head>
+    <body>
+        
+        
+        <div class="header-scroll-box">
+        <header>
+            <div class="container header-content max-width-1310px position-relative">
+            <div class="navbar-brand">
+                <a class="" href="https://egista.net">
+                <img src="http://egista.net:80/images/logo.png" class="logo" alt="logo"/>
+                </a>
+                <span class="logo-text">エギングの情報を投稿して楽しく盛り上がろう!</span>
+            </div>
+				
+			
+				
+				
+            <div class="header-right">
+				<div class="icon">
+					<a href="https://www.instagram.com/team_egista/" target="_blank"><img src="/images/icon_insta.png" alt=""></a>
+				</div>
+				
+                <ul class="button-group   mr-9 ">
+                                        <li class="group-item">
+                        <a href="https://egista.net/logout" class="item-link my-login" >ログアウト</a>
+                    </li>
+                    <form id="logout-form" action="https://egista.net/logout" method="POST" style="display: none;">
+                        <input type="hidden" name="_token" value="7gSWlPLE96Lce3ZIIOF4SIBvXvVju1BklA9uz95l">                    </form>
+                    <li class="group-item">
+                        <a href="https://egista.net/profile/あ" class="item-link join-free">プロフィール</a>
+                    </li>
+                                    </ul>
+            </div>
+                        <a href="https://egista.net/pages/post" class="post-button">
+                <p class="post-icon"><img src="http://egista.net:80/images/icons/icon-pencil.png" alt=""/></p>
+                <p class="post-name">投稿する</p>
+            </a>
+                        </div>
+            <nav class="navbar navbar-expand-lg after_goldline">
+                <div class="container max-width-1310px position-relative">
+
+                    <a class="navbar-brand sp" href="https://egista.net">
+                        <img src="http://egista.net:80/images/logo.png" class="logo" alt="logo"/>
+                    </a>
+					
+					<div class="navbar_icon_togglemenu">
+						<div class="icon">
+							<a href="https://www.instagram.com/team_egista/" target="_blank"><img src="/images/icon_insta.png" alt=""></a>
+						</div>
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+							aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+					</div>
+					
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mr-auto">
+                                                        <li class="nav-item sp">
+                            <a href="https://egista.net/logout" class="nav-link"><p class="menu-icon"><img src="http://egista.net:80/images/icons/icon-lock-out.png"/></p>ログアウト</a>
+                            </li>
+                            <li class="nav-item sp">
+                            <a href="https://egista.net/profile/あ" class="nav-link"><p class="menu-icon"><img src="http://egista.net:80/images/icons/icon-user.png"/></p>プロフィール</a>
+                            </li>
+                            <li class="nav-item sp">
+                            <a href="https://egista.net/pages/post" class="nav-link"><p class="menu-icon"><img src="http://egista.net:80/images/icons/icon-pencil.png"/></p>投稿する</a>
+                            </li>
+                                                        <li class="nav-item pc">
+                            <a href="https://egista.net" class="nav-link"><p class="menu-icon"><img src="http://egista.net:80/images/icons/icon-home.png"/></p>TOP</a>
+                            </li>
+                            <li class="nav-item">
+                            <a href="https://egista.net/ranking_page" class="nav-link"><p class="menu-icon"><img src="http://egista.net:80/images/icons/icon-user.png"/></p>ポイントランキング</a>
+                            </li>
+                              <li class="nav-item section-link-item">
+                                <a href="#recently_post_section" class="nav-link"><p class="menu-icon"><img src="http://egista.net:80/images/icons/icon-fish.png"/></p>最新釣果投稿</a>
+                            </li>
+                            <li class="nav-item section-link-item">
+                                <a href="#search_fish_information" class="nav-link"><p class="menu-icon"><img src="http://egista.net:80/images/icons/icon-search.png"/></p>釣果情報を探す</a>
+                            </li>
+                            <li class="nav-item section-link-item">
+                                <a href="#egista_section" class="nav-link"><p class="menu-icon"><img src="http://egista.net:80/images/icons/icon-quatation.png"/></p>エギングスタジアムとは</a>
+                            </li>
+                            <!-- <li class="nav-item sp">
+                                <a href="#" class="nav-link"><p class="menu-icon"></p>お問い合わせ</a>
+                            </li> -->
+                                                                                </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="sp-for-logo-text sp">
+            <span class="logo-text">エギングの情報を投稿して楽しく盛り上がろう!</span>
+            </div>
+        </header>
+        </div>
+
+        <main class="pt-0">
 
             
 	<section class="mv_slide">
@@ -3931,14 +4074,14 @@ DEEPエリアを狙っての嬉しい１杯でした<!-- TSURIKEN --></div>
 				<li>
 					<div class="iframe_box">
 						<div class="to_modal" data-modal="modal_youtube">
-							<iframe width="560" height="315" src="https://www.youtube.com/" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+							<iframe width="560" height="315" src="https://www.youtube.com/embed/PLK_ADrqWXg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 						</div>
 					</div>
 				</li>
 				<li>
 					<div class="iframe_box">
 						<div class="to_modal" data-modal="modal_youtube">
-							<iframe width="560" height="315" src="https://www.youtube.com/" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+							<iframe width="560" height="315" src="https://www.youtube.com/embed/I9dQ8W3Uj0g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 						</div>
 					</div>
 				</li>
@@ -3946,7 +4089,7 @@ DEEPエリアを狙っての嬉しい１杯でした<!-- TSURIKEN --></div>
 		</div>
 		
     
-    <p class="text-center tusriken"><a href="" target="_blank"><img src="" alt="tusriken"/></a></p>
+    <p class="text-center tusriken"><a href="https://www.tsuriken.co.jp/" target="_blank"><img src="http://egista.net:80/images/tusriken.svg" alt="tusriken"/></a></p>
     </div>
 </section>
         </main>
@@ -3958,7 +4101,7 @@ DEEPエリアを狙っての嬉しい１杯でした<!-- TSURIKEN --></div>
             <a href="" class="item-link to_modal" data-modal="modal_manual">マニュアル</a>
         </li>
         <li class="menu-item">
-            <a href="" class="item-link" target="_blank">運営会社</a>
+            <a href="https://www.tsuriken.co.jp/tk_n/content/corporate/info.html" class="item-link" target="_blank">運営会社</a>
         </li>
         <li class="menu-item">
         <a href="" class="item-link to_modal" data-modal="modal_term">利用規約</a>
@@ -3970,7 +4113,7 @@ DEEPエリアを狙っての嬉しい１杯でした<!-- TSURIKEN --></div>
     </ul>
     </div>
     <div class="copy-right">
-    <p>© Carhythm</p>
+    <p>Copyright© Tsuriken Co.,Ltd. All Rights Reserved</p>
     </div>
 </footer>
 
@@ -4769,162 +4912,126 @@ DEEPエリアを狙っての嬉しい１杯でした<!-- TSURIKEN --></div>
 
 
 
-
-    <br>
-    <div style="width: 100%; margin: 0 auto;">
-        <div>
-        </div>
-        <div>
-            <h4>
-                メッセージ
-            </h4>
-        </div>
-
-        <div>
-            <h4>
-                所属ライバー
-            </h4>
-        </div>
-
-        <div>
-            <h4>
-                提携ライバー
-            </h4>
-        </div>
-
-        <div>
-            <h4>
-                会社概要
-            </h4>
-        </div>
-    </div>
-
-
-
-
-
-@endsection
-
-
-@section('script')
+        
  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="/js/bootstrap.min.js?id=c9dbc53eb32d9bebt3d0"></script>
-<script src="/js/jquery.easing.min.js?id=c9dbc53eb32d9bejqed0"></script>
-<script src="/js/aos.js?id=c9dbc53eb32d9beao3d0"></script>
-<script src="/js/owl.carousel.min.js?id=c9dbc53eb32d9beow3d0"></script>
-<script src="/js/toastr.js?id=c9dbc53eb32d9beto3d0"></script>
-<!-- <script src="/js/app.js?id=c9dbc53eb32d9bef53d0"></script> -->
-<script src="/js/custom.js?id=c9dbc53eb32d9becs3d0"></script>
-
-
-<script src="/js/bp_jquery.nextToggle.js"></script>
-<script src="/js/bp_common.js"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="/js/bootstrap.min.js?id=c9dbc53eb32d9bebt3d0"></script>
+        <script src="/js/jquery.easing.min.js?id=c9dbc53eb32d9bejqed0"></script>
+        <script src="/js/aos.js?id=c9dbc53eb32d9beao3d0"></script>
+        <script src="/js/owl.carousel.min.js?id=c9dbc53eb32d9beow3d0"></script>
+        <script src="/js/toastr.js?id=c9dbc53eb32d9beto3d0"></script>
+        <!-- <script src="/js/app.js?id=c9dbc53eb32d9bef53d0"></script> -->
+        <script src="/js/custom.js?id=c9dbc53eb32d9becs3d0"></script>
+		
+		
+		<script src="/js/bp_jquery.nextToggle.js"></script>
+		<script src="/js/bp_common.js"></script>
+        
 
 <script>
-$(function () {
-$('svg .svg-grid-cell').click( function() {
-var area_id = this.dataset.gid;
-getPostDataByArea( area_id );
-});
+  $(function () {
+    $('svg .svg-grid-cell').click( function() {
+      var area_id = this.dataset.gid;
+      getPostDataByArea( area_id );
+    });
 
-$('svg .svg-button-cell').click( function() {
-var prefecture_id = this.dataset.gid;
-getPostDataByPrefecture( prefecture_id );
-});
+    $('svg .svg-button-cell').click( function() {
+      var prefecture_id = this.dataset.gid;
+      getPostDataByPrefecture( prefecture_id );
+    });
 
-$('.region-item-sp .top-area').click( function(){
-var prefecture_id = this.dataset.gid;
-getPostDataByPrefecture( prefecture_id );
-});
+    $('.region-item-sp .top-area').click( function(){
+      var prefecture_id = this.dataset.gid;
+      getPostDataByPrefecture( prefecture_id );
+    });
 
-$('.box-title-for-sp').click( function(){
-var prefecture_id = this.dataset.gid;
-getPostDataByPrefecture( prefecture_id );
-});
+    $('.box-title-for-sp').click( function(){
+      var prefecture_id = this.dataset.gid;
+      getPostDataByPrefecture( prefecture_id );
+    });
 
-$('.region-item-sp .sub-area .area-sub-item').click( function(){
-var area_id = this.dataset.gid;
-getPostDataByArea( area_id );
-});
+    $('.region-item-sp .sub-area .area-sub-item').click( function(){
+      var area_id = this.dataset.gid;
+      getPostDataByArea( area_id );
+    });
 
-function getPostDataByPrefecture( prefecture_id ) {
-var prefecture_id = prefecture_id;
-$.ajax({
-type : 'POST',
-url : "https://egista.net/get_post_data_by_prefecture",
-data :   {
-    _token: "7gSWlPLE96Lce3ZIIOF4SIBvXvVju1BklA9uz95l",
-    prefecture_id: prefecture_id
-},
-success: function(res) {
-    if (res) {
-        $('#seperate-area-section').html(res);
+    function getPostDataByPrefecture( prefecture_id ) {
+      var prefecture_id = prefecture_id;
+      $.ajax({
+        type : 'POST',
+        url : "https://egista.net/get_post_data_by_prefecture",
+        data :   {
+            _token: "7gSWlPLE96Lce3ZIIOF4SIBvXvVju1BklA9uz95l",
+            prefecture_id: prefecture_id
+        },
+        success: function(res) {
+            if (res) {
+                $('#seperate-area-section').html(res);
 
-        
-        $('#seperate-area-section .slider-box-item').each(function(){
-            if($(this).find(".slider-blog").length){
-                var myArray= $.makeArray($(this).find(".slider-blog"));
-                myArray.reverse();
-                $(this).html($(myArray));
+				
+				$('#seperate-area-section .slider-box-item').each(function(){
+					if($(this).find(".slider-blog").length){
+						var myArray= $.makeArray($(this).find(".slider-blog"));
+						myArray.reverse();
+						$(this).html($(myArray));
+					}
+				});
+				$('#seperate-area-section .slider-box-item').owlCarousel({
+					autoplay: true,
+					dots: false,
+					loop: true,
+					center: true,
+					nav: true,
+					navText: ["<div class='nav-button owl-prev'><i class='fa fa-angle-left'></i></div>", "<div class='nav-button owl-next'><i class='fa fa-angle-right'></i></div>"],
+					items: 1.0
+				});
+
             }
-        });
-        $('#seperate-area-section .slider-box-item').owlCarousel({
-            autoplay: true,
-            dots: false,
-            loop: true,
-            center: true,
-            nav: true,
-            navText: ["<div class='nav-button owl-prev'><i class='fa fa-angle-left'></i></div>", "<div class='nav-button owl-next'><i class='fa fa-angle-right'></i></div>"],
-            items: 1.0
-        });
-
+        }
+      });
     }
-}
-});
-}
 
-function getPostDataByArea( area_id ) {
-var area_id = area_id;
-$.ajax({
-type : 'POST',
-url : "https://egista.net/get_post_data_by_area",
-data :   {
-    _token: "7gSWlPLE96Lce3ZIIOF4SIBvXvVju1BklA9uz95l",
-    area_id: area_id
-},
-success: function(res) {
-    if (res) {
-        $('#seperate-area-section').html(res);
+    function getPostDataByArea( area_id ) {
+      var area_id = area_id;
+      $.ajax({
+        type : 'POST',
+        url : "https://egista.net/get_post_data_by_area",
+        data :   {
+            _token: "7gSWlPLE96Lce3ZIIOF4SIBvXvVju1BklA9uz95l",
+            area_id: area_id
+        },
+        success: function(res) {
+            if (res) {
+                $('#seperate-area-section').html(res);
 
-        
-        $('#seperate-area-section .slider-box-item').each(function(){
-            if($(this).find(".slider-blog").length){
-                var myArray= $.makeArray($(this).find(".slider-blog"));
-                myArray.reverse();
-                $(this).html($(myArray));
+				
+				$('#seperate-area-section .slider-box-item').each(function(){
+					if($(this).find(".slider-blog").length){
+						var myArray= $.makeArray($(this).find(".slider-blog"));
+						myArray.reverse();
+						$(this).html($(myArray));
+					}
+				});
+				
+				
+				$('#seperate-area-section .slider-box-item').owlCarousel({
+					autoplay: true,
+					dots: false,
+					loop: true,
+					center: true,
+					nav: true,
+					navText: ["<div class='nav-button owl-prev'><i class='fa fa-angle-left'></i></div>", "<div class='nav-button owl-next'><i class='fa fa-angle-right'></i></div>"],
+					items: 1.0
+				});
             }
-        });
-        
-        
-        $('#seperate-area-section .slider-box-item').owlCarousel({
-            autoplay: true,
-            dots: false,
-            loop: true,
-            center: true,
-            nav: true,
-            navText: ["<div class='nav-button owl-prev'><i class='fa fa-angle-left'></i></div>", "<div class='nav-button owl-next'><i class='fa fa-angle-right'></i></div>"],
-            items: 1.0
-        });
+        }
+      });
     }
-}
-});
-}
-});
+  });
 </script>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.js"></script>
 <script type="text/javascript" src="js/bp_top.js"></script>
-@endsection
+    </body>
+</html>

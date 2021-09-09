@@ -10,18 +10,21 @@
 
 @include('common.errors')
     <br>
-    <div style="width: 90%; margin: 0 auto;">
+
+    <div style="margin: 0 auto; text-align: center;">
+    {{--
+    <div style="width: 90%; margin: 0 auto; text-align: center;">
+        --}}
         <h3>{{ $subject_name }} 過去問</h3>
         <input type="hidden" name="subject_id" id="subject_id" value="{{ $subject_id }}">
-        <div style="text-align: left;">
+        <div style="text-align: left; margin-left: auto; margin-right: auto; max-width: 500px; width: 320px;">
             ゲストユーザー
         </div>
 
-
-        {{-- 出題形式選択 --}}
+        {{-- 正誤履歴表示 --}}
         {{-- 初回に表示、出題時は非表示、出題形式選択で再表示 --}}
-        <div style="margin: 0 auto;" v-bind:class="[isSelectQuestionFormatActive ? 'selectQuestionFormatActive' : 'inactiveDiv']">
-            <table>
+        <div style="margin: 0 auto; max-width: 750px;" v-bind:class="[isSelectQuestionFormatActive ? 'selectQuestionFormatActive' : 'inactiveDiv']">
+            <table style="max-width: 700px; margin: auto;">
                 <tr>
                     <td>
                         <i>
@@ -104,27 +107,27 @@
             <br><br>
 
             {{-- メニュータブ --}}
-            <div class="row" style="text-align: center;">
-                <div v-bind:class="[isRandomTabActive ? 'randomTabActive' : 'tabInactive']" style="padding: 5px; margin-left: 10px; width: 120px; z-index: 10; border-top: solid 4px rgb(73, 172, 157);; border-left: solid 4px rgb(73, 172, 157);; border-right: solid 4px rgb(73, 172, 157);; border-top-left-radius: 10px; border-top-right-radius: 10px; background:white; color: rgb(73, 172, 157);" v-on:click="onRandomTab">
+            <div class="row" style="text-align: center; margin: auto; width: 100%;">
+                <div v-bind:class="[isRandomTabActive ? 'randomTabActive' : 'tabInactive']" style="padding: 5px; margin-left: 30px; width: 115px; z-index: 10; border-top: solid 4px rgb(73, 172, 157);; border-left: solid 4px rgb(73, 172, 157);; border-right: solid 4px rgb(73, 172, 157);; border-top-left-radius: 10px; border-top-right-radius: 10px; background:white; color: rgb(73, 172, 157);" v-on:click="onRandomTab">
                     <b>ランダム出題</b>
                 </div>
-                <div v-bind:class="[isSelectYearTabActive ? 'selectYearTabActive' : 'tabInactive']" style="padding: 5px; margin-left: 15px; width: 100px; background: white; z-index: 10; border-top: solid 4px darkblue; border-left: solid 4px darkblue; border-right: solid 4px darkblue; border-top-left-radius: 10px; border-top-right-radius: 10px; color: darkblue;" v-on:click="onSelectYearTab">
+                <div v-bind:class="[isSelectYearTabActive ? 'selectYearTabActive' : 'tabInactive']" style="padding: 5px; margin-left: 5px; width: 90px; background: white; z-index: 10; border-top: solid 4px darkblue; border-left: solid 4px darkblue; border-right: solid 4px darkblue; border-top-left-radius: 10px; border-top-right-radius: 10px; color: darkblue;" v-on:click="onSelectYearTab">
                     <b>年度指定</b>
                 </div>
 
                 @if( Auth::user() !== null )
-                    <div v-bind:class="[isStatisticsTabActive ? 'statisticsTabActive' : 'tabInactive']" style="padding: 5px; margin-left: 15px; width: 100px; background: white; z-index: 10; border-top: solid 4px rgb(175, 139, 62); border-left: solid 4px rgb(175, 139, 62); border-right: solid 4px rgb(175, 139, 62); border-top-left-radius: 10px; border-top-right-radius: 10px; color: rgb(175, 139, 62);" v-on:click="onStatisticsTab">
+                    <div v-bind:class="[isStatisticsTabActive ? 'statisticsTabActive' : 'tabInactive']" style="padding: 5px; margin-left: 5px; width: 90px; background: white; z-index: 10; border-top: solid 4px rgb(175, 139, 62); border-left: solid 4px rgb(175, 139, 62); border-right: solid 4px rgb(175, 139, 62); border-top-left-radius: 10px; border-top-right-radius: 10px; color: rgb(175, 139, 62);" v-on:click="onStatisticsTab">
                         <b>統計情報</b>
                     </div>
                 @else
-                    <div style="padding: 5px; margin-left: 15px; width: 100px; background: white; z-index: 10; border-top: solid 4px lightgray; border-left: solid 4px lightgray; border-right: solid 4px lightgray; border-top-left-radius: 10px; border-top-right-radius: 10px; color: lightgray;">
+                    <div style="padding: 5px; margin-left: 5px; width: 100px; background: white; z-index: 10; border-top: solid 4px lightgray; border-left: solid 4px lightgray; border-right: solid 4px lightgray; border-top-left-radius: 10px; border-top-right-radius: 10px; color: lightgray;">
                         <b>統計情報</b>
                     </div>
                 @endif
             </div>
 
             {{-- ランダム出題コンテンツ --}}
-            <div class="row" v-bind:class="[isRandomTabActive ? 'randomTabActive' : 'inactiveDiv']" id="random_question" style="border: solid 5px rgb(73, 172, 157);; border-radius: 10px; width: 380px; background: white;">
+            <div class="row justify-content-around" v-bind:class="[isRandomTabActive ? 'randomTabActive' : 'inactiveDiv']" id="random_question" style="border: solid 5px rgb(73, 172, 157); border-radius: 10px; margin: auto; width: 95%;  background: white;">
                 <div style="padding-left: 30px;">
                     <br>
                     <div style="width: 130px; background: rgb(73, 172, 157); color: white; font-weight: bold; text-align: center; border-top-right-radius: 25px; border-bottom-right-radius: 25px;" v-on:click="onStartQuestion">
@@ -159,7 +162,7 @@
 
 
             {{-- 年度指定コンテンツ --}}
-            <div class="row inactive" v-bind:class="[isSelectYearTabActive ? 'SelectYearTabActive' : 'inactiveDiv']" id="selected_question" style="border: solid 5px darkblue; border-radius: 10px; max-width: 700px; background: white;">
+            <div class="row inactive justify-content-around" v-bind:class="[isSelectYearTabActive ? 'SelectYearTabActive' : 'inactiveDiv']" id="selected_question" style="border: solid 5px darkblue; border-radius: 10px; margin: auto; max-width: 95%; background: white;">
 
                 <div style="padding-left: 30px;">
                     <br>
@@ -181,12 +184,19 @@
                 @foreach($titles as $title)
 
                     @if($index % 2 == 0)
+                    
+                        <div class="row justify-content-around" style="">
+                        {{--
                         <div class="row" style="margin: 10px;">
+                            --}}
                     @endif
 
+                    <div style="margin: 10px; width: 150px;">
+                    {{--
                     <div style="margin: 10px; width: 135px;">
+                    --}}
                         <input type="radio" name="title_id" style="display: none;" id="title_{{ $title->title_id }}" value="{{ $title->title_id }}" v-on:click="onGetTitleId">
-                        <label for="title_{{ $title->title_id }}" class="btn-choice">
+                        <label for="title_{{ $title->title_id }}" class="btn-choice" style="width: 135px;">
                             {{ $title->question_title }}
                         </label>
                     </div>
@@ -200,9 +210,7 @@
                     @endphp
                 @endforeach
 
-                <div style="width: 100%;">
 
-                </div>
                 <div style="padding-left: 30px;">
                     <div style="width: 130px; background: darkblue; color: white; font-weight: bold; text-align: center; border-top-right-radius: 25px; border-bottom-right-radius: 25px;" v-on:click="onStartQuestion">
                         出題スタート
