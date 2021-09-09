@@ -559,7 +559,8 @@ Route::get('/excercise_random/{subject}', 'ExcerciseController@startRandomExcerc
 Route::get('/excercise_selected/{subject}', 'ExcerciseController@startSelectedExcercise');
 
 // ログイン画面
-Route::get('/excercise_menu/login', 'HomeController@index')->name('home');
+Route::get('/excercise_menu/{subject}/login', 'HomeController@index');
+//Route::get('/excercise_menu/login', 'HomeController@index')->name('home');
 
 
  /*
