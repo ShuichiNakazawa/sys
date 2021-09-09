@@ -222,13 +222,15 @@
 
             {{-- ランダム出題コンテンツ --}}
             <div class="" v-bind:class="[isStatisticsTabActive ? 'statisticsTabActive' : 'inactiveDiv']" id="statistics" style="border: solid 5px rgb(175, 139, 62); border-radius: 10px; margin: auto; width: 95%;  background: white;">
+                <div class="row justify-content-around">
+                    <div style="margin: 25px;">
+                        本日の利用者数
+                    </div>
+                    <div style="margin: 25px;">
+                        累積利用者数
+                    </div>
+                </div>
 
-                <div style="margin: 25px;">
-                    本日の利用者数
-                </div>
-                <div style="margin: 25px;">
-                    累積利用者数
-                </div>
                 <div style="margin: 25px;">
                     最近の挑戦者
                 </div>
