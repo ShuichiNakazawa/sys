@@ -13,6 +13,8 @@
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <br>
+                            ※必須
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -28,6 +30,8 @@
                         {{-- Add for login by login_id   START --}}
                         <div class="form-group row">
                             <label for="login_id" class="col-md-4 col-form-label text-md-right">{{ __('Login_id') }}</label>
+                            <br>
+                            ※必須
 
                             <div class="col-md-6">
                                 <input id="login_id" type="text" class="form-control @error('login_id') is-invalid @enderror" name="login_id" value="{{ old('login_id') }}" required autocomplete="login_id" autofocus>
@@ -46,6 +50,7 @@
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <br>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email">
