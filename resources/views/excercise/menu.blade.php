@@ -232,7 +232,7 @@
                 </div>
 
                 <div style="margin: auto;">
-                    最近の挑戦者
+                    <h4>最近の挑戦者</h4>
                     <table style="margin: auto;">
                         <tr>
                             <th>
