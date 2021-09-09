@@ -34,7 +34,7 @@ class LoginController extends Controller
     {
         //dd($request);
         //dd($request->param);
-        dd($request->redirect_to);
+        dd($request->redirect.url);
 
         /*
         if($request->param === 'value'){
