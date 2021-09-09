@@ -226,7 +226,7 @@
                 {{-- 正誤履歴を表示するエリア --}}
                 正誤履歴 表示エリア
             </div>
-            <div style="text-align: left;">
+            <div style="text-align: left; padding: 5px;">
                 <br>
 
                 {{-- ランダム出題か年度指定かを表示 --}}
