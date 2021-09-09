@@ -231,7 +231,7 @@
                     </div>
                 </div>
 
-                <div style="margin: 25px;">
+                <div style="margin: auto;">
                     最近の挑戦者
                     <table>
                         <tr>
