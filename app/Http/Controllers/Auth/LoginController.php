@@ -32,19 +32,11 @@ class LoginController extends Controller
     // Add for login by login_id 20210909 START
     protected function authenticated(Request $request, $user)
     {
-        //dd($request);
-        //dd($request->param);
-        //dd($request->redirect_to);
-
 
         if(session()->has('redirect.url') ) {
             return redirect( session()->get( 'redirect.url' ) );
        }
-        /*
-        if($request->param === 'value'){
-            return redirect('home1');
-        }
-        */
+
         return redirect('home2');
     }
     // Add for login by login_id 20210909 END
@@ -57,9 +49,12 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        // Add for login by login_id 20210909 START
         if ( \request()->get( 'redirect_to' ) ) {
             session()->put( 'redirect.url', \request()->get( 'redirect_to' ) );
         }
+        // Add for login by login_id 20210909 END
+
         $this->middleware('guest')->except('logout');
     }
 
