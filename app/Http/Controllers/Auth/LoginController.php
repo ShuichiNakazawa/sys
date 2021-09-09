@@ -32,7 +32,7 @@ class LoginController extends Controller
     // Add for login by login_id 20210909 START
     protected function authenticated(Request $request, $user)
     {
-        dd($request->param);
+        //dd($request->param);
 
         if($request->param === 'value'){
             return redirect('home1');

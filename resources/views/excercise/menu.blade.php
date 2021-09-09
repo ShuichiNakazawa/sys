@@ -21,7 +21,10 @@
             
             @if( Auth::user() === null )
                 ゲストユーザー
+                &nbsp;     <a href="/login?redirect_to={{ urlencode(request()->url())) }}"><div class="btn-choice">ログイン</div></a>
+                {{--
                 &nbsp;     <a href="/excercise_menu/{{ $subject_id}}/login?sysid=2&param={{ $subject_id}}"><div class="btn-choice">ログイン</div></a>
+                --}}
                 {{--
                 &nbsp;     <a href="/login"><div class="btn-choice">ログイン</div></a>
                 --}}
