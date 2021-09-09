@@ -53,8 +53,13 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+
+            'email' => ['string', 'email', 'max:255', 'unique:users'],
+            //'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+
+            // Add for longin by login_id 20210909
+            'login_id'  =>  ['required', 'string', 'alpha_dash', 'min:4', 'max:255', 'unique:users'],
         ]);
     }
 
@@ -76,6 +81,9 @@ class RegisterController extends Controller
             'name'              => $data['name'],
             'email'             => $data['email'],
             'password'          => Hash::make($data['password']),
+
+            // Add for longin by login_id 20210909
+            'login_id' => $data['login_id'],
         ]);
     }
 }
