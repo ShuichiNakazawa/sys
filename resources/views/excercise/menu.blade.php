@@ -18,7 +18,10 @@
         <h3>{{ $subject_name }} 過去問</h3>
         <input type="hidden" name="subject_id" id="subject_id" value="{{ $subject_id }}">
         <div style="text-align: left; margin-left: auto; margin-right: auto; max-width: 500px; width: 320px;">
-            ゲストユーザー&nbsp;     <a href="/login"><div class="btn-choice">ログイン</div></a>
+            ゲストユーザー
+            @if( Auth::user() === null )
+                &nbsp;     <a href="/login"><div class="btn-choice">ログイン</div></a>
+            @endif
         </div>
 
         {{-- 正誤履歴表示 --}}
