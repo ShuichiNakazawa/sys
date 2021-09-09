@@ -77,7 +77,7 @@
             @if(Auth::user() === null)
               <li class="nav-item">
                 <a class="nav-link_custom" href="{{ route('register') . "?redirect_to=" . urlencode(request()->url()) }}">ユーザー登録</a>
-                <a href="{{ route('register') . "?redirect_to=" .  }}">{{ __('新規ユーザー登録') }}</a>
+                
 
               </li>
             @else
