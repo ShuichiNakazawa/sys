@@ -317,6 +317,7 @@
                 <br>
 
                 {{-- テスト用表示項目 --}}
+                {{--
                 問題番号： (% question_number %)
                 <br>
 
@@ -334,7 +335,7 @@
 
                 isNoSelect: (% isNoSelect %)
                 <br>
-
+                --}}
 
 
             </div>
