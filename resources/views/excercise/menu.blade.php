@@ -221,7 +221,7 @@
         </div>
         
         {{-- 出題画面 --}}
-        <div v-bind:class="[isQuestionMode ? 'questionModeActive' : 'inactiveDiv']" style="border: solid 5px rgb(73, 172, 157); border-radius: 10px; width: 380px; background: white;">
+        <div v-bind:class="[isQuestionMode ? 'questionModeActive' : 'inactiveDiv']" style="border: solid 5px rgb(73, 172, 157); border-radius: 10px; margin: auto; width: 380px; background: white;">
             <div>
                 {{-- 正誤履歴を表示するエリア --}}
                 正誤履歴 表示エリア
