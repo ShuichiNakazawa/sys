@@ -233,6 +233,30 @@
 
                 <div style="margin: 25px;">
                     最近の挑戦者
+                    <table>
+                        <tr>
+                            <th>
+                                ユーザーID
+                            </th>
+                            <th>
+                                年度
+                            </th>
+                            <th>
+                                スコア
+                            </th>                            
+                        </tr>
+                        <tr>
+                            <td>
+                                ユーザーIDを取得
+                            </td>
+                            <td>
+                                年度【テーブルから取得】
+                            </td>
+                            <td>
+                                スコア【テーブルから取得】
+                            </td>
+                        </tr>
+                    </table>
                 </div>
 
                 <div style="margin: 25px;">
