@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\URL;
+
 class RegisterController extends Controller
 {
     /*
@@ -32,7 +34,7 @@ class RegisterController extends Controller
      * @var string
      */
     
-    //protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::HOME;
 
 
     /*
@@ -60,6 +62,7 @@ class RegisterController extends Controller
             session()->put( 'redirect.url', \request()->get( 'redirect_to' ) );
         }
         $this->middleware('guest');
+        session()->put('backUrl', URL::previous());
     }
 
     /**
@@ -88,7 +91,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(Request $request, array $data)
+    protected function create(array $data)
     {
         /**
          * 利用システムごとにアカウント作成を変更する修正
@@ -105,8 +108,15 @@ class RegisterController extends Controller
             'login_id' => $data['login_id'],
         ]);
 
-        if(session()->has('redirect.url') ) {
-            return redirect( session()->get( 'redirect.url' ) );
-       }
+    }
+
+    public function redirectTo()
+    {
+        /*
+        if(){
+            redirect();
+        }
+        */
+        return session()->get('backUrl', URL::previous()) ? session()->get('backUrl', URL::previous()) : $this->redirectTo;
     }
 }
