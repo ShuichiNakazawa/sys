@@ -218,6 +218,25 @@
                     <br><br>
                 </div>
             </div>
+
+
+            {{-- ランダム出題コンテンツ --}}
+            <div class="row justify-content-around" v-bind:class="[isStatisticsTabActive ? 'statisticsTabActive' : 'inactiveDiv']" id="statistics" style="border: solid 5px rgb(175, 139, 62); border-radius: 10px; margin: auto; width: 95%;  background: white;">
+
+                <div style="margin: 25px;">
+                </div>
+                <div style="margin: 25px;">
+                </div>
+                <div style="margin: 25px;">
+                </div>
+                <div style="margin: 25px;">
+                </div>
+                <br><br>
+
+            </div>
+
+
+
         </div>
         
         {{-- 出題画面 --}}
