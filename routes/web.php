@@ -552,12 +552,14 @@ Route::get('/practice/4_2', function() {
 // API
 Route::get('/excercise_menu/{subject_id}/{questionMode}/{param}', 'ExcerciseController@setQuestionInfo');
 
- // ランダム演習 
- Route::get('/excercise_random/{subject}', 'ExcerciseController@startRandomExcercise');
+// ランダム演習 
+Route::get('/excercise_random/{subject}', 'ExcerciseController@startRandomExcercise');
 
- // 年度指定演習
- Route::get('/excercise_selected/{subject}', 'ExcerciseController@startSelectedExcercise');
+// 年度指定演習
+Route::get('/excercise_selected/{subject}', 'ExcerciseController@startSelectedExcercise');
 
+// ログイン画面
+Route::get('/excercise_selected/login', 'HomeController@index')->name('home');
 
 
  /*
