@@ -233,7 +233,7 @@
 
                 <div style="margin: auto;">
                     最近の挑戦者
-                    <table>
+                    <table style="margin: auto;">
                         <tr>
                             <th>
                                 ユーザーID
