@@ -33,6 +33,8 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         //dd($request->param);
+        dd($request->redirect_to);
+
 
         if($request->param === 'value'){
             return redirect('home1');
