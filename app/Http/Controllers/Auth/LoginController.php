@@ -32,9 +32,9 @@ class LoginController extends Controller
     // Add for login by login_id 20210909 START
     protected function authenticated(Request $request, $user)
     {
-        dd($request);
+        //dd($request);
         //dd($request->param);
-        //dd($request->redirect_to);
+        dd($request->redirect_to);
 
         /*
         if($request->param === 'value'){
@@ -53,6 +53,9 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        if ( \request()->get( 'redirect_to' ) ) {
+            session()->put( 'redirect.url', \request()->get( 'redirect_to' ) );
+        }
         $this->middleware('guest')->except('logout');
     }
 
