@@ -12,7 +12,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}<br>※必須</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
 
                             <div class="col-md-6">
@@ -28,7 +28,7 @@
 
                         {{-- Add for login by login_id   START --}}
                         <div class="form-group row">
-                            <label for="login_id" class="col-md-4 col-form-label text-md-right">{{ __('Login_id') }}<br>※必須</label>
+                            <label for="login_id" class="col-md-4 col-form-label text-md-right">{{ __('Login_id') }}</label>
 
                             <div class="col-md-6">
                                 <input id="login_id" type="text" class="form-control @error('login_id') is-invalid @enderror" name="login_id" value="{{ old('login_id') }}" required autocomplete="login_id" autofocus>
@@ -46,7 +46,7 @@
 
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}<br>（任意）</label>
                             <br>
 
                             <div class="col-md-6">
@@ -61,7 +61,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}<br>※必須</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -75,7 +75,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}<br>※必須</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
