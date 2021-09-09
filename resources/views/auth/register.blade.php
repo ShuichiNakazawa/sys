@@ -25,6 +25,25 @@
                             </div>
                         </div>
 
+                        {{-- Add for login by login_id   START --}}
+                        <div class="form-group row">
+                            <label for="login_id" class="col-md-4 col-form-label text-md-right">{{ __('Login_id') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="login_id" type="text" class="form-control @error('login_id') is-invalid @enderror" name="login_id" value="{{ old('login_id') }}" required autocomplete="login_id" autofocus>
+
+                                @error('login_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+
+                        {{-- Add for login by login_id   END --}}
+
+
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
