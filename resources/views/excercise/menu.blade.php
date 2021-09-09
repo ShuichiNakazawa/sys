@@ -342,7 +342,7 @@
         </div>
 
         {{-- 結果判定画面 --}}
-        <div v-bind:class="[isResultMode ? 'resultModeActive' : 'inactiveDiv']" style="border: solid 5px rgb(73, 172, 157); border-radius: 10px; width: 380px; background: white;">
+        <div v-bind:class="[isResultMode ? 'resultModeActive' : 'inactiveDiv']" style="border: solid 5px rgb(73, 172, 157); border-radius: 10px; margin: auto; width: 380px; background: white;">
             <div>
                 <br>
                 <div style=" text-align: center;">
