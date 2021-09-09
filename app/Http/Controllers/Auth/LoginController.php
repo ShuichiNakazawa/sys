@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -27,6 +28,18 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+    // Add for login by login_id 20210909
+    protected function authenticated(Request $request, $user)
+    {
+        dd($request);
+
+        if($request->param === 'value'){
+            return redirect('home1');
+        }
+
+        return redirect('home2');
+    }
 
     /**
      * Create a new controller instance.
