@@ -34,14 +34,18 @@ class LoginController extends Controller
     {
         //dd($request);
         //dd($request->param);
-        dd($request->redirect.url);
+        //dd($request->redirect_to);
 
+
+        if(session()->has('redirect.url') ) {
+            return redirect( session()->get( 'redirect.url' ) );
+       }
         /*
         if($request->param === 'value'){
             return redirect('home1');
         }
         */
-        //return redirect('home2');
+        return redirect('home2');
     }
     // Add for login by login_id 20210909 END
 
