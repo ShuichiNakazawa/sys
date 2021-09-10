@@ -9,6 +9,8 @@ use App\Question_sentences;
 use App\Choice_sentences;
 use App\Answer_sentences;
 
+use App\Individual_scores;
+
 use Auth;
 
 class ExcerciseController extends Controller
@@ -37,11 +39,13 @@ class ExcerciseController extends Controller
         // ログイン判定
         if(Auth::user() !== null){
 
+            $user_id = Auth::user()->id;
+
             // ログイン済
             // 進捗バー表示項目 取得
 
             /* SQL を修正 */
-            $checkRecords = Individual_scores::where('where user_id', '=', Auth::user()->id)
+            $checkRecords = Individual_scores::where('user_id', '=', Auth::user()->id)
                             ->where('subject_name_id', '=', $subject_id)
                             ->distinct()
                             ->select('subject_name_id',                 // 科目ID
@@ -56,7 +60,7 @@ class ExcerciseController extends Controller
             // ①科目の問題数 - 上記配列の件数を No_look の件数として保存。
 
             // 該当科目の問題数
-            $numberQuestionPerSubject = Question_sentences::where('subject_name_id', '=', $subject_id)
+            $numberQuestionPerSubject = Question_sentences::where('subject_id', '=', $subject_id)
                                                     ->where('sight_key', '=', 'origin')
                                                     ->count();
 
@@ -80,7 +84,7 @@ class ExcerciseController extends Controller
                 // 同一問題に対して
                 // 最後が連続５回正解ならPerfectにカウント
                 // 挑戦回数が小さい順に５件を取得し、全てが正解であれば Perfect に該当
-                $checkPerfect = Individual_scores::where( 'subject_id', '=', $subject_id )
+                $checkPerfect = Individual_scores::where( 'subject_name_id', '=', $subject_id )
                         ->where('question_title_id', '=', $record->question_title_id) 
                         ->where('question_number', '=', $record->question_number)
                         ->where('user_id', '=', $record->user_id)
@@ -112,7 +116,7 @@ class ExcerciseController extends Controller
 
                     $checkStable = Individual_scores::where('subject_name_id', '=', $subject_id) 
                             ->where('question_title_id', '=', $record->question_title_id) 
-                            -where('question_number', '=', $record->question_number)
+                            ->where('question_number', '=', $record->question_number)
                             ->where('user_id', '=', $record->user_id)
                             ->orderby('number_try', 'desc')
                             ->limit(3)
@@ -137,7 +141,7 @@ class ExcerciseController extends Controller
                         // 上の条件を満たさず、
                         // 正解が１回以上あり、過去５回で正解の数と不正解の数が一致か、正解の数の方が多い場合にGood
 
-                        $checkGood = Individual_scores::where('subject_id', '=', $subject_id)
+                        $checkGood = Individual_scores::where('subject_name_id', '=', $subject_id)
                                 ->where('question_title_id', '=', $record->question_title_id) 
                                 ->where('question_number', '=', $record->question_number)
                                 ->where('user_id', '=', $user_id)
