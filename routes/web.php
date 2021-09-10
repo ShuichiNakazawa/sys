@@ -31,7 +31,6 @@ Route::get('/systems', function () {
  * 予約
  */
 
-
 // 管理ページ
 
 // 管理トップ
@@ -39,7 +38,6 @@ Route::get('/systems', function () {
 Route::get('/reservation/management', function () {
     return view('reservation.management.index');
 });
-
 
 
 //Route::post('/reservation/management', 'ReservationController@showAcceptable');
@@ -53,8 +51,6 @@ Route::get('/reservation/management/edit_acceptable', function () {
 Route::get('/reservation/management/edit_acceptable', 'ReservationController@showAcceptable');
 
 Route::post('/reservation/management/edit_acceptable', 'ReservationController@storeAcceptable');
-
-
 
 
 Route::get('/reservation/management/regist_holiday', function () {
@@ -404,9 +400,6 @@ Route::name('sample.')
                             Route::get('/sample/equip/edit_account', function (){
                                 return view('sample.equip.edit_account');
                             })->name('edit_account');
-
-
-
 
                             // 権限登録画面 表示
                             Route::get('/sample/equip/register_privileges', function (){

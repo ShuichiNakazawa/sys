@@ -76,19 +76,19 @@
                 <tr>
                     @if( Auth::user() !== null )
                         <td style="text-align: center;">
-                            Perfectの数
+                            Perfectの数:{{ $numberPerfect }}
                         </td>
                         <td style="text-align: center;">
-                            Stableの数
+                            Stableの数:{{ $numberStable }}
                         </td>
                         <td style="text-align: center;">
-                            Goodの数
+                            Goodの数:{{ $numberGood }}
                         </td>
                         <td style="text-align: center;">
-                            Badの数
+                            Badの数:{{ $numberBad }}
                         </td>
                         <td style="text-align: center;">
-                            No lookの数
+                            No lookの数{{ $numberNoLook }}
                         </td>
                     @else
                         <td style="text-align: center;">
