@@ -18,18 +18,20 @@ class DatabaseSeeder extends Seeder
         // 外部キー制約　無効化
         \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
-        $this->call(ReservationsTableSeeder::class);            // 予約
+        //$this->call(ReservationsTableSeeder::class);            // 予約
         
-        $this->call(FieldsTableSeeder::class);                  // 大分類
-        $this->call(Subject_namesTableSeeder::class);           // 科目名
-        $this->call(QuestionTitlesTableSeeder::class);          // 問題タイトル
+        //$this->call(FieldsTableSeeder::class);                  // 大分類
+        $this->call(SubjectsTableSeeder::class);                // 科目名
+        $this->call(TitlesTableSeeder::class);                  // 問題タイトル
 
         $this->call(QuestionSentencesTableSeeder::class);       // 問題文
         $this->call(ChoiceSentencesTableSeeder::class);         // 選択肢文
         $this->call(AnswerSentencesTableSeeder::class);         // 正答文
-        $this->call(DivisionsTableSeeder::class);               // 分野
+        //$this->call(DivisionsTableSeeder::class);               // 分野
         //$this->call(IndividualScoringsTableSeeder::class);	  // 個人得点
+        $this->call(SubjectGroupsTableSeeder::class);
 
+        /*
 	    // Stripe ECサイトサンプル
 	    $this->call(ProductSeeder::class);			// 商品
 
@@ -39,7 +41,7 @@ class DatabaseSeeder extends Seeder
         $this->call(M_equipmentsTableSeeder::class);
         $this->call(T_equipment_tagsTableSeeder::class);
         $this->call(T_equipment_stocksTableSeeder::class);
-        $this->call(Subject_groupsTableSeeder::class);
+        */
         
 
         //$this->call(Musatra_commentsTableSeeder::class);

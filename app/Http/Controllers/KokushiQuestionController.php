@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Subject_names;
+use App\Subject;
 use App\Fields;
-use App\Question_titles;
+use App\Title;
 use App\Question_sentences;
 use App\Question_sentence;
 use App\Choice_sentences;
@@ -42,7 +42,7 @@ class KokushiQuestionController extends Controller
       foreach ($subject_groups as $subject_group){
 
         // 科目リスト 取得
-        $subjects = Subject_names::where('subject_group_id', '=', $subject_group->id)
+        $subjects = Subject::where('subject_group_id', '=', $subject_group->id)
                                         ->pluck('subject_name', 'id');
 
         $All_subjects[$count] = $subjects;
@@ -67,7 +67,7 @@ class KokushiQuestionController extends Controller
 
       $subject_name_kanji   =  subjectClass::getKanjiName($subject_id);
 
-      $titles = Question_titles::where('subject_name_id', '=', $subject_id)
+      $titles = Title::where('subject_id', '=', $subject_id)
                                       ->orderby('title_id', 'desc')
                                       ->get();
 
@@ -92,15 +92,15 @@ class KokushiQuestionController extends Controller
         //********************
         // 正解件数　取得
         $NumberOfCorrectAnsers  = Individual_score::where('user_id', '=', $user_id_session)
-                                                  ->where('subject_name_id', '=', $subject_id)
-                                                  ->where('question_title_id', '=', $title->title_id)
+                                                  ->where('subject_id', '=', $subject_id)
+                                                  ->where('title_id', '=', $title->title_id)
                                                   ->where('judgement', '=', 1)
                                                   ->count();
 
         // 回答件数　取得
         $numberOfResponses      = Individual_score::where('user_id', '=', $user_id_session)
-                                                  ->where('subject_name_id', '=', $subject_id)
-                                                  ->where('question_title_id', '=', $title->title_id)
+                                                  ->where('subject_id', '=', $subject_id)
+                                                  ->where('title_id', '=', $title->title_id)
                                                   ->count();
 
         //dd($user_id_session, $subject_id, $title->title_id);
@@ -123,8 +123,8 @@ class KokushiQuestionController extends Controller
 
 
         // 挑戦者数　取得
-        $numberOfChallengers    = Test_score::where('subject_name_id', '=', $subject_id)
-                                                ->where('question_title_id', '=', $title->question_title_id)
+        $numberOfChallengers    = Test_score::where('subject_id', '=', $subject_id)
+                                                ->where('title_id', '=', $title->question_title_id)
                                                 ->count();
 
         // 挑戦者数配列　格納
@@ -149,13 +149,13 @@ class KokushiQuestionController extends Controller
     public function setQuestion($subject_id, Request $request) {
       $subject_id		      =	  $request->subject_id;               // 科目ID
       $question_title     =   $request->question_title;           // タイトル名
-      $question_title_id  =   $request->title_id;                 // タイトルID
+      $title_id           =   $request->title_id;                 // タイトルID
 
-      //dd($question_title_id);
+      //dd($title_id);
 
       /*
-      $question_title_id	= Question_titles::select('title_id')
-                                      ->where('subject_name_id', '=', $subject_id)
+      $title_id	= Question_titles::select('title_id')
+                                      ->where('subject_id', '=', $subject_id)
                                       ->where('question_title', '=', $question_title)
                                       ->where('sight_key', '=', 'origin')
                                       ->value('title_id');
@@ -165,7 +165,7 @@ class KokushiQuestionController extends Controller
 
       // 問題文 取得
       $question_sentence        =       Question_sentences::where('subject_id', '=', $subject_id)
-                                                ->where('question_title_id', '=', $question_title_id)
+                                                ->where('title_id', '=', $question_title_id)
                                                 ->where('question_number', '=', 1)
                                                 ->first();
 
@@ -174,7 +174,7 @@ class KokushiQuestionController extends Controller
       // 最終問題番号 取得 （下のコメントを流用）
       $question_last_number     =       Question_sentences::select('question_number')
                                                         ->where('subject_id', '=', $subject_id)
-                                                        ->where('question_title_id', '=', $question_title_id)
+                                                        ->where('title_id', '=', $question_title_id)
                                                         ->orderby('question_number', 'desc')
                                                         ->limit(1)
                                                         ->value('question_number');
@@ -185,8 +185,8 @@ class KokushiQuestionController extends Controller
                                         ];
 
       // 選択肢 取得
-      $choice_sentences         =       Choice_sentences::where('subject_name_id', '=', $subject_id)
-                                                ->where('question_title_id', '=', $question_title_id)
+      $choice_sentences         =       Choice_sentences::where('subject_id', '=', $subject_id)
+                                                ->where('title_id', '=', $question_title_id)
                                                 ->where('question_number', '=', 1)
                                                 ->get();
 
@@ -598,7 +598,7 @@ class KokushiQuestionController extends Controller
       $subject_id		      =	$request->subject_id;               // 科目ID
       $question_title     = $request->question_title;          // タイトル名
       $question_title_id	= Question_titles::select('title_id')
-                                      ->where('subject_name_id', '=', $subject_id)
+                                      ->where('subject_id', '=', $subject_id)
                                       ->where('question_title', '=', $question_title)
                                       ->where('sight_key', '=', 'origin')
                                       ->value('title_id');
@@ -607,7 +607,7 @@ class KokushiQuestionController extends Controller
 
       // 問題文 取得
       $question_sentence        =       Question_sentences::where('subject_id', '=', $subject_id)
-                                                ->where('question_title_id', '=', $question_title_id)
+                                                ->where('title_id', '=', $question_title_id)
                                                 ->where('question_number', '=', 1)
                                                 ->first();
 
@@ -616,7 +616,7 @@ class KokushiQuestionController extends Controller
       // 最終問題番号 取得 （下のコメントを流用）
       $question_last_number     =       Question_sentences::select('question_number')
                                                         ->where('subject_id', '=', $subject_id)
-                                                        ->where('question_title_id', '=', $question_title_id)
+                                                        ->where('title_id', '=', $question_title_id)
                                                         ->orderby('question_number', 'desc')
                                                         ->limit(1)
                                                         ->value('question_number');
@@ -627,8 +627,8 @@ class KokushiQuestionController extends Controller
                                         ];
 
       // 選択肢 取得
-      $choice_sentences         =       Choice_sentences::where('subject_name_id', '=', $subject_id)
-                                                ->where('question_title_id', '=', $question_title_id)
+      $choice_sentences         =       Choice_sentences::where('subject_id', '=', $subject_id)
+                                                ->where('title_id', '=', $question_title_id)
                                                 ->where('question_number', '=', 1)
                                                 ->get();
 
@@ -698,7 +698,7 @@ class KokushiQuestionController extends Controller
 
       // 問題タイトル 取得
       $question_title	=	Question_titles::select('question_title')
-					->where('subject_name_id', '=', $subject_id)
+					->where('subject_id', '=', $subject_id)
 					->where('title_id', '=', $title_id)
 					->value('question_title');
 
@@ -709,13 +709,13 @@ class KokushiQuestionController extends Controller
 						->first();
 
       // 選択肢 取得
-      $choice_sentences		=	Choice_sentences::where('subject_name_id', '=', $subject_id)
+      $choice_sentences		=	Choice_sentences::where('subject_id', '=', $subject_id)
                                                 ->where('question_title', '=', $question_title)
                                                 ->where('question_number', '=', $question_number)
                                                 ->get();
 
       // 正答数 取得
-      $number_of_answers	=	Answer_sentences::where('subject_name_id', '=', $subject_id)
+      $number_of_answers	=	Answer_sentences::where('subject_id', '=', $subject_id)
 						->where('question_title', '=', $question_title)
 						->where('question_number', '=', $question_number)
 						->count();
@@ -822,27 +822,27 @@ class KokushiQuestionController extends Controller
       // 必須回答数 取得
       $numOfNeedSelect	=	Question_sentences::select('required_numOfAnswers')
                 ->where('subject_id', '=', $subject_id)
-                ->where('question_title_id', '=', $title_id)
+                ->where('title_id', '=', $title_id)
                 ->where('question_number', '=', $question_number)
                 ->limit(1)
                 ->value('required_numOfAnswers');
 
       // 問題文 取得
       $question_sentence        =       Question_sentences::where('subject_id', '=', $subject_id)
-                                                ->where('question_title_id', '=', $title_id)
+                                                ->where('title_id', '=', $title_id)
                                                 ->where('question_number', '=', $question_number)
                                                 ->first();
 
       // 選択肢 取得
-      $choice_sentences         =       Choice_sentences::where('subject_name_id', '=', $subject_id)
-                                                ->where('question_title_id', '=', $title_id)
+      $choice_sentences         =       Choice_sentences::where('subject_id', '=', $subject_id)
+                                                ->where('title_id', '=', $title_id)
                                                 ->where('question_number', '=', $question_number)
                                                 ->get();
 
       // 最終問題番号 取得 （下のコメントを流用）
       $question_last_number     =       Question_sentences::select('question_number')
                                                           ->where('subject_id', '=', $subject_id)
-                                                          ->where('question_title_id', $title_id)
+                                                          ->where('title_id', $title_id)
                                                           ->orderby('question_number', 'desc')
                                                           ->limit(1)
                                                           ->value('question_number');
@@ -854,8 +854,8 @@ class KokushiQuestionController extends Controller
 
 
       // 正答数 取得
-      $number_of_answers        =       Answer_sentences::where('subject_name_id', '=', $subject_id)
-                                                ->where('question_title_id', '=', $title_id)
+      $number_of_answers        =       Answer_sentences::where('subject_id', '=', $subject_id)
+                                                ->where('title_id', '=', $title_id)
                                                 ->where('question_number', '=', $question_number)
                                                 ->count();
 
@@ -877,8 +877,8 @@ class KokushiQuestionController extends Controller
 
         // 正誤履歴データ　件数取得
         $count_correct    =   Individual_score::where('user_id', '=', $user_id_session)
-                                                  ->where('subject_name_id', '=', $subject_id)
-                                                  ->where('question_title_id', '=', $title_id)
+                                                  ->where('subject_id', '=', $subject_id)
+                                                  ->where('title_id', '=', $title_id)
                                                   ->where('question_number', '=', $question_number)
                                                   ->where('number_try', '=', $number_try_session)
                                                   ->count();
@@ -887,8 +887,8 @@ class KokushiQuestionController extends Controller
 
         // 正誤履歴データ　取得
         $array_corrects  = Individual_score::where('user_id', '=', $user_id_session)
-                                      ->where('subject_name_id', '=', $subject_id)
-                                      ->where('question_title_id', '=', $title_id)
+                                      ->where('subject_id', '=', $subject_id)
+                                      ->where('title_id', '=', $title_id)
                                       ->where('question_number', '=', $question_number)
                                       ->orderby('created_at', 'desc')
                                       ->limit(5)
@@ -962,14 +962,14 @@ class KokushiQuestionController extends Controller
         // 正答の数 取得(問題文の正答数では？)
         $numOfAnswers = Question_sentences::select('number_of_answers')
                                                 ->where('subject_id', '=', $subject_id)
-                                                ->where('question_title_id', '=', $title_id)
+                                                ->where('title_id', '=', $title_id)
                                                 ->where('question_number', '=', $question_number)
                                                 ->limit(1)
                                                 ->value('number_of_answers');
 
         /*
-        $numOfAnswers	=	Answer_sentences::where('subject_name_id', '=', $subject_id)
-                        ->where('question_title_id', '=', $title_id)
+        $numOfAnswers	=	Answer_sentences::where('subject_id', '=', $subject_id)
+                        ->where('title_id', '=', $title_id)
                         ->where('question_number', '=', $question_number)
                         ->count();
         */
@@ -980,8 +980,8 @@ class KokushiQuestionController extends Controller
           // 正答の数 判定
           if ($numOfAnswers == 1){
             $answer	=	Answer_sentences::select('answer_sentence')
-                                                        ->where('subject_name_id', '=', $subject_id)
-                                                        ->where('question_title_id', '=', $title_id)
+                                                        ->where('subject_id', '=', $subject_id)
+                                                        ->where('title_id', '=', $title_id)
                                                         ->where('question_number', '=', $question_number)
                                                         ->value('answer_sentence');
 
@@ -1004,8 +1004,8 @@ class KokushiQuestionController extends Controller
 
             //　個別得点　重複レコード件数　取得
             $count_individual = Individual_score::where('user_id', '=', $user_id_session)
-                                                  ->where('subject_name_id', '=', $subject_id)
-                                                  ->where('question_title_id', '=', $title_id)
+                                                  ->where('subject_id', '=', $subject_id)
+                                                  ->where('title_id', '=', $title_id)
                                                   ->where('question_number', '=', $question_number)
                                                   ->where('number_try', '=', $number_try_session)
                                                   ->count();
@@ -1017,8 +1017,8 @@ class KokushiQuestionController extends Controller
               // 個別点数　登録処理
               $individual_score = new Individual_score();
               $individual_score->user_id            = $user_id_session;               // ユーザID
-              $individual_score->subject_name_id    = $subject_id;                    // 科目ID
-              $individual_score->question_title_id  = $title_id;                      // タイトルID
+              $individual_score->subject_id         = $subject_id;                    // 科目ID
+              $individual_score->title_id           = $title_id;                      // タイトルID
               $individual_score->question_number    = $question_number;               // 問題番号
               $individual_score->number_try         = $number_try_session;            // 判定回数
               $individual_score->judgement          = $flag_correct;                  // 正誤フラグ
@@ -1067,8 +1067,8 @@ class KokushiQuestionController extends Controller
             // 正答の数が複数存在
 
             // 正答配列 取得
-            $answers	=	Answer_sentences::where('subject_name_id', '=', $subject_id)
-                                        ->where('question_title_id', '=', $title_id)
+            $answers	=	Answer_sentences::where('subject_id', '=', $subject_id)
+                                        ->where('title_id', '=', $title_id)
                                         ->where('question_number', '=', $question_number)
                                         ->pluck('answer_sentence')
                                         ->toArray();
@@ -1090,8 +1090,8 @@ class KokushiQuestionController extends Controller
             // 個別点数　登録処理
             $individual_score                     = new Individual_score();
             $individual_score->user_id            = $user_id_session;           // ユーザID
-            $individual_score->subject_name_id    = $subject_id;                // 科目ID
-            $individual_score->question_title_id  = $title_id;                  // タイトルID
+            $individual_score->subject_id         = $subject_id;                // 科目ID
+            $individual_score->title_id           = $title_id;                  // タイトルID
             $individual_score->question_number    = $question_number;           // 問題番号
             $individual_score->number_try         = $number_try_session;        // 判定回数
             $individual_score->judgement          = $flag_correct;              // 正誤フラグ
@@ -1199,8 +1199,8 @@ class KokushiQuestionController extends Controller
           **/
 
           // 正答配列 取得
-          $answers	=	Answer_sentences::where('subject_name_id', '=', $subject_id)
-                              ->where('question_title_id', '=', $title_id)
+          $answers	=	Answer_sentences::where('subject_id', '=', $subject_id)
+                              ->where('title_id', '=', $title_id)
                               ->where('question_number', '=', $question_number)
                               ->pluck('answer_sentence')
                               ->toArray();
@@ -1406,8 +1406,8 @@ class KokushiQuestionController extends Controller
     public function storeScore($user_id, $subject_id, $title_id, $question_number, $is_correct) {
       $times  = Individual_scorings::select('how_many_time')
                                   ->where('user_id', '=', $user_id)
-                                  ->where('subject_name_id', '=', $subject_id)
-                                  ->where('question_title_id', '=', $title_id)
+                                  ->where('subject_id', '=', $subject_id)
+                                  ->where('title_id', '=', $title_id)
                                   ->where('question_number', '=', $question_number)
                                   ->orderby('how_many_time', 'desc')
                                   ->value('how_many_time');
@@ -1422,8 +1422,8 @@ class KokushiQuestionController extends Controller
       // 個別得点テーブル 登録
       $individula_scoring = new Individual_scorings();
       $individula_scoring->user_id            = $user_id;
-      $individula_scoring->subject_name_id    = $subject_id;
-      $individula_scoring->question_title_id = $title_id;
+      $individula_scoring->subject_id         = $subject_id;
+      $individula_scoring->title_id           = $title_id;
       $individula_scoring->question_number    = $question_number;
       $individula_scoring->how_many_time      = $times;
       $individula_scoring->is_correct         = $is_correct;
@@ -1440,7 +1440,7 @@ class KokushiQuestionController extends Controller
 
         //      dd($subject_Kanji_name, $request->subject_id);
 
-      $titles = Question_titles::where('subject_name_id', '=', $request->subject_id)
+      $titles = Question_titles::where('subject_id', '=', $request->subject_id)
 			->where('sight_key', '=', 'origin')
 			->orderby('title_id', 'desc')
 			->get();

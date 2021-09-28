@@ -127,15 +127,10 @@
                     <b>年度指定</b>
                 </div>
 
-                @if( Auth::user() !== null )
-                    <div v-bind:class="[isStatisticsTabActive ? 'statisticsTabActive' : 'tabInactive']" style="padding: 5px; margin-left: 5px; width: 90px; background: white; z-index: 10; border-top: solid 4px rgb(175, 139, 62); border-left: solid 4px rgb(175, 139, 62); border-right: solid 4px rgb(175, 139, 62); border-top-left-radius: 10px; border-top-right-radius: 10px; color: rgb(175, 139, 62);" v-on:click="onStatisticsTab">
-                        <b>統計情報</b>
-                    </div>
-                @else
-                    <div style="padding: 5px; margin-left: 5px; width: 100px; background: white; z-index: 10; border-top: solid 4px lightgray; border-left: solid 4px lightgray; border-right: solid 4px lightgray; border-top-left-radius: 10px; border-top-right-radius: 10px; color: lightgray;">
-                        <b>統計情報</b>
-                    </div>
-                @endif
+                <div v-bind:class="[isStatisticsTabActive ? 'statisticsTabActive' : 'tabInactive']" style="padding: 5px; margin-left: 5px; width: 90px; background: white; z-index: 10; border-top: solid 4px rgb(175, 139, 62); border-left: solid 4px rgb(175, 139, 62); border-right: solid 4px rgb(175, 139, 62); border-top-left-radius: 10px; border-top-right-radius: 10px; color: rgb(175, 139, 62);" v-on:click="onStatisticsTab">
+                    <b>統計情報</b>
+                </div>
+
             </div>
 
             {{-- ランダム出題コンテンツ --}}
@@ -248,7 +243,7 @@
                     <table style="margin: auto;">
                         <tr>
                             <th>
-                                ユーザーID
+                                ユーザー名
                             </th>
                             <th>
                                 年度
@@ -259,7 +254,7 @@
                         </tr>
                         <tr>
                             <td>
-                                ユーザーIDを取得
+                                ユーザー名を取得
                             </td>
                             <td>
                                 年度【テーブルから取得】
@@ -304,7 +299,11 @@
 
                 {{-- 図の表示 --}}
                 <template v-if="hasGrapgh">
-
+                    (% this.graphFileName %)
+                    <figure>
+                        {{-- assetとかどうなる？ --}}
+                        <img src="" alt="問題文_図">
+                    </figure>
                 </template>
 
                 {{-- 変数チェック --}}
@@ -500,6 +499,7 @@
 
                 question_sentence: "",      // 問題文
                 hasGrapgh: false,           // 図表フラグ
+                graphFileName: "",          // 図表ファイル名
 
                 required_numOfAnswer: 0,    // 必須回答数
                 number_of_answers: 0,       // 正答の数
@@ -877,8 +877,10 @@
                     this.checkboxAnswer = [];
 
                     // 表示させる問題の必須回答数によって、処理を変える必要がある
-                    
+
+                    //********************
                     // 次の問題の為の処理
+                    //********************
                     if(this.arrayQuestionSentences[this.indexQuestion]['required_numOfAnswers'] == 1){
 
                         // 答えが選択済みかどうかを判定
@@ -918,6 +920,13 @@
                             this.checkboxAnswer = [];
                         }
 
+                    }
+
+                    // 画像有無判定
+                    if(this.arrayQuestionSentences[this.indexQuestion]['flag_graph_exists'] == 1){
+
+                        // 画像有り
+                        this.graphFileName = this.arrayQuestionSentences[this.indexQuestion]['image_filename'];
                     }
 
                 },
@@ -1179,6 +1188,44 @@
                     var score_percent = Math.round(score / bunbo * 100 * (Math.pow( 10, 2 ) ) ) / Math.pow( 10, 2 );
 
                     this.score_string = score_percent + "％" + "(" + score + "/" + bunbo + ")";
+
+                    // ログイン判定
+                    // ajax でLaravel 側に処理を任せる
+                    // レコードへ登録する項目はユーザID、科目ID、タイトルID、試験回数、試験得点。Laravel 側ではユーザID、試験回数は取得可能。
+                    // ユーザID、科目ID{{ $subject_name }}、タイトルIDは選択されたタイトルIDをJQueryで取得、試験得点（this.score_string）
+                    
+                    var postString = [];
+
+                    var titleId     =   $('input[name="title_id"]:checked').val();
+
+                    postString[0]   =   {{ $subject_id }};     // 科目ID
+                    postString[1]   =   titleId;               // タイトルID
+                    postString[2]   =   this.score_string;     // 得点
+
+
+                    var url = "/post_result";
+
+                    // APIを投げて、ログイン判定・ログインしているなら試験得点などをレコード登録。非ログインなら処理なし
+                    $.ajax({
+                        url :           url,
+                        type:           'POST',
+                        data:           { val: postString },
+                        dataType:       'json',
+                    })
+                    .done(function(data, textStatus, jqXHR) {
+                        //console.log('ajax成功');
+
+                    }.bind(this))
+                    .fail(function(jqXHR, textStatus, errorThrown) {
+                        console.log('ajax失敗');
+                        console.log('jqXHR: ' + jqXHR);
+                        console.log('textStatus: ' + textStatus);
+                        console.log('errorThrown: ' + errorThrown);
+                        this.isError = true;
+                        this.message = 'テスト結果の保存に失敗しました。';
+                    }.bind(this));
+
+
 
 
                 },

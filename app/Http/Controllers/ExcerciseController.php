@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Common\subjectClass;
-use App\Question_titles;
-use App\Question_sentences;
-use App\Choice_sentences;
-use App\Answer_sentences;
+use App\Title;
+use App\Question_sentence;
+use App\Choice_sentence;
+use App\Answer_sentence;
 
-use App\Individual_scores;
+use App\Individual_score;
 
 use Auth;
+
+use Session;
 
 class ExcerciseController extends Controller
 {
@@ -29,7 +31,7 @@ class ExcerciseController extends Controller
         $subject_name = subjectClass::getKanjiName($subject_id);
 
         // 科目IDに紐づくタイトルIDを取得
-        $titles =   Question_titles::where('subject_name_id', '=', $subject_id)
+        $titles =   Title::where('subject_id', '=', $subject_id)
                             ->where('sight_key', '=', "origin")
                             ->orderby('title_id', 'DESC')
                             ->get();
@@ -39,20 +41,23 @@ class ExcerciseController extends Controller
         // ログイン判定
         if(Auth::user() !== null){
 
+            // セッションストレージへ「ユーザーID」を設定
+            Session::put('uid', Auth::user()->id );
+
             $user_id = Auth::user()->id;
 
             // ログイン済
             // 進捗バー表示項目 取得
 
             /* SQL を修正 */
-            $checkRecords = Individual_scores::where('user_id', '=', Auth::user()->id)
-                            ->where('subject_name_id', '=', $subject_id)
+            $checkRecords = Individual_score::where('user_id', '=', Auth::user()->id)
+                            ->where('subject_id', '=', $subject_id)
                             ->distinct()
-                            ->select('subject_name_id',                 // 科目ID
-                                    'question_title_id',                // タイトルID
+                            ->select('subject_id',                 // 科目ID
+                                    'title_id',                // タイトルID
                                     'question_number',                  // 問題番号
                                     'number_try')                       // 挑戦回数
-                            ->orderby('question_title_id', 'ASC')
+                            ->orderby('title_id', 'ASC')
                             ->orderby('question_number', 'ASC')
                             ->orderby('number_try', 'ASC')
                             ->get();
@@ -60,14 +65,14 @@ class ExcerciseController extends Controller
             // ①科目の問題数 - 上記配列の件数を No_look の件数として保存。
 
             // 該当科目の問題数
-            $numberQuestionPerSubject = Question_sentences::where('subject_id', '=', $subject_id)
+            $numberQuestionPerSubject = Question_sentence::where('subject_id', '=', $subject_id)
                                                     ->where('sight_key', '=', 'origin')
                                                     ->count();
 
             // 挑戦済みの問題数を算出
-            $numberQuestionTried = Individual_scores::where('user_id', '=', Auth::user()->id)
+            $numberQuestionTried = Individual_score::where('user_id', '=', Auth::user()->id)
                                         ->distinct()
-                                        ->select(   'subject_name_id'
+                                        ->select(   'subject_id'
                                                 ,   'question_title_id'
                                                 ,   'question_number')
                                         ->count();
@@ -84,8 +89,8 @@ class ExcerciseController extends Controller
                 // 同一問題に対して
                 // 最後が連続５回正解ならPerfectにカウント
                 // 挑戦回数が小さい順に５件を取得し、全てが正解であれば Perfect に該当
-                $checkPerfect = Individual_scores::where( 'subject_name_id', '=', $subject_id )
-                        ->where('question_title_id', '=', $record->question_title_id) 
+                $checkPerfect = Individual_scores::where( 'subject_id', '=', $subject_id )
+                        ->where('title_id', '=', $record->title_id) 
                         ->where('question_number', '=', $record->question_number)
                         ->where('user_id', '=', $record->user_id)
                         ->orderby('number_try', 'desc')
@@ -114,8 +119,8 @@ class ExcerciseController extends Controller
                 } else {
                     // 最後が連続３回正解ならStableにカウント
 
-                    $checkStable = Individual_scores::where('subject_name_id', '=', $subject_id) 
-                            ->where('question_title_id', '=', $record->question_title_id) 
+                    $checkStable = Individual_scores::where('subject_id', '=', $subject_id) 
+                            ->where('title_id', '=', $record->title_id) 
                             ->where('question_number', '=', $record->question_number)
                             ->where('user_id', '=', $record->user_id)
                             ->orderby('number_try', 'desc')
@@ -141,8 +146,8 @@ class ExcerciseController extends Controller
                         // 上の条件を満たさず、
                         // 正解が１回以上あり、過去５回で正解の数と不正解の数が一致か、正解の数の方が多い場合にGood
 
-                        $checkGood = Individual_scores::where('subject_name_id', '=', $subject_id)
-                                ->where('question_title_id', '=', $record->question_title_id) 
+                        $checkGood = Individual_scores::where('subject_id', '=', $subject_id)
+                                ->where('title_id', '=', $record->title_id) 
                                 ->where('question_number', '=', $record->question_number)
                                 ->where('user_id', '=', $user_id)
                                 ->orderby('number_try', 'desc')
@@ -232,13 +237,13 @@ class ExcerciseController extends Controller
             // 対象となる問題を科目・タイトルで取得
             // 問題文 取得
             $questionSentences = Question_sentences::where('subject_id', '=', $subject_id)
-                                                    ->where('question_title_id', '=', $param)
+                                                    ->where('title_id', '=', $param)
                                                     ->where('sight_key', '=', "origin")
                                                     ->get();
 
             // 選択肢文 取得
-            $choiceSentences = Choice_sentences::where('subject_name_id', '=', $subject_id)
-                                                    ->where('question_title_id', '=', $param)
+            $choiceSentences = Choice_sentences::where('subject_id', '=', $subject_id)
+                                                    ->where('title_id', '=', $param)
                                                     ->where('sight_key', '=', "origin")
                                                     ->orderby('question_number', 'ASC')
                                                     ->orderby('choice_id', 'ASC')
@@ -277,8 +282,8 @@ class ExcerciseController extends Controller
 
 
             // 正答文 取得
-            $answerSentences = Answer_sentences::where('subject_name_id', '=', $subject_id)
-                                                    ->where('question_title_id', '=', $param)
+            $answerSentences = Answer_sentences::where('subject_id', '=', $subject_id)
+                                                    ->where('title_id', '=', $param)
                                                     ->where('sight_key', '=', "origin")
                                                     ->orderby('question_number', 'ASC')
                                                     ->orderby('answer_id', 'ASC')
@@ -350,4 +355,53 @@ class ExcerciseController extends Controller
     public function startSelectedExcercise() {
         
     }
+
+    // 試験結果 登録
+    public function registerResult($jsonData) {
+
+        // jsonData 取得
+        $subject_id =   $jsonData[0];       // 科目ID
+        $title_id   =   $jsonData[1];       // タイトルID
+        $score      =   $jsonData[2];       // 得点
+
+        // ログイン判定
+        if(Auth::user() !== null){
+
+            // ユーザーID 取得
+            $user_id = Auth::user()->id;
+
+            // ユーザーID、科目ID、タイトルIDをキーとして、試験結果テーブルから挑戦回数の最大値を取得する。
+            $number_try = Test_score::select('number_try')
+                                    ->where('subject_id', '=', $subject_id)
+                                    ->where('title_id', '=', $title_id)
+                                    ->where('user_id', '=', $user_id)
+                                    ->orderby('number_try', 'DESC')
+                                    ->first()
+                                    ->value('number_try');
+
+            // 挑戦回数の最大値に１加算（今回の試験回数を算出）
+            $next_number_try = $number_try + 1;
+
+            // レコード登録処理を行う
+            $test_score =   new Test_score();
+
+            $test_score->user_id        =   Auth::user()->id;       // ユーザーID
+            $test_score->subject_id     =   $subject_id;            // 科目ID
+            $test_score->title_id       =   $title_id;              // タイトルID
+            $test_score->number_try     =   $next_number_try;       // 挑戦回数
+            $test_score->score          =   $score;                 // 得点
+
+            // 試験得点レコード 登録
+            $test_score->save();
+
+            exit;
+
+        } else {
+
+            // レコード登録処理を行わずに終了
+            exit;
+        }
+
+    }
+
 }

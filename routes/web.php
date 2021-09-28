@@ -556,6 +556,9 @@ Route::get('/excercise_menu/{subject}/login', 'HomeController@index');
 //Route::get('/excercise_menu/login', 'HomeController@index')->name('home');
 
 
+// 試験結果 ポスト
+Route::post('/post_result', 'ExcerciseController@registerResult');
+
  /*
  *  テンプレート
  */ 
