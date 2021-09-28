@@ -227,7 +227,7 @@ class ExcerciseController extends Controller
 
             // ランダム出題モード（第３引数は出題する問題数）
             // 対象となる問題をランダム抽選
-            $questionSentences = Question_sentences::where('subject_id', '=', $subject_id)
+            $questionSentences = Question_sentence::where('subject_id', '=', $subject_id)
                                                         ->where('sight_key', '=', "origin")
                                                         ->get();
 
@@ -236,13 +236,14 @@ class ExcerciseController extends Controller
             // 年度指定出題モード（第３引数はタイトルID）
             // 対象となる問題を科目・タイトルで取得
             // 問題文 取得
-            $questionSentences = Question_sentences::where('subject_id', '=', $subject_id)
+            $questionSentences = Question_sentence::where('subject_id', '=', $subject_id)
                                                     ->where('title_id', '=', $param)
                                                     ->where('sight_key', '=', "origin")
                                                     ->get();
-                                                    dd("テスト");
+            dd("テスト");
+
             // 選択肢文 取得
-            $choiceSentences = Choice_sentences::where('subject_id', '=', $subject_id)
+            $choiceSentences = Choice_sentence::where('subject_id', '=', $subject_id)
                                                     ->where('title_id', '=', $param)
                                                     ->where('sight_key', '=', "origin")
                                                     ->orderby('question_number', 'ASC')
@@ -282,7 +283,7 @@ class ExcerciseController extends Controller
 
 
             // 正答文 取得
-            $answerSentences = Answer_sentences::where('subject_id', '=', $subject_id)
+            $answerSentences = Answer_sentence::where('subject_id', '=', $subject_id)
                                                     ->where('title_id', '=', $param)
                                                     ->where('sight_key', '=', "origin")
                                                     ->orderby('question_number', 'ASC')
