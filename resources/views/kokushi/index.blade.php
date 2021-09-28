@@ -48,8 +48,10 @@
                 <a href="{{  url('/kokushi/' . $id) }}">
                 --}}
                   
+                  {{--
                   <form action="{{ url('/kokushi/' . $id) }}">
-                  
+                  --}}
+
                   {{--
                     <form action="{{ url('/excercise_menu/' . $id) }}">
                   --}}
