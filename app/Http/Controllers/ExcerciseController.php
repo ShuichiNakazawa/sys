@@ -232,7 +232,7 @@ class ExcerciseController extends Controller
                                                         ->get();
 
         } else if($questionMode == 'get_title'){
-            dd("テスト");
+
             // 年度指定出題モード（第３引数はタイトルID）
             // 対象となる問題を科目・タイトルで取得
             // 問題文 取得
@@ -240,7 +240,7 @@ class ExcerciseController extends Controller
                                                     ->where('title_id', '=', $param)
                                                     ->where('sight_key', '=', "origin")
                                                     ->get();
-
+                                                    dd("テスト");
             // 選択肢文 取得
             $choiceSentences = Choice_sentences::where('subject_id', '=', $subject_id)
                                                     ->where('title_id', '=', $param)
