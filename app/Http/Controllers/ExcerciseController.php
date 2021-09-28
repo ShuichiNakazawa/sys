@@ -222,6 +222,8 @@ class ExcerciseController extends Controller
     // 問題文 出力API
     public function setQuestionInfo($subject_id, $questionMode, $param) {
 
+        dd("テスト");
+
         // 出題モードによって処理を変える
         if($questionMode == 'get_random'){
 
