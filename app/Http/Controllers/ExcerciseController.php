@@ -232,7 +232,7 @@ class ExcerciseController extends Controller
                                                         ->get();
 
         } else if($questionMode == 'get_title'){
-
+            dd("テスト");
             // 年度指定出題モード（第３引数はタイトルID）
             // 対象となる問題を科目・タイトルで取得
             // 問題文 取得
@@ -277,8 +277,6 @@ class ExcerciseController extends Controller
                 // 問題番号が変わるまで、１つの配列へ選択肢文を追加していく
 
             }
-
-            dd("テスト");
 
             $array_choiceSentencesPerQuestion[] = $work_array;
 
