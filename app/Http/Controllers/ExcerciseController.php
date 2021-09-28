@@ -278,6 +278,8 @@ class ExcerciseController extends Controller
 
             }
 
+            dd("テスト");
+
             $array_choiceSentencesPerQuestion[] = $work_array;
 
 
