@@ -52,9 +52,9 @@
                   <form action="{{ url('/kokushi/' . $id) }}">
                   --}}
 
-                  {{--
+                  
                     <form action="{{ url('/excercise_menu/' . $id) }}">
-                  --}}
+                  
                     @csrf
 
                     <button style="background: white; border-color: #ccc; border-radius: 15px; width: 180px; height: 200px;">
