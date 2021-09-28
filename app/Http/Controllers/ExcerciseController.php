@@ -240,7 +240,6 @@ class ExcerciseController extends Controller
                                                     ->where('title_id', '=', $param)
                                                     ->where('sight_key', '=', "origin")
                                                     ->get();
-            dd("テスト");
 
             // 選択肢文 取得
             $choiceSentences = Choice_sentence::where('subject_id', '=', $subject_id)
