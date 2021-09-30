@@ -1239,13 +1239,13 @@
                     this.selectedAnswer         =   this.arraySelectedChoice[new_question_number];
 
                     // 画像有無フラグ 判定
-                    if(this.arraySelectedChoice[indexQuestionNumber]["flag_graph_exists"] == 0){
+                    if(this.arraySelectedChoice[indexQuestionNumber]["flag_graph_exists"] == "0"){
 
 
                         this.hasGraph = false;
 
 
-                    } else if(this.arraySelectedChoice[indexQuestionNumber]["flag_graph_exists"] == 1){
+                    } else if(this.arraySelectedChoice[indexQuestionNumber]["flag_graph_exists"] == "1"){
 
                         //
                         this.hasGraph = true;
