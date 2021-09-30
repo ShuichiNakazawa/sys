@@ -927,6 +927,8 @@
 
                         // 画像有り
                         this.graphFileName = this.arrayQuestionSentences[this.indexQuestion]['image_filename'];
+
+                        // ここが正しく機能していない
                     }
 
                 },
@@ -1238,13 +1240,13 @@
                     var selectedAnswer;
 
                     // 問題文 更新
-                    //this.question_number =   this.arrayQuestionSentences[0]["question_number"];                               // 問題番号
+                    //this.question_number =   this.arrayQuestionSentences[0]["question_number"];                                  // 問題番号
                     this.question_sentence      = this.arrayQuestionSentences[indexQuestionNumber]["question_sentence"];           // 問題文
                     this.required_numOfAnser    = this.arrayQuestionSentences[indexQuestionNumber]["required_numOfAnswers"];       // 必須回答数
 
                     this.selectedAnswer         =   this.arraySelectedChoice[new_question_number];
 
-
+                    this.hasGraph               = this.arraySelectedChoice[flag_graph_exists];                                      // 画像有無フラグ
 
                     // 必須回答数 判定
                     if(this.required_numOfAnser == 1){
@@ -1310,9 +1312,6 @@
                         this.isLastQuestion    = false;
                         this.isNotLastQuestion = true;
                     }
-
-                    // 画像が存在する場合の処理
-                    this.hasGraph = true;
 
                 },
 
