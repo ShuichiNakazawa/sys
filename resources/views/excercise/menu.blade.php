@@ -1240,19 +1240,25 @@
 
                     // 画像有無フラグ 判定
                     if(this.arraySelectedChoice[indexQuestionNumber]["flag_graph_exists"] == 0){
+
+
                         this.hasGraph = false;
+
+
                     } else if(this.arraySelectedChoice[indexQuestionNumber]["flag_graph_exists"] == 1){
 
                         //
                         this.hasGraph = true;
 
                         // 
-                        this.graphFileName = this.arrayQuestionSentences[indexQuestionNumber]['image_filename'];
+                        this.graphFileName = this.arrayQuestionSentences[indexQuestionNumber]["image_filename"];
+
+                        console.log('問題番号：' + new_question_number);
+                        console.log('図表フラグ：' + this.arrayQuestionSentences[indexQuestionNumber]["flag_graph_exists"]);
+                        console.log('ファイル名：' + this.graphFileName + "\n\n");
                     }
 
-                    console.log('問題番号：' + new_question_number);
-                    console.log('図表フラグ：' + this.arrayQuestionSentences[indexQuestionNumber]["flag_graph_exists"]);
-                    console.log('ファイル名：' + this.graphFileName + "\n\n");
+
 
 
                     // 必須回答数 判定
