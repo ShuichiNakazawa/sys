@@ -300,7 +300,7 @@
                 {{-- 図の表示 --}}
                 <template v-if="hasGraph">
                     (% this.graphFileName %)
-                    <figure style="margin: 0 auto;">
+                    <figure style="margin: 0 auto; text-align: center;">
                         {{-- assetとかどうなる？ --}}
                         <img v-bind:src="this.graphFileName" alt="問題文_図" width="80%" min-width="50%" height="auto">
                     </figure>
