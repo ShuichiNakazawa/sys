@@ -1238,16 +1238,16 @@
 
                     this.selectedAnswer         =   this.arraySelectedChoice[new_question_number];
 
-                    console.log('画像フラグ：' + this.arraySelectedChoice[indexQuestionNumber]["flag_graph_exists"]);
+                    console.log('画像フラグ：' + this.arrayQuestionSentences[indexQuestionNumber]["flag_graph_exists"]);
 
                     // 画像有無フラグ 判定
-                    if(this.arraySelectedChoice[indexQuestionNumber]["flag_graph_exists"] == "0"){
+                    if(this.arrayQuestionSentences[indexQuestionNumber]["flag_graph_exists"] == "0"){
 
 
                         this.hasGraph = false;
 
 
-                    } else if(this.arraySelectedChoice[indexQuestionNumber]["flag_graph_exists"] == "1"){
+                    } else if(this.arrayQuestionSentences[indexQuestionNumber]["flag_graph_exists"] == "1"){
 
                         //
                         this.hasGraph = true;
