@@ -922,14 +922,6 @@
 
                     }
 
-                    // 画像有無判定
-                    if(this.arrayQuestionSentences[this.indexQuestion]['flag_graph_exists'] == 1){
-
-                        // 画像有り
-                        this.graphFileName = this.arrayQuestionSentences[this.indexQuestion]['image_filename'];
-
-                        // ここが正しく機能していない
-                    }
 
                 },
 
@@ -1246,15 +1238,21 @@
 
                     this.selectedAnswer         =   this.arraySelectedChoice[new_question_number];
 
-                    console.log('問題番号：' + new_question_number);
-                    console.log('図表フラグ：' + this.arrayQuestionSentences[indexQuestionNumber]["flag_graph_exists"] + "\n\n");
-
                     // 画像有無フラグ 判定
                     if(this.arraySelectedChoice[indexQuestionNumber]["flag_graph_exists"] == 0){
                         this.hasGraph = false;
                     } else if(this.arraySelectedChoice[indexQuestionNumber]["flag_graph_exists"] == 1){
+
+                        //
                         this.hasGraph = true;
+
+                        // 
+                        this.graphFileName = this.arrayQuestionSentences[indexQuestionNumber]['image_filename'];
                     }
+
+                    console.log('問題番号：' + new_question_number);
+                    console.log('図表フラグ：' + this.arrayQuestionSentences[indexQuestionNumber]["flag_graph_exists"]);
+                    console.log('ファイル名：' + this.graphFileName + "\n\n");
 
 
                     // 必須回答数 判定
