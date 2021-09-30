@@ -1238,6 +1238,8 @@
 
                     this.selectedAnswer         =   this.arraySelectedChoice[new_question_number];
 
+                    console.log('画像フラグ：' + this.arraySelectedChoice[indexQuestionNumber]["flag_graph_exists"]);
+
                     // 画像有無フラグ 判定
                     if(this.arraySelectedChoice[indexQuestionNumber]["flag_graph_exists"] == "0"){
 
