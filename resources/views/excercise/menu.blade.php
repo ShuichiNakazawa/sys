@@ -302,7 +302,7 @@
                     (% this.graphFileName %)
                     <figure>
                         {{-- assetとかどうなる？ --}}
-                        <img src="" alt="問題文_図">
+                        <img v-bind:src="this.graphFileName" alt="問題文_図">
                     </figure>
                 </template>
 
