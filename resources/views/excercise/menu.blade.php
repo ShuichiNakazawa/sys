@@ -677,8 +677,8 @@
                         }
 
                         // 問題文情報 設定
-                        this.question_number =   this.arrayQuestionSentences[0]["question_number"];         // 問題番号
-                        this.question_sentence = this.arrayQuestionSentences[0]["question_sentence"];       // 問題文
+                        this.question_number =   this.arrayQuestionSentences[0]["question_number"];             // 問題番号
+                        this.question_sentence = this.arrayQuestionSentences[0]["question_sentence"];           // 問題文
 
                         this.required_numOfAnser = this.arrayQuestionSentences[0]["required_numOfAnswers"];     // 必須回答数
                         
@@ -1311,7 +1311,8 @@
                         this.isNotLastQuestion = true;
                     }
 
-                    // 
+                    // 画像が存在する場合の処理
+                    this.hasGraph = true;
 
                 },
 
