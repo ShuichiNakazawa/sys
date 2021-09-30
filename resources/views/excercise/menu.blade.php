@@ -298,7 +298,7 @@
                 <br><br>
 
                 {{-- 図の表示 --}}
-                <template v-if="hasGrapgh">
+                <template v-if="hasGraph">
                     (% this.graphFileName %)
                     <figure>
                         {{-- assetとかどうなる？ --}}
@@ -498,7 +498,7 @@
                 indexQuestion: 0,           // 問題インデックス
 
                 question_sentence: "",      // 問題文
-                hasGrapgh: false,           // 図表フラグ
+                hasGraph: false,            // 図表フラグ
                 graphFileName: "",          // 図表ファイル名
 
                 required_numOfAnswer: 0,    // 必須回答数
