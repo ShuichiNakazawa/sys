@@ -1250,9 +1250,9 @@
                     console.log('図表フラグ：' + this.arraySelectedChoice[flag_graph_exists] + "\n\n");
 
                     // 画像有無フラグ 判定
-                    if(this.arraySelectedChoice[flag_graph_exists] == 0){
+                    if(this.arraySelectedChoice[indexQuestionNumber][flag_graph_exists] == 0){
                         this.hasGraph = false;
-                    } else if(this.arraySelectedChoice[flag_graph_exists] == 1){
+                    } else if(this.arraySelectedChoice[indexQuestionNumber][flag_graph_exists] == 1){
                         this.hasGraph = true;
                     }
 
