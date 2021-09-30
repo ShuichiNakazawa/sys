@@ -1247,7 +1247,7 @@
                     this.selectedAnswer         =   this.arraySelectedChoice[new_question_number];
 
                     console.log('問題番号：' + new_question_number);
-                    console.log('図表フラグ：' + this.arraySelectedChoice[indexQuestionNumber]["flag_graph_exists"] + "\n\n");
+                    console.log('図表フラグ：' + this.arrayQuestionSentences[indexQuestionNumber]["flag_graph_exists"] + "\n\n");
 
                     // 画像有無フラグ 判定
                     if(this.arraySelectedChoice[indexQuestionNumber]["flag_graph_exists"] == 0){
