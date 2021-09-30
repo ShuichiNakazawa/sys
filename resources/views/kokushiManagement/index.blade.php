@@ -125,12 +125,52 @@
 
           <!-- 科目グループリスト -->
           <div id="subjectGroupList" v-bind:class="[isSubGrpLstActive === true ? 'activeDiv' : 'inactiveDiv']" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px; display: none;">
-            科目グループリスト
+            <br>
+            <h4>科目グループリスト</h4>
+
+            <div class="card-body">
+              <form action="{{ action('KokushiManagementController@storeSubjectGroup') }}" method="POST">
+                @csrf
+
+                <div style="text-align: left; padding-left: 20px;">
+
+
+                  <p>
+                    <label for="subject_group_name">科目グループ名：</label>
+                    <input typt="text" name="subject_group_name" id="subject_group_name" value="" size="30">
+                  </p>
+                  <p>
+                    <input type="submit" value="登録">
+                  </p>
+                </div>
+              </form>
+          
+            </div>
           </div>
 
           <!-- 科目登録 -->
           <div id="registSubject" v-bind:class="{activeDiv: isRegSubActive}" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px; display: none;">
-            科目登録
+            <br>
+            <h4>科目登録</h4>
+
+            <div class="card-body">
+              <form action="{{ action('KokushiManagementController@storeSubjectGroup') }}" method="POST">
+                @csrf
+
+                <div style="text-align: left; padding-left: 20px;">
+
+
+                  <p>
+                    <label for="subject_group_name">科目グループ名：</label>
+                    <input typt="text" name="subject_group_name" id="subject_group_name" value="" size="30">
+                  </p>
+                  <p>
+                    <input type="submit" value="登録">
+                  </p>
+                </div>
+              </form>
+          
+            </div>
           </div>
 
           <!-- 科目リスト -->
