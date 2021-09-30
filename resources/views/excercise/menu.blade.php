@@ -1253,7 +1253,7 @@
                         this.hasGraph = true;
 
                         // 
-                        this.graphFileName = "image/fe/" + this.arrayQuestionSentences[indexQuestionNumber]["image_filename"];
+                        this.graphFileName = "/image/fe/" + this.arrayQuestionSentences[indexQuestionNumber]["image_filename"];
 
                         console.log('問題番号：' + new_question_number);
                         console.log('図表フラグ：' + this.arrayQuestionSentences[indexQuestionNumber]["flag_graph_exists"]);
