@@ -154,15 +154,15 @@
             <h4>科目登録</h4>
 
             <div class="card-body">
-              <form action="{{ action('KokushiManagementController@storeSubjectGroup') }}" method="POST">
+              <form action="{{ action('ExcerciseManagementController@storeSubject') }}" method="POST">
                 @csrf
 
                 <div style="text-align: left; padding-left: 20px;">
 
 
                   <p>
-                    <label for="subject_group_name">科目グループ名：</label>
-                    <input typt="text" name="subject_group_name" id="subject_group_name" value="" size="30">
+                    <label for="subject_name">科目名：</label>
+                    <input typt="text" name="subject_name" id="subject_name" value="" size="30">
                   </p>
                   <p>
                     <input type="submit" value="登録">
