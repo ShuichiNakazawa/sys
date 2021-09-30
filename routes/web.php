@@ -209,10 +209,12 @@ Route::name('kokushi.')->group(function() {
  * 国試過去問 管理系
  ******************************/
     Route::name('management.')->group(function() {
+        Route::get('/kokushi/management/index', 'ExcerciseManagementController@showIndex');
+        /*
         Route::get('/kokushi/management/index', function() {
             return view('kokushi.management');
         });
-
+        */
         //Route::get('/kokushi/management/store_subject', 'KokushiController@storeSubject');
 
 
