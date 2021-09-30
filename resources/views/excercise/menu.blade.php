@@ -1246,7 +1246,13 @@
 
                     this.selectedAnswer         =   this.arraySelectedChoice[new_question_number];
 
-                    this.hasGraph               = this.arraySelectedChoice[flag_graph_exists];                                      // 画像有無フラグ
+                    // 画像有無フラグ 判定
+                    if(this.arraySelectedChoice[flag_graph_exists] == 0){
+                        this.hasGraph = false;
+                    } else if(this.arraySelectedChoice[flag_graph_exists] == 1){
+                        this.hasGraph = true;
+                    }
+
 
                     // 必須回答数 判定
                     if(this.required_numOfAnser == 1){
