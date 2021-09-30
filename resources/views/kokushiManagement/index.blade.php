@@ -98,6 +98,7 @@
             <br>
           </div>
 
+          <!-- 科目グループ登録 -->
           <div id="registSubjectGroup" v-bind:class="[isRegSubGrpActive ? 'activeDiv' : 'inactiveDiv']" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px; z-index: 5;">
             <br>
             <h4>科目グループ 登録</h4>
@@ -122,32 +123,39 @@
             </div>
           </div>
 
+          <!-- 科目グループリスト -->
           <div id="subjectGroupList" v-bind:class="[isSubGrpLstActive === true ? 'activeDiv' : 'inactiveDiv']" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px; display: none;">
-            
+            科目グループリスト
           </div>
 
+          <!-- 科目登録 -->
           <div id="registSubject" v-bind:class="{activeDiv: isRegSubActive}" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px; display: none;">
-            
+            科目登録
           </div>
 
+          <!-- 科目リスト -->
           <div id="subjectList" v-bind:class="{activeDiv: isSubLstActive}" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px; display: none;">
-            
+            科目リスト
           </div>
 
+          <!-- タイトル登録 -->
           <div id="registTitle" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px; display: none;">
-            
+            タイトル登録
           </div>
 
+          <!-- タイトルリスト -->
           <div id="titleList" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px; display: none;">
-            
+            タイトルリスト
           </div>
 
+          <!-- 分野登録 -->
           <div id="registField" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px; display: none;">
-            
+            分野登録
           </div>
 
+          <!-- 分野リスト -->
           <div id="fieldList" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px; display: none;">
-            
+            分野リスト
           </div>
 
         </div>
@@ -222,19 +230,6 @@
 --}}
 
 
-  
-  {{--
-  <form action="{{ action('KokushiController@merge') }}" method="post">
-    @csrf
-      <input type="submit" name="migration_table" value="t_choices データ移行">
-  </form>
-
-  <form action="{{ action('KokushiController@merge') }}" method="post">
-    @csrf
-      <input type="submit" name="migration_table" value="t_answers データ移行">
-  </form>
-  --}}
-
   </div>
   <br>
 
@@ -281,7 +276,7 @@
           // activeクラスを科目グループコンテンツへ設定する
 
           // 登録と一覧表示の、どっちが押下されているかによって、アクティブにするコンテンツが変わるため、条件分岐が必要
-          this.isRegSubGrpActive = true;
+          this.isRegSubGrpActive = true;      // 科目グループ登録エリア 有効化
           this.isSubGrpLstActive = false;
 
           console.log('科目グループ登録アクティブフラグ：' + this.isRegSubGrpActive);
@@ -305,9 +300,7 @@
           this.isRegSubGrpActive = false;
           this.isSubGrpLstActive = false;
 
-          console.log('科目グループ登録アクティブフラグ：' + this.isRegSubGrpActive);
-
-          this.isRegSubActive     = true;
+          this.isRegSubActive     = true;     // 科目登録エリア 有効化
           this.isSubLstActive     = false;
 
           this.isRegTitActive     = false;
@@ -321,11 +314,34 @@
         // タイトルタブのクリックイベントハンドラ
         onTitleTab: function() {
           console.log('タイトルタブ 押下');
+
+          this.isRegSubGrpActive = false;
+          this.isSubGrpLstActive = false;
+
+          this.isRegSubActive     = false;
+          this.isSubLstActive     = false;
+
+          this.isRegTitActive     = true;     // タイトル登録エリア 有効化
+          this.isTitLstActive     = false;
+
+          this.isRegFldActive     = false;
+          this.isFldLstActive     = false;
         },
 
         // 分野タブのクリックイベントハンドラ
         onFieldTab: function() {
           console.log('分野タブ 押下');
+          this.isRegSubGrpActive = false;
+          this.isSubGrpLstActive = false;
+
+          this.isRegSubActive     = false;
+          this.isSubLstActive     = false;
+
+          this.isRegTitActive     = true;
+          this.isTitLstActive     = false;
+
+          this.isRegFldActive     = false;    // 分野登録エリア 有効化
+          this.isFldLstActive     = false;
         },
 
         // 登録ボタンのクリックイベントハンドラ
