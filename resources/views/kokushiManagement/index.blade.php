@@ -149,7 +149,7 @@
           </div>
 
           <!-- 科目登録 -->
-          <div id="registSubject" v-bind:class="{activeDiv: isRegSubActive}" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px;">
+          <div id="registSubject" v-bind:class="[isRegSubActive === true ? 'activeDiv' : 'inactiveDiv']" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px;">
             <br>
             <h4>科目登録</h4>
 
@@ -174,27 +174,27 @@
           </div>
 
           <!-- 科目リスト -->
-          <div id="subjectList" v-bind:class="{activeDiv: isSubLstActive}" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px;">
+          <div id="subjectList" v-bind:class="[isSubLstActive === true ? 'activeDiv' : 'inactiveDiv']" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px;">
             科目リスト
           </div>
 
           <!-- タイトル登録 -->
-          <div id="registTitle" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px;">
+          <div id="registTitle" v-bind:class="[isRegTitActive === true ? 'activeDiv' : 'inactiveDiv']" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px;">
             タイトル登録
           </div>
 
           <!-- タイトルリスト -->
-          <div id="titleList" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px;">
+          <div id="titleList" v-bind:class="[isTitLstActive === true ? 'activeDiv' : 'inactiveDiv']" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px;">
             タイトルリスト
           </div>
 
           <!-- 分野登録 -->
-          <div id="registField" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px;">
+          <div id="registField" v-bind:class="[isRegFldActive === true ? 'activeDiv' : 'inactiveDiv']" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px;">
             分野登録
           </div>
 
           <!-- 分野リスト -->
-          <div id="fieldList" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px;">
+          <div id="fieldList" v-bind:class="[isfldLstActive === true ? 'activeDiv' : 'inactiveDiv']" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px;">
             分野リスト
           </div>
 

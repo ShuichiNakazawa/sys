@@ -238,8 +238,10 @@ Route::name('kokushi.')->group(function() {
         Route::get('/kokushi/management/store_subject', 'KokushiManagementController@pageStoreSubject');
 
         // 科目名登録　登録処理
+        Route::post('/kokushi/management/store_subject', 'ExcerciseManagementController@storeSubject');
+        /*
         Route::post('/kokushi/management/store_subject', 'KokushiManagementController@storeSubject');
-
+        */
 
         // 科目名一覧表示　表示処理
         Route::get('/kokushi/management/subject_list', 'KokushiManagementController@showSubjects');

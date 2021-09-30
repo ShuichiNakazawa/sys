@@ -13,178 +13,176 @@ class ExcerciseManagementController extends Controller
         return view('kokushiManagement.index');
     }
 
-        // 科目グループ　登録画面　表示処理
-        public function pageStoreSubjectGroups(){
+    // 科目グループ　登録画面　表示処理
+    public function pageStoreSubjectGroups(){
 
 
-            return view('kokushi.store_subject_group')
-                    ->with([
-                      'subject_groups'  =>  $subject_groups,
-                    ]);
-          }
+        return view('kokushi.store_subject_group')
+                ->with([
+                    'subject_groups'  =>  $subject_groups,
+                ]);
+    }
       
-          // 科目グループ 登録処理
-          public function storeSubjectGroup(Request $request){
+    // 科目グループ 登録処理
+    public function storeSubjectGroup(Request $request){
+
+        // 
+        $subject_group   =  new Subject_group();
+        $subject_group->subject_group_name  = $request->subject_group_name;
+        $subject_group->sight_key     = 'origin';
+        $subject_group->created_at    = new Carbon('now');
+        $subject_group->updated_at    = new Carbon('now');
+        $subject_group->save();
+
+        //
+        return redirect('/kokushi/management/store_subject_group')
+                ->with('message', '正常に登録できました。');
+    }
       
-            // 
-            $subject_group   =  new Subject_group();
-            $subject_group->subject_group_name  = $request->subject_group_name;
-            $subject_group->sight_key     = 'origin';
-            $subject_group->created_at    = new Carbon('now');
-            $subject_group->updated_at    = new Carbon('now');
-            $subject_group->save();
+    // 科目グループリスト 表示
+    public function showSubjectGroups() {
+
+        // 科目リスト 取得
+        $subject_group_lists =	Subject_group::get();
+
+        //
+        return view('kokushi.subject_group_list')
+            ->with(['subject_groups' => $subject_group_lists]);
+
+    }
       
-            //
-            return redirect('/kokushi/management/store_subject_group')
-                      ->with('message', '正常に登録できました。');
-          }
-      
-      
-          // 科目グループリスト 表示
-          public function showSubjectGroups() {
-      
-            // 科目リスト 取得
-            $subject_group_lists =	Subject_group::get();
-      
-            //
-            return view('kokushi.subject_group_list')
-              ->with(['subject_groups' => $subject_group_lists]);
-      
-          }
-      
-      
-          // 科目グループ 削除
-          public function destroySubjectGroup($id) {
-            $subject_group  = Subject_Group::where('id', '=', $id)
-                                        ->first();
-      
-            // データ存在判定
-            if(!$subject_group) {
-              return redirect('/management/subject_group_list/')
-                              ->withInput()
-                              ->withErrors('データが存在しません。');
-            }
-      
-            // 科目 削除
-            $subject_group->delete();
-      
-            // リダイレクト
+    // 科目グループ 削除
+    public function destroySubjectGroup($id) {
+        $subject_group  = Subject_Group::where('id', '=', $id)
+                                    ->first();
+
+        // データ存在判定
+        if(!$subject_group) {
             return redirect('/management/subject_group_list/')
-                              ->with('message', '削除しました。');
-          }
+                            ->withInput()
+                            ->withErrors('データが存在しません。');
+        }
+      
+        // 科目 削除
+        $subject_group->delete();
+    
+        // リダイレクト
+        return redirect('/management/subject_group_list/')
+                            ->with('message', '削除しました。');
+    }
       
       
-      /**
-       * 科目メニュー
-       */
-          // 科目登録　画面表示
-          public function pageStoreSubject(){
-            $subject_groups = Subject_group::get();
-      
-            return view('kokushi.store_subject')
-                  ->with([
-                      'subject_groups'  =>  $subject_groups,
-                  ]);
-          }
-      
-          // 科目 登録処理
-          public function storeSubject(Request $request){
-      
-            // 
-            $subject   =  new Subject_names();
-            $subject->subject_name      = $request->subject_name;
-            $subject->subject_group_id  = $request->subject_group_id;
-            $subject->sight_key         = 'origin';
-            $subject->created_at        = new Carbon('now');
-            $subject->updated_at        = new Carbon('now');
-            $subject->save();
-      
-            //
-            return redirect('/kokushi/management/store_subject')
-                      ->with('message', '正常に登録できました。');
-          }
-      
-          // 科目リスト 表示
-          public function showSubjects() {
-      
-            // 科目リスト 取得
-            $subject_lists =	Subject_names::get();
-      
-            //
-            return view('kokushi.subject_list')
-              ->with(['subjects' => $subject_lists]);
-      
-          }
-      
-          // 科目 編集画面
-          public function editSubject($subject_id) {
-      
-            // 科目リスト 取得
-            $subject_list =	Subject_names::where('id', '=', $subject_id)
-                                                ->orderby('title_id', 'desc')
-                                                ->first();
-      
-            return view('kokushi.editSubject')
-                            ->with([
-                                      'subject' => $subject_list,
+    /**
+     * 科目メニュー
+     */
+    // 科目登録　画面表示
+    public function pageStoreSubject(){
+    $subject_groups = Subject_group::get();
+
+    return view('kokushi.store_subject')
+            ->with([
+                'subject_groups'  =>  $subject_groups,
             ]);
-          }
+    }
       
-          // 科目 更新処理
-          public function updateSubject(Request $request) {
-            // バリデーション
+    // 科目 登録処理
+    public function storeSubject(Request $request){
+
+        // 
+        $subject   =  new Subject_names();
+        $subject->subject_name      = $request->subject_name;
+        $subject->subject_group_id  = $request->subject_group_id;
+        $subject->sight_key         = 'origin';
+        $subject->created_at        = new Carbon('now');
+        $subject->updated_at        = new Carbon('now');
+        $subject->save();
+
+        //
+        return redirect('/kokushi/management/store_subject')
+                    ->with('message', '正常に登録できました。');
+    }
       
-            $update_column = [
-                              'id'            =>  $request->subject_id,
-                              'subject_name'  =>  $request->subject_name,
-            ];
+    // 科目リスト 表示
+    public function showSubjects() {
+
+        // 科目リスト 取得
+        $subject_lists =	Subject_names::get();
+
+        //
+        return view('kokushi.subject_list')
+            ->with(['subjects' => $subject_lists]);
+
+    }
       
-            // 科目テーブル 更新
-            Subject_names::where('id', '=', $request->old_subject_id)
-                              ->update($update_column);
-      
-            // 科目リスト 取得
-            $subject_lists =  Subject_names::get();
-            $subject_id       =       $request->subject_id;
-      
-            return redirect('/management/subject_list/' . $subject_id)
-                      ->with([
-                              'subjects'      =>      $subject_lists,
-                      ]);
-          }
-      
-          // 科目 削除
-          public function destroySubject($id) {
-            $subject  = Subject_names::where('id', '=', $id)
-                                        ->first();
-      
-            // データ存在判定
-            if(!$subject) {
-              return redirect('/management/subject_list/')
-                              ->withInput()
-                              ->withErrors('データが存在しません。');
-            }
-      
-            // 科目 削除
-            $subject->delete();
-      
-            // リダイレクト
-            return redirect('/management/subject_list/')
-                              ->with('message', '削除しました。');
-          }
-      
-      /**
-       * タイトルメニュー
-       */
-          public function getSubjects(){
-            //科目一覧 取得
-            $subjects = Subject_names::get();
-      
-            return view('kokushi.store_title')
+    // 科目 編集画面
+    public function editSubject($subject_id) {
+
+        // 科目リスト 取得
+        $subject_list =	Subject_names::where('id', '=', $subject_id)
+                                            ->orderby('title_id', 'desc')
+                                            ->first();
+
+        return view('kokushi.editSubject')
                         ->with([
-                          'subjects' => $subjects,
-                        ]);
-          }
+                                    'subject' => $subject_list,
+        ]);
+    }
+      
+    // 科目 更新処理
+    public function updateSubject(Request $request) {
+        // バリデーション
+
+        $update_column = [
+                            'id'            =>  $request->subject_id,
+                            'subject_name'  =>  $request->subject_name,
+        ];
+
+        // 科目テーブル 更新
+        Subject_names::where('id', '=', $request->old_subject_id)
+                            ->update($update_column);
+
+        // 科目リスト 取得
+        $subject_lists =  Subject_names::get();
+        $subject_id       =       $request->subject_id;
+
+        return redirect('/management/subject_list/' . $subject_id)
+                    ->with([
+                            'subjects'      =>      $subject_lists,
+                    ]);
+    }
+      
+    // 科目 削除
+    public function destroySubject($id) {
+        $subject  = Subject_names::where('id', '=', $id)
+                                    ->first();
+
+        // データ存在判定
+        if(!$subject) {
+            return redirect('/management/subject_list/')
+                            ->withInput()
+                            ->withErrors('データが存在しません。');
+        }
+
+        // 科目 削除
+        $subject->delete();
+
+        // リダイレクト
+        return redirect('/management/subject_list/')
+                            ->with('message', '削除しました。');
+    }
+
+    /**
+     * タイトルメニュー
+     */
+    public function getSubjects(){
+        //科目一覧 取得
+        $subjects = Subject_names::get();
+
+        return view('kokushi.store_title')
+                    ->with([
+                        'subjects' => $subjects,
+                    ]);
+    }
       
       
           // 問題タイトル登録画面　表示処理
