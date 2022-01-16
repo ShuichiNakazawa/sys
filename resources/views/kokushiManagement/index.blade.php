@@ -405,7 +405,19 @@
 
           //表示・非表示変更
           //フラグ一覧と真偽設定
+          this.isRegSubGrpActive = true;      // 科目グループ登録エリア 有効化
+          this.isSubGrpLstActive = false;
 
+          console.log('科目グループ登録アクティブフラグ：' + this.isRegSubGrpActive);
+
+          this.isRegSubActive     = false;
+          this.isSubLstActive     = false;
+
+          this.isRegTitActive     = false;
+          this.isTitLstActive     = false;
+
+          this.isRegFldActive     = false;
+          this.isFldLstActive     = false;
         },
 
         // 問題文・解説文管理タブのクリックイベントハンドラ
@@ -414,6 +426,17 @@
 
           //表示・非表示変更
           //フラグ一覧と真偽設定
+          this.isRegSubGrpActive = false;
+          this.isSubGrpLstActive = false;
+
+          this.isRegSubActive     = false;
+          this.isSubLstActive     = false;
+
+          this.isRegTitActive     = false;
+          this.isTitLstActive     = false;
+
+          this.isRegFldActive     = false;
+          this.isFldLstActive     = false;
         },
 
         // 科目グループタブのクリックイベントハンドラ
