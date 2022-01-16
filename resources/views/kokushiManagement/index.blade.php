@@ -50,7 +50,7 @@
 
 
     <br><br>
-    <div style="z-index: 5; width: 80%;">
+    <div style="z-index: 5; width: 80%;" id="classificationArea" v-bind:class="[isClsAreActive ? 'activeDiv' : 'inactiveDiv']">
       <br>
       <div class="row" style="margin-left: 30px; z-index: 5;">
         <div style="margin-right: 15px; border: solid 4px lightgray; font-size: 20px; width: 150px; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px; z-index: 5;" v-on:click="onSubjectGroupTab">
@@ -297,6 +297,240 @@
     </div>
 
 
+{{-- 問題文・解説文管理領域 --}}
+<div style="z-index: 5; width: 80%;" id="classificationArea" v-bind:class="[isQesAreActive ? 'activeDiv' : 'inactiveDiv']">
+  <br>
+  <div class="row" style="margin-left: 30px; z-index: 5;">
+    <div style="margin-right: 15px; border: solid 4px lightgray; font-size: 20px; width: 150px; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px; z-index: 5;" v-on:click="onSubjectGroupTab">
+      問題文
+    </div>
+    <div style="margin-right: 15px; border: solid 4px lightgray; font-size: 20px; width: 150px; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px; z-index: 5" v-on:click="onSubjectTab">
+      解説文
+    </div>
+
+  </div>
+  
+    <div style="background: lightgray; text-align: center; padding-top: 10px; max-width: 100%; height: 800px; margin-top: -3px; margin-left: -50px; border: solid 3px lightgray; border-radius: 15px; z-index: 5;">
+      <div style="background: white; margin-left: 70px; margin-right: 20px; border-radius: 20px; z-index: 5;">
+        <br>
+
+        <div class="row" style="margin: 0 auto; font-size: 20px; z-index: 5;">
+          <div style="width: 30%">
+          </div>
+          <div style="margin: 0 auto;">
+            <div class="btn-choice">
+                登録
+            </div>
+          </div>
+
+          <div style="margin: 0 auto;">
+            <div class="btn-choice">
+              一覧表示
+            </div>
+
+          </div>
+          <div style="width: 30%">
+          </div>
+        </div>
+        <br>
+
+      </div>
+
+      <div style="z-index: 5;">
+        <br>
+      </div>
+
+      <!-- 問題文登録 -->
+      <div id="registQuestionSentence" v-bind:class="[isRegQesActive ? 'activeDiv' : 'inactiveDiv']" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px; z-index: 5;">
+        <br>
+        <h4>問題文 登録</h4>
+
+        <div class="card-body">
+          <form action="{{ action('KokushiManagementController@storeSubjectGroup') }}" method="POST">
+            @csrf
+
+            <div style="text-align: left; padding-left: 20px;">
+
+              <!-- 大改修 -->
+              <p>
+                <label for="subject_group_name">科目グループ名：</label>
+                <input typt="text" name="subject_group_name" id="subject_group_name" value="" size="30">
+              </p>
+              <p>
+                <input type="submit" value="登録">
+              </p>
+            </div>
+          </form>
+      
+        </div>
+      </div>
+
+      <!-- 科目グループリスト -->
+      <div id="subjectGroupList" v-bind:class="[isSubGrpLstActive === true ? 'activeDiv' : 'inactiveDiv']" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px; display: none;">
+        <br>
+        <h4>科目グループリスト</h4>
+
+        <div class="card-body">
+          <form action="{{ action('KokushiManagementController@storeSubjectGroup') }}" method="POST">
+            @csrf
+
+            <div style="text-align: left; padding-left: 20px;">
+
+
+              <p>
+                <label for="subject_group_name">科目グループ名：</label>
+                <input typt="text" name="subject_group_name" id="subject_group_name" value="" size="30">
+              </p>
+              <p>
+                <input type="submit" value="登録">
+              </p>
+            </div>
+          </form>
+      
+        </div>
+      </div>
+
+      <!-- 科目登録 -->
+      <div id="registSubject" v-bind:class="[isRegSubActive === true ? 'activeDiv' : 'inactiveDiv']" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px;">
+        <br>
+        <h4>科目登録</h4>
+
+        <div class="card-body">
+          <form action="{{ action('ExcerciseManagementController@storeSubject') }}" method="POST">
+            @csrf
+
+            <div style="text-align: left; padding-left: 20px;">
+
+
+              <p>
+                <label for="subject_name">科目名：</label>
+                <input typt="text" name="subject_name" id="subject_name" value="" size="30">
+              </p>
+              <p>
+                <input type="submit" value="登録">
+              </p>
+            </div>
+          </form>
+      
+        </div>
+      </div>
+
+      <!-- 科目リスト -->
+      <div id="subjectList" v-bind:class="[isSubLstActive === true ? 'activeDiv' : 'inactiveDiv']" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px;">
+        科目リスト
+      </div>
+
+      <!-- タイトル登録 -->
+      <div id="registTitle" v-bind:class="[isRegTitActive === true ? 'activeDiv' : 'inactiveDiv']" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px;">
+        <br>
+        <h4>問題タイトル 登録</h4>
+
+        <div class="card-body">
+          <form action="{{ action('KokushiManagementController@storeTitle') }}" method="POST">
+            @csrf
+              <div style="text-align: left; padding-left: 20px;">
+                科目名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <select name="subject_id">
+                  <option value="0"> </option>
+                  {{--
+                  @foreach ($subjects as $subject)
+                    <option value="{{ $subject->id }}">{{ $subject->subject_name }}</option>
+                  @endforeach
+                  --}}
+                </select>
+                <br><br>
+          
+                <p>
+                  <label for="title_id">タイトルID：</label>
+                  <input typt="text" name="title_id" id="title_id" value="" size="30">
+                </p>
+          
+                <p>
+                  <label for="title_name">タイトル名：</label>
+                  <input typt="text" name="title_name" id="title_name" value="" size="30">
+                </p>
+                <p>
+                  <input type="submit" value="登録">
+                </p>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- タイトルリスト -->
+      <div id="titleList" v-bind:class="[isTitLstActive === true ? 'activeDiv' : 'inactiveDiv']" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px;">
+        タイトルリスト
+
+        <h4>問題タイトル</h4>
+        科目名：
+        <select id="subject_name">
+          <option value="0"> </option>
+          {{--
+          @foreach($subjects as $subject)
+            @if ( $subject_id == $subject->id)
+              <option value="{{ $subject->id }}" selected="selected">{{ $subject->subject_name }}</option>
+            @else
+              <option value="{{ $subject->id }}">{{ $subject->subject_name }}</option>
+            @endif
+          @endforeach
+          --}}
+        </select>
+        <br><br>
+
+        <table class="table table-striped task-table">
+          <thead>
+            <th>問題タイトル一覧</th>
+          </thead>
+
+          <tbody>
+            <tr>
+              <th>タイトルID</th>
+              <th>問題タイトル名</th>
+              <th></th>
+              <th></th>
+            </tr>
+
+            {{--
+            @foreach($titles as $title)
+              <tr>
+                <td class="table-text">
+                  <div>{{ $title->title_id }}</div>
+                </td>
+
+                <td class="table-text">
+                  <div>{{ $title->question_title }}</div>
+                </td>
+                <td>
+
+                  <a href="{{ url('/kokushi/management/edit_title/' . $title->subject_id . '/' . $title->title_id) }}">
+                    <button>編集</button>
+                  </a>
+                </td>
+                <td>
+                  <form action="{{ action('KokushiManagementController@destroyQuestionsTitle', $title->id) }}" method="post">
+                  @csrf
+                  @method('DELETE')
+                    <button>削除</button>
+                  </form>
+                </td>
+              </tr>
+            @endforeach
+            --}}
+          </tbody>
+        </table>
+
+      </div>
+
+    </div>
+  </div>
+  <br><br>
+
+
+</div>
+
+
+
+
 {{--
 <div class="card-body">
   <div class="card-body">
@@ -384,6 +618,9 @@
         tabNumber: 1,
         modeNumber: 1,
 
+        isClsAreActive: true,
+        isQesAreActive: false,
+
         isRegSubGrpActive: true,
         isSubGrpLstActive: false,
 
@@ -405,6 +642,9 @@
 
           //表示・非表示変更
           //フラグ一覧と真偽設定
+          this.isClsAreActive = true;
+          this.isQesAreActive = false;
+
           this.isRegSubGrpActive = true;      // 科目グループ登録エリア 有効化
           this.isSubGrpLstActive = false;
 
@@ -426,6 +666,9 @@
 
           //表示・非表示変更
           //フラグ一覧と真偽設定
+          this.isClsAreActive = false;
+          this.isQesAreActive = true;
+
           this.isRegSubGrpActive = false;
           this.isSubGrpLstActive = false;
 
