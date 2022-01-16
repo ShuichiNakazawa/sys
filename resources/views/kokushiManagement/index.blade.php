@@ -285,7 +285,7 @@
           </div>
 
           <!-- 分野リスト -->
-          <div id="fieldList" v-bind:class="[isfldLstActive === true ? 'activeDiv' : 'inactiveDiv']" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px;">
+          <div id="fieldList" v-bind:class="[isFldLstActive === true ? 'activeDiv' : 'inactiveDiv']" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px;">
             分野リスト
           </div>
 
