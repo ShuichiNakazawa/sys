@@ -24,7 +24,7 @@
         <div style="background: white; width: 200px; height: 100px; margin-left: 50px; margin-bottom: 50px; border-radius: 10px; z-index: 30; position: relative;">
           <div style="background: lightblue; width: 194px; height: 94px; margin-top: 3px; margin-left: 3px; border-radius: 10px; position: absolute; z-index: 10;">
             <div style="background: lightblue; width: 188px; height: 88px; margin-top: 3px; margin-left: 3px; border-radius: 10px; position: absolute; border-left: solid 1px white; z-index: 10;">
-              <div style="background: white; width: 172px; height: 82px; margin-top: 3px; margin-left: 10px; border-radius: 10px; position: absolute; text-align: center; padding-top: 7px; z-index: 10;" v-onClick="onClassificationManagement">
+              <div style="background: white; width: 172px; height: 82px; margin-top: 3px; margin-left: 10px; border-radius: 10px; position: absolute; text-align: center; padding-top: 7px; z-index: 10;" v-on:click="onClassificationManagement">
                 <p style="font-size: 20px;">問題分類<br>管理</p>
               </div>
             </div>
@@ -38,7 +38,7 @@
         <div style="background: white; width: 200px; height: 100px; margin-left: 50px; margin-bottom: 50px; border-radius: 10px; z-index: 20; position: relative;">
           <div style="background: rgb(48, 105, 96); width: 194px; height: 94px; margin-top: 3px; margin-left: 3px; border-radius: 10px; position: absolute; z-index: 10;">
             <div style="background: rgb(48, 105, 96); width: 188px; height: 88px; margin-top: 3px; margin-left: 3px; border-radius: 10px; position: absolute; border-left: solid 1px white;">
-              <div style="background: white; width: 172px; height: 82px; margin-top: 3px; margin-left: 10px; border-radius: 10px; position: absolute; text-align: center; padding-top: 7px;" v-onClick="onQuestionSentenceManagement">
+              <div style="background: white; width: 172px; height: 82px; margin-top: 3px; margin-left: 10px; border-radius: 10px; position: absolute; text-align: center; padding-top: 7px;" v-on:click="onQuestionSentenceManagement">
                 <p style="font-size: 20px;">問題文・解説<br>管理</p>
               </div>
             </div>
