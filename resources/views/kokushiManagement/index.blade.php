@@ -621,6 +621,7 @@
         isClsAreActive: true,
         isQesAreActive: false,
 
+        //分類
         isRegSubGrpActive: true,
         isSubGrpLstActive: false,
 
@@ -633,6 +634,9 @@
         isRegFldActive: false,
         isFldLstActive: false,
 
+        //問題文・解説文管理
+        isRegQesAcive: false,
+        isRegComActive: false,
       },
 
       methods: {
