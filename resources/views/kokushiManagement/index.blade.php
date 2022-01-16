@@ -635,7 +635,7 @@
         isFldLstActive: false,
 
         //問題文・解説文管理
-        isRegQesAcive: false,
+        isRegQesActive: false,
         isRegComActive: false,
       },
 
