@@ -24,7 +24,7 @@
         <div style="background: white; width: 200px; height: 100px; margin-left: 50px; margin-bottom: 50px; border-radius: 10px; z-index: 30; position: relative;">
           <div style="background: lightblue; width: 194px; height: 94px; margin-top: 3px; margin-left: 3px; border-radius: 10px; position: absolute; z-index: 10;">
             <div style="background: lightblue; width: 188px; height: 88px; margin-top: 3px; margin-left: 3px; border-radius: 10px; position: absolute; border-left: solid 1px white; z-index: 10;">
-              <div style="background: white; width: 172px; height: 82px; margin-top: 3px; margin-left: 10px; border-radius: 10px; position: absolute; text-align: center; padding-top: 7px; z-index: 10;">
+              <div style="background: white; width: 172px; height: 82px; margin-top: 3px; margin-left: 10px; border-radius: 10px; position: absolute; text-align: center; padding-top: 7px; z-index: 10;" v-onClick="onClassificationManagement">
                 <p style="font-size: 20px;">問題分類<br>管理</p>
               </div>
             </div>
@@ -38,7 +38,7 @@
         <div style="background: white; width: 200px; height: 100px; margin-left: 50px; margin-bottom: 50px; border-radius: 10px; z-index: 20; position: relative;">
           <div style="background: rgb(48, 105, 96); width: 194px; height: 94px; margin-top: 3px; margin-left: 3px; border-radius: 10px; position: absolute; z-index: 10;">
             <div style="background: rgb(48, 105, 96); width: 188px; height: 88px; margin-top: 3px; margin-left: 3px; border-radius: 10px; position: absolute; border-left: solid 1px white;">
-              <div style="background: white; width: 172px; height: 82px; margin-top: 3px; margin-left: 10px; border-radius: 10px; position: absolute; text-align: center; padding-top: 7px;">
+              <div style="background: white; width: 172px; height: 82px; margin-top: 3px; margin-left: 10px; border-radius: 10px; position: absolute; text-align: center; padding-top: 7px;" v-onClick="onQuestionSentenceManagement">
                 <p style="font-size: 20px;">問題文・解説<br>管理</p>
               </div>
             </div>
@@ -180,12 +180,103 @@
 
           <!-- タイトル登録 -->
           <div id="registTitle" v-bind:class="[isRegTitActive === true ? 'activeDiv' : 'inactiveDiv']" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px;">
-            タイトル登録
+            <br>
+            <h4>問題タイトル 登録</h4>
+
+            <div class="card-body">
+              <form action="{{ action('KokushiManagementController@storeTitle') }}" method="POST">
+                @csrf
+                  <div style="text-align: left; padding-left: 20px;">
+                    科目名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <select name="subject_id">
+                      <option value="0"> </option>
+                      {{--
+                      @foreach ($subjects as $subject)
+                        <option value="{{ $subject->id }}">{{ $subject->subject_name }}</option>
+                      @endforeach
+                      --}}
+                    </select>
+                    <br><br>
+              
+                    <p>
+                      <label for="title_id">タイトルID：</label>
+                      <input typt="text" name="title_id" id="title_id" value="" size="30">
+                    </p>
+              
+                    <p>
+                      <label for="title_name">タイトル名：</label>
+                      <input typt="text" name="title_name" id="title_name" value="" size="30">
+                    </p>
+                    <p>
+                      <input type="submit" value="登録">
+                    </p>
+                </form>
+              </div>
+            </div>
           </div>
 
           <!-- タイトルリスト -->
           <div id="titleList" v-bind:class="[isTitLstActive === true ? 'activeDiv' : 'inactiveDiv']" style="background: white; height: 500px; margin-left: 70px; margin-right: 20px; border-radius: 20px;">
             タイトルリスト
+
+            <h4>問題タイトル</h4>
+            科目名：
+            <select id="subject_name">
+              <option value="0"> </option>
+              {{--
+              @foreach($subjects as $subject)
+                @if ( $subject_id == $subject->id)
+                  <option value="{{ $subject->id }}" selected="selected">{{ $subject->subject_name }}</option>
+                @else
+                  <option value="{{ $subject->id }}">{{ $subject->subject_name }}</option>
+                @endif
+              @endforeach
+              --}}
+            </select>
+            <br><br>
+
+            <table class="table table-striped task-table">
+              <thead>
+                <th>問題タイトル一覧</th>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <th>タイトルID</th>
+                  <th>問題タイトル名</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+
+                {{--
+                @foreach($titles as $title)
+                  <tr>
+                    <td class="table-text">
+                      <div>{{ $title->title_id }}</div>
+                    </td>
+
+                    <td class="table-text">
+                      <div>{{ $title->question_title }}</div>
+                    </td>
+                    <td>
+
+                      <a href="{{ url('/kokushi/management/edit_title/' . $title->subject_id . '/' . $title->title_id) }}">
+                        <button>編集</button>
+                      </a>
+                    </td>
+                    <td>
+                      <form action="{{ action('KokushiManagementController@destroyQuestionsTitle', $title->id) }}" method="post">
+                      @csrf
+                      @method('DELETE')
+                        <button>削除</button>
+                      </form>
+                    </td>
+                  </tr>
+                @endforeach
+                --}}
+              </tbody>
+            </table>
+
           </div>
 
           <!-- 分野登録 -->
@@ -308,6 +399,23 @@
       },
 
       methods: {
+        // 問題分類管理タブのクリックイベントハンドラ
+        onClassificationManagement: function() {
+          console.log('問題分類管理タブ 押下');
+
+          //表示・非表示変更
+          //フラグ一覧と真偽設定
+          
+        }
+
+        // 問題文・解説文管理タブのクリックイベントハンドラ
+        onQuestionSentenceManagement: function() {
+          console.log('問題文・解説文管理タブ 押下');
+
+          //表示・非表示変更
+          //フラグ一覧と真偽設定
+        }
+
         // 科目グループタブのクリックイベントハンドラ
         onSubjectGroupTab: function() {
           console.log('科目グループタブ 押下');
