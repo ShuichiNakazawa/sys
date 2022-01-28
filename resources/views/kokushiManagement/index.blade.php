@@ -409,7 +409,22 @@
                     必須回答数
                     <select>
                       <option>
-
+                        ０
+                      </option>
+                      <option selected="selected">
+                        １
+                      </option>
+                      <option>
+                        ２
+                      </option>
+                      <option>
+                        ３
+                      </option>
+                      <option>
+                        ４
+                      </option>
+                      <option>
+                        ５
                       </option>
                     </select>
                     <br><br>
