@@ -377,7 +377,7 @@
                     <br><br>
 
                     問題番号
-                    <input type="text">
+                    <input type="text" size="3">
 
                     選択肢の数
                     <select>
