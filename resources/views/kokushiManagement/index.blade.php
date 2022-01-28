@@ -801,6 +801,27 @@
         isRegComActive: false,
       },
 
+      // ライフサイクルハック
+      created: function() {
+        // JSON の URL(サーバーに配置する)
+        var url = "";
+
+        // 非同期通信でJSONP を読込む
+        $.ajax({
+          url : url,
+          type: 'GET',
+          dataType: 'jsonp',
+          jsonp: 'callback',
+        })
+        .done(function(data, textStatus, jqXHR) {
+          this.products = data;
+        }.bind(this)}
+        .fail(function(jqXHR, textStatus, errorThrown) {
+          console.log('通信が失敗しました');
+        });
+
+      },
+
       methods: {
         // 問題分類管理タブのクリックイベントハンドラ
         onClassificationManagement: function() {
