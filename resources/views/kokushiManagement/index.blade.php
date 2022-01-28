@@ -417,55 +417,55 @@
                     <textarea>
 
                     </textarea>
-                    <br><br>
+                    <br>
 
                     選択肢２
                     <textarea>
 
                     </textarea>
-                    <br><br>
+                    <br>
 
                     選択肢３
                     <textarea>
 
                     </textarea>
-                    <br><br>
+                    <br>
 
                     選択肢４
                     <textarea>
 
                     </textarea>
-                    <br><br>
+                    <br>
 
                     選択肢５
                     <textarea>
 
                     </textarea>
-                    <br><br>
+                    <br>
 
                     選択肢６
                     <textarea>
 
                     </textarea>
-                    <br><br>
+                    <br>
 
                     選択肢７
                     <textarea>
 
                     </textarea>
-                    <br><br>
+                    <br>
 
                     選択肢８
                     <textarea>
 
                     </textarea>
-                    <br><br>
+                    <br>
 
                     選択肢９
                     <textarea>
 
                     </textarea>
-                    <br><br>
+                    <br>
 
 
                     <!--
