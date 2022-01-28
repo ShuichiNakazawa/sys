@@ -385,7 +385,7 @@
 
                       </option>
                     </select>
-                    <br><br>
+                    &nbsp;&nbsp;&nbsp;
 
                     必須回答数
                     <select>
