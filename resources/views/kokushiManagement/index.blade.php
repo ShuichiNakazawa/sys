@@ -309,7 +309,7 @@
     
       </div>
       
-        <div style="background: lightgray; text-align: center; padding-top: 10px; max-width: 100%; height: 800px; margin-top: -3px; margin-left: -50px; border: solid 3px lightgray; border-radius: 15px; z-index: 5;">
+        <div style="background: lightgray; text-align: center; padding-top: 10px; max-width: 100%; max-height: 1500px; margin-top: -3px; margin-left: -50px; border: solid 3px lightgray; border-radius: 15px; z-index: 5;">
           <div style="background: white; margin-left: 70px; margin-right: 20px; border-radius: 20px; z-index: 5;">
             <br>
     
