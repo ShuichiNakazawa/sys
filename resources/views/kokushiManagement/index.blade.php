@@ -352,6 +352,14 @@
     
                   <!-- 大改修 問題文登録のための各項目を配置していく-->
                   <p>
+                    科目グループ
+                    <select>
+                      <option>
+
+                      </option>
+                    </select>
+                    &nbsp;&nbsp;&nbsp;
+
                     科目名
                     <select>
                       <option>
@@ -370,12 +378,28 @@
 
                     問題番号
                     <input type="text">
+
+                    選択肢の数
+                    <select>
+                      <option>
+
+                      </option>
+                    </select>
+                    <br><br>
+
+                    必須回答数
+                    <select>
+                      <option>
+
+                      </option>
+                    </select>
                     <br><br>
 
                     問題文
                     <textarea>
 
                     </textarea>
+                    <br><br>
 
                     図・表
                     <button>
@@ -386,13 +410,7 @@
                     </button>
                     <br><br>
 
-                    選択肢の数
-                    <select>
-                      <option>
-
-                      </option>
-                    </select>
-                    <br><br>
+                    <hr>
 
                     選択肢１
                     <textarea>
@@ -446,17 +464,6 @@
                     <textarea>
 
                     </textarea>
-                    <br><br>
-
-                    <hr>
-                    <br>
-
-                    必須回答数
-                    <select>
-                      <option>
-
-                      </option>
-                    </select>
                     <br><br>
 
 
