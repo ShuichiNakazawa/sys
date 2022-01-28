@@ -52,6 +52,8 @@
     <br><br>
     <div style="z-index: 5; width: 80%;" id="classificationArea" v-bind:class="[isClsAreActive ? 'activeDiv' : 'inactiveDiv']">
       <br>
+
+      {{-- タブ枠 --}}
       <div class="row" style="margin-left: 30px; z-index: 5;">
         <div style="margin-right: 15px; border: solid 4px lightgray; font-size: 20px; width: 150px; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px; z-index: 5;" v-on:click="onSubjectGroupTab">
           科目グループ
@@ -68,7 +70,10 @@
         </div>
       </div>
       
+      {{-- 外枠 --}}
       <div style="background: lightgray; text-align: center; padding-top: 10px; max-width: 100%; height: 800px; margin-top: -3px; margin-left: -50px; border: solid 3px lightgray; border-radius: 15px; z-index: 5;">
+
+
         <div style="background: white; margin-left: 70px; margin-right: 20px; border-radius: 20px; z-index: 5;">
           <br>
 
@@ -349,6 +354,11 @@
                   <p>
                     <label for="subject_group_name">科目グループ名：</label>
                     <input typt="text" name="subject_group_name" id="subject_group_name" value="" size="30">
+
+
+
+
+                    
                   </p>
                   <p>
                     <input type="submit" value="登録">
@@ -622,6 +632,7 @@
 
         isClsAreActive: true,
         isQesAreActive: false,
+        isRegQesActive: false,
 
         //分類
         isRegSubGrpActive: true,
@@ -650,6 +661,7 @@
           //フラグ一覧と真偽設定
           this.isClsAreActive = true;
           this.isQesAreActive = false;
+          this.isRegQesActive = false;
 
           this.isRegSubGrpActive = true;      // 科目グループ登録エリア 有効化
           this.isSubGrpLstActive = false;
@@ -674,6 +686,7 @@
           //フラグ一覧と真偽設定
           this.isClsAreActive = false;
           this.isQesAreActive = true;
+          this.isRegQesActive = true;
 
           this.isRegSubGrpActive = false;
           this.isSubGrpLstActive = false;
