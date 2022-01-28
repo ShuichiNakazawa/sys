@@ -340,7 +340,7 @@
           </div>
     
           <!-- 問題文登録 -->
-          <div id="registQuestionSentence" v-bind:class="[isRegQesActive ? 'activeDiv' : 'inactiveDiv']" style="background: white; max-height: 1000px; margin-left: 70px; margin-right: 20px; border-radius: 20px; z-index: 5;">
+          <div id="registQuestionSentence" v-bind:class="[isRegQesActive ? 'activeDiv' : 'inactiveDiv']" style="background: white; max-height: 1400px; margin-left: 70px; margin-right: 20px; border-radius: 20px; z-index: 5;">
             <br>
             <h4>問題文 登録</h4>
     
