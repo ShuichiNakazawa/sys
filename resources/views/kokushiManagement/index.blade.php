@@ -992,7 +992,6 @@
           this.isRegFldActive     = false;
           this.isFldLstActive     = false;
         },
-        },
 
         // 登録ボタンのクリックイベントハンドラ
         onStoreItem: function() {
