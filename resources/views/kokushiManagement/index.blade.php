@@ -378,6 +378,7 @@
 
                     問題番号
                     <input type="text" size="3">
+                    &nbsp;&nbsp;&nbsp;
 
                     選択肢の数
                     <select>
