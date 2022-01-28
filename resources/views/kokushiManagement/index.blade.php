@@ -304,7 +304,7 @@
           問題文
         </div>
         <div style="margin-right: 15px; border: solid 4px lightgray; font-size: 20px; width: 150px; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px; z-index: 5" v-on:click="onExplanationTab">
-          解説文
+          解説文（未実装）
         </div>
     
       </div>
