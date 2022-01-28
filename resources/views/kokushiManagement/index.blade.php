@@ -771,6 +771,7 @@
 
 @section('script')
   <script src="https://jp.vuejs.org/js/vue.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script>
     var app = new Vue({
       el: '#app',
