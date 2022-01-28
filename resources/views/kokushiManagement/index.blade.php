@@ -815,7 +815,7 @@
         })
         .done(function(data, textStatus, jqXHR) {
           this.products = data;
-        }.bind(this)}
+        }.bind(this))
         .fail(function(jqXHR, textStatus, errorThrown) {
           console.log('通信が失敗しました');
         });
