@@ -348,7 +348,7 @@
               <form action="{{ action('KokushiManagementController@storeSubjectGroup') }}" method="POST">
                 @csrf
     
-                <div style="text-align: left; padding-left: 20px;">
+                <div style="text-align: left; padding-left: 20px; max-height: 900px;">
     
                   <!-- 大改修 問題文登録のための各項目を配置していく-->
                   <p>
