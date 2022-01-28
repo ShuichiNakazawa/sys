@@ -350,15 +350,122 @@
     
                 <div style="text-align: left; padding-left: 20px;">
     
-                  <!-- 大改修 -->
+                  <!-- 大改修 問題文登録のための各項目を配置していく-->
                   <p>
+                    科目名
+                    <select>
+                      <option>
+
+                      </option>
+                    </select>
+                    <br><br>
+
+                    問題タイトル
+                    <select>
+                      <option>
+
+                      </option>
+                    </select>
+                    <br><br>
+
+                    問題番号
+                    <input type="text">
+                    <br><br>
+
+                    問題文
+                    <textarea>
+
+                    </textarea>
+
+                    図・表
+                    <button>
+                      無
+                    </button>
+                    <button>
+                      有
+                    </button>
+                    <br><br>
+
+                    選択肢の数
+                    <select>
+                      <option>
+
+                      </option>
+                    </select>
+                    <br><br>
+
+                    選択肢１
+                    <textarea>
+
+                    </textarea>
+                    <br><br>
+
+                    選択肢２
+                    <textarea>
+
+                    </textarea>
+                    <br><br>
+
+                    選択肢３
+                    <textarea>
+
+                    </textarea>
+                    <br><br>
+
+                    選択肢４
+                    <textarea>
+
+                    </textarea>
+                    <br><br>
+
+                    選択肢５
+                    <textarea>
+
+                    </textarea>
+                    <br><br>
+
+                    選択肢６
+                    <textarea>
+
+                    </textarea>
+                    <br><br>
+
+                    選択肢７
+                    <textarea>
+
+                    </textarea>
+                    <br><br>
+
+                    選択肢８
+                    <textarea>
+
+                    </textarea>
+                    <br><br>
+
+                    選択肢９
+                    <textarea>
+
+                    </textarea>
+                    <br><br>
+
+                    <hr>
+                    <br>
+
+                    必須回答数
+                    <select>
+                      <option>
+
+                      </option>
+                    </select>
+                    <br><br>
+
+
+                    <!--
                     <label for="subject_group_name">科目グループ名：</label>
                     <input typt="text" name="subject_group_name" id="subject_group_name" value="" size="30">
+                    -->
 
 
-
-
-                    
                   </p>
                   <p>
                     <input type="submit" value="登録">
