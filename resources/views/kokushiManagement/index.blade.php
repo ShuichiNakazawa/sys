@@ -300,10 +300,10 @@
     <div style="z-index: 5; width: 80%;" id="classificationArea" v-bind:class="[isQesAreActive ? 'activeDiv' : 'inactiveDiv']">
       <br>
       <div class="row" style="margin-left: 30px; z-index: 5;">
-        <div style="margin-right: 15px; border: solid 4px lightgray; font-size: 20px; width: 150px; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px; z-index: 5;" v-on:click="onSubjectGroupTab">
+        <div style="margin-right: 15px; border: solid 4px lightgray; font-size: 20px; width: 150px; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px; z-index: 5;" v-on:click="onQuestionTab">
           問題文
         </div>
-        <div style="margin-right: 15px; border: solid 4px lightgray; font-size: 20px; width: 150px; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px; z-index: 5" v-on:click="onSubjectTab">
+        <div style="margin-right: 15px; border: solid 4px lightgray; font-size: 20px; width: 150px; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px; z-index: 5" v-on:click="onExplanationTab">
           解説文
         </div>
     
@@ -781,6 +781,7 @@
         isClsAreActive: true,
         isQesAreActive: false,
         isRegQesActive: false,
+        isExpAreActive: false;
 
         //分類
         isRegSubGrpActive: true,
@@ -810,6 +811,7 @@
           this.isClsAreActive = true;
           this.isQesAreActive = false;
           this.isRegQesActive = false;
+          this.isExpAreActive = false;
 
           this.isRegSubGrpActive = true;      // 科目グループ登録エリア 有効化
           this.isSubGrpLstActive = false;
@@ -835,6 +837,7 @@
           this.isClsAreActive = false;
           this.isQesAreActive = true;
           this.isRegQesActive = true;
+          this.isExpAreActive = false;
 
           this.isRegSubGrpActive = false;
           this.isSubGrpLstActive = false;
@@ -857,6 +860,11 @@
           // activeクラスを科目グループコンテンツへ設定する
 
           // 登録と一覧表示の、どっちが押下されているかによって、アクティブにするコンテンツが変わるため、条件分岐が必要
+          this.isClsAreActive = true;
+          this.isQesAreActive = false;
+          this.isRegQesActive = false;
+          this.isExpAreActive = false;
+
           this.isRegSubGrpActive = true;      // 科目グループ登録エリア 有効化
           this.isSubGrpLstActive = false;
 
@@ -878,6 +886,11 @@
         onSubjectTab: function() {
           console.log('科目タブ 押下');
 
+          this.isClsAreActive = true;
+          this.isQesAreActive = false;
+          this.isRegQesActive = false;
+          this.isExpAreActive = false;
+
           this.isRegSubGrpActive = false;
           this.isSubGrpLstActive = false;
 
@@ -896,6 +909,11 @@
         onTitleTab: function() {
           console.log('タイトルタブ 押下');
 
+          this.isClsAreActive = true;
+          this.isQesAreActive = false;
+          this.isRegQesActive = false;
+          this.isExpAreActive = false;
+
           this.isRegSubGrpActive = false;
           this.isSubGrpLstActive = false;
 
@@ -912,6 +930,12 @@
         // 分野タブのクリックイベントハンドラ
         onFieldTab: function() {
           console.log('分野タブ 押下');
+
+          this.isClsAreActive = true;
+          this.isQesAreActive = false;
+          this.isRegQesActive = false;
+          this.isExpAreActive = false;
+
           this.isRegSubGrpActive = false;
           this.isSubGrpLstActive = false;
 
@@ -923,6 +947,51 @@
 
           this.isRegFldActive     = false;    // 分野登録エリア 有効化
           this.isFldLstActive     = false;
+        },
+
+        // 問題文タブのクリックイベントハンドラ
+        onQuestionTab: function() {
+          console.log('問題文タブ 押下');
+
+          this.isClsAreActive = false;
+          this.isQesAreActive = true;
+          this.isRegQesActive = true;
+          this.isExpAreActive = false;
+
+          this.isRegSubGrpActive = false;
+          this.isSubGrpLstActive = false;
+
+          this.isRegSubActive     = false;
+          this.isSubLstActive     = false;
+
+          this.isRegTitActive     = false;
+          this.isTitLstActive     = false;
+
+          this.isRegFldActive     = false;
+          this.isFldLstActive     = false;
+        },
+
+        // 解説文タブのクリックイベントハンドラ
+        onExplanationTab: function() {
+          console.log('解説文タブ 押下');
+
+          this.isClsAreActive = false;
+          this.isQesAreActive = false;
+          this.isRegQesActive = false;
+          this.isExpAreActive = true;
+
+          this.isRegSubGrpActive = false;
+          this.isSubGrpLstActive = false;
+
+          this.isRegSubActive     = false;
+          this.isSubLstActive     = false;
+
+          this.isRegTitActive     = false;
+          this.isTitLstActive     = false;
+
+          this.isRegFldActive     = false;
+          this.isFldLstActive     = false;
+        },
         },
 
         // 登録ボタンのクリックイベントハンドラ
