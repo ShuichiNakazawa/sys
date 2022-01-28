@@ -366,7 +366,7 @@
 
                       </option>
                     </select>
-                    <br><br>
+                    &nbsp;&nbsp;&nbsp;
 
                     問題タイトル
                     <select>
