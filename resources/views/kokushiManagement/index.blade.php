@@ -781,7 +781,7 @@
         isClsAreActive: true,
         isQesAreActive: false,
         isRegQesActive: false,
-        isExpAreActive: false;
+        isExpAreActive: false,
 
         //分類
         isRegSubGrpActive: true,
