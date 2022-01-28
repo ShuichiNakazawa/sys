@@ -383,7 +383,25 @@
                     選択肢の数
                     <select>
                       <option>
-
+                        ３
+                      </option>
+                      <option selected="selected">
+                        ４
+                      </option>
+                      <option>
+                        ５
+                      </option>
+                      <option>
+                        ６
+                      </option>
+                      <option>
+                        ７
+                      </option>
+                      <option>
+                        ８
+                      </option>
+                      <option>
+                        ９
                       </option>
                     </select>
                     &nbsp;&nbsp;&nbsp;
