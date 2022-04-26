@@ -827,8 +827,9 @@
       created: function() {
 
         // JSON の URL(サーバーに配置する)
+        var url = process.env.MIX_DM_HOST . "/kokushi/management/api/get_subject_groups";         // Laravel側で、被アクセス時にデータを返すように設定する。
         //var url = "https://lara-assist.jp/kokushi/management/api/get_subject_groups";         // Laravel側で、被アクセス時にデータを返すように設定する。
-        var url = "http://localhost:8080/kokushi/management/api/get_subject_groups";         // Laravel側で、被アクセス時にデータを返すように設定する。
+        //var url = "http://localhost:8080/kokushi/management/api/get_subject_groups";         // Laravel側で、被アクセス時にデータを返すように設定する。
 
         // 科目グループ名、科目名、問題タイトル
 
@@ -1138,8 +1139,9 @@
             } else {
 
               // 科目名テーブル 読込み
+              var url = process.env.MIX_DM_HOST . "/kokushi/management/api/get_subjects/0";    // 本番用
               //var url = "https://lara-assist.jp/kokushi/management/api/get_subjects/0";    // 本番用
-              var url = "http://localhost:8080/kokushi/management/api/get_subjects/1";      // ローカル環境テスト用
+              //var url = "http://localhost:8080/kokushi/management/api/get_subjects/1";      // ローカル環境テスト用
 
               let params = new URLSearchParams();
               //params.append ('subject_group_id', this.subject_group),
@@ -1184,8 +1186,9 @@
                     // 問題タイトルテーブル 登録処理
                     console.log('問題タイトルテーブル登録 処理');
 
+                    var url = process.env.MIX_DM_HOST . "/kokushi/management/api/get_subjects/0";    // 本番用
                     //var url = "https://lara-assist.jp/kokushi/management/api/get_subjects/0";    // 本番用
-                    var url = "http://localhost:8080/kokushi/management/api/store_subjects";      // ローカル環境テスト用
+                    //var url = "http://localhost:8080/kokushi/management/api/store_subjects";      // ローカル環境テスト用
 
                     let params = new URLSearchParams();
                     params.append ('subject_group_id', this.subject_group),     // 科目グループID
@@ -1268,8 +1271,10 @@
               // タイトル名 重複チェック
 
               // タイトル一覧を取得するためのURLを設定
+              
+              var url = process.env.MIX_DM_HOST . "/kokushi/management/api/get_titles/" + this.subject_id_TitSto;    // 本番用
               //var url = "https://lara-assist.jp/kokushi/management/api/get_titles/" + this.subject_id_TitSto;    // 本番用
-              var url = "http://localhost:8080/kokushi/management/api/get_titles/" + this.subject_id_TitSto;      // ローカル環境テスト用
+              //var url = "http://localhost:8080/kokushi/management/api/get_titles/" + this.subject_id_TitSto;      // ローカル環境テスト用
 
               let params = new URLSearchParams();
 
@@ -1315,9 +1320,10 @@
                     console.log('タイトル登録 レコード挿入処理');
 
                     // Axios 科目ID・タイトル名をAPIへ投げてレコード登録
-
+                    
+                    var url = process.env.MIX_DM_HOST . "/kokushi/management/api/store_title";    // 本番用
                     //var url = "https://lara-assist.jp/kokushi/management/api/store_title";    // 本番用
-                    var url = "http://localhost:8080/kokushi/management/api/store_title/";      // ローカル環境テスト用
+                    //var url = "http://localhost:8080/kokushi/management/api/store_title/";      // ローカル環境テスト用
 
                     let params = new URLSearchParams();
 
@@ -1488,8 +1494,10 @@
 
             // ajax通信
             // 問題文テーブルへレコードを書き込む。
+            
+            var url = process.env.MIX_DM_HOST . "/kokushi/management/api/store_question_sentence";    // 本番用
             //var url = "https://lara-assist.jp/kokushi/management/api/store_question_sentence";    // 本番用
-            var url = "http://localhost:8080/kokushi/management/api/store_question_sentence";      // ローカル環境テスト用
+            //var url = "http://localhost:8080/kokushi/management/api/store_question_sentence";      // ローカル環境テスト用
 
             json_data['subject_id']             = this.subject;                    // 科目ID
             json_data['title_id']               = this.title;                      // タイトルID
@@ -1624,8 +1632,10 @@
         getSubjects: async function(subject_group_id) {
 
           // axios
+          
+          var url = process.env.MIX_DM_HOST . "/kokushi/management/api/get_subjects" + subject_group_id;    // 本番用
           //var url = "https://lara-assist.jp/kokushi/management/api/get_subjects" + subject_group_id;    // 本番用
-          var url = "http://localhost:8080/kokushi/management/api/get_subjects/" + subject_group_id;    // ローカル環境テスト用
+          //var url = "http://localhost:8080/kokushi/management/api/get_subjects/" + subject_group_id;    // ローカル環境テスト用
 
           let params = new URLSearchParams();
 
@@ -1734,12 +1744,19 @@
           // 問題文が取得出来た場合は、二重登録を防ぐために登録ボタン・テキストエリアを非活性化する。
         
           // 問題文テーブルを読込み、該当するレコードの問題文を取得する。
-          //var url = "https://lara-assist.jp/kokushi/management/api/get_subject_groups";    // 本番用
-          var url = "http://localhost:8080/kokushi/management/api/get_question_sentence/"    // ローカル環境テスト用
+          
+          var url = process.env.MIX_DM_HOST . "/kokushi/management/api/get_question_sentence/"    // 本番用
                         + this.subject
                   + "/" + this.title
                   + "/" + this.question_number;
-  
+          //var url = "https://lara-assist.jp/kokushi/management/api/get_subject_groups";    // 本番用
+/*
+          //var url = "http://localhost:8080/kokushi/management/api/get_question_sentence/"    // ローカル環境テスト用
+                        + this.subject
+                  + "/" + this.title
+                  + "/" + this.question_number;
+*/
+
           // 非同期通信
           $.ajax({
             url : url,
@@ -1848,8 +1865,10 @@
 
             // ajaxを呼出し、科目グループに対応する科目を取得する。
             // 変更のたびにサーバーアクセスするのは非効率だが、その仕組みを未検討
+            
+            var url = process.env.MIX_DM_HOST . "/kokushi/management/api/get_subjects/" + newSubjectGroup;    // 
             //var url = "https://lara-assist.jp/kokushi/management/api/get_subject_groups";                  // Laravel側で、被アクセス時にデータを返すように設定する。
-            var url = "http://localhost:8080/kokushi/management/api/get_subjects/" + newSubjectGroup;    // Laravel側で、被アクセス時にデータを返すように設定する。
+            //var url = "http://localhost:8080/kokushi/management/api/get_subjects/" + newSubjectGroup;    // Laravel側で、被アクセス時にデータを返すように設定する。
 
             console.log('urlテスト：' + url);
 
@@ -1891,8 +1910,10 @@
           this.subject = newSubject;
 
           //問題タイトル読込
+          
+          var url = process.env.MIX_DM_HOST . "/kokushi/management/api/get_titles/" + newSubject;    //
           //var url = "https://lara-assist.jp/kokushi/management/api/get_subject_groups";                  // Laravel側で、被アクセス時にデータを返すように設定する。
-          var url = "http://localhost:8080/kokushi/management/api/get_titles/" + newSubject;    // Laravel側で、被アクセス時にデータを返すように設定する。
+          //var url = "http://localhost:8080/kokushi/management/api/get_titles/" + newSubject;    // Laravel側で、被アクセス時にデータを返すように設定する。
 
           // 非同期通信
           $.ajax({
