@@ -287,7 +287,29 @@ Route::name('kokushi.')->group(function() {
         // 問題文登録　登録処理
         Route::post('/kokushi/management/store_q_sentence', 'KokushiManagementController@StoreQuestionSentence');
 
+        /* API */
+        Route::name('api.')->group(function() {
 
+            //科目グループ 取得
+            Route::get('/kokushi/management/api/get_subject_groups', 'Kokushi\Management\ApiController@GetSubjectGroups');
+
+            //科目 取得
+            Route::get('/kokushi/management/api/get_subjects/{subject_group_id}', 'Kokushi\Management\ApiController@GetSubjects');
+
+            //タイトル 取得
+            Route::get('/kokushi/management/api/get_titles/{subject_id}', 'Kokushi\Management\ApiController@GetTitles');
+
+            // タイトル 登録
+            Route::post('/kokushi/management/api/store_title', 'Kokushi\Management\ApiController@StoreTitle');
+
+            //問題文 取得
+            Route::get('/kokushi/management/api/get_question_sentence/{subject_id}/{title_id}/{question_number}', 'Kokushi\Management\ApiController@GetQuestionSentences');
+
+            // 問題文 登録
+            Route::post('/kokushi/management/api/store_question_sentence', 'Kokushi\Management\ApiController@storeQuestionSentence');
+            
+
+        });
     });
 });
 
