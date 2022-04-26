@@ -1,6 +1,6 @@
 <?php
 
-//namespace Database\Seeders;
+namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
@@ -22,7 +22,7 @@ class SubjectGroupsTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'subject_group_name' => '医療',
+                'subject_group_name' => '医療系',
                 'sight_key' => 'origin',
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -30,7 +30,7 @@ class SubjectGroupsTableSeeder extends Seeder
             1 => 
             array (
                 'id' => 2,
-                'subject_group_name' => '情報処理',
+                'subject_group_name' => '情報系',
                 'sight_key' => 'origin',
                 'created_at' => NULL,
                 'updated_at' => NULL,
