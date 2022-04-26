@@ -2,7 +2,7 @@
 
 //namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
+//use Illuminate\Database\Seeder;
 
 class AnswerSentencesTableSeeder extends Seeder
 {
