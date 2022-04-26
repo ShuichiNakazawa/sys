@@ -11903,13 +11903,10 @@ input[name="soundType"] {
 
 .activeDiv {
   display: block;
-
-  z-index: 10;
 }
 
 .inactiveDiv {
   display: none;
-  z-index: 5;
 }
 
 /*!
