@@ -1,7 +1,7 @@
 <?php
 
-namespace Database\Seeders;
-namespace Database\Seeder;
+//namespace Database\Seeders;
+//namespace Database\Seeder;
 
 use Illuminate\Database\Seeder;
 
