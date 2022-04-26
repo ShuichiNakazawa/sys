@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeds;
+//namespace Database\Seeds;
 //namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         //$this->call(ReservationsTableSeeder::class);            // 予約
         
         //$this->call(FieldsTableSeeder::class);                  // 大分類
-        //$this->call(SubjectsTableSeeder::class);                // 科目名
+        $this->call(SubjectsTableSeeder::class);                // 科目名
         $this->call(TitlesTableSeeder::class);                  // 問題タイトル
 
         $this->call(QuestionSentencesTableSeeder::class);       // 問題文
@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AnswerSentencesTableSeeder::class);         // 正答文
         //$this->call(DivisionsTableSeeder::class);               // 分野
         //$this->call(IndividualScoringsTableSeeder::class);	  // 個人得点
-        $this->call(SubjectGroupsTableSeeder::class);           // 科目グループ
+        $this->call(SubjectGroupsTableSeeder::class);
 
         /*
 	    // Stripe ECサイトサンプル
