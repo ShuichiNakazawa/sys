@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         //$this->call(ReservationsTableSeeder::class);            // 予約
         
         //$this->call(FieldsTableSeeder::class);                  // 大分類
-        $this->call(SubjectsTableSeeder::class);                // 科目名
+        //$this->call(SubjectsTableSeeder::class);                // 科目名
         $this->call(TitlesTableSeeder::class);                  // 問題タイトル
 
         $this->call(QuestionSentencesTableSeeder::class);       // 問題文
